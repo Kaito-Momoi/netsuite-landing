@@ -132,12 +132,6 @@ const IndustryOMS = () => {
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 ホームに戻る
               </button>
-              <button 
-                onClick={() => navigate('/contact')}
-                className="px-6 py-2.5 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-sky-500/25"
-              >
-                お問い合わせ
-              </button>
             </div>
           </div>
         </div>

@@ -13,7 +13,9 @@ import {
   RefreshCw,
   AlertCircle,
   CheckCircle,
-  XCircle
+  XCircle,
+  Phone,
+  Mail
 } from 'lucide-react';
 
 interface InventoryItem {
@@ -180,42 +182,58 @@ const InventoryAging: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* ヘッダー */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <button 
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-3">
+              <button
                 onClick={() => navigate('/')}
-                className="flex items-center text-gray-600 hover:text-gray-900 mr-6"
+                className="flex items-center cursor-pointer"
               >
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                戻る
+                <img
+                  src="/EvangSol_logo.png"
+                  alt="EvangSol"
+                  className="h-12"
+                />
               </button>
-              <h1 className="text-2xl font-bold text-gray-900">在庫エージング分析</h1>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Partner</span>
             </div>
-            <div className="flex items-center space-x-4">
+
+            <div className="hidden md:flex items-center space-x-8">
               <button
-                onClick={handleRefresh}
-                className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                disabled={isLoading}
+                onClick={() => navigate('/')}
+                className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
               >
-                <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-                更新
-              </button>
-              <button
-                onClick={handleExport}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                エクスポート
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                ホームに戻る
               </button>
             </div>
           </div>
         </div>
-      </header>
+      </nav>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-bold text-gray-900">在庫エージング分析</h1>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={handleRefresh}
+              className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={isLoading}
+            >
+              <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+              更新
+            </button>
+            <button
+              onClick={handleExport}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              エクスポート
+            </button>
+          </div>
+        </div>
         {/* 統計カード */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
@@ -434,6 +452,71 @@ const InventoryAging: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <img
+                src="/EvangSol_logo.png"
+                alt="EvangSol"
+                className="h-10 mb-4"
+              />
+              <p className="text-slate-600 text-sm">
+                Oracle NetSuite認定パートナー
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li>
+                  <button
+                    onClick={() => navigate('/')}
+                    className="hover:text-sky-500 transition-colors"
+                  >
+                    ホーム
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate('/about')}
+                    className="hover:text-sky-500 transition-colors"
+                  >
+                    会社概要
+                  </button>
+                </li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">採用情報</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
+              <div className="space-y-2 text-slate-600 text-sm">
+                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
+                <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
+                <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
+                >
+                  お問い合わせフォームへ
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
+            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
