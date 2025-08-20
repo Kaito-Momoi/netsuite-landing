@@ -9,10 +9,12 @@ import ECIntegration from './ECIntegration';
 import IndustryOMS from './IndustryOMS';
 import MaterialPlanning from './MaterialPlanning';
 import WarehouseIntegration from './WarehouseIntegration';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<NetSuite />} />
         <Route path="/about" element={<About />} />
