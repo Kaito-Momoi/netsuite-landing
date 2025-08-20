@@ -338,7 +338,7 @@ const NetSuiteLandingPage = () => {
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
               <div className="space-y-2 text-slate-600 text-sm">
-                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-XXXX-XXXX</p>
+                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
                 <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
                 <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
               </div>
