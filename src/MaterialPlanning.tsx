@@ -87,7 +87,7 @@ const MaterialPlanning = () => {
                   className="h-12"
                 />
               </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Partner</span>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Solution Provider</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
