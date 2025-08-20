@@ -1,207 +1,96 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Package, 
-  Calendar, 
-  AlertTriangle, 
-  TrendingDown, 
-  BarChart3, 
-  Clock,
-  ArrowLeft,
-  Download,
-  Filter,
-  RefreshCw,
-  AlertCircle,
-  CheckCircle,
-  XCircle,
-  Phone,
-  Mail
-} from 'lucide-react';
+import { ArrowLeft, Package, Clock, Shield, Database, TrendingUp, CheckCircle, Phone, Mail, AlertTriangle, Calendar, BarChart3, Filter } from 'lucide-react';
 
-interface InventoryItem {
-  id: string;
-  itemCode: string;
-  itemName: string;
-  category: string;
-  quantity: number;
-  unitCost: number;
-  totalValue: number;
-  lastReceived: string;
-  ageDays: number;
-  status: 'normal' | 'warning' | 'critical';
-}
-
-const InventoryAging: React.FC = () => {
+const InventoryAging = () => {
   const navigate = useNavigate();
-  const [selectedPeriod, setSelectedPeriod] = useState('all');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [inventoryData, setInventoryData] = useState<InventoryItem[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  // サンプルデータの生成
-  useEffect(() => {
-    const sampleData: InventoryItem[] = [
-      {
-        id: '001',
-        itemCode: 'PRD-001',
-        itemName: '電子部品A',
-        category: '電子部品',
-        quantity: 150,
-        unitCost: 2500,
-        totalValue: 375000,
-        lastReceived: '2024-10-15',
-        ageDays: 127,
-        status: 'warning'
-      },
-      {
-        id: '002',
-        itemCode: 'PRD-002',
-        itemName: '金属部品B',
-        category: '金属部品',
-        quantity: 80,
-        unitCost: 5000,
-        totalValue: 400000,
-        lastReceived: '2024-06-20',
-        ageDays: 243,
-        status: 'critical'
-      },
-      {
-        id: '003',
-        itemCode: 'PRD-003',
-        itemName: 'プラスチック部品C',
-        category: 'プラスチック部品',
-        quantity: 200,
-        unitCost: 1000,
-        totalValue: 200000,
-        lastReceived: '2025-01-10',
-        ageDays: 40,
-        status: 'normal'
-      },
-      {
-        id: '004',
-        itemCode: 'PRD-004',
-        itemName: '電子部品D',
-        category: '電子部品',
-        quantity: 50,
-        unitCost: 8000,
-        totalValue: 400000,
-        lastReceived: '2024-03-15',
-        ageDays: 340,
-        status: 'critical'
-      },
-      {
-        id: '005',
-        itemCode: 'PRD-005',
-        itemName: '金属部品E',
-        category: '金属部品',
-        quantity: 120,
-        unitCost: 3000,
-        totalValue: 360000,
-        lastReceived: '2024-12-01',
-        ageDays: 80,
-        status: 'normal'
-      }
-    ];
-    setInventoryData(sampleData);
-  }, []);
-
-  // フィルタリング処理
-  const filteredData = inventoryData.filter(item => {
-    let periodMatch = true;
-    let categoryMatch = true;
-
-    if (selectedPeriod !== 'all') {
-      switch(selectedPeriod) {
-        case '0-30':
-          periodMatch = item.ageDays <= 30;
-          break;
-        case '31-90':
-          periodMatch = item.ageDays > 30 && item.ageDays <= 90;
-          break;
-        case '91-180':
-          periodMatch = item.ageDays > 90 && item.ageDays <= 180;
-          break;
-        case '180+':
-          periodMatch = item.ageDays > 180;
-          break;
-      }
+  const features = [
+    {
+      icon: <Calendar className="w-6 h-6" />,
+      title: "経過日数分析",
+      description: "在庫の滞留期間を自動計算し、経過日数別に分類・可視化。"
+    },
+    {
+      icon: <AlertTriangle className="w-6 h-6" />,
+      title: "デッドストック検知",
+      description: "長期滞留在庫を自動検出し、廃棄リスクを事前にアラート。"
+    },
+    {
+      icon: <BarChart3 className="w-6 h-6" />,
+      title: "回転率分析",
+      description: "品目別・カテゴリ別の在庫回転率を分析し、最適在庫を提案。"
+    },
+    {
+      icon: <Filter className="w-6 h-6" />,
+      title: "多角的分析",
+      description: "倉庫別、カテゴリ別、サプライヤー別など多様な切り口で分析。"
     }
+  ];
 
-    if (selectedCategory !== 'all') {
-      categoryMatch = item.category === selectedCategory;
+  const agingCategories = [
+    { period: "0-30日", description: "適正在庫", color: "緑", action: "通常管理" },
+    { period: "31-90日", description: "要注意", color: "黄", action: "販促検討" },
+    { period: "91-180日", description: "警告", color: "橙", action: "値引き処分" },
+    { period: "180日以上", description: "危険", color: "赤", action: "廃棄検討" }
+  ];
+
+  const benefits = [
+    { value: "70%", label: "廃棄ロス削減", description: "早期対応による削減" },
+    { value: "40%", label: "在庫削減", description: "適正在庫の維持" },
+    { value: "2倍", label: "回転率向上", description: "滞留在庫の削減" },
+    { value: "月次", label: "棚卸効率化", description: "データ活用による高速化" }
+  ];
+
+  const analysisMetrics = [
+    { metric: "在庫金額推移", description: "経過日数別の在庫金額を時系列で表示" },
+    { metric: "カテゴリ分析", description: "商品カテゴリ別の滞留状況を可視化" },
+    { metric: "ABC分析連携", description: "売上貢献度と滞留期間のクロス分析" },
+    { metric: "季節性分析", description: "シーズン商品の適正在庫期間管理" },
+    { metric: "廃棄予測", description: "廃棄リスクの高い在庫を事前予測" },
+    { metric: "機会損失分析", description: "在庫切れによる販売機会損失を算出" }
+  ];
+
+  const caseStudies = [
+    {
+      industry: "食品卸売業 M社",
+      challenge: "賞味期限管理と廃棄ロスの増大",
+      result: "廃棄ロス80%削減、在庫回転率50%向上"
+    },
+    {
+      industry: "アパレル小売業 N社",
+      challenge: "シーズン商品の在庫管理",
+      result: "売り切り率90%達成、値引きロス60%削減"
+    },
+    {
+      industry: "電子部品商社 O社",
+      challenge: "陳腐化リスクの高い在庫管理",
+      result: "デッドストック70%削減、キャッシュフロー改善"
     }
-
-    return periodMatch && categoryMatch;
-  });
-
-  // 統計データの計算
-  const statistics = {
-    totalItems: filteredData.length,
-    totalValue: filteredData.reduce((sum, item) => sum + item.totalValue, 0),
-    criticalItems: filteredData.filter(item => item.status === 'critical').length,
-    warningItems: filteredData.filter(item => item.status === 'warning').length,
-    averageAge: filteredData.length > 0 
-      ? Math.round(filteredData.reduce((sum, item) => sum + item.ageDays, 0) / filteredData.length)
-      : 0
-  };
-
-  // データのリフレッシュ
-  const handleRefresh = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  };
-
-  // CSVエクスポート
-  const handleExport = () => {
-    alert('CSV形式でデータをエクスポートします');
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch(status) {
-      case 'critical':
-        return <XCircle className="w-5 h-5 text-red-500" />;
-      case 'warning':
-        return <AlertCircle className="w-5 h-5 text-yellow-500" />;
-      default:
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
-    }
-  };
-
-  const getStatusBadge = (status: string) => {
-    switch(status) {
-      case 'critical':
-        return 'bg-red-100 text-red-800';
-      case 'warning':
-        return 'bg-yellow-100 text-yellow-800';
-      default:
-        return 'bg-green-100 text-green-800';
-    }
-  };
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-3">
-              <button
-                onClick={() => navigate('/')}
+              <button 
+                onClick={() => navigate('/')} 
                 className="flex items-center cursor-pointer"
               >
-                <img
-                  src="/EvangSol_logo.png"
+                <img 
+                  src="/EvangSol_logo.png" 
                   alt="EvangSol"
                   className="h-12"
                 />
               </button>
               <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Partner</span>
             </div>
-
+            
             <div className="hidden md:flex items-center space-x-8">
-              <button
+              <button 
                 onClick={() => navigate('/')}
                 className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
               >
@@ -213,253 +102,269 @@ const InventoryAging: React.FC = () => {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">在庫エージング分析</h1>
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={handleRefresh}
-              className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              disabled={isLoading}
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-4 py-2 bg-sky-100 border border-sky-300 rounded-full mb-6">
+              <Package className="w-4 h-4 mr-2 text-sky-600" />
+              <span className="text-sm text-sky-700 font-semibold">在庫最適化ソリューション</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+              在庫エージング分析
+            </h1>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              在庫の滞留期間を可視化し、デッドストックのリスクを早期に発見します。
+              経過日数別の在庫分析により、廃棄ロスの削減と在庫回転率の向上を実現。
+              適切なタイミングでの処分判断により、キャッシュフローを改善します。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center text-slate-900">
+            こんな課題を解決します
+          </h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-slate-700 font-medium">在庫の滞留状況が把握できず、廃棄ロスが発生</p>
+                  <p className="text-slate-600 text-sm mt-1">どの商品がどれくらい滞留しているか不明</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-slate-700 font-medium">デッドストックが倉庫スペースを圧迫</p>
+                  <p className="text-slate-600 text-sm mt-1">売れない在庫が場所を占有し、保管コストが増大</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-slate-700 font-medium">適切な処分タイミングが判断できない</p>
+                  <p className="text-slate-600 text-sm mt-1">値引きや廃棄の判断基準が不明確</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-slate-700 font-medium">在庫評価が適切に行えない</p>
+                  <p className="text-slate-600 text-sm mt-1">財務諸表への影響を正確に把握できない</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Aging Categories Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
+            エージング分類と対応策
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {agingCategories.map((category, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div className={`w-full h-2 rounded-full mb-4 ${
+                  index === 0 ? 'bg-green-500' :
+                  index === 1 ? 'bg-yellow-500' :
+                  index === 2 ? 'bg-orange-500' : 'bg-red-500'
+                }`}></div>
+                <h3 className="text-lg font-bold mb-2 text-slate-900">{category.period}</h3>
+                <p className="text-sm text-slate-600 mb-1">状態: {category.description}</p>
+                <p className="text-sm font-semibold text-sky-600">対応: {category.action}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Analysis Metrics Section */}
+      <section className="py-16 px-4 bg-sky-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
+            分析機能
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {analysisMetrics.map((item, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center mr-3">
+                    <BarChart3 className="w-5 h-5 text-sky-600" />
+                  </div>
+                  <h3 className="font-bold text-slate-900">{item.metric}</h3>
+                </div>
+                <p className="text-sm text-slate-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
+            主な機能
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-4 text-sky-600">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-slate-900">{feature.title}</h3>
+                <p className="text-sm text-slate-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-sky-400 to-blue-500">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-white">
+            導入効果
+          </h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="text-center">
+                <div className="text-5xl font-bold text-white mb-2">{benefit.value}</div>
+                <div className="text-white/90 font-semibold mb-1">{benefit.label}</div>
+                <div className="text-white/70 text-sm">{benefit.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
+            導入事例
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {caseStudies.map((study, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <h3 className="text-lg font-bold text-sky-600 mb-3">{study.industry}</h3>
+                <div className="mb-4">
+                  <p className="text-sm text-slate-500 mb-1">課題</p>
+                  <p className="text-slate-700">{study.challenge}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500 mb-1">成果</p>
+                  <p className="text-slate-900 font-semibold">{study.result}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Implementation Process */}
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
+            導入プロセス
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
+                  1
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">在庫分析</h3>
+              </div>
+              <p className="text-slate-600 ml-11">現在の在庫状況と滞留パターンを分析（約1週間）</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
+                  2
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">ルール設定</h3>
+              </div>
+              <p className="text-slate-600 ml-11">エージング期間と対応アクションのルール定義（約1週間）</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
+                  3
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">システム構築</h3>
+              </div>
+              <p className="text-slate-600 ml-11">分析ダッシュボードとレポート機能の実装（約2週間）</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
+                  4
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">アラート設定</h3>
+              </div>
+              <p className="text-slate-600 ml-11">自動通知とワークフローの設定（約1週間）</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
+                  5
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">運用開始</h3>
+              </div>
+              <p className="text-slate-600 ml-11">トレーニングと本番運用スタート</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6 text-slate-900">
+            在庫の見える化で経営を改善
+          </h2>
+          <p className="text-xl text-slate-600 mb-8">
+            滞留在庫を削減し、キャッシュフローを改善します。
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => navigate('/contact')}
+              className="px-8 py-4 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center"
             >
-              <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-              更新
+              <Phone className="mr-2 w-5 h-5" />
+              無料相談を予約
             </button>
-            <button
-              onClick={handleExport}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center"
+            <button 
+              onClick={() => navigate('/')}
+              className="px-8 py-4 bg-white hover:bg-slate-50 border-2 border-sky-400 text-sky-600 rounded-full font-semibold text-lg transition-all flex items-center justify-center"
             >
-              <Download className="w-4 h-4 mr-2" />
-              エクスポート
+              <ArrowLeft className="mr-2 w-5 h-5" />
+              ソリューション一覧へ
             </button>
           </div>
         </div>
-        {/* 統計カード */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">総アイテム数</p>
-                <p className="text-2xl font-bold text-gray-900">{statistics.totalItems}</p>
-              </div>
-              <Package className="w-8 h-8 text-blue-500" />
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">在庫総額</p>
-                <p className="text-2xl font-bold text-gray-900">¥{statistics.totalValue.toLocaleString()}</p>
-              </div>
-              <BarChart3 className="w-8 h-8 text-green-500" />
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">要注意</p>
-                <p className="text-2xl font-bold text-red-600">{statistics.criticalItems}</p>
-              </div>
-              <AlertTriangle className="w-8 h-8 text-red-500" />
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">警告</p>
-                <p className="text-2xl font-bold text-yellow-600">{statistics.warningItems}</p>
-              </div>
-              <AlertCircle className="w-8 h-8 text-yellow-500" />
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">平均経過日数</p>
-                <p className="text-2xl font-bold text-gray-900">{statistics.averageAge}日</p>
-              </div>
-              <Clock className="w-8 h-8 text-purple-500" />
-            </div>
-          </div>
-        </div>
-
-        {/* フィルター */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <div className="flex items-center mb-4">
-            <Filter className="w-5 h-5 mr-2 text-gray-600" />
-            <h2 className="text-lg font-semibold">フィルター</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                経過日数
-              </label>
-              <select
-                value={selectedPeriod}
-                onChange={(e) => setSelectedPeriod(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="all">すべて</option>
-                <option value="0-30">0-30日</option>
-                <option value="31-90">31-90日</option>
-                <option value="91-180">91-180日</option>
-                <option value="180+">180日以上</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                カテゴリー
-              </label>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="all">すべて</option>
-                <option value="電子部品">電子部品</option>
-                <option value="金属部品">金属部品</option>
-                <option value="プラスチック部品">プラスチック部品</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* データテーブル */}
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold">在庫詳細</h2>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    ステータス
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    品目コード
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    品目名
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    カテゴリー
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    数量
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    単価
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    在庫金額
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    最終入荷日
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    経過日数
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {filteredData.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {getStatusIcon(item.status)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {item.itemCode}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {item.itemName}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <span className="px-2 py-1 text-xs rounded-full bg-gray-100">
-                        {item.category}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
-                      {item.quantity.toLocaleString()}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
-                      ¥{item.unitCost.toLocaleString()}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
-                      ¥{item.totalValue.toLocaleString()}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {item.lastReceived}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusBadge(item.status)}`}>
-                        {item.ageDays}日
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {filteredData.length === 0 && (
-            <div className="text-center py-12">
-              <Package className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500">該当するデータがありません</p>
-            </div>
-          )}
-        </div>
-
-        {/* エージング分析グラフ */}
-        <div className="mt-8 bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold mb-4">エージング分布</h2>
-          <div className="grid grid-cols-4 gap-4">
-            <div className="text-center">
-              <div className="h-32 bg-green-500 rounded-lg flex items-end justify-center">
-                <div className="bg-green-600 rounded-t-lg w-full" style={{height: '30%'}}>
-                  <div className="text-white font-bold pt-2">2</div>
-                </div>
-              </div>
-              <p className="mt-2 text-sm text-gray-600">0-30日</p>
-            </div>
-            <div className="text-center">
-              <div className="h-32 bg-yellow-500 rounded-lg flex items-end justify-center">
-                <div className="bg-yellow-600 rounded-t-lg w-full" style={{height: '20%'}}>
-                  <div className="text-white font-bold pt-2">1</div>
-                </div>
-              </div>
-              <p className="mt-2 text-sm text-gray-600">31-90日</p>
-            </div>
-            <div className="text-center">
-              <div className="h-32 bg-orange-500 rounded-lg flex items-end justify-center">
-                <div className="bg-orange-600 rounded-t-lg w-full" style={{height: '20%'}}>
-                  <div className="text-white font-bold pt-2">1</div>
-                </div>
-              </div>
-              <p className="mt-2 text-sm text-gray-600">91-180日</p>
-            </div>
-            <div className="text-center">
-              <div className="h-32 bg-red-500 rounded-lg flex items-end justify-center">
-                <div className="bg-red-600 rounded-t-lg w-full" style={{height: '30%'}}>
-                  <div className="text-white font-bold pt-2">2</div>
-                </div>
-              </div>
-              <p className="mt-2 text-sm text-gray-600">180日以上</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <img
-                src="/EvangSol_logo.png"
+              <img 
+                src="/EvangSol_logo.png" 
                 alt="EvangSol"
                 className="h-10 mb-4"
               />
@@ -479,7 +384,7 @@ const InventoryAging: React.FC = () => {
               <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
               <ul className="space-y-2 text-slate-600 text-sm">
                 <li>
-                  <button
+                  <button 
                     onClick={() => navigate('/')}
                     className="hover:text-sky-500 transition-colors"
                   >
@@ -487,7 +392,7 @@ const InventoryAging: React.FC = () => {
                   </button>
                 </li>
                 <li>
-                  <button
+                  <button 
                     onClick={() => navigate('/about')}
                     className="hover:text-sky-500 transition-colors"
                   >
@@ -503,7 +408,7 @@ const InventoryAging: React.FC = () => {
                 <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
                 <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
                 <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
-                <button
+                <button 
                   onClick={() => navigate('/contact')}
                   className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
                 >
