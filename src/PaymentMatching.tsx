@@ -52,7 +52,7 @@ const PaymentMatching: React.FC = () => {
       </nav>
 
       {/* メインコンテンツ */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 pt-32 pb-12">
         {/* ヒーローセクション */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
