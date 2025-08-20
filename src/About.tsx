@@ -13,6 +13,7 @@ const About = () => {
     { label: '所在地', value: '〒103-0023 東京都中央区日本橋本町4-15-11 一橋ビル6F', icon: <MapPin className="w-5 h-5" /> },
     { label: '電話番号', value: '03-6231-1328', icon: <Phone className="w-5 h-5" /> },
     { label: 'FAX', value: '03-6231-1348', icon: <Phone className="w-5 h-5" /> },
+    { label: 'メール', value: 'info@evangsol.co.jp', icon: <Mail className="w-5 h-5" /> },
     { label: 'URL', value: 'https://www.evangsol.co.jp', icon: <Globe className="w-5 h-5" /> },
   ];
 
