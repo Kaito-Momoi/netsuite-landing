@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
+import {
   ArrowLeft,
   CheckCircle,
   Clock,
@@ -10,7 +10,9 @@ import {
   Database,
   Shield,
   Zap,
-  BarChart3
+  BarChart3,
+  Phone,
+  Mail
 } from 'lucide-react';
 
 const PaymentMatching: React.FC = () => {
@@ -18,28 +20,39 @@ const PaymentMatching: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* ヘッダー */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center">
-            <button 
-              onClick={() => navigate('/')}
-              className="flex items-center text-gray-600 hover:text-gray-900 mr-6"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              戻る
-            </button>
-            <div className="flex items-center">
-              <div className="text-2xl font-bold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-                EvangSol
-              </div>
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center cursor-pointer"
+              >
+                <img
+                  src="/EvangSol_logo.png"
+                  alt="EvangSol"
+                  className="h-12"
+                />
+              </button>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Partner</span>
+            </div>
+
+            <div className="hidden md:flex items-center space-x-8">
+              <button
+                onClick={() => navigate('/')}
+                className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                ホームに戻る
+              </button>
             </div>
           </div>
         </div>
-      </header>
+      </nav>
 
       {/* メインコンテンツ */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 pt-32 pb-12">
         {/* ヒーローセクション */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -158,7 +171,7 @@ const PaymentMatching: React.FC = () => {
           <p className="text-xl text-gray-600 mb-8">
             詳細な資料や無料相談をご希望の方はお気軽にお問い合わせください
           </p>
-          <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-4">
             <button
               onClick={() => navigate('/contact')}
               className="px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
@@ -173,6 +186,71 @@ const PaymentMatching: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <img
+                src="/EvangSol_logo.png"
+                alt="EvangSol"
+                className="h-10 mb-4"
+              />
+              <p className="text-slate-600 text-sm">
+                Oracle NetSuite認定パートナー
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li>
+                  <button
+                    onClick={() => navigate('/')}
+                    className="hover:text-sky-500 transition-colors"
+                  >
+                    ホーム
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate('/about')}
+                    className="hover:text-sky-500 transition-colors"
+                  >
+                    会社概要
+                  </button>
+                </li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">採用情報</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
+              <div className="space-y-2 text-slate-600 text-sm">
+                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
+                <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
+                <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
+                >
+                  お問い合わせフォームへ
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
+            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
