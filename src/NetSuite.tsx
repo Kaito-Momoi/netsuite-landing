@@ -183,8 +183,8 @@ const NetSuite = () => {
                 導入相談を始める
                 <ArrowRight className="ml-2 w-5 h-5" />
               </button>
-              <button className="px-8 py-4 bg-white hover:bg-slate-50 border-2 border-sky-400 text-sky-600 rounded-full font-semibold text-lg transition-all">
-                資料ダウンロード
+              <button onClick={() => navigate('/features')} className="px-8 py-4 bg-white hover:bg-slate-50 border-2 border-sky-400 text-sky-600 rounded-full font-semibold text-lg transition-all">
+                NetSuiteの特徴
               </button>
             </div>
           </div>
@@ -331,9 +331,9 @@ const NetSuite = () => {
               <Phone className="mr-2 w-5 h-5" />
               無料相談を予約
             </button>
-            <button className="px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white rounded-full font-semibold text-lg transition-all flex items-center justify-center">
+            <button onClick={() => navigate('/features')} className="px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white rounded-full font-semibold text-lg transition-all flex items-center justify-center">
               <Mail className="mr-2 w-5 h-5" />
-              資料請求
+              NetSuiteの特徴
             </button>
           </div>
         </div>
