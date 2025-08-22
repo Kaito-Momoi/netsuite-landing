@@ -169,7 +169,7 @@ const PaymentMatching: React.FC = () => {
             入金消込業務を効率化しませんか？
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            詳細な資料や無料相談をご希望の方はお気軽にお問い合わせください
+            詳細な情報や無料相談をご希望の方はお気軽にお問い合わせください
           </p>
         <div className="flex justify-center space-x-4">
             <button
@@ -179,9 +179,10 @@ const PaymentMatching: React.FC = () => {
               お問い合わせ
             </button>
             <button
+              onClick={() => navigate('/features')}
               className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium"
             >
-              資料ダウンロード
+              NetSuiteの特徴
             </button>
           </div>
         </div>

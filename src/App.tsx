@@ -10,6 +10,7 @@ import IndustryOMS from './IndustryOMS';
 import MaterialPlanning from './MaterialPlanning';
 import WarehouseIntegration from './WarehouseIntegration';
 import ScrollToTop from './ScrollToTop';
+import NetSuiteFeatures from './NetSuiteFeatures';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<NetSuite />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/features" element={<NetSuiteFeatures />} />
         <Route path="/solutions/payment-matching" element={<PaymentMatching />} />
         <Route path="/solutions/ec-integration" element={<ECIntegration />} />
         <Route path="/solutions/industry-oms" element={<IndustryOMS />} />
