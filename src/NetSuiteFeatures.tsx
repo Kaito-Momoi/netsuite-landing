@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Globe, Shield, TrendingUp, Database, Zap, BarChart3,
-  CheckCircle, ArrowRight, Cloud, RefreshCw, DollarSign,
+  CheckCircle, ArrowLeft, ArrowRight, Cloud, RefreshCw, DollarSign,
   Users, Building2, Layers, Award, Target, Clock,
   Package, Settings, ChevronRight, Sparkles, Code,
   Wrench, Rocket, Lightbulb, Puzzle, GitBranch,
@@ -188,18 +188,34 @@ const NetSuiteFeatures = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/20 to-white">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-white/80 backdrop-blur-sm'
-      }`}>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/95 backdrop-blur-lg shadow-lg'
+            : 'bg-white/80 backdrop-blur-sm'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-3">
-              <div className="text-2xl font-bold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-                NetSuite
-              </div>
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center cursor-pointer"
+              >
+                <img src="/EvangSol_logo.png" alt="EvangSol" className="h-12" />
+              </button>
               <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">
-                by EvangSol - Oracle NetSuite Solution Provider
+                Oracle NetSuite Solution Provider
               </span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <button
+                onClick={() => navigate('/')}
+                className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                ホームに戻る
+              </button>
             </div>
           </div>
         </div>
@@ -540,7 +556,6 @@ const NetSuiteFeatures = () => {
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-sky-400 to-blue-500">
         <div className="max-w-4xl mx-auto text-center">
@@ -569,6 +584,71 @@ const NetSuiteFeatures = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <img
+                src="/EvangSol_logo.png"
+                alt="EvangSol"
+                className="h-10 mb-4"
+              />
+              <p className="text-slate-600 text-sm">
+                Oracle NetSuite認定パートナー
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li>
+                  <button
+                    onClick={() => navigate('/')}
+                    className="hover:text-sky-500 transition-colors"
+                  >
+                    ホーム
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate('/about')}
+                    className="hover:text-sky-500 transition-colors"
+                  >
+                    会社概要
+                  </button>
+                </li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">採用情報</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
+              <div className="space-y-2 text-slate-600 text-sm">
+                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
+                <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
+                <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
+                >
+                  お問い合わせフォームへ
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
+            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
