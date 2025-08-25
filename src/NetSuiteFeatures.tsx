@@ -27,23 +27,23 @@ const NetSuiteFeatures = () => {
       subtitle: "SuiteCloudプラットフォーム",
       features: [
         {
-          name: "SuiteScript 2.0",
+          name: "SuiteScript 2.0（スイートスクリプト）",
           desc: "JavaScriptベースで自由にビジネスロジックを実装。サーバーサイド・クライアントサイド両対応"
         },
         {
-          name: "SuiteFlow",
+          name: "SuiteFlow（スイートフロー）",
           desc: "ドラッグ&ドロップで複雑な承認ワークフローや自動処理を視覚的に構築"
         },
         {
-          name: "SuiteBuilder",
+          name: "SuiteBuilder（スイートビルダー）",
           desc: "プログラミング不要でフォーム、フィールド、レコードをカスタマイズ"
         },
         {
-          name: "SuiteTalk (Web Services)",
+          name: "SuiteTalk（スイートトーク）",
           desc: "REST/SOAP APIによる完全な外部システム連携"
         },
         {
-          name: "SuiteAnalytics",
+          name: "SuiteAnalytics（スイートアナリティクス）",
           desc: "リアルタイムBI機能で経営ダッシュボードを自由に作成"
         }
       ]
@@ -205,7 +205,7 @@ const NetSuiteFeatures = () => {
                 <img src="/EvangSol_logo.png" alt="EvangSol" className="h-12" />
               </button>
               <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">
-                Oracle NetSuite Solution Provider
+                Oracle NetSuite認定パートナー
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -602,7 +602,7 @@ const NetSuiteFeatures = () => {
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
               <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
               </ul>

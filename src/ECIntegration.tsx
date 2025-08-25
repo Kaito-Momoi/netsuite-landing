@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Globe, Clock, Shield, Database, TrendingUp, CheckCircle, Phone, Mail, ShoppingCart, Package, Zap, BarChart } from 'lucide-react';
+import { ArrowLeft, Globe, Clock, Database, CheckCircle, Phone, Mail, ShoppingCart, Package, Zap, BarChart } from 'lucide-react';
 
 const ECIntegration = () => {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ const ECIntegration = () => {
                   className="h-12"
                 />
               </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Solution Provider</span>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite認定パートナー</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -104,7 +104,7 @@ const ECIntegration = () => {
               <span className="text-sm text-sky-700 font-semibold">マルチチャネル統合プラットフォーム</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-              ECデータ連携基盤
+              EC（イーコマース）データ連携基盤
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               複数のECプラットフォームとNetSuiteをシームレスに統合する連携基盤です。
@@ -377,7 +377,7 @@ const ECIntegration = () => {
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
               <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
               </ul>

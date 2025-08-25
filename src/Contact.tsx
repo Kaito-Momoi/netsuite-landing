@@ -21,24 +21,50 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // ここで実際のフォーム送信処理を行う
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
     
-    // 3秒後にフォームをリセット
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        inquiryType: '',
-        message: ''
+    try {
+      // 実際のAPIエンドポイントに送信する場合はここを変更
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
+      // 
+      // if (!response.ok) {
+      //   throw new Error('送信に失敗しました');
+      // }
+      
+      // 現在はデモ用として、ローカルストレージに保存
+      const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+      submissions.push({
+        ...formData,
+        submittedAt: new Date().toISOString()
       });
-    }, 3000);
+      localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+      
+      console.log('Form submitted successfully:', formData);
+      setIsSubmitted(true);
+      
+      // 5秒後にフォームをリセット
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          inquiryType: '',
+          message: ''
+        });
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('送信中にエラーが発生しました。お電話でお問い合わせください。');
+    }
   };
 
   return (
@@ -58,7 +84,7 @@ const Contact = () => {
                   className="h-12"
                 />
               </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Solution Provider</span>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite認定パートナー</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -82,7 +108,7 @@ const Contact = () => {
               お問い合わせ
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              NetSuiteソリューションプロバイダーとして、ERP導入支援から他システムとの連携まで、
+              Oracle NetSuite認定パートナーとして、ERP導入支援から他システムとの連携まで、
               幅広くご提案いたします。お気軽にご相談ください。
             </p>
           </div>
@@ -287,7 +313,7 @@ const Contact = () => {
           </h2>
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <p className="text-slate-700 mb-6 leading-relaxed">
-              NetSuiteソリューションプロバイダーとして、ERP以外にも多くのシステム開発プロジェクトに携わってまいりました。
+              Oracle NetSuite認定パートナーとして、ERP以外にも多くのシステム開発プロジェクトに携わってまいりました。
             </p>
             <div className="space-y-4">
               <div className="flex items-start">
@@ -339,7 +365,7 @@ const Contact = () => {
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
               <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
               </ul>

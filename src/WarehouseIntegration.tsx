@@ -19,7 +19,7 @@ const WarehouseIntegration = () => {
     {
       icon: <Database className="w-6 h-6" />,
       title: "リアルタイム在庫同期",
-      description: "WMSとNetSuiteの在庫データをリアルタイムで同期。"
+      description: "WMS（倉庫管理システム）とNetSuiteの在庫データをリアルタイムで同期。"
     },
     {
       icon: <Smartphone className="w-6 h-6" />,
@@ -86,7 +86,7 @@ const WarehouseIntegration = () => {
                   className="h-12"
                 />
               </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Solution Provider</span>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite認定パートナー</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -377,7 +377,7 @@ const WarehouseIntegration = () => {
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
               <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
               </ul>

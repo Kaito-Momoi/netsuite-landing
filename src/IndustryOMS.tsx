@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Package, Clock, Shield, Database, TrendingUp, CheckCircle, Phone, Mail, Building2, Truck, ShoppingBag, Factory, Settings, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Package, Clock, Shield, Database, CheckCircle, Phone, Mail, Building2, Truck, ShoppingBag, Factory, Settings, BarChart3 } from 'lucide-react';
 
 const IndustryOMS = () => {
   const navigate = useNavigate();
@@ -121,7 +121,7 @@ const IndustryOMS = () => {
                   className="h-12"
                 />
               </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite Solution Provider</span>
+              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite認定パートナー</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -146,8 +146,7 @@ const IndustryOMS = () => {
               <span className="text-sm text-sky-700 font-semibold">業界別最適化システム</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-              業界特化OMS<br />
-              <span className="text-2xl md:text-3xl">（受注管理システム）</span>
+              業界特化OMS（受注管理システム）
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               業界特有の商習慣や業務フローに完全対応した受注管理システムを構築します。
@@ -418,7 +417,7 @@ const IndustryOMS = () => {
             <div>
               <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
               <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入コンサルティング</a></li>
+                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
                 <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
               </ul>
