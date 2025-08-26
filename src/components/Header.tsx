@@ -42,7 +42,12 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
             
             {!showBackButton ? (
               <div className="hidden md:flex items-center space-x-8">
-                <a href="#services" className="text-slate-700 hover:text-sky-500 transition-colors font-medium">サービス</a>
+                <button 
+                  onClick={() => navigate('/services')}
+                  className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
+                >
+                  サービス
+                </button>
                 <a href="#solutions" className="text-slate-700 hover:text-sky-500 transition-colors font-medium">ソリューション</a>
                 <a href="#cases" className="text-slate-700 hover:text-sky-500 transition-colors font-medium">導入事例</a>
                 <button 
@@ -83,7 +88,15 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
       {isMenuOpen && !showBackButton && (
         <div className="fixed inset-0 z-40 md:hidden bg-white/95 backdrop-blur-lg">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#services" className="text-2xl text-slate-700 hover:text-sky-500">サービス</a>
+            <button 
+              onClick={() => {
+                navigate('/services');
+                setIsMenuOpen(false);
+              }}
+              className="text-2xl text-slate-700 hover:text-sky-500"
+            >
+              サービス
+            </button>
             <a href="#solutions" className="text-2xl text-slate-700 hover:text-sky-500">ソリューション</a>
             <a href="#cases" className="text-2xl text-slate-700 hover:text-sky-500">導入事例</a>
             <button 

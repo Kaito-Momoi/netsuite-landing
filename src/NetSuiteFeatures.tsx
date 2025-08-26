@@ -8,18 +8,17 @@ import {
   Phone, FileText, Server, Lock, Cpu, Activity, Mail
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Footer from './components/Footer';
+import HeroSection from './components/HeroSection';
+import CTASection from './components/CTASection';
+import StatsSection from './components/StatsSection';
+import { FeatureGrid } from './components/FeatureCard';
+import { useScrollPosition } from './hooks/useScrollPosition';
+import { Feature, StatItem } from './types';
 
 const NetSuiteFeatures = () => {
   const navigate = useNavigate();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const scrolled = useScrollPosition(50);
 
   const netsuiteCore = {
     customization: {
@@ -27,26 +26,31 @@ const NetSuiteFeatures = () => {
       subtitle: "SuiteCloudプラットフォーム",
       features: [
         {
-          name: "SuiteScript 2.0（スイートスクリプト）",
-          desc: "JavaScriptベースで自由にビジネスロジックを実装。サーバーサイド・クライアントサイド両対応"
+          icon: <Code className="w-6 h-6" />,
+          title: "SuiteScript 2.0",
+          description: "JavaScriptベースで自由にビジネスロジックを実装。サーバーサイド・クライアントサイド両対応"
         },
         {
-          name: "SuiteFlow（スイートフロー）",
-          desc: "ドラッグ&ドロップで複雑な承認ワークフローや自動処理を視覚的に構築"
+          icon: <GitBranch className="w-6 h-6" />,
+          title: "SuiteFlow",
+          description: "ドラッグ&ドロップで複雑な承認ワークフローや自動処理を視覚的に構築"
         },
         {
-          name: "SuiteBuilder（スイートビルダー）",
-          desc: "プログラミング不要でフォーム、フィールド、レコードをカスタマイズ"
+          icon: <Settings className="w-6 h-6" />,
+          title: "SuiteBuilder",
+          description: "プログラミング不要でフォーム、フィールド、レコードをカスタマイズ"
         },
         {
-          name: "SuiteTalk（スイートトーク）",
-          desc: "REST/SOAP APIによる完全な外部システム連携"
+          icon: <Globe className="w-6 h-6" />,
+          title: "SuiteTalk",
+          description: "REST/SOAP APIによる完全な外部システム連携"
         },
         {
-          name: "SuiteAnalytics（スイートアナリティクス）",
-          desc: "リアルタイムBI機能で経営ダッシュボードを自由に作成"
+          icon: <BarChart3 className="w-6 h-6" />,
+          title: "SuiteAnalytics",
+          description: "リアルタイムBI機能で経営ダッシュボードを自由に作成"
         }
-      ]
+      ] as Feature[]
     },
     integration: {
       title: "完全統合プラットフォーム",
@@ -120,26 +124,26 @@ const NetSuiteFeatures = () => {
     description: "20年以上の導入実績から生まれた業界特化型導入手法",
     industries: [
       {
-        name: "製造業",
-        features: ["BOM管理", "MRP", "品質管理", "原価計算"],
-        timeline: "6-9ヶ月"
+        icon: <Building2 className="w-6 h-6" />,
+        title: "製造業",
+        description: "BOM管理、MRP、品質管理、原価計算 | 導入期間: 6-9ヶ月"
       },
       {
-        name: "商社・卸売",
-        features: ["多段階価格", "与信管理", "直送", "リベート"],
-        timeline: "4-6ヶ月"
+        icon: <Package className="w-6 h-6" />,
+        title: "商社・卸売",
+        description: "多段階価格、与信管理、直送、リベート | 導入期間: 4-6ヶ月"
       },
       {
-        name: "小売・EC",
-        features: ["POS連携", "在庫最適化", "顧客分析", "オムニチャネル"],
-        timeline: "3-6ヶ月"
+        icon: <Globe className="w-6 h-6" />,
+        title: "小売・EC",
+        description: "POS連携、在庫最適化、顧客分析、オムニチャネル | 導入期間: 3-6ヶ月"
       },
       {
-        name: "サービス業",
-        features: ["プロジェクト管理", "リソース管理", "請求管理", "収益認識"],
-        timeline: "3-4ヶ月"
+        icon: <Users className="w-6 h-6" />,
+        title: "サービス業",
+        description: "プロジェクト管理、リソース管理、請求管理、収益認識 | 導入期間: 3-4ヶ月"
       }
-    ]
+    ] as Feature[]
   };
 
   const evangsolValue = [
@@ -170,6 +174,13 @@ const NetSuiteFeatures = () => {
         "内製化支援プログラム"
       ]
     }
+  ];
+
+  const keyStats: StatItem[] = [
+    { value: "31,000+", label: "導入企業数" },
+    { value: "217", label: "国・地域" },
+    { value: "27", label: "言語対応" },
+    { value: "1998", label: "創業年" }
   ];
 
   const roi = {
@@ -226,44 +237,34 @@ const NetSuiteFeatures = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-sky-100/30 via-transparent to-blue-100/30"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-sky-100 border border-sky-300 rounded-full mb-6">
-              <Award className="w-4 h-4 mr-2 text-sky-600" />
-              <span className="text-sm text-sky-700 font-semibold">世界No.1 クラウドERP</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-slate-900">
-              <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-                NetSuite
-              </span>
-              の革新的な強み
-            </h1>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-              31,000社以上が選ぶ理由 - 圧倒的なカスタマイズ性、
-              完全統合、真のクラウドが実現する次世代経営基盤
-            </p>
-            <p className="text-lg text-slate-500 mt-4">
-              EvangSolが提供する専門的な導入・開発支援
-            </p>
-          </div>
+          <HeroSection 
+            badge={{
+              icon: <Award className="w-4 h-4 mr-2 text-sky-600" />,
+              text: "世界No.1 クラウドERP",
+              bgColor: "bg-sky-100",
+              borderColor: "border border-sky-300",
+              textColor: "text-sky-700"
+            }}
+            title={
+              <>
+                <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+                  NetSuite
+                </span>
+                の革新的な強み
+              </>
+            }
+            description={
+              <>
+                31,000社以上が選ぶ理由 - 圧倒的なカスタマイズ性、
+                完全統合、真のクラウドが実現する次世代経営基盤
+              </>
+            }
+            subtitle="EvangSolが提供する専門的な導入・開発支援"
+          />
 
           {/* Key Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg text-center">
-              <div className="text-3xl font-bold text-sky-600">31,000+</div>
-              <div className="text-slate-600 mt-1">導入企業数</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg text-center">
-              <div className="text-3xl font-bold text-sky-600">217</div>
-              <div className="text-slate-600 mt-1">国・地域</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg text-center">
-              <div className="text-3xl font-bold text-sky-600">27</div>
-              <div className="text-slate-600 mt-1">言語対応</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg text-center">
-              <div className="text-3xl font-bold text-sky-600">1998</div>
-              <div className="text-slate-600 mt-1">創業年</div>
-            </div>
+          <div className="mt-12">
+            <StatsSection stats={keyStats} variant="default" />
           </div>
         </div>
       </section>
@@ -330,17 +331,11 @@ const NetSuiteFeatures = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {netsuiteCore.customization.features.map((feature, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-sky-50 rounded-xl p-6 border border-sky-200 hover:shadow-xl transition-shadow">
-                <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center">
-                  <Cpu className="w-5 h-5 text-sky-600 mr-2" />
-                  {feature.name}
-                </h3>
-                <p className="text-slate-600 text-sm">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
+          <FeatureGrid 
+            features={netsuiteCore.customization.features}
+            columns={3}
+            variant="gradient"
+          />
 
           <div className="mt-12 bg-gradient-to-r from-sky-400 to-blue-500 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">なぜNetSuiteのカスタマイズ性が優れているのか</h3>
@@ -460,26 +455,11 @@ const NetSuiteFeatures = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {suiteSuccess.industries.map((industry, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-sky-50 rounded-xl p-6 border border-sky-200 hover:shadow-xl transition-shadow">
-                <h3 className="text-lg font-bold text-slate-900 mb-3">{industry.name}</h3>
-                <ul className="space-y-2 mb-4">
-                  {industry.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-slate-600">
-                      <ArrowRight className="w-4 h-4 text-sky-500 mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="pt-3 border-t border-sky-200">
-                  <span className="text-sm font-semibold text-sky-600">
-                    導入期間: {industry.timeline}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <FeatureGrid 
+            features={suiteSuccess.industries}
+            columns={4}
+            variant="gradient"
+          />
         </div>
       </section>
 
@@ -557,98 +537,17 @@ const NetSuiteFeatures = () => {
         </div>
       </section>
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-sky-400 to-blue-500">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6 text-white">
-            世界最高のERPで、ビジネスを変革
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            NetSuiteの革新的な機能と、EvangSolの専門的な導入支援で
-            貴社の成長を加速させます
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => navigate('/contact')}
-              className="px-8 py-4 bg-white text-sky-600 hover:bg-slate-50 rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center"
-            >
-              <Phone className="mr-2 w-5 h-5" />
-              NetSuite導入相談
-            </button>
-            <button
-              onClick={() => navigate('/contact')}
-              className="px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white rounded-full font-semibold text-lg transition-all flex items-center justify-center"
-            >
-              <Mail className="mr-2 w-5 h-5" />
-              お問い合わせ
-            </button>
-          </div>
-        </div>
-      </section>
+      <CTASection 
+        title="世界最高のERPで、ビジネスを変革"
+        description="NetSuiteの革新的な機能と、EvangSolの専門的な導入支援で貴社の成長を加速させます"
+        primaryButtonText="NetSuite導入相談"
+        primaryButtonAction={() => navigate('/contact')}
+        secondaryButtonText="お問い合わせ"
+        secondaryButtonAction={() => navigate('/contact')}
+        gradient="from-sky-400 to-blue-500"
+      />
 
-      {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <img
-                src="/EvangSol_logo.png"
-                alt="EvangSol"
-                className="h-10 mb-4"
-              />
-              <p className="text-slate-600 text-sm">
-                Oracle NetSuite認定パートナー
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
-                <li>
-                  <button
-                    onClick={() => navigate('/')}
-                    className="hover:text-sky-500 transition-colors"
-                  >
-                    ホーム
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => navigate('/about')}
-                    className="hover:text-sky-500 transition-colors"
-                  >
-                    会社概要
-                  </button>
-                </li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">採用情報</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
-              <div className="space-y-2 text-slate-600 text-sm">
-                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
-                <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
-                <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
-                <button
-                  onClick={() => navigate('/contact')}
-                  className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
-                >
-                  お問い合わせフォームへ
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
-            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

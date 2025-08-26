@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Phone, Mail, Send, User, Building, MessageSquare, CheckCircle, Clock } from 'lucide-react';
+import { Phone, Mail, Send, User, Building, MessageSquare, CheckCircle, Clock, HeadphonesIcon } from 'lucide-react';
+import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
+import Footer from './components/Footer';
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -69,96 +72,131 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-3">
-              <button 
-                onClick={() => navigate('/')} 
-                className="flex items-center cursor-pointer"
-              >
-                <img 
-                  src="/EvangSol_logo.png" 
-                  alt="EvangSol"
-                  className="h-12"
-                />
-              </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite認定パートナー</span>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <button 
-                onClick={() => navigate('/')}
-                className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4 mr-1" />
-                ホームに戻る
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <NavigationBar showBackButton={true} variant="page" />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              お問い合わせ
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Oracle NetSuite認定パートナーとして、ERP導入支援から他システムとの連携まで、
-              幅広くご提案いたします。お気軽にご相談ください。
-            </p>
-          </div>
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <HeroSection
+            badge={{
+              icon: <MessageSquare className="w-4 h-4 mr-2" />,
+              text: "無料相談受付中",
+              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
+              borderColor: "border border-sky-200",
+              textColor: "text-sky-700 font-bold"
+            }}
+            title={
+              <>
+                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
+                  お問い合わせ
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
+                  お気軽にご相談ください
+                </span>
+              </>
+            }
+            description={
+              <>
+                <span className="text-lg text-slate-700">
+                  Oracle NetSuite認定パートナーとして
+                </span>
+                <br />
+                <span className="text-lg font-bold text-slate-900">
+                  <span className="font-black text-sky-600 text-xl">ERP導入支援</span>から他システムとの連携まで、幅広くご提案
+                </span>
+              </>
+            }
+          />
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-8 px-4">
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mr-4">
-                  <Phone className="w-6 h-6 text-sky-600" />
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+              お問い合わせ方法
+            </h2>
+            <p className="text-xl text-slate-600">お客様のご都合に合わせてお選びください</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
+              <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
+                <div className="flex items-center mb-6">
+                  <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+                    <Phone className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">お電話でのお問い合わせ</h3>
+                    <p className="text-2xl font-black text-sky-600">03-6231-1328</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900">お電話でのお問い合わせ</h3>
-                  <p className="text-2xl font-bold text-sky-600">03-6231-1328</p>
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                    <span className="text-sm text-slate-600 font-medium">お急ぎの場合におすすめ</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-5 h-5 text-sky-600 mr-2" />
+                    <span className="text-sm text-slate-600 font-medium">営業時間：平日 9:00-18:00</span>
+                  </div>
+                  <div className="flex items-center">
+                    <HeadphonesIcon className="w-5 h-5 text-sky-600 mr-2" />
+                    <span className="text-sm text-slate-600 font-medium">専門スタッフが対応</span>
+                  </div>
                 </div>
               </div>
-              <p className="text-sm text-slate-600">
-                お急ぎの場合は、お電話にてお問い合わせください。
-                <br />営業時間：平日 9:00-18:00
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mr-4">
-                  <Mail className="w-6 h-6 text-sky-600" />
+            <div className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
+              <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
+                <div className="flex items-center mb-6">
+                  <div className="bg-gradient-to-br from-cyan-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+                    <Mail className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">メールでのお問い合わせ</h3>
+                    <p className="text-lg font-bold text-cyan-600">info@evangsol.co.jp</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900">メールでのお問い合わせ</h3>
-                  <p className="text-lg font-medium text-sky-600">info@evangsol.co.jp</p>
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                    <span className="text-sm text-slate-600 font-medium">24時間受付可能</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-5 h-5 text-cyan-600 mr-2" />
+                    <span className="text-sm text-slate-600 font-medium">2営業日以内にご返信</span>
+                  </div>
+                  <div className="flex items-center">
+                    <MessageSquare className="w-5 h-5 text-cyan-600 mr-2" />
+                    <span className="text-sm text-slate-600 font-medium">詳細なご相談が可能</span>
+                  </div>
                 </div>
               </div>
-              <p className="text-sm text-slate-600">
-                24時間受付可能です。
-                <br />2営業日以内にご返信いたします。
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Form */}
-      <section className="py-12 px-4">
+      <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold mb-6 text-slate-900">お問い合わせフォーム</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+              お問い合わせフォーム
+            </h2>
+            <p className="text-xl text-slate-600">以下のフォームからお気軽にお問い合わせください</p>
+          </div>
+          <div className="group relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
+            <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
             
             {isSubmitted ? (
               <div className="text-center py-12">
@@ -186,7 +224,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
                         placeholder="山田 太郎"
                       />
                     </div>
@@ -203,7 +241,7 @@ const Contact = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
                         placeholder="株式会社〇〇"
                       />
                     </div>
@@ -223,7 +261,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
                         placeholder="example@company.co.jp"
                       />
                     </div>
@@ -240,7 +278,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
                         placeholder="03-1234-5678"
                       />
                     </div>
@@ -256,7 +294,7 @@ const Contact = () => {
                     value={formData.inquiryType}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
                   >
                     <option value="">選択してください</option>
                     <option value="netsuite">NetSuite導入相談</option>
@@ -278,140 +316,92 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors resize-none"
                       placeholder="お問い合わせ内容をご記入ください。WMS（倉庫管理システム）やECサイトとの連携など、具体的なご要望がございましたら、詳しくお聞かせください。"
                     />
                   </div>
                 </div>
 
-                <div className="bg-sky-50 rounded-lg p-4">
-                  <p className="text-sm text-slate-600">
-                    ※ お問い合わせ内容を確認後、担当者よりご連絡させていただきます。
-                    <br />
-                    ※ お急ぎの場合は、お電話（03-6231-1328）にてお問い合わせください。
-                  </p>
+                <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 border border-sky-200">
+                  <div className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-sky-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <div className="text-sm text-slate-700 space-y-2">
+                      <p className="font-medium">お問い合わせ内容を確認後、担当者よりご連絡させていただきます。</p>
+                      <p>お急ぎの場合は、お電話（<span className="font-bold text-sky-600">03-6231-1328</span>）にてお問い合わせください。</p>
+                    </div>
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-sky-500/25 flex items-center justify-center"
+                  className="group w-full bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center text-lg relative overflow-hidden"
                 >
-                  <Send className="w-5 h-5 mr-2" />
-                  送信する
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></span>
+                  <span className="relative flex items-center">
+                    <Send className="w-5 h-5 mr-2" />
+                    送信する
+                  </span>
                 </button>
               </form>
             )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Services Info */}
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center text-slate-900">
-            サービス内容
-          </h2>
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <p className="text-slate-700 mb-6 leading-relaxed">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+              サービス内容
+            </h2>
+            <p className="text-xl text-slate-600">Oracle NetSuite認定パートナーとしての幅広いサポート</p>
+          </div>
+          <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
+            <p className="text-lg text-slate-700 mb-8 leading-relaxed text-center">
               Oracle NetSuite認定パートナーとして、ERP以外にも多くのシステム開発プロジェクトに携わってまいりました。
             </p>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-sky-500 rounded-full mt-2 mr-3"></div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">NetSuite導入支援</h3>
-                  <p className="text-slate-600 text-sm">
-                    要件定義から導入、運用まで一貫してサポートいたします
-                  </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="group">
+                <div className="bg-gradient-to-br from-sky-100 to-blue-100 p-4 rounded-xl mb-4 transition-all group-hover:shadow-lg">
+                  <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2 text-center">NetSuite導入支援</h3>
+                <p className="text-slate-600 text-sm text-center leading-relaxed">
+                  要件定義から導入、運用まで一貫してサポートいたします
+                </p>
               </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-sky-500 rounded-full mt-2 mr-3"></div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">システム連携</h3>
-                  <p className="text-slate-600 text-sm">
-                    WMS（倉庫管理システム）、ECサイトなど他システムとの自動連携を実現します
-                  </p>
+              <div className="group">
+                <div className="bg-gradient-to-br from-cyan-100 to-blue-100 p-4 rounded-xl mb-4 transition-all group-hover:shadow-lg">
+                  <div className="bg-gradient-to-br from-cyan-500 to-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto">
+                    <MessageSquare className="w-6 h-6 text-white" />
+                  </div>
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2 text-center">システム連携</h3>
+                <p className="text-slate-600 text-sm text-center leading-relaxed">
+                  WMS（倉庫管理システム）、ECサイトなど他システムとの自動連携を実現します
+                </p>
               </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-sky-500 rounded-full mt-2 mr-3"></div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">幅広いご提案</h3>
-                  <p className="text-slate-600 text-sm">
-                    お客様のビジネスに最適なソリューションをご提案いたします
-                  </p>
+              <div className="group">
+                <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-4 rounded-xl mb-4 transition-all group-hover:shadow-lg">
+                  <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto">
+                    <Building className="w-6 h-6 text-white" />
+                  </div>
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2 text-center">幅広いご提案</h3>
+                <p className="text-slate-600 text-sm text-center leading-relaxed">
+                  お客様のビジネスに最適なソリューションをご提案いたします
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <img 
-                src="/EvangSol_logo.png" 
-                alt="EvangSol"
-                className="h-10 mb-4"
-              />
-              <p className="text-slate-600 text-sm">
-                Oracle NetSuite認定パートナー
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
-                <li>
-                  <button 
-                    onClick={() => navigate('/')}
-                    className="hover:text-sky-500 transition-colors"
-                  >
-                    ホーム
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => navigate('/about')}
-                    className="hover:text-sky-500 transition-colors"
-                  >
-                    会社概要
-                  </button>
-                </li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">採用情報</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
-              <div className="space-y-2 text-slate-600 text-sm">
-                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
-                <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
-                <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
-                <button 
-                  onClick={() => navigate('/contact')}
-                  className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
-                >
-                  お問い合わせフォームへ
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
-            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

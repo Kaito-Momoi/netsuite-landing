@@ -1,31 +1,75 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, BarChart3, Clock, Database, TrendingUp, CheckCircle, Phone, Mail, Eye, AlertTriangle, Calculator, Truck } from 'lucide-react';
+import {
+  BarChart3,
+  Database,
+  TrendingUp,
+  CheckCircle,
+  Eye,
+  AlertTriangle,
+  Calculator,
+  Truck,
+  ArrowRight,
+  Target,
+  Settings,
+  Zap
+} from 'lucide-react';
+import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
+import CTASection from './components/CTASection';
+import Footer from './components/Footer';
+import StatsSection from './components/StatsSection';
+import { Feature, StatItem } from './types';
 
-const MaterialPlanning = () => {
+const MaterialPlanning: React.FC = () => {
   const navigate = useNavigate();
 
-  const features = [
+  const features: Feature[] = [
     {
-      icon: <Eye className="w-6 h-6" />,
+      icon: <Eye className="w-8 h-8" />,
       title: "リアルタイム可視化",
-      description: "調達から生産、在庫まで資材の流れをダッシュボードで一元管理。"
+      description: "調達から生産、在庫まで資材の流れをダッシュボードで一元管理"
     },
     {
-      icon: <Calculator className="w-6 h-6" />,
+      icon: <Calculator className="w-8 h-8" />,
       title: "最適発注量算出",
-      description: "リードタイムと需要予測を考慮した最適な発注量を自動計算。"
+      description: "リードタイムと需要予測を考慮した最適発注量をAIが自動算出"
     },
     {
-      icon: <AlertTriangle className="w-6 h-6" />,
-      title: "事前アラート機能",
-      description: "資材不足や過剰在庫のリスクを事前に検知し、アラート通知。"
+      icon: <AlertTriangle className="w-8 h-8" />,
+      title: "アラートシステム",
+      description: "資材不足や過剰在庫のリスクを事前検知し、即座にアラート通知"
+    }
+  ];
+
+  const detailedFeatures: Feature[] = [
+    {
+      icon: <Database className="w-6 h-6" />,
+      title: "統合データ管理",
+      description: "BOM、在庫、納期、コスト情報を一元管理し、正確な物料計算を実現"
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "需要予測機能",
+      description: "過去の実績データと市場トレンドを分析し、高精度な需要予測を生成"
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "最適化アルゴリズム",
+      description: "コスト、リードタイム、品質を総合的に考慮した最適調達計画を立案"
     },
     {
       icon: <Truck className="w-6 h-6" />,
       title: "サプライヤー管理",
-      description: "サプライヤー別の納期実績管理と評価により、調達を最適化。"
+      description: "サプライヤー別の納期実績管理と評価で調達を最適化"
     }
+  ];
+
+  const stats: StatItem[] = [
+    { value: "30%", label: "調達コスト削減", description: "最適発注による削減" },
+    { value: "50%", label: "在庫削減", description: "適正在庫の維持" },
+    { value: "90%", label: "欠品防止", description: "事前アラートによる防止" },
+    { value: "2倍", label: "計画精度向上", description: "データドリブンな計画" }
   ];
 
   const dashboardMetrics = [
@@ -72,200 +116,88 @@ const MaterialPlanning = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-3">
-              <button 
-                onClick={() => navigate('/')} 
-                className="flex items-center cursor-pointer"
-              >
-                <img 
-                  src="/EvangSol_logo.png" 
-                  alt="EvangSol"
-                  className="h-12"
-                />
-              </button>
-              <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">Oracle NetSuite認定パートナー</span>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <button 
-                onClick={() => navigate('/')}
-                className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4 mr-1" />
-                ホームに戻る
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <NavigationBar showBackButton={true} variant="page" />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <HeroSection 
+            badge={{
+              icon: <BarChart3 className="w-4 h-4 mr-2" />,
+              text: "戦略的資材管理プラットフォーム",
+              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
+              borderColor: "border border-sky-200",
+              textColor: "text-sky-700 font-bold"
+            }}
+            title={
+              <>
+                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
+                  資材計画の
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
+                  完全見える化
+                </span>
+              </>
+            }
+            description={
+              <>
+                <span className="text-lg text-slate-700">
+                  AIパワーで資材計画を最適化し、コストと在庫を同時に減らす
+                </span>
+                <br />
+                <span className="text-lg font-bold text-slate-900">
+                  調達コスト<span className="font-black text-sky-600 text-xl">30%削減</span>、在庫<span className="font-black text-sky-600 text-xl">50%削減</span>を実現
+                </span>
+              </>
+            }
+            actions={
+              <>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center"
+                  >
+                    今すぐ導入相談
+                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                  </button>
+                  <button 
+                    onClick={() => navigate('/netsuite')} 
+                    className="group px-8 py-4 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold transition-all shadow-lg hover:shadow-xl"
+                  >
+                    <span className="flex items-center justify-center">
+                      NetSuiteトップへ戻る
+                    </span>
+                  </button>
+                </div>
+              </>
+            }
+          />
+        </div>
+
+      {/* 3つの主要機能 */}
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 bg-sky-100 border border-sky-300 rounded-full mb-6">
-              <BarChart3 className="w-4 h-4 mr-2 text-sky-600" />
-              <span className="text-sm text-sky-700 font-semibold">戦略的資材管理プラットフォーム</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-              資材計画の見える化
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              調達から生産、在庫管理まで、資材の流れを可視化するダッシュボードを提供します。
-              リードタイムを考慮した最適発注量の算出、サプライヤー別の納期管理、
-              資材不足の事前アラートなど、戦略的な資材計画を支援します。
-            </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
+              3つの<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">主要機能</span>
+            </h2>
+            <p className="text-xl text-slate-600 font-medium">資材計画を科学的に最適化する革新的機能群</p>
           </div>
-        </div>
-      </section>
 
-      {/* Problem Section */}
-      <section className="py-16 px-4 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center text-slate-900">
-            こんな課題を解決します
-          </h2>
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-slate-700 font-medium">資材の在庫状況が把握できず、欠品や過剰在庫が発生</p>
-                  <p className="text-slate-600 text-sm mt-1">リアルタイムの在庫可視化ができていない</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-slate-700 font-medium">適切な発注タイミングと数量が分からない</p>
-                  <p className="text-slate-600 text-sm mt-1">経験と勘に頼った発注で無駄が発生</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-slate-700 font-medium">サプライヤーの納期遅延により生産計画に影響</p>
-                  <p className="text-slate-600 text-sm mt-1">納期管理が属人化し、リスク管理が不十分</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-sky-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-slate-700 font-medium">調達コストの削減余地が見えない</p>
-                  <p className="text-slate-600 text-sm mt-1">データに基づいた戦略的な調達ができていない</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Dashboard Metrics Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
-            ダッシュボード機能
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {dashboardMetrics.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center mr-3">
-                    <Eye className="w-5 h-5 text-sky-600" />
-                  </div>
-                  <h3 className="font-bold text-slate-900">{item.metric}</h3>
-                </div>
-                <p className="text-sm text-slate-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Flow Section */}
-      <section className="py-16 px-4 bg-sky-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
-            資材計画プロセス
-          </h2>
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
-              {processFlow.map((item, index) => (
-                <div key={index} className="flex flex-col items-center text-center flex-1">
-                  <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-3 text-sky-600">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-1">{item.step}</h3>
-                  <p className="text-sm text-slate-600">{item.description}</p>
-                  {index < processFlow.length - 1 && (
-                    <ArrowLeft className="hidden md:block absolute right-0 transform translate-x-1/2 rotate-180 w-6 h-6 text-sky-400" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
-            主な機能
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-4 text-sky-600">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-slate-900">{feature.title}</h3>
-                <p className="text-sm text-slate-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-sky-400 to-blue-500">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-white">
-            導入効果
-          </h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl font-bold text-white mb-2">{benefit.value}</div>
-                <div className="text-white/90 font-semibold mb-1">{benefit.label}</div>
-                <div className="text-white/70 text-sm">{benefit.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
-            導入事例
-          </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h3 className="text-lg font-bold text-sky-600 mb-3">{study.industry}</h3>
-                <div className="mb-4">
-                  <p className="text-sm text-slate-500 mb-1">課題</p>
-                  <p className="text-slate-700">{study.challenge}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-slate-500 mb-1">成果</p>
-                  <p className="text-slate-900 font-semibold">{study.result}</p>
+            {features.map((feature, index) => (
+              <div key={index} className="group relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
+                <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100">
+                  <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                    <div className="text-white">
+                      {feature.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-black mb-4 text-slate-900">{feature.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -273,158 +205,93 @@ const MaterialPlanning = () => {
         </div>
       </section>
 
-      {/* Implementation Process */}
-      <section className="py-16 px-4 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-900">
-            導入プロセス
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
-              <div className="flex items-center mb-2">
-                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
-                  1
+      {/* 詳細機能 */}
+      <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+              主な機能
+            </h2>
+            <p className="text-xl text-slate-600">資材計画を高度化する充実の機能群</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {detailedFeatures.map((feature, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-slate-200 hover:border-sky-400">
+                <div className="flex items-start">
+                  <div className="bg-gradient-to-br from-sky-100 to-blue-100 p-3 rounded-lg mr-4">
+                    <div className="text-sky-600">
+                      {feature.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
+                    <p className="text-slate-600">{feature.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">現状分析</h3>
               </div>
-              <p className="text-slate-600 ml-11">現在の資材管理プロセスと課題を分析（約1週間）</p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
-              <div className="flex items-center mb-2">
-                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
-                  2
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 導入効果 Stats Section */}
+      <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
+        <StatsSection 
+          title="導入効果"
+          stats={stats}
+          variant="gradient"
+        />
+      </section>
+
+      {/* プロセスフロー */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+              導入プロセス
+            </h2>
+            <p className="text-xl text-slate-600">スムーズな導入と確実な運用開始</p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: "STEP 1", title: "現状分析", description: "現在の資材管理プロセスと課題の把握", icon: <Target className="w-6 h-6" /> },
+              { step: "STEP 2", title: "システム設計", description: "ダッシュボードとアルゴリズムの設計", icon: <Database className="w-6 h-6" /> },
+              { step: "STEP 3", title: "データ統合", description: "NetSuiteへのデータ連携構築", icon: <Settings className="w-6 h-6" /> },
+              { step: "STEP 4", title: "運用開始", description: "トレーニングとサポート", icon: <Zap className="w-6 h-6" /> }
+            ].map((process, index) => (
+              <div key={index} className="relative">
+                <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:transform hover:-translate-y-2 border border-slate-200">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center mb-4 mx-auto">
+                    <div className="text-white">
+                      {process.icon}
+                    </div>
+                  </div>
+                  <div className="text-sm font-bold text-sky-600 mb-2">{process.step}</div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h3>
+                  <p className="text-sm text-slate-600">{process.description}</p>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">システム設計</h3>
               </div>
-              <p className="text-slate-600 ml-11">ダッシュボードとKPI設定（約2週間）</p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
-              <div className="flex items-center mb-2">
-                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
-                  3
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">データ連携</h3>
-              </div>
-              <p className="text-slate-600 ml-11">既存システムとのデータ連携構築（約3週間）</p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
-              <div className="flex items-center mb-2">
-                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
-                  4
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">アルゴリズム調整</h3>
-              </div>
-              <p className="text-slate-600 ml-11">発注量算出ロジックの最適化（約2週間）</p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-sky-500">
-              <div className="flex items-center mb-2">
-                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold mr-3">
-                  5
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">運用開始</h3>
-              </div>
-              <p className="text-slate-600 ml-11">本番運用とモニタリング開始</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-slate-900">
-            データドリブンな資材管理で競争力を強化
-          </h2>
-          <p className="text-xl text-slate-600 mb-8">
-            調達コストの削減と生産の安定化を実現します。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => navigate('/contact')}
-              className="px-8 py-4 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center"
-            >
-              <Phone className="mr-2 w-5 h-5" />
-              無料相談を予約
-            </button>
-            <button 
-              onClick={() => navigate('/')}
-              className="px-8 py-4 bg-white hover:bg-slate-50 border-2 border-sky-400 text-sky-600 rounded-full font-semibold text-lg transition-all flex items-center justify-center"
-            >
-              <ArrowLeft className="mr-2 w-5 h-5" />
-              ソリューション一覧へ
-            </button>
-          </div>
-        </div>
+      <section className="relative overflow-hidden">
+        <CTASection
+          title={<>資材計画の見える化で<br />競争力を今すぐ強化しませんか？</>}
+          description="詳細な情報や無料相談をご希望の方はお気軽にお問い合わせください"
+          primaryButtonText="無料相談を予約する"
+          primaryButtonAction={() => navigate('/contact')}
+          secondaryButtonText="他のソリューションを見る"
+          secondaryButtonAction={() => navigate('/netsuite#solutions')}
+          gradient="from-sky-500 to-blue-600"
+        />
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <img 
-                src="/EvangSol_logo.png" 
-                alt="EvangSol"
-                className="h-10 mb-4"
-              />
-              <p className="text-slate-600 text-sm">
-                Oracle NetSuite認定パートナー
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
-                <li><a href="#" className="hover:text-sky-500 transition-colors">導入支援</a></li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">カスタマイズ開発</a></li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">運用サポート</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
-              <ul className="space-y-2 text-slate-600 text-sm">
-                <li>
-                  <button 
-                    onClick={() => navigate('/')}
-                    className="hover:text-sky-500 transition-colors"
-                  >
-                    ホーム
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => navigate('/about')}
-                    className="hover:text-sky-500 transition-colors"
-                  >
-                    会社概要
-                  </button>
-                </li>
-                <li><a href="#" className="hover:text-sky-500 transition-colors">採用情報</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
-              <div className="space-y-2 text-slate-600 text-sm">
-                <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-sky-500" />03-6231-1328</p>
-                <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-sky-500" />info@evangsol.co.jp</p>
-                <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-sky-500" />平日 9:00-18:00</p>
-                <button 
-                  onClick={() => navigate('/contact')}
-                  className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
-                >
-                  お問い合わせフォームへ
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
-            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

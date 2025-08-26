@@ -67,14 +67,6 @@ const Footer: React.FC = () => {
                   会社概要
                 </button>
               </li>
-              <li>
-                <button 
-                  onClick={() => navigate('/contact')}
-                  className="hover:text-sky-500 transition-colors text-left"
-                >
-                  採用情報
-                </button>
-              </li>
             </ul>
           </div>
           <div>
@@ -101,8 +93,25 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm">
-          <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
+        <div className="border-t border-slate-200 pt-8">
+          <div className="flex flex-wrap justify-center gap-4 mb-4 text-sm">
+            <button 
+              onClick={() => navigate('/terms')}
+              className="text-slate-600 hover:text-sky-500 transition-colors"
+            >
+              ご利用条件
+            </button>
+            <span className="text-slate-400">|</span>
+            <button 
+              onClick={() => navigate('/security-privacy')}
+              className="text-slate-600 hover:text-sky-500 transition-colors whitespace-nowrap"
+            >
+              情報セキュリティ・個人情報保護
+            </button>
+          </div>
+          <div className="text-center text-slate-600 text-sm">
+            <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>
