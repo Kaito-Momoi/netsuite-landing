@@ -31,7 +31,9 @@ jobs:
         run: npm ci
       
       - name: Build
-        run: npm run build
+        run: |
+          echo "Building with PUBLIC_URL=/netsuite-landing"
+          npm run build
         env:
           PUBLIC_URL: /netsuite-landing
           CI: false
