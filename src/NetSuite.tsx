@@ -100,7 +100,7 @@ const NetSuite = () => {
             <div className="flex items-center space-x-4">
               {/* Logo Image */}
               <img 
-                src="/EvangSol_logo.png" 
+                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} 
                 alt="EvangSol"
                 className="h-12"
               />

@@ -213,7 +213,7 @@ const NetSuiteFeatures = () => {
                 onClick={() => navigate('/')}
                 className="flex items-center cursor-pointer"
               >
-                <img src="/EvangSol_logo.png" alt="EvangSol" className="h-12" />
+                <img src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} alt="EvangSol" className="h-12" />
               </button>
               <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">
                 Oracle NetSuite認定パートナー

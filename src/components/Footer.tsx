@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <img 
-              src="/EvangSol_logo.png" 
+              src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} 
               alt="EvangSol"
               className="h-10 mb-4"
             />

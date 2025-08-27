@@ -10,7 +10,7 @@ const SecurityPrivacy: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/EvangSol_logo.png" alt="EvangSol" className="h-10" />
+              <img src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} alt="EvangSol" className="h-10" />
             </div>
           </div>
         </div>

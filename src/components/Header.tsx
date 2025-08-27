@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
                 className="flex items-center cursor-pointer"
               >
                 <img 
-                  src="/EvangSol_logo.png" 
+                  src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} 
                   alt="EvangSol"
                   className="h-12"
                 />

@@ -19,7 +19,7 @@ const NavigationBar: React.FC<NavigationProps> = React.memo(({
               className="flex items-center cursor-pointer"
             >
               <img 
-                src="/EvangSol_logo.png" 
+                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} 
                 alt="EvangSol" 
                 className="h-12" 
               />
