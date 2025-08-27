@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, Clock, Shield, Database, CheckCircle, Phone, Building2, Truck, ShoppingBag, Factory, Settings, BarChart3, ArrowLeft } from 'lucide-react';
+import { Package, Clock, Shield, Database, CheckCircle, Phone, Building2, Truck, ShoppingBag, Factory, Settings, BarChart3, ArrowLeft, Target, Zap } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
 import HeroSection from './components/HeroSection';
 import { FeatureGrid } from './components/FeatureCard';
@@ -31,6 +31,39 @@ const IndustryOMS = () => {
       icon: <Shield className="w-6 h-6" />,
       title: "与信管理連携",
       description: "取引先の与信状況を自動チェックし、リスクを最小化。"
+    }
+  ];
+
+  const detailedFeatures: Feature[] = [
+    {
+      icon: <Settings className="w-6 h-6" />,
+      title: "マルチチャネル受注",
+      description: "電話、FAX、メール、ECサイト、EDIなど複数チャネルからの受注を一元管理。"
+    },
+    {
+      icon: <Database className="w-6 h-6" />,
+      title: "在庫リアルタイム管理",
+      description: "複数拠点の在庫をリアルタイムで確認し、最適な引当を自動実行。"
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: "与信・審査機能",
+      description: "取引先の与信限度額を自動チェックし、リスクのある受注を事前に検知。"
+    },
+    {
+      icon: <Truck className="w-6 h-6" />,
+      title: "配送管理連携",
+      description: "配送会社のシステムと連携し、出荷指示から配送追跡まで一元管理。"
+    },
+    {
+      icon: <BarChart3 className="w-6 h-6" />,
+      title: "売上分析",
+      description: "受注データをリアルタイムで分析し、売上予測や在庫最適化を支援。"
+    },
+    {
+      icon: <Package className="w-6 h-6" />,
+      title: "自動請求処理",
+      description: "受注から請求書発行まで自動化し、請求漏れや遅延を防止。"
     }
   ];
 
@@ -84,31 +117,6 @@ const IndustryOMS = () => {
     { value: "即時", label: "在庫確認", description: "リアルタイム在庫照会" }
   ];
 
-  const workflow = [
-    { step: "受注", description: "マルチチャネル受注取込", icon: <Package className="w-6 h-6" /> },
-    { step: "在庫確認", description: "自動在庫引当・納期確認", icon: <Database className="w-6 h-6" /> },
-    { step: "与信確認", description: "取引先与信チェック", icon: <Shield className="w-6 h-6" /> },
-    { step: "出荷指示", description: "倉庫への出荷指示", icon: <Truck className="w-6 h-6" /> },
-    { step: "請求", description: "自動請求書発行", icon: <BarChart3 className="w-6 h-6" /> }
-  ];
-
-  const caseStudies = [
-    {
-      industry: "電子部品製造業 D社",
-      challenge: "複雑な納期管理と在庫引当",
-      result: "納期回答時間90%短縮、在庫回転率30%向上"
-    },
-    {
-      industry: "食品卸売業 E社",
-      challenge: "賞味期限管理と配送ルート最適化",
-      result: "廃棄ロス60%削減、配送効率40%改善"
-    },
-    {
-      industry: "アパレル小売業 F社",
-      challenge: "シーズン商品の在庫管理",
-      result: "売り切り率85%達成、在庫削減30%"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
@@ -215,13 +223,24 @@ const IndustryOMS = () => {
         </div>
       </section>
 
-      {/* 導入効果 Stats Section */}
-      <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
-        <StatsSection 
-          title="導入効果"
-          stats={stats}
-          variant="gradient"
-        />
+      {/* 導入効果 */}
+      <section className="py-20 px-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">導入効果</h2>
+            <p className="text-xl opacity-90">数値で見る業務改善の実績</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="text-center">
+                <div className="text-5xl md:text-6xl font-bold mb-2">{benefit.value}</div>
+                <div className="text-lg font-semibold mb-1">{benefit.label}</div>
+                <div className="text-sm opacity-80">{benefit.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* プロセスフロー */}
