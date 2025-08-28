@@ -49,7 +49,12 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
                   サービス
                 </button>
                 <a href="#solutions" className="text-slate-700 hover:text-sky-500 transition-colors font-medium">ソリューション</a>
-                <a href="#cases" className="text-slate-700 hover:text-sky-500 transition-colors font-medium">導入事例</a>
+                <button 
+                  onClick={() => navigate('/case-studies')}
+                  className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
+                >
+                  導入事例
+                </button>
                 <button 
                   onClick={() => navigate('/about')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
@@ -98,7 +103,15 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
               サービス
             </button>
             <a href="#solutions" className="text-2xl text-slate-700 hover:text-sky-500">ソリューション</a>
-            <a href="#cases" className="text-2xl text-slate-700 hover:text-sky-500">導入事例</a>
+            <button 
+              onClick={() => {
+                navigate('/case-studies');
+                setIsMenuOpen(false);
+              }}
+              className="text-2xl text-slate-700 hover:text-sky-500"
+            >
+              導入事例
+            </button>
             <button 
               onClick={() => navigate('/about')}
               className="text-2xl text-slate-700 hover:text-sky-500"

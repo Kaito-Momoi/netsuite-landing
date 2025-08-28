@@ -15,6 +15,7 @@ const NetSuiteFeatures = lazy(() => import('./NetSuiteFeatures'));
 const TermsOfUse = lazy(() => import('./TermsOfUse'));
 const SecurityPrivacy = lazy(() => import('./SecurityPrivacy'));
 const Services = lazy(() => import('./Services'));
+const CaseStudies = lazy(() => import('./CaseStudies'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -39,6 +40,7 @@ function App() {
           <Route path="/solutions/material-planning" element={<MaterialPlanning />} />
           <Route path="/solutions/warehouse-integration" element={<WarehouseIntegration />} />
           <Route path="/solutions/inventory-aging" element={<InventoryAging />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/security-privacy" element={<SecurityPrivacy />} />
         </Routes>

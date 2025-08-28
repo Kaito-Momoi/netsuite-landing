@@ -202,10 +202,12 @@ const NetSuite = () => {
                 )}
               </div>
 
-              <a href="#cases" className="text-slate-700 hover:text-sky-600 transition-colors font-medium relative group">
+              <button 
+                onClick={() => navigate('/case-studies')}
+                className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group">
                 導入事例
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
-              </a>
+              </button>
               <button 
                 onClick={() => navigate('/about')}
                 className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group"
@@ -247,7 +249,14 @@ const NetSuite = () => {
               サービス
             </button>
             <a href="#solutions" className="text-2xl text-slate-700 hover:text-sky-500">ソリューション</a>
-            <a href="#cases" className="text-2xl text-slate-700 hover:text-sky-500">導入事例</a>
+            <button 
+              onClick={() => {
+                navigate('/case-studies');
+                setIsMenuOpen(false);
+              }}
+              className="text-2xl text-slate-700 hover:text-sky-500">
+              導入事例
+            </button>
             <button 
               onClick={() => navigate('/about')}
               className="text-2xl text-slate-700 hover:text-sky-500"
