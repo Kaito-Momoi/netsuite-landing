@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 
+
+const ComparisonHome = lazy(() => import('./ComparisonHome'));
 const NetSuite = lazy(() => import('./NetSuite'));
 const About = lazy(() => import('./About'));
 const Contact = lazy(() => import('./Contact'));
@@ -29,7 +31,13 @@ function App() {
       <ScrollToTop />
       <Suspense fallback={<LoadingSpinner />}>
         <Routes>
-          <Route path="/" element={<NetSuite />} />
+
+          <Route path="/" element={<ComparisonHome />} />
+          <Route path="/what-is-netsuite" element={<WhatIsNetSuite />} />
+          <Route path="/netsuite" element={<NetSuite />} />
+          <Route path="/netsuite/solutions" element={<NetSuite />} />
+          <Route path="/evangsol-strengths" element={<EvangSolStrengths />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
