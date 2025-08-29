@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, Send, User, Building, MessageSquare, CheckCircle, Clock, HeadphonesIcon } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
-import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 
 const Contact = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -74,43 +71,17 @@ const Contact = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <HeroSection
-            badge={{
-              icon: <MessageSquare className="w-4 h-4 mr-2" />,
-              text: "無料相談受付中",
-              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
-              borderColor: "border border-sky-200",
-              textColor: "text-sky-700 font-bold"
-            }}
-            title={
-              <>
-                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
-                  お問い合わせ
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
-                  お気軽にご相談ください
-                </span>
-              </>
-            }
-            description={
-              <>
-                <span className="text-lg text-slate-700">
-                  Oracle NetSuite認定パートナーとして
-                </span>
-                <br />
-                <span className="text-lg font-bold text-slate-900">
-                  <span className="font-black text-sky-600 text-xl">ERP導入支援</span>から他システムとの連携まで、幅広くご提案
-                </span>
-              </>
-            }
-          />
+      {/* Page Header */}
+      <section className="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              お問い合わせ
+            </h1>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              NetSuiteの導入やカスタマイズに関するご相談、お見積りのご依頼など、お気軽にお問い合わせください。
+            </p>
+          </div>
         </div>
       </section>
 

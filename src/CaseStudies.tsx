@@ -10,14 +10,12 @@ import {
   Clock,
   Target,
   CheckCircle,
-  ArrowRight,
-  Award,
+  
   BarChart3,
   Zap,
   Globe
 } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
-import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
@@ -209,66 +207,19 @@ const CaseStudies: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <HeroSection 
-            badge={{
-              icon: <Award className="w-4 h-4 mr-2" />,
-              text: "500社以上の導入実績",
-              bgColor: "bg-gradient-to-r from-amber-100 to-yellow-100",
-              borderColor: "border border-amber-200",
-              textColor: "text-amber-700 font-bold"
-            }}
-            title={
-              <>
-                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
-                  NetSuite導入による
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
-                  ビジネス変革の実例
-                </span>
-              </>
-            }
-            description={
-              <>
-                <span className="text-lg text-slate-700">
-                  業界をリードする企業様の成功事例をご紹介
-                </span>
-                <br />
-                <span className="text-lg font-bold text-slate-900">
-                  平均<span className="font-black text-sky-600 text-xl">40%</span>の業務効率改善を実現
-                </span>
-              </>
-            }
-            actions={
-              <>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                  <button 
-                    onClick={() => navigate('/contact')}
-                    className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center"
-                  >
-                    導入相談を申し込む
-                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
-                  </button>
-                  <button 
-                    onClick={() => document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group px-8 py-4 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold transition-all shadow-lg hover:shadow-xl"
-                  >
-                    <span className="flex items-center justify-center">
-                      事例を詳しく見る
-                    </span>
-                  </button>
-                </div>
-              </>
-            }
-          />
+      {/* Page Header */}
+      <section className="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              導入事例
+            </h1>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              業界をリードする企業様の成功事例をご紹介。平均40%の業務効率改善を実現
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Overall Stats */}
       <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
