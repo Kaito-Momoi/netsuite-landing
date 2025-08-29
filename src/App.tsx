@@ -18,6 +18,8 @@ const TermsOfUse = lazy(() => import('./TermsOfUse'));
 const SecurityPrivacy = lazy(() => import('./SecurityPrivacy'));
 const Services = lazy(() => import('./Services'));
 const CaseStudies = lazy(() => import('./CaseStudies'));
+const WhatIsNetSuite = lazy(() => import('./WhatIsNetSuite'));
+const EvangSolStrengths = lazy(() => import('./EvangSolStrengths'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
