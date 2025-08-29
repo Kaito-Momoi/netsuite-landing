@@ -6,10 +6,7 @@ interface SectionDividerProps {
   className?: string;
 }
 
-const SectionDivider: React.FC<SectionDividerProps> = ({ 
-  showArrow = true,
-  className = ''
-}) => {
+const SectionDivider: React.FC<SectionDividerProps> = ({ showArrow = true, className = '' }) => {
   return (
     <div className={`relative h-24 ${className}`}>
       <div className="absolute inset-0 flex items-center justify-center">
@@ -19,7 +16,7 @@ const SectionDivider: React.FC<SectionDividerProps> = ({
             <div className="border-t border-slate-200/30"></div>
           </div>
         </div>
-        
+
         {/* Arrow centered */}
         {showArrow && (
           <div className="relative z-10 bg-white px-4">

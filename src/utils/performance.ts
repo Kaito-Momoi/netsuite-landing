@@ -4,7 +4,11 @@ export const measurePerformance = (markName: string) => {
   }
 };
 
-export const measurePerformanceBetween = (startMark: string, endMark: string, measureName: string) => {
+export const measurePerformanceBetween = (
+  startMark: string,
+  endMark: string,
+  measureName: string
+) => {
   if (typeof window !== 'undefined' && window.performance) {
     try {
       window.performance.measure(measureName, startMark, endMark);

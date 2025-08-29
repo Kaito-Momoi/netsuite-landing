@@ -1,24 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Globe,
-  Cloud,
-  BarChart3,
-  Package,
-  Users,
-  TrendingUp,
-  CheckCircle,
-  ArrowRight,
-  Settings,
-  Calculator,
-  ShoppingCart,
-  Truck,
-  Factory,
-  Store,
-  Briefcase,
-  Code,
-  Sparkles,
-  AlertTriangle,
+import { 
+  Globe, Cloud, BarChart3, Package, Users, TrendingUp,
+  CheckCircle, ArrowRight, Zap, Settings, Calculator,
+  ShoppingCart, Truck, Factory, Store, Briefcase,
+  Code, Sparkles, AlertTriangle
 } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
 import HeroSection from './components/HeroSection';
@@ -27,53 +13,49 @@ import Footer from './components/Footer';
 import { FeatureGrid } from './components/FeatureCard';
 import { Feature } from './types';
 
-// Hoisted constants to avoid re-allocations on re-render
-const CORE_FEATURES: Feature[] = [
-  {
-    icon: <Calculator className="w-8 h-8" />,
-    title: '財務会計',
-    description: 'リアルタイムの財務レポートと多通貨対応で、グローバルビジネスを支援',
-  },
-  {
-    icon: <Package className="w-8 h-8" />,
-    title: '在庫管理',
-    description: '複数拠点の在庫をリアルタイムで把握し、適正在庫を維持',
-  },
-  {
-    icon: <ShoppingCart className="w-8 h-8" />,
-    title: '受注管理',
-    description: '受注から出荷まで一元管理し、顧客満足度を向上',
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: 'CRM',
-    description: '顧客情報を一元化し、営業活動を効率化',
-  },
-  {
-    icon: <Globe className="w-8 h-8" />,
-    title: 'Eコマース',
-    description: 'B2B/B2C両方に対応したオムニチャネル展開',
-  },
-  {
-    icon: <BarChart3 className="w-8 h-8" />,
-    title: 'BI・分析',
-    description: '経営ダッシュボードでKPIをリアルタイムに可視化',
-  },
-];
-
-const INDUSTRIES = [
-  { name: '製造業', icon: <Factory className="w-6 h-6" /> },
-  { name: '小売業', icon: <Store className="w-6 h-6" /> },
-  { name: '卸売業', icon: <Truck className="w-6 h-6" /> },
-  { name: 'サービス業', icon: <Briefcase className="w-6 h-6" /> },
-  { name: 'IT・ソフトウェア', icon: <Globe className="w-6 h-6" /> },
-] as const;
-
 const WhatIsNetSuite: React.FC = () => {
   const navigate = useNavigate();
 
-  const goStrengths = useCallback(() => navigate('/evangsol-strengths'), [navigate]);
-  const goContact = useCallback(() => navigate('/contact'), [navigate]);
+  const coreFeatures: Feature[] = [
+    {
+      icon: <Calculator className="w-8 h-8" />,
+      title: "財務会計",
+      description: "リアルタイムの財務レポートと多通貨対応で、グローバルビジネスを支援"
+    },
+    {
+      icon: <Package className="w-8 h-8" />,
+      title: "在庫管理",
+      description: "複数拠点の在庫をリアルタイムで把握し、適正在庫を維持"
+    },
+    {
+      icon: <ShoppingCart className="w-8 h-8" />,
+      title: "受注管理",
+      description: "受注から出荷まで一元管理し、顧客満足度を向上"
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "CRM",
+      description: "顧客情報を一元化し、営業活動を効率化"
+    },
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: "Eコマース",
+      description: "B2B/B2C両方に対応したオムニチャネル展開"
+    },
+    {
+      icon: <BarChart3 className="w-8 h-8" />,
+      title: "BI・分析",
+      description: "経営ダッシュボードでKPIをリアルタイムに可視化"
+    }
+  ];
+
+  const industries = [
+    { name: '製造業', icon: <Factory className="w-6 h-6" /> },
+    { name: '小売業', icon: <Store className="w-6 h-6" /> },
+    { name: '卸売業', icon: <Truck className="w-6 h-6" /> },
+    { name: 'サービス業', icon: <Briefcase className="w-6 h-6" /> },
+    { name: 'IT・ソフトウェア', icon: <Globe className="w-6 h-6" /> },
+  ];
 
   // Removed unused benefits array
 
@@ -82,7 +64,12 @@ const WhatIsNetSuite: React.FC = () => {
       <NavigationBar showBackButton={false} variant="page" />
 
       {/* Hero Section */}
-      <HeroSection title="NetSuiteの革新的な強み" subtitle="独自のビジネスモデルに寄り添う柔軟性" />
+      <HeroSection
+        title="NetSuiteの革新的な強み"
+        subtitle="独自のビジネスモデルに寄り添う柔軟性"
+        description="世界No.1のクラウドERPが、日本企業の成長を加速させます"
+      />
+
 
       {/* Customization Power */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
@@ -102,25 +89,22 @@ const WhatIsNetSuite: React.FC = () => {
                 icon: <Code className="w-12 h-12 text-orange-600" />,
                 title: 'SuiteScript',
                 description: 'JavaScriptベースのスクリプト言語で複雑な業務ロジックを実装',
-                features: ['イベントトリガー', 'スケジュール実行', 'REST API連携'],
+                features: ['イベントトリガー', 'スケジュール実行', 'REST API連携']
               },
               {
                 icon: <Settings className="w-12 h-12 text-orange-600" />,
                 title: 'SuiteFlow',
                 description: 'ドラッグ&ドロップでワークフローを視覚的に設計',
-                features: ['承認フロー', '自動通知', '条件分岐'],
+                features: ['承認フロー', '自動通知', '条件分岐']
               },
               {
                 icon: <Globe className="w-12 h-12 text-orange-600" />,
                 title: 'SuiteTalk',
                 description: 'WebサービスAPIで外部システムとシームレスに連携',
-                features: ['SOAP/REST API', 'リアルタイム同期', 'データ一括処理'],
-              },
+                features: ['SOAP/REST API', 'リアルタイム同期', 'データ一括処理']
+              }
             ].map((tool, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100"
-              >
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100">
                 <div className="mb-6">{tool.icon}</div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">{tool.title}</h3>
                 <p className="text-slate-600 mb-6">{tool.description}</p>
@@ -146,7 +130,7 @@ const WhatIsNetSuite: React.FC = () => {
                   { title: '独自の承認フロー', desc: '日本企業特有の稟議・決裁プロセス' },
                   { title: '特殊な価格計算', desc: '複雑なリベートや数量割引' },
                   { title: '業界固有の帳票', desc: 'フォーマットや項目を自由に設計' },
-                  { title: '既存システム連携', desc: 'APIであらゆるシステムと接続' },
+                  { title: '既存システム連携', desc: 'APIであらゆるシステムと接続' }
                 ].map((item, index) => (
                   <div key={index} className="bg-white rounded-xl p-4">
                     <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
@@ -169,52 +153,45 @@ const WhatIsNetSuite: React.FC = () => {
               </h3>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-6">
                 NetSuiteのポテンシャルを最大限引き出すには、
-                <span className="font-bold text-slate-900">
-                  高度な開発スキルを持つパートナー選び
-                </span>
-                が成功の鍵
+                <span className="font-bold text-slate-900">高度な開発スキルを持つパートナー選び</span>が成功の鍵
               </p>
               <div className="text-sm bg-gradient-to-r from-orange-100 to-amber-100 px-4 py-2 rounded-full inline-block mb-8">
-                <span className="font-semibold text-orange-700">
-                  ✨ 2024年最新：AI・機械学習機能が大幅強化され、カスタマイズの可能性がさらに拡大
-                </span>
+                <span className="font-semibold text-orange-700">✨ 2024年最新：AI・機械学習機能が大幅強化され、カスタマイズの可能性がさらに拡大</span>
               </div>
               <div className="grid md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
                 {[
-                  {
+                  { 
                     icon: <AlertTriangle className="w-8 h-8 text-red-500" />,
                     title: '開発力が乏しい場合',
-                    items: ['標準機能で妥協', '手作業が残る', '効果が限定的'],
+                    items: ['標準機能で妥協', '手作業が残る', '効果が限定的']
                   },
-                  {
+                  { 
                     icon: <CheckCircle className="w-8 h-8 text-green-500" />,
                     title: '開発力が高い場合',
-                    items: ['業務に完全フィット', '完全自動化', 'ROI最大化'],
+                    items: ['業務に完全フィット', '完全自動化', 'ROI最大化']
                   },
-                  {
+                  { 
                     icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
                     title: '結果の違い',
-                    items: ['導入コスト50%削減', '運用工数80%削減', '生産性200%向上'],
-                  },
+                    items: ['導入コスト50%削減', '運用工数80%削減', '生産性200%向上']
+                  }
                 ].map((item, index) => (
                   <div key={index} className="bg-white rounded-xl p-6 shadow-lg">
                     <div className="mb-4">{item.icon}</div>
                     <h4 className="font-bold text-slate-900 mb-3">{item.title}</h4>
                     <ul className="space-y-2">
                       {item.items.map((point, idx) => (
-                        <li key={idx} className="text-sm text-slate-600">
-                          • {point}
-                        </li>
+                        <li key={idx} className="text-sm text-slate-600">• {point}</li>
                       ))}
                     </ul>
                   </div>
                 ))}
               </div>
-
+              
               {/* Link to EvangSol Strengths */}
               <div className="mt-12">
                 <button
-                  onClick={goStrengths}
+                  onClick={() => navigate('/evangsol-strengths')}
                   className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
                 >
                   NetSuiteとEvangSolの親和性を見る
@@ -226,34 +203,37 @@ const WhatIsNetSuite: React.FC = () => {
         </div>
       </section>
 
+
       {/* Core Features */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">NetSuiteの主要機能</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
+              NetSuiteの主要機能
+            </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               企業の成長に必要なすべての機能を統合プラットフォームで提供
             </p>
           </div>
-          <FeatureGrid features={CORE_FEATURES} />
+          <FeatureGrid features={coreFeatures} />
         </div>
       </section>
+
 
       {/* Industry Solutions */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">業界別ソリューション</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
+              業界別ソリューション
+            </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               各業界の特性に最適化された機能を提供
             </p>
           </div>
           <div className="grid md:grid-cols-5 gap-4">
-            {INDUSTRIES.map((industry) => (
-              <div
-                key={industry.name}
-                className="bg-white border-2 border-slate-200 rounded-xl p-6 text-center hover:border-sky-400 hover:shadow-xl transition-all duration-300 cursor-pointer group"
-              >
+            {industries.map((industry, index) => (
+              <div key={index} className="bg-white border-2 border-slate-200 rounded-xl p-6 text-center hover:border-sky-400 hover:shadow-xl transition-all duration-300 cursor-pointer group">
                 <div className="mx-auto w-16 h-16 bg-gradient-to-br from-sky-100 to-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   {industry.icon}
                 </div>
@@ -263,6 +243,7 @@ const WhatIsNetSuite: React.FC = () => {
           </div>
         </div>
       </section>
+
 
       {/* Global Stats */}
       <section className="py-20 px-4 bg-gradient-to-br from-sky-600 to-blue-700 text-white">
@@ -276,7 +257,7 @@ const WhatIsNetSuite: React.FC = () => {
               { number: '38,000+', label: '導入企業数' },
               { number: '220+', label: '対応国・地域' },
               { number: '27', label: '対応言語' },
-              { number: '190+', label: '対応通貨' },
+              { number: '190+', label: '対応通貨' }
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-5xl font-bold mb-2">{stat.number}</div>
@@ -286,6 +267,7 @@ const WhatIsNetSuite: React.FC = () => {
           </div>
         </div>
       </section>
+
 
       {/* Cloud Benefits with 2024 Updates */}
       <section className="py-20 px-4">
@@ -297,7 +279,9 @@ const WhatIsNetSuite: React.FC = () => {
                   <Sparkles className="w-4 h-4 mr-2" />
                   2024年最新アップデート
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-6">クラウドERPのメリット</h3>
+                <h3 className="text-3xl font-bold text-slate-900 mb-6">
+                  クラウドERPのメリット
+                </h3>
                 <ul className="space-y-4">
                   {[
                     { title: '初期投資を抑制', desc: 'サーバー購入やシステム構築が不要' },
@@ -305,7 +289,7 @@ const WhatIsNetSuite: React.FC = () => {
                     { title: 'AI機能統合', desc: '2024年生成AI機能を大幅強化' },
                     { title: 'どこでもアクセス', desc: 'モバイルアプリでいつでも業務可能' },
                     { title: '災害対策', desc: 'データセンターでの安全なデータ管理' },
-                    { title: 'スケーラビリティ', desc: 'スタートアップからIPO後まで対応' },
+                    { title: 'スケーラビリティ', desc: 'スタートアップからIPO後まで対応' }
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
                       <CheckCircle className="w-6 h-6 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
@@ -331,7 +315,9 @@ const WhatIsNetSuite: React.FC = () => {
                     <p className="text-sm font-semibold text-orange-700">
                       🎯 日本向けローカライゼーション強化
                     </p>
-                    <p className="text-xs text-orange-600 mt-1">2024年7月発表</p>
+                    <p className="text-xs text-orange-600 mt-1">
+                      2024年7月発表
+                    </p>
                   </div>
                 </div>
               </div>
@@ -345,9 +331,9 @@ const WhatIsNetSuite: React.FC = () => {
         title="NetSuiteで業務を変革しませんか？"
         description="EvangSolは豊富な導入実績と技術力で、お客様のNetSuite導入を成功に導きます"
         primaryButtonText="EvangSolの強みを見る"
-        primaryButtonAction={goStrengths}
+        primaryButtonAction={() => navigate('/evangsol-strengths')}
         secondaryButtonText="お問い合わせ"
-        secondaryButtonAction={goContact}
+        secondaryButtonAction={() => navigate('/contact')}
       />
 
       <Footer />

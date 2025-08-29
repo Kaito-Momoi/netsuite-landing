@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, Phone, Mail, Users, Calendar, Building, Globe, Briefcase, CreditCard, Award, Shield, CheckCircle } from 'lucide-react';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Users,
+  Calendar,
+  Building,
+  Globe,
+  CreditCard,
+  Award,
+  Shield,
+  CheckCircle,
+  Briefcase,
+} from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 
 const About: React.FC = () => {
   const navigate = useNavigate();
-  
+
   const companyInfo = [
     { label: '会社名', value: 'EvangSol Co., Ltd.', icon: <Building className="w-5 h-5" /> },
     { label: '資本金', value: '4,000万円', icon: <CreditCard className="w-5 h-5" /> },
-    { label: '代表取締役', value: '小山 敏行 (Toshiyuki Koyama)', icon: <Users className="w-5 h-5" /> },
+    {
+      label: '代表取締役',
+      value: '小山 敏行 (Toshiyuki Koyama)',
+      icon: <Users className="w-5 h-5" />,
+    },
     { label: '設立', value: '2005年5月', icon: <Calendar className="w-5 h-5" /> },
-    { label: '所在地', value: '〒103-0023 東京都中央区日本橋本町4-15-11 一橋ビル6F', icon: <MapPin className="w-5 h-5" /> },
+    {
+      label: '所在地',
+      value: '〒103-0023 東京都中央区日本橋本町4-15-11 一橋ビル6F',
+      icon: <MapPin className="w-5 h-5" />,
+    },
     { label: '電話番号', value: '03-6231-1328', icon: <Phone className="w-5 h-5" /> },
     { label: 'FAX', value: '03-6231-1348', icon: <Phone className="w-5 h-5" /> },
     { label: 'メール', value: 'info@evangsol.co.jp', icon: <Mail className="w-5 h-5" /> },
@@ -26,13 +47,13 @@ const About: React.FC = () => {
     '運用サポート',
     'システムコンサルティング',
     'ソリューションSIサービス',
-    'データ移行支援'
+    'データ移行支援',
   ];
 
-  const memberships = [
-    '東京商工会議所（会員番号：C2862590）',
-    '関東ITソフトウェア健康保険組合'
-  ];
+  const memberships = ['東京商工会議所（会員番号：C2862590）', '関東ITソフトウェア健康保険組合'];
+
+  const goContact = useCallback(() => navigate('/contact'), [navigate]);
+  const goNetSuite = useCallback(() => navigate('/netsuite'), [navigate]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
@@ -42,9 +63,7 @@ const About: React.FC = () => {
       <section className="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              会社概要
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">会社概要</h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               2005年設立以来、システムコンサルティングからNetSuite導入までワンストップでサポート
             </p>
@@ -56,9 +75,7 @@ const About: React.FC = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              企業情報
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">企業情報</h2>
             <p className="text-xl text-slate-600">確かな実績と信頼の企業プロフィール</p>
           </div>
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
@@ -70,8 +87,11 @@ const About: React.FC = () => {
             </div>
             <div className="p-8">
               <div className="space-y-6">
-                {companyInfo.map((item, index) => (
-                  <div key={index} className="flex items-start border-b border-slate-100 pb-4 last:border-0">
+                {companyInfo.map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-start border-b border-slate-100 pb-4 last:border-0"
+                  >
                     <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-sky-100 text-sky-600 mr-4 mt-1">
                       {item.icon}
                     </div>
@@ -79,11 +99,17 @@ const About: React.FC = () => {
                       <div className="text-sm text-slate-500 mb-1">{item.label}</div>
                       <div className="text-lg text-slate-900 font-medium">
                         {item.label === 'URL' ? (
-                          <a href={item.value} className="text-sky-600 hover:text-sky-700 transition-colors">
+                          <a
+                            href={item.value}
+                            className="text-sky-600 hover:text-sky-700 transition-colors"
+                          >
                             {item.value}
                           </a>
                         ) : item.label === 'メール' ? (
-                          <a href={`mailto:${item.value}`} className="text-sky-600 hover:text-sky-700 transition-colors">
+                          <a
+                            href={`mailto:${item.value}`}
+                            className="text-sky-600 hover:text-sky-700 transition-colors"
+                          >
                             {item.value}
                           </a>
                         ) : (
@@ -114,7 +140,7 @@ const About: React.FC = () => {
             サービス・加入団体
           </h2>
           <p className="text-xl text-slate-600 text-center mb-12">提供サービスと所属団体</p>
-          
+
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
@@ -125,15 +151,15 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-bold text-slate-900">提供サービス</h3>
               </div>
               <div className="space-y-3">
-                {services.map((service, index) => (
-                  <div key={index} className="flex items-center">
+                {services.map((service) => (
+                  <div key={service} className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" />
                     <span className="text-slate-700">{service}</span>
                   </div>
                 ))}
               </div>
             </div>
-            
+
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
               <div className="flex items-center mb-6">
                 <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
@@ -146,8 +172,8 @@ const About: React.FC = () => {
                   <Award className="w-5 h-5 text-sky-500 mr-3 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">Oracle NetSuite認定パートナー</span>
                 </div>
-                {memberships.map((membership, index) => (
-                  <div key={index} className="flex items-start">
+                {memberships.map((membership) => (
+                  <div key={membership} className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-sky-500 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{membership}</span>
                   </div>
@@ -162,14 +188,12 @@ const About: React.FC = () => {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              アクセス
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">アクセス</h2>
             <p className="text-xl text-slate-600">東京都心の好立地でお客様をお待ちしております</p>
           </div>
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
             <div className="aspect-w-16 aspect-h-9 mb-8">
-              <iframe 
+              <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.7799!2d139.77679!3d35.68958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0d0d0d0d0d%3A0x0!2s%E6%9D%B1%E4%BA%AC%E9%83%BD%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%97%A5%E6%9C%AC%E6%A9%8B%E6%9C%AC%E7%94%BA4-15-11!5e0!3m2!1sja!2sjp!4v1234567890123"
                 width="100%"
                 height="400"
@@ -186,8 +210,10 @@ const About: React.FC = () => {
                 <div>
                   <p className="font-bold text-slate-900 mb-1">住所</p>
                   <p className="text-slate-700">
-                    〒103-0023<br />
-                    東京都中央区日本橋本町4-15-11<br />
+                    〒103-0023
+                    <br />
+                    東京都中央区日本橋本町4-15-11
+                    <br />
                     一橋ビル6F
                   </p>
                 </div>
@@ -197,7 +223,8 @@ const About: React.FC = () => {
                 <div>
                   <p className="font-bold text-slate-900 mb-1">最寄り駅</p>
                   <p className="text-slate-700">
-                    地下鉄神田駅・小伝馬町駅から徒歩5分<br />
+                    地下鉄神田駅・小伝馬町駅から徒歩5分
+                    <br />
                     JR神田駅から徒歩7分
                   </p>
                 </div>
@@ -223,9 +250,9 @@ const About: React.FC = () => {
           title={<>NetSuite導入をご検討の方へ</>}
           description="20年の経験と実績で、貴社のDXを成功に導きます"
           primaryButtonText="無料相談を予約する"
-          primaryButtonAction={() => navigate('/contact')}
+          primaryButtonAction={goContact}
           secondaryButtonText="NetSuiteの詳細を見る"
-          secondaryButtonAction={() => navigate('/netsuite')}
+          secondaryButtonAction={goNetSuite}
           gradient="from-sky-500 to-blue-600"
         />
       </section>

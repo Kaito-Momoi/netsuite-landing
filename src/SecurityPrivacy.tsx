@@ -10,7 +10,11 @@ const SecurityPrivacy: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} alt="EvangSol" className="h-10" />
+              <img
+                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                alt="EvangSol"
+                className="h-10"
+              />
             </div>
           </div>
         </div>
@@ -18,7 +22,9 @@ const SecurityPrivacy: React.FC = () => {
 
       {/* Main Content */}
       <div className="max-w-5xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-center mb-8">情報セキュリティ・個人情報保護について</h1>
+        <h1 className="text-4xl font-bold text-center mb-8">
+          情報セキュリティ・個人情報保護について
+        </h1>
 
         {/* 基本方針 */}
         <section className="mb-12">
@@ -32,8 +38,8 @@ const SecurityPrivacy: React.FC = () => {
               情報セキュリティの確保と個人情報の適切な保護を経営の最重要課題の一つとして位置づけています。
             </p>
             <p className="text-gray-700 leading-relaxed">
-              当社は、情報セキュリティマネジメントシステム（ISMS）を構築・運用し、
-              ISO/IEC 27001:2022の認証を取得することで、国際基準に準拠した情報管理体制を維持しています。
+              当社は、情報セキュリティマネジメントシステム（ISMS）を構築・運用し、 ISO/IEC
+              27001:2022の認証を取得することで、国際基準に準拠した情報管理体制を維持しています。
             </p>
           </div>
         </section>
@@ -46,12 +52,13 @@ const SecurityPrivacy: React.FC = () => {
             <Lock className="w-6 h-6 mr-3 text-blue-600" />
             <h2 className="text-2xl font-bold text-blue-600">情報セキュリティ方針</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div className="pl-6">
               <h3 className="text-lg font-semibold mb-2">1. 情報セキュリティ管理体制</h3>
               <p className="text-gray-700 leading-relaxed">
-                代表取締役 小山利之を最高責任者として、情報セキュリティマネジメントシステムを確立し、
+                代表取締役
+                小山利之を最高責任者として、情報セキュリティマネジメントシステムを確立し、
                 継続的な改善活動を実施しています。
               </p>
             </div>
@@ -98,7 +105,7 @@ const SecurityPrivacy: React.FC = () => {
             <FileText className="w-6 h-6 mr-3 text-blue-600" />
             <h2 className="text-2xl font-bold text-blue-600">個人情報保護方針</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div className="pl-6">
               <h3 className="text-lg font-semibold mb-2">1. 個人情報の収集</h3>
@@ -164,12 +171,8 @@ const SecurityPrivacy: React.FC = () => {
                 <li className="text-gray-700 leading-relaxed">
                   • お客様からのお問い合わせへの対応
                 </li>
-                <li className="text-gray-700 leading-relaxed">
-                  • セミナー、イベントのご案内
-                </li>
-                <li className="text-gray-700 leading-relaxed">
-                  • 新サービスや有益な情報のご提供
-                </li>
+                <li className="text-gray-700 leading-relaxed">• セミナー、イベントのご案内</li>
+                <li className="text-gray-700 leading-relaxed">• 新サービスや有益な情報のご提供</li>
                 <li className="text-gray-700 leading-relaxed">
                   • サービス改善のための分析・統計処理
                 </li>
@@ -199,8 +202,7 @@ const SecurityPrivacy: React.FC = () => {
               <p className="text-gray-700 leading-relaxed">
                 収集した個人情報は、利用目的の達成に必要な期間に限り保管し、
                 保管の必要がなくなった場合は、速やかに消去または廃棄します。
-                ただし、法令により保管が義務付けられている場合は、
-                法令で定められた期間保管します。
+                ただし、法令により保管が義務付けられている場合は、 法令で定められた期間保管します。
               </p>
             </div>
 
@@ -211,21 +213,28 @@ const SecurityPrivacy: React.FC = () => {
                 以下の措置を実施しています：
               </p>
               <ul className="space-y-2 pl-6 mt-2">
-                <li className="text-gray-700 leading-relaxed">• 組織的安全管理措置（情報セキュリティ管理体制の構築）</li>
-                <li className="text-gray-700 leading-relaxed">• 人的安全管理措置（従業員への教育・訓練）</li>
-                <li className="text-gray-700 leading-relaxed">• 物理的安全管理措置（施設への入退室管理）</li>
-                <li className="text-gray-700 leading-relaxed">• 技術的安全管理措置（アクセス制御、暗号化）</li>
+                <li className="text-gray-700 leading-relaxed">
+                  • 組織的安全管理措置（情報セキュリティ管理体制の構築）
+                </li>
+                <li className="text-gray-700 leading-relaxed">
+                  • 人的安全管理措置（従業員への教育・訓練）
+                </li>
+                <li className="text-gray-700 leading-relaxed">
+                  • 物理的安全管理措置（施設への入退室管理）
+                </li>
+                <li className="text-gray-700 leading-relaxed">
+                  • 技術的安全管理措置（アクセス制御、暗号化）
+                </li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-3">Cookie（クッキー）の使用について</h3>
               <p className="text-gray-700 leading-relaxed">
-                当社ウェブサイトでは、お客様により良いサービスを提供するため、
-                Cookie を使用することがあります。Cookie の使用を望まれない場合は、
-                お使いのブラウザの設定により Cookie を無効にすることができます。
-                ただし、Cookie を無効にした場合、一部のサービスがご利用いただけなくなる
-                場合があります。
+                当社ウェブサイトでは、お客様により良いサービスを提供するため、 Cookie
+                を使用することがあります。Cookie の使用を望まれない場合は、
+                お使いのブラウザの設定により Cookie を無効にすることができます。 ただし、Cookie
+                を無効にした場合、一部のサービスがご利用いただけなくなる 場合があります。
               </p>
             </div>
           </div>
@@ -239,7 +248,7 @@ const SecurityPrivacy: React.FC = () => {
             <Shield className="w-6 h-6 mr-3 text-green-600" />
             <h2 className="text-2xl font-bold text-green-600">ISO/IEC 27001:2022 認証取得</h2>
           </div>
-          
+
           <div className="bg-green-50 p-6 rounded-lg">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -248,11 +257,15 @@ const SecurityPrivacy: React.FC = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-600 mb-1">認証機関</p>
-                <p className="font-semibold text-gray-800">情報セキュリティマネジメントシステム評価センター（ISR016）</p>
+                <p className="font-semibold text-gray-800">
+                  情報セキュリティマネジメントシステム評価センター（ISR016）
+                </p>
               </div>
               <div>
                 <p className="text-sm text-gray-600 mb-1">認証範囲</p>
-                <p className="font-semibold text-gray-800">情報システムの企画、設計、開発、保守運用サービスおよびクラウドサービス（企業向けSaaS等）の提供</p>
+                <p className="font-semibold text-gray-800">
+                  情報システムの企画、設計、開発、保守運用サービスおよびクラウドサービス（企業向けSaaS等）の提供
+                </p>
               </div>
               <div>
                 <p className="text-sm text-gray-600 mb-1">有効期限</p>
@@ -274,13 +287,13 @@ const SecurityPrivacy: React.FC = () => {
             <Mail className="w-6 h-6 mr-3 text-blue-600" />
             <h2 className="text-2xl font-bold text-blue-600">お問い合わせ窓口</h2>
           </div>
-          
+
           <div className="bg-gray-50 p-6 rounded-lg">
             <p className="text-gray-700 leading-relaxed mb-4">
               当社の情報セキュリティ・個人情報保護に関するお問い合わせは、
               下記の窓口にて承っております。
             </p>
-            
+
             <div className="space-y-3">
               <div className="flex items-center">
                 <strong className="text-gray-800 w-32">会社名：</strong>
@@ -314,7 +327,8 @@ const SecurityPrivacy: React.FC = () => {
 
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-gray-700">
-                <strong>個人情報の開示等のご請求について：</strong><br />
+                <strong>個人情報の開示等のご請求について：</strong>
+                <br />
                 ご本人様からの個人情報の開示、訂正、削除等のご請求については、
                 ご本人様確認をさせていただいた上で、適切に対応させていただきます。
                 詳細は上記お問い合わせ窓口までご連絡ください。
@@ -326,8 +340,10 @@ const SecurityPrivacy: React.FC = () => {
         {/* 最終更新日 */}
         <div className="bg-blue-50 p-6 rounded-lg mt-12">
           <p className="text-gray-600 text-sm">
-            <strong className="font-semibold">制定日：</strong> 2021年2月18日<br />
-            <strong className="font-semibold">最終改訂日：</strong> 2024年12月1日<br />
+            <strong className="font-semibold">制定日：</strong> 2021年2月18日
+            <br />
+            <strong className="font-semibold">最終改訂日：</strong> 2024年12月1日
+            <br />
             <strong className="font-semibold">次回見直し予定：</strong> 2025年12月
           </p>
         </div>

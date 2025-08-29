@@ -9,7 +9,7 @@ export const scrollToSection = (sectionId: string) => {
 
     window.scrollTo({
       top: offsetPosition,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 };

@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Send, User, Building, MessageSquare, CheckCircle, Clock, HeadphonesIcon } from 'lucide-react';
+import {
+  Phone,
+  Mail,
+  Send,
+  User,
+  Building,
+  MessageSquare,
+  CheckCircle,
+  Clock,
+  HeadphonesIcon,
+} from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 
@@ -10,20 +20,22 @@ const Contact = () => {
     email: '',
     phone: '',
     inquiryType: '',
-    message: ''
+    message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       // 実際のAPIエンドポイントに送信する場合はここを変更
       // const response = await fetch('/api/contact', {
@@ -33,22 +45,22 @@ const Contact = () => {
       //   },
       //   body: JSON.stringify(formData),
       // });
-      // 
+      //
       // if (!response.ok) {
       //   throw new Error('送信に失敗しました');
       // }
-      
+
       // 現在はデモ用として、ローカルストレージに保存
       const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
       submissions.push({
         ...formData,
-        submittedAt: new Date().toISOString()
+        submittedAt: new Date().toISOString(),
       });
       localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
-      
+
       console.log('Form submitted successfully:', formData);
       setIsSubmitted(true);
-      
+
       // 5秒後にフォームをリセット
       setTimeout(() => {
         setIsSubmitted(false);
@@ -58,7 +70,7 @@ const Contact = () => {
           email: '',
           phone: '',
           inquiryType: '',
-          message: ''
+          message: '',
         });
       }, 5000);
     } catch (error) {
@@ -75,9 +87,7 @@ const Contact = () => {
       <section className="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              お問い合わせ
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">お問い合わせ</h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               NetSuiteの導入やカスタマイズに関するご相談、お見積りのご依頼など、お気軽にお問い合わせください。
             </p>
@@ -89,9 +99,7 @@ const Contact = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              お問い合わせ方法
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">お問い合わせ方法</h2>
             <p className="text-xl text-slate-600">お客様のご都合に合わせてお選びください</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -110,11 +118,15 @@ const Contact = () => {
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">お急ぎの場合におすすめ</span>
+                    <span className="text-sm text-slate-600 font-medium">
+                      お急ぎの場合におすすめ
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <Clock className="w-5 h-5 text-sky-600 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">営業時間：平日 9:00-18:00</span>
+                    <span className="text-sm text-slate-600 font-medium">
+                      営業時間：平日 9:00-18:00
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <HeadphonesIcon className="w-5 h-5 text-sky-600 mr-2" />
@@ -168,153 +180,157 @@ const Contact = () => {
           <div className="group relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
             <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
-            
-            {isSubmitted ? (
-              <div className="text-center py-12">
-                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                  送信完了しました
-                </h3>
-                <p className="text-slate-600">
-                  お問い合わせありがとうございます。
-                  <br />担当者より2営業日以内にご連絡いたします。
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      お名前 <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
-                        placeholder="山田 太郎"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      会社名
-                    </label>
-                    <div className="relative">
-                      <Building className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
-                        placeholder="株式会社〇〇"
-                      />
-                    </div>
-                  </div>
+              {isSubmitted ? (
+                <div className="text-center py-12">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">送信完了しました</h3>
+                  <p className="text-slate-600">
+                    お問い合わせありがとうございます。
+                    <br />
+                    担当者より2営業日以内にご連絡いたします。
+                  </p>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        お名前 <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
+                          placeholder="山田 太郎"
+                        />
+                      </div>
+                    </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      メールアドレス <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
-                        placeholder="example@company.co.jp"
-                      />
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        会社名
+                      </label>
+                      <div className="relative">
+                        <Building className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                        <input
+                          type="text"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
+                          placeholder="株式会社〇〇"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        メールアドレス <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
+                          placeholder="example@company.co.jp"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        電話番号
+                      </label>
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
+                          placeholder="03-1234-5678"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">
-                      電話番号
+                      お問い合わせ種別 <span className="text-red-500">*</span>
                     </label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
-                        placeholder="03-1234-5678"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    お問い合わせ種別 <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    name="inquiryType"
-                    value={formData.inquiryType}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
-                  >
-                    <option value="">選択してください</option>
-                    <option value="netsuite">NetSuite導入相談</option>
-                    <option value="system">システム連携相談</option>
-                    <option value="support">運用サポート</option>
-                    <option value="other">その他</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    お問い合わせ内容 <span className="text-red-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
-                    <textarea
-                      name="message"
-                      value={formData.message}
+                    <select
+                      name="inquiryType"
+                      value={formData.inquiryType}
                       onChange={handleChange}
                       required
-                      rows={6}
-                      className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors resize-none"
-                      placeholder="お問い合わせ内容をご記入ください。WMS（倉庫管理システム）やECサイトとの連携など、具体的なご要望がございましたら、詳しくお聞かせください。"
-                    />
+                      className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
+                    >
+                      <option value="">選択してください</option>
+                      <option value="netsuite">NetSuite導入相談</option>
+                      <option value="system">システム連携相談</option>
+                      <option value="support">運用サポート</option>
+                      <option value="other">その他</option>
+                    </select>
                   </div>
-                </div>
 
-                <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 border border-sky-200">
-                  <div className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-sky-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <div className="text-sm text-slate-700 space-y-2">
-                      <p className="font-medium">お問い合わせ内容を確認後、担当者よりご連絡させていただきます。</p>
-                      <p>お急ぎの場合は、お電話（<span className="font-bold text-sky-600">03-6231-1328</span>）にてお問い合わせください。</p>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                      お問い合わせ内容 <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={6}
+                        className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors resize-none"
+                        placeholder="お問い合わせ内容をご記入ください。WMS（倉庫管理システム）やECサイトとの連携など、具体的なご要望がございましたら、詳しくお聞かせください。"
+                      />
                     </div>
                   </div>
-                </div>
 
-                <button
-                  type="submit"
-                  className="group w-full bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center text-lg relative overflow-hidden"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></span>
-                  <span className="relative flex items-center">
-                    <Send className="w-5 h-5 mr-2" />
-                    送信する
-                  </span>
-                </button>
-              </form>
-            )}
+                  <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 border border-sky-200">
+                    <div className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-sky-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <div className="text-sm text-slate-700 space-y-2">
+                        <p className="font-medium">
+                          お問い合わせ内容を確認後、担当者よりご連絡させていただきます。
+                        </p>
+                        <p>
+                          お急ぎの場合は、お電話（
+                          <span className="font-bold text-sky-600">03-6231-1328</span>
+                          ）にてお問い合わせください。
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="group w-full bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center text-lg relative overflow-hidden"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></span>
+                    <span className="relative flex items-center">
+                      <Send className="w-5 h-5 mr-2" />
+                      送信する
+                    </span>
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -324,14 +340,15 @@ const Contact = () => {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              サービス内容
-            </h2>
-            <p className="text-xl text-slate-600">Oracle NetSuite認定パートナーとしての幅広いサポート</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">サービス内容</h2>
+            <p className="text-xl text-slate-600">
+              Oracle NetSuite認定パートナーとしての幅広いサポート
+            </p>
           </div>
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
             <p className="text-lg text-slate-700 mb-8 leading-relaxed text-center">
-              Oracle NetSuite認定パートナーとして、ERP以外にも多くのシステム開発プロジェクトに携わってまいりました。
+              Oracle
+              NetSuite認定パートナーとして、ERP以外にも多くのシステム開発プロジェクトに携わってまいりました。
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="group">
@@ -340,7 +357,9 @@ const Contact = () => {
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 text-center">NetSuite導入支援</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-2 text-center">
+                  NetSuite導入支援
+                </h3>
                 <p className="text-slate-600 text-sm text-center leading-relaxed">
                   要件定義から導入、運用まで一貫してサポートいたします
                 </p>

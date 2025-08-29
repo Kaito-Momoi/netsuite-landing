@@ -1,14 +1,14 @@
 import React from 'react';
 import { CTASectionProps } from '../types';
 
-const CTASection: React.FC<CTASectionProps> = ({
+const CTASectionComponent: React.FC<CTASectionProps> = ({
   title,
   description,
   primaryButtonText,
   primaryButtonAction,
   secondaryButtonText,
   secondaryButtonAction,
-  gradient = 'from-blue-600 to-blue-700'
+  gradient = 'from-blue-600 to-blue-700',
 }) => {
   return (
     <section className={`py-24 bg-gradient-to-r ${gradient}`} aria-labelledby="cta-title">
@@ -16,13 +16,13 @@ const CTASection: React.FC<CTASectionProps> = ({
         <h2 id="cta-title" className="text-3xl md:text-4xl font-bold text-white mb-6">
           {title}
         </h2>
-        
+
         {description && (
           <p className="text-lg md:text-xl text-white/95 mb-12 leading-relaxed max-w-3xl mx-auto">
             {description}
           </p>
         )}
-        
+
         <div className="flex justify-center gap-6 flex-wrap">
           <button
             onClick={primaryButtonAction}
@@ -31,7 +31,7 @@ const CTASection: React.FC<CTASectionProps> = ({
           >
             {primaryButtonText}
           </button>
-          
+
           {secondaryButtonText && secondaryButtonAction && (
             <button
               onClick={secondaryButtonAction}
@@ -46,5 +46,7 @@ const CTASection: React.FC<CTASectionProps> = ({
     </section>
   );
 };
+const CTASection = React.memo(CTASectionComponent);
+CTASection.displayName = 'CTASection';
 
 export default CTASection;

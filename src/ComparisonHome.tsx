@@ -9,12 +9,8 @@ const ComparisonHome: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-sky-50 flex items-center justify-center px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-slate-900 mb-4">
-            ランディングページ比較
-          </h1>
-          <p className="text-xl text-slate-600">
-            2つの異なるデザインアプローチを比較してください
-          </p>
+          <h1 className="text-5xl font-bold text-slate-900 mb-4">ランディングページ比較</h1>
+          <p className="text-xl text-slate-600">2つの異なるデザインアプローチを比較してください</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -27,14 +23,10 @@ const ComparisonHome: React.FC = () => {
                 </div>
               </div>
               <h2 className="text-2xl font-bold text-center mb-2">サイト A</h2>
-              <p className="text-center text-white/90">
-                NetSuite.tsx ベース
-              </p>
+              <p className="text-center text-white/90">NetSuite.tsx ベース</p>
             </div>
             <div className="p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">
-                特徴
-              </h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">特徴</h3>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
@@ -72,14 +64,10 @@ const ComparisonHome: React.FC = () => {
                 </div>
               </div>
               <h2 className="text-2xl font-bold text-center mb-2">サイト B</h2>
-              <p className="text-center text-white/90">
-                WhatIsNetSuite.tsx ベース
-              </p>
+              <p className="text-center text-white/90">WhatIsNetSuite.tsx ベース</p>
             </div>
             <div className="p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">
-                特徴
-              </h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">特徴</h3>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
@@ -111,9 +99,7 @@ const ComparisonHome: React.FC = () => {
 
         <div className="mt-12 text-center">
           <div className="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-slate-900 mb-2">
-              比較のポイント
-            </h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-2">比較のポイント</h3>
             <p className="text-slate-600">
               両方のサイトを訪問して、デザイン、コンテンツ構成、ユーザー体験の違いを確認してください。
               <br />

@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Award, Shield, Users, HeadphonesIcon,
-  CheckCircle, ArrowRight, Star, Trophy, Building2, Sparkles, Zap, Clock,
-  Code, MessageSquare, BookOpen, Heart, Cloud, ChevronDown
+import {
+  Users,
+  CheckCircle,
+  ArrowRight,
+  Star,
+  Trophy,
+  Building2,
+  Zap,
+  Clock,
+  Code,
+  Cloud,
+  ChevronDown,
 } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
 import CTASection from './components/CTASection';
@@ -17,55 +25,68 @@ const STRENGTHS: Feature[] = [
     icon: <Code className="w-8 h-8" />,
     title: '圧倒的な開発力',
     description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも完全にシステム化',
-    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発']
+    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
   },
   {
     icon: <Zap className="w-8 h-8" />,
     title: '高速開発・短納期',
     description: '独自の開発フレームワークとテンプレートで、開発スピードを大幅に短縮',
-    bulletPoints: ['効率的な開発プロセス', '豊富なテンプレート活用', '迅速な納品']
+    bulletPoints: ['効率的な開発プロセス', '豊富なテンプレート活用', '迅速な納品'],
   },
   {
     icon: <Trophy className="w-8 h-8" />,
     title: '日本企業特有の要件に精通',
     description: '稟議・承認フロー、特殊な帳票、複雑な価格計算などに完全対応',
-    bulletPoints: ['日本の商習慣に精通', '複雑な承認フロー対応', '特殊な帳票作成']
+    bulletPoints: ['日本の商習慣に精通', '複雑な承認フロー対応', '特殊な帳票作成'],
   },
   {
     icon: <Building2 className="w-8 h-8" />,
     title: '全国対応拠点',
     description: '東京・札幌に活動拠点を構え、近隣企業様との対面でのやり取りが可能',
-    bulletPoints: ['東京・札幌の2拠点体制', '対面サポート可能', '認識齟齬なく円滑な進行']
+    bulletPoints: ['東京・札幌の2拠点体制', '対面サポート可能', '認識齟齬なく円滑な進行'],
   },
   {
     icon: <Users className="w-8 h-8" />,
     title: 'グループ総合力',
     description: 'グループ会社EvangTechとの連携によるワンストップサービス',
-    bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援']
-  }
+    bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援'],
+  },
 ];
 
 const PROCESS_STEPS = [
-  { step: '01', title: 'ヒアリング・要件定義', description: '現状の業務プロセスを分析し、最適な導入計画を策定', duration: '1-2ヶ月' },
-  { step: '02', title: 'システム設計・構築', description: 'NetSuiteの設定とカスタマイズ開発を実施', duration: '2-3ヶ月' },
-  { step: '03', title: 'データ移行・テスト', description: '既存システムからのデータ移行と動作検証', duration: '1-2ヶ月' },
-  { step: '04', title: '本稼働・サポート', description: '本番稼働後も継続的な改善サポートを提供', duration: '継続' }
+  {
+    step: '01',
+    title: 'ヒアリング・要件定義',
+    description: '現状の業務プロセスを分析し、最適な導入計画を策定',
+    duration: '1-2ヶ月',
+  },
+  {
+    step: '02',
+    title: 'システム設計・構築',
+    description: 'NetSuiteの設定とカスタマイズ開発を実施',
+    duration: '2-3ヶ月',
+  },
+  {
+    step: '03',
+    title: 'データ移行・テスト',
+    description: '既存システムからのデータ移行と動作検証',
+    duration: '1-2ヶ月',
+  },
+  {
+    step: '04',
+    title: '本稼働・サポート',
+    description: '本番稼働後も継続的な改善サポートを提供',
+    duration: '継続',
+  },
 ];
 
-const CLIENT_TESTIMONIALS = [
-  { company: '製造業A社', comment: '複雑な生産管理とNetSuiteを連携させ、リアルタイムな在庫管理を実現できました。', result: '在庫回転率30%向上' },
-  { company: '小売業B社', comment: 'ECとのデータ連携が自動化され、受注から出荷までのリードタイムが大幅に短縮しました。', result: 'リードタイム50%短縮' },
-  { company: '商社C社', comment: '特殊な価格計算ロジックを完全にシステム化し、ミスのない請求処理が実現しました。', result: '請求ミスゼロ' }
-];
+// Removed unused testimonials to reduce bundle and warnings
 
 const EvangSolStrengths: React.FC = () => {
   const navigate = useNavigate();
 
-
-
   // Stats section removed as per request
-
-
+  const goContact = useCallback(() => navigate('/contact'), [navigate]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
@@ -157,7 +178,7 @@ const EvangSolStrengths: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="flex flex-col items-center">
@@ -180,33 +201,31 @@ const EvangSolStrengths: React.FC = () => {
               圧倒的な技術力でNetSuiteのポテンシャルを最大限引き出します
             </p>
           </div>
-          
+
           {/* Custom Strengths Grid with 5 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {STRENGTHS.map((strength) => (
-              <div 
+              <div
                 key={strength.title}
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
               >
                 {/* Gradient bar at top */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-500"></div>
-                
+
                 <div className="p-6">
                   {/* Icon */}
                   <div className="w-14 h-14 bg-gradient-to-br from-sky-100 to-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-sky-600">
                     {strength.icon}
                   </div>
-                  
+
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
-                    {strength.title}
-                  </h3>
-                  
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">{strength.title}</h3>
+
                   {/* Description */}
                   <p className="text-sm text-slate-600 mb-4 leading-relaxed">
                     {strength.description}
                   </p>
-                  
+
                   {/* Bullet points */}
                   {strength.bulletPoints && (
                     <ul className="space-y-2">
@@ -225,7 +244,6 @@ const EvangSolStrengths: React.FC = () => {
         </div>
       </section>
 
-
       {/* Unique Solutions */}
       <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
@@ -239,8 +257,8 @@ const EvangSolStrengths: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SOLUTIONS.map((solution) => (
-              <div 
-                key={solution.title} 
+              <div
+                key={solution.title}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 group cursor-pointer"
                 onClick={() => navigate(solution.path)}
               >
@@ -259,14 +277,11 @@ const EvangSolStrengths: React.FC = () => {
         </div>
       </section>
 
-
       {/* Implementation Process */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">
-              確実な導入プロセス
-            </h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">確実な導入プロセス</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               段階的なアプローチで、リスクを最小限に抑えながら確実に導入
             </p>
@@ -294,14 +309,12 @@ const EvangSolStrengths: React.FC = () => {
         </div>
       </section>
 
-
-
       {/* CTA Section */}
       <CTASection
         title="NetSuite導入をご検討中ですか？"
         description="豊富な実績と高度な技術力を持つEvangSolが、貴社のDXを成功に導きます"
         primaryButtonText="お問い合わせ"
-        primaryButtonAction={() => navigate('/contact')}
+        primaryButtonAction={goContact}
       />
 
       <Footer />
@@ -309,4 +322,6 @@ const EvangSolStrengths: React.FC = () => {
   );
 };
 
-export default EvangSolStrengths;
+export default React.memo(EvangSolStrengths);
+// If desired, we could wrap with React.memo to avoid rerenders:
+// export default React.memo(EvangSolStrengths);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle,
@@ -8,7 +8,7 @@ import {
   Shield,
   Zap,
   BarChart3,
-  Settings
+  Settings,
 } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
 import CTASection from './components/CTASection';
@@ -16,61 +16,91 @@ import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
 import { Feature, StatItem } from './types';
 
+// Hoisted constants to avoid re-allocations on re-render
+const FEATURES: Feature[] = [
+  {
+    icon: <Zap className="w-8 h-8" />,
+    title: '自動マッチング',
+    description: 'AIを活用した高精度な自動マッチング機能により、手作業を最小限に抑えます',
+  },
+  {
+    icon: <CheckCircle className="w-8 h-8" />,
+    title: 'リアルタイム処理',
+    description: '銀行データとの連携により、入金情報をリアルタイムで処理・消込が可能です',
+  },
+  {
+    icon: <BarChart3 className="w-8 h-8" />,
+    title: '可視化レポート',
+    description: '消込状況や未消込残高を一目で把握できるダッシュボードを提供します',
+  },
+];
+
+const DETAILED_FEATURES: Feature[] = [
+  {
+    icon: <Database className="w-6 h-6" />,
+    title: '銀行データ自動取込',
+    description: '複数の銀行フォーマットに対応し、自動でデータを取り込みます',
+  },
+  {
+    icon: <Target className="w-6 h-6" />,
+    title: '高精度マッチング',
+    description: '請求書番号、金額、顧客名など複数の条件で自動マッチング',
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
+    title: '処理時間短縮',
+    description: '従来の手作業と比較して80%以上の時間削減を実現',
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: '内部統制強化',
+    description: '承認ワークフローと監査ログで内部統制を強化',
+  },
+];
+
+const STATS: StatItem[] = [
+  { value: '80%', label: '処理時間削減', description: '手作業からの自動化による効率化' },
+  { value: '99.5%', label: 'マッチング精度', description: 'AI技術による高精度な突合' },
+  { value: '50%', label: 'コスト削減', description: '人件費と作業時間の大幅削減' },
+  { value: '0.01%', label: 'エラー率', description: 'ヒューマンエラーをほぼゼロに' },
+];
+
+const PROCESS = [
+  {
+    step: 'STEP 1',
+    title: '現状分析',
+    description: '業務フローと課題の把握',
+    icon: <Target className="w-6 h-6" />,
+  },
+  {
+    step: 'STEP 2',
+    title: '設計',
+    description: '最適なマッチングルール設計',
+    icon: <Database className="w-6 h-6" />,
+  },
+  {
+    step: 'STEP 3',
+    title: '実装',
+    description: 'NetSuiteへの設定と連携構築',
+    icon: <Settings className="w-6 h-6" />,
+  },
+  {
+    step: 'STEP 4',
+    title: '運用開始',
+    description: 'トレーニングとサポート',
+    icon: <Zap className="w-6 h-6" />,
+  },
+];
+
 const PaymentMatching: React.FC = () => {
   const navigate = useNavigate();
 
-  const features: Feature[] = [
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: "自動マッチング",
-      description: "AIを活用した高精度な自動マッチング機能により、手作業を最小限に抑えます"
-    },
-    {
-      icon: <CheckCircle className="w-8 h-8" />,
-      title: "リアルタイム処理",
-      description: "銀行データとの連携により、入金情報をリアルタイムで処理・消込が可能です"
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "可視化レポート",
-      description: "消込状況や未消込残高を一目で把握できるダッシュボードを提供します"
-    }
-  ];
-
-  const detailedFeatures: Feature[] = [
-    {
-      icon: <Database className="w-6 h-6" />,
-      title: "銀行データ自動取込",
-      description: "複数の銀行フォーマットに対応し、自動でデータを取り込みます"
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "高精度マッチング",
-      description: "請求書番号、金額、顧客名など複数の条件で自動マッチング"
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "処理時間短縮",
-      description: "従来の手作業と比較して80%以上の時間削減を実現"
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "内部統制強化",
-      description: "承認ワークフローと監査ログで内部統制を強化"
-    }
-  ];
-
-  const stats: StatItem[] = [
-    { value: "80%", label: "処理時間削減", description: "手作業からの自動化による効率化" },
-    { value: "99.5%", label: "マッチング精度", description: "AI技術による高精度な突合" },
-    { value: "50%", label: "コスト削減", description: "人件費と作業時間の大幅削減" },
-    { value: "0.01%", label: "エラー率", description: "ヒューマンエラーをほぼゼロに" }
-  ];
+  const goContact = useCallback(() => navigate('/contact'), [navigate]);
+  const goSolutions = useCallback(() => navigate('/netsuite/solutions'), [navigate]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
-
 
       {/* 3つの主要機能 */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
@@ -82,14 +112,12 @@ const PaymentMatching: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="group relative">
+            {FEATURES.map((feature) => (
+              <div key={feature.title} className="group relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
                 <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100">
                   <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                    <div className="text-white">
-                      {feature.icon}
-                    </div>
+                    <div className="text-white">{feature.icon}</div>
                   </div>
                   <h3 className="text-xl font-black mb-4 text-slate-900">{feature.title}</h3>
                   <p className="text-slate-600 leading-relaxed">{feature.description}</p>
@@ -104,20 +132,19 @@ const PaymentMatching: React.FC = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              主な機能
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">主な機能</h2>
             <p className="text-xl text-slate-600">業務効率を最大化する充実の機能群</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {detailedFeatures.map((feature, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-slate-200 hover:border-sky-400">
+            {DETAILED_FEATURES.map((feature) => (
+              <div
+                key={feature.title}
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-slate-200 hover:border-sky-400"
+              >
                 <div className="flex items-start">
                   <div className="bg-gradient-to-br from-sky-100 to-blue-100 p-3 rounded-lg mr-4">
-                    <div className="text-sky-600">
-                      {feature.icon}
-                    </div>
+                    <div className="text-sky-600">{feature.icon}</div>
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
@@ -132,36 +159,23 @@ const PaymentMatching: React.FC = () => {
 
       {/* 導入効果 Stats Section */}
       <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
-        <StatsSection 
-          title="導入効果"
-          stats={stats}
-          variant="gradient"
-        />
+        <StatsSection title="導入効果" stats={STATS} variant="gradient" />
       </section>
 
       {/* プロセスフロー */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              導入プロセス
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">導入プロセス</h2>
             <p className="text-xl text-slate-600">スムーズな導入と確実な運用開始</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: "STEP 1", title: "現状分析", description: "業務フローと課題の把握", icon: <Target className="w-6 h-6" /> },
-              { step: "STEP 2", title: "設計", description: "最適なマッチングルール設計", icon: <Database className="w-6 h-6" /> },
-              { step: "STEP 3", title: "実装", description: "NetSuiteへの設定と連携構築", icon: <Settings className="w-6 h-6" /> },
-              { step: "STEP 4", title: "運用開始", description: "トレーニングとサポート", icon: <Zap className="w-6 h-6" /> }
-            ].map((process, index) => (
-              <div key={index} className="relative">
+            {PROCESS.map((process) => (
+              <div key={process.step} className="relative">
                 <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:transform hover:-translate-y-2 border border-slate-200">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center mb-4 mx-auto">
-                    <div className="text-white">
-                      {process.icon}
-                    </div>
+                    <div className="text-white">{process.icon}</div>
                   </div>
                   <div className="text-sm font-bold text-sky-600 mb-2">{process.step}</div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h3>
@@ -176,12 +190,18 @@ const PaymentMatching: React.FC = () => {
       {/* CTA Section */}
       <section className="relative overflow-hidden">
         <CTASection
-          title={<>入金消込業務を<br />今すぐ効率化しませんか？</>}
+          title={
+            <>
+              入金消込業務を
+              <br />
+              今すぐ効率化しませんか？
+            </>
+          }
           description="詳細な情報や無料相談をご希望の方はお気軽にお問い合わせください"
           primaryButtonText="無料相談を予約する"
-          primaryButtonAction={() => navigate('/contact')}
+          primaryButtonAction={goContact}
           secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={() => navigate('/netsuite/solutions')}
+          secondaryButtonAction={goSolutions}
           gradient="from-sky-500 to-blue-600"
         />
       </section>

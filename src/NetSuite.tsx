@@ -1,5 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Check, ArrowRight, Menu, X, Phone, Clock, Users, Settings, Shield, Zap, Database, Package, FileText, Layers, Building2, Truck, Sparkles, Award, ChevronRight, CheckCircle, Trophy, MessageSquare } from 'lucide-react';
+import {
+  ChevronDown,
+  Check,
+  ArrowRight,
+  Menu,
+  X,
+  Phone,
+  Clock,
+  Users,
+  Settings,
+  Shield,
+  Zap,
+  Database,
+  Package,
+  FileText,
+  Layers,
+  Building2,
+  Truck,
+  Sparkles,
+  Award,
+  ChevronRight,
+  CheckCircle,
+  Trophy,
+  MessageSquare,
+} from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import HeroSection from './components/HeroSection';
@@ -32,79 +56,85 @@ const NetSuite = () => {
   const services = [
     {
       icon: <Settings className="w-12 h-12" />,
-      title: "導入支援",
-      description: "要件定義から導入まで、貴社に最適な設計をご提案",
-      features: ["業務分析", "要件定義", "プロジェクト管理"]
+      title: '導入支援',
+      description: '要件定義から導入まで、貴社に最適な設計をご提案',
+      features: ['業務分析', '要件定義', 'プロジェクト管理'],
     },
     {
       icon: <Layers className="w-12 h-12" />,
-      title: "カスタマイズ開発",
-      description: "SuiteScriptやワークフローで業務に合わせた機能拡張",
-      features: ["SuiteScript開発", "ワークフロー構築", "API連携"]
+      title: 'カスタマイズ開発',
+      description: 'SuiteScriptやワークフローで業務に合わせた機能拡張',
+      features: ['SuiteScript開発', 'ワークフロー構築', 'API連携'],
     },
     {
       icon: <Database className="w-12 h-12" />,
-      title: "データ移行支援",
-      description: "既存システムからの安全で確実なデータ移行",
-      features: ["移行計画策定", "マスタ整備", "データクレンジング"]
+      title: 'データ移行支援',
+      description: '既存システムからの安全で確実なデータ移行',
+      features: ['移行計画策定', 'マスタ整備', 'データクレンジング'],
     },
     {
       icon: <Shield className="w-12 h-12" />,
-      title: "運用・保守サポート",
-      description: "導入後の安定運用と継続的な改善をサポート",
-      features: ["ヘルプデスク", "トレーニング", "運用改善提案"]
-    }
+      title: '運用・保守サポート',
+      description: '導入後の安定運用と継続的な改善をサポート',
+      features: ['ヘルプデスク', 'トレーニング', '運用改善提案'],
+    },
   ];
 
   // removed unused heroStats
 
   const stats: StatItem[] = [
-    { value: "20-25%", label: "残業時間削減", description: "月末売上処理業務の均一化により実現" },
-    { value: "0.01%", label: "出荷ミス率", description: "1万個に1個以下の誤配送率を達成" },
-    { value: "40%", label: "在庫回転率向上", description: "リアルタイム在庫管理で最適化" },
-    { value: "3ヶ月", label: "最短導入期間", description: "業界標準の半分以下で稼働開始" }
+    { value: '20-25%', label: '残業時間削減', description: '月末売上処理業務の均一化により実現' },
+    { value: '0.01%', label: '出荷ミス率', description: '1万個に1個以下の誤配送率を達成' },
+    { value: '40%', label: '在庫回転率向上', description: 'リアルタイム在庫管理で最適化' },
+    { value: '3ヶ月', label: '最短導入期間', description: '業界標準の半分以下で稼働開始' },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-xl shadow-lg border-b border-slate-200' : 'bg-white/90 backdrop-blur-md'}`}>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-xl shadow-lg border-b border-slate-200' : 'bg-white/90 backdrop-blur-md'}`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-4">
               {/* Logo Image */}
-              <img 
-                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} 
+              <img
+                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
                 alt="EvangSol"
                 className="h-12"
               />
               <div className="hidden md:flex items-center space-x-2 px-3 py-1.5 bg-gradient-to-r from-sky-50 to-blue-50 rounded-full border border-sky-200">
                 <Trophy className="w-4 h-4 text-sky-600" />
-                <span className="text-xs font-bold text-sky-700">Oracle NetSuite認定パートナー</span>
+                <span className="text-xs font-bold text-sky-700">
+                  Oracle NetSuite認定パートナー
+                </span>
               </div>
             </div>
-            
+
             <div className="hidden md:flex items-center space-x-6">
-              <button 
+              <button
                 onClick={() => navigate('/services')}
                 className="text-slate-700 hover:text-sky-600 transition-colors font-medium relative group cursor-pointer"
               >
                 サービス
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
               </button>
-              
+
               {/* Solutions Dropdown */}
-              <div 
+              <div
                 className="relative py-6"
                 onMouseEnter={() => setIsSolutionsOpen(true)}
                 onMouseLeave={() => setIsSolutionsOpen(false)}
               >
                 <button className="text-slate-700 hover:text-sky-600 transition-colors font-medium relative group flex items-center py-2 px-2 -m-2">
                   ソリューション
-                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${isSolutionsOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-4 h-4 ml-1 transition-transform ${isSolutionsOpen ? 'rotate-180' : ''}`}
+                  />
                   <span className="absolute bottom-2 left-2 right-2 h-0.5 bg-sky-600 transition-all scale-x-0 group-hover:scale-x-100"></span>
                 </button>
-                
+
                 {/* Dropdown Menu */}
                 {isSolutionsOpen && (
                   <div className="absolute top-full left-0 -mt-2 pt-2 w-72">
@@ -118,7 +148,9 @@ const NetSuite = () => {
                           >
                             <div className="w-5 h-5 text-sky-600 mr-3 mt-0.5">{s.icon}</div>
                             <div className="text-left">
-                              <div className="font-medium text-slate-800 group-hover:text-sky-600">{s.title}</div>
+                              <div className="font-medium text-slate-800 group-hover:text-sky-600">
+                                {s.title}
+                              </div>
                               <div className="text-xs text-slate-600 mt-0.5">{s.description}</div>
                             </div>
                           </button>
@@ -129,20 +161,21 @@ const NetSuite = () => {
                 )}
               </div>
 
-              <button 
+              <button
                 onClick={() => navigate('/case-studies')}
-                className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group">
+                className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group"
+              >
                 導入事例
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
               </button>
-              <button 
+              <button
                 onClick={() => navigate('/about')}
                 className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group"
               >
                 会社概要
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
               </button>
-              <button 
+              <button
                 onClick={() => navigate('/contact')}
                 className="px-6 py-2.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-lg hover:shadow-sky-500/30 flex items-center group ml-4"
               >
@@ -152,10 +185,7 @@ const NetSuite = () => {
               </button>
             </div>
 
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-slate-700"
-            >
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-slate-700">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -166,7 +196,7 @@ const NetSuite = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 md:hidden bg-white/95 backdrop-blur-lg">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <button 
+            <button
               onClick={() => {
                 navigate('/services');
                 setIsMenuOpen(false);
@@ -175,27 +205,28 @@ const NetSuite = () => {
             >
               サービス
             </button>
-            <button 
-              onClick={() => navigate('/netsuite/solutions')} 
+            <button
+              onClick={() => navigate('/netsuite/solutions')}
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
               ソリューション
             </button>
-            <button 
+            <button
               onClick={() => {
                 navigate('/case-studies');
                 setIsMenuOpen(false);
               }}
-              className="text-2xl text-slate-700 hover:text-sky-500">
+              className="text-2xl text-slate-700 hover:text-sky-500"
+            >
               導入事例
             </button>
-            <button 
+            <button
               onClick={() => navigate('/about')}
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
               会社概要
             </button>
-            <button 
+            <button
               onClick={() => navigate('/contact')}
               className="px-8 py-3 bg-gradient-to-r from-sky-400 to-sky-500 text-white rounded-full font-semibold"
             >
@@ -209,9 +240,9 @@ const NetSuite = () => {
       <section className="relative pt-16 pb-20 px-4 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <HeroSection 
+          <HeroSection
             title={
               <>
                 <span className="text-slate-900 text-5xl md:text-6xl leading-tight">
@@ -234,7 +265,8 @@ const NetSuite = () => {
                 </span>
                 <br />
                 <span className="text-lg text-slate-700">
-                  業界標準の<span className="font-black text-sky-600 text-xl">半分以下</span>の期間で確実に導入
+                  業界標準の<span className="font-black text-sky-600 text-xl">半分以下</span>
+                  の期間で確実に導入
                 </span>
               </>
             }
@@ -245,19 +277,27 @@ const NetSuite = () => {
                   <div className="bg-gradient-to-r from-white/95 to-white/90 backdrop-blur-lg rounded-2xl p-6 max-w-3xl w-full border border-slate-200 shadow-xl mt-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                       <div className="group">
-                        <div className="text-3xl font-black text-sky-600 group-hover:scale-110 transition-transform">40,000+</div>
+                        <div className="text-3xl font-black text-sky-600 group-hover:scale-110 transition-transform">
+                          40,000+
+                        </div>
                         <div className="text-xs text-slate-600 font-medium">導入企業数</div>
                       </div>
                       <div className="group">
-                        <div className="text-3xl font-black text-blue-600 group-hover:scale-110 transition-transform">219</div>
+                        <div className="text-3xl font-black text-blue-600 group-hover:scale-110 transition-transform">
+                          219
+                        </div>
                         <div className="text-xs text-slate-600 font-medium">対応国・地域</div>
                       </div>
                       <div className="group">
-                        <div className="text-3xl font-black text-cyan-600 group-hover:scale-110 transition-transform">99.5%</div>
+                        <div className="text-3xl font-black text-cyan-600 group-hover:scale-110 transition-transform">
+                          99.5%
+                        </div>
                         <div className="text-xs text-slate-600 font-medium">稼働率</div>
                       </div>
                       <div className="group">
-                        <div className="text-3xl font-black text-indigo-600 group-hover:scale-110 transition-transform">24/7</div>
+                        <div className="text-3xl font-black text-indigo-600 group-hover:scale-110 transition-transform">
+                          24/7
+                        </div>
                         <div className="text-xs text-slate-600 font-medium">サポート体制</div>
                       </div>
                     </div>
@@ -267,7 +307,9 @@ const NetSuite = () => {
                   <div className="flex flex-wrap justify-center gap-3 mt-2">
                     <div className="flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-sky-200 shadow-md">
                       <Award className="w-5 h-5 mr-2 text-sky-600" />
-                      <span className="text-sm font-bold text-slate-700">Oracle公式認定パートナー</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        Oracle公式認定パートナー
+                      </span>
                     </div>
                     <div className="flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-green-200 shadow-md">
                       <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
@@ -282,12 +324,14 @@ const NetSuite = () => {
                   {/* Performance Badge */}
                   <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-100 to-blue-100 rounded-full border border-sky-300 shadow-lg mt-2">
                     <Zap className="w-5 h-5 mr-2 text-sky-600" />
-                    <span className="text-sm font-bold text-sky-800">業界最速導入・最高のコストパフォーマンス</span>
+                    <span className="text-sm font-bold text-sky-800">
+                      業界最速導入・最高のコストパフォーマンス
+                    </span>
                   </div>
 
                   {/* CTAボタン */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
-                    <button 
+                    <button
                       onClick={() => navigate('/contact')}
                       className="group px-10 py-5 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center relative overflow-hidden"
                     >
@@ -297,8 +341,8 @@ const NetSuite = () => {
                         <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
                       </span>
                     </button>
-                    <button 
-                      onClick={() => navigate('/features')} 
+                    <button
+                      onClick={() => navigate('/features')}
                       className="group px-8 py-5 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl relative overflow-hidden"
                     >
                       <span className="absolute inset-0 bg-gradient-to-r from-sky-100 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -311,7 +355,10 @@ const NetSuite = () => {
 
                   {/* Quick Contact Info */}
                   <div className="flex flex-wrap justify-center gap-6 text-sm mt-8">
-                    <a href="tel:0120-123-456" className="flex items-center text-slate-600 hover:text-sky-600 transition-colors">
+                    <a
+                      href="tel:0120-123-456"
+                      className="flex items-center text-slate-600 hover:text-sky-600 transition-colors"
+                    >
                       <Phone className="w-4 h-4 mr-2" />
                       <span className="font-bold">0120-123-456</span>
                     </a>
@@ -336,9 +383,14 @@ const NetSuite = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              なぜEvangSolが<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">選ばれるのか</span>
+              なぜEvangSolが
+              <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+                選ばれるのか
+              </span>
             </h2>
-            <p className="text-xl text-slate-600 font-medium">大手SIerとは違う、中堅・中小企業に最適な導入支援</p>
+            <p className="text-xl text-slate-600 font-medium">
+              大手SIerとは違う、中堅・中小企業に最適な導入支援
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-20">
@@ -431,7 +483,9 @@ const NetSuite = () => {
                     </div>
                     <div className="flex items-center">
                       <Award className="w-4 h-4 mr-2 text-blue-600" />
-                      <span className="text-xs font-bold text-blue-700">Oracle「Multi-Book Authorized」取得者在籍</span>
+                      <span className="text-xs font-bold text-blue-700">
+                        Oracle「Multi-Book Authorized」取得者在籍
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -454,64 +508,66 @@ const NetSuite = () => {
           <div className="relative">
             {/* Timeline line */}
             <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-sky-200 via-sky-400 to-blue-500 transform -translate-y-1/2"></div>
-            
+
             <div className="grid md:grid-cols-5 gap-8 relative">
               {[
                 {
-                  step: "STEP 1",
-                  title: "ヒアリング",
-                  duration: "1週間",
-                  description: "現状の課題と要件を詳細に把握",
+                  step: 'STEP 1',
+                  title: 'ヒアリング',
+                  duration: '1週間',
+                  description: '現状の課題と要件を詳細に把握',
                   icon: <Users className="w-8 h-8" />,
-                  color: "from-sky-400 to-cyan-500"
+                  color: 'from-sky-400 to-cyan-500',
                 },
                 {
-                  step: "STEP 2", 
-                  title: "要件定義",
-                  duration: "2-3週間",
-                  description: "業務フローの分析と最適な設計",
+                  step: 'STEP 2',
+                  title: '要件定義',
+                  duration: '2-3週間',
+                  description: '業務フローの分析と最適な設計',
                   icon: <FileText className="w-8 h-8" />,
-                  color: "from-cyan-500 to-sky-500"
+                  color: 'from-cyan-500 to-sky-500',
                 },
                 {
-                  step: "STEP 3",
-                  title: "開発・設定",
-                  duration: "4-6週間",
-                  description: "カスタマイズと各種設定の実装",
+                  step: 'STEP 3',
+                  title: '開発・設定',
+                  duration: '4-6週間',
+                  description: 'カスタマイズと各種設定の実装',
                   icon: <Settings className="w-8 h-8" />,
-                  color: "from-sky-500 to-blue-500"
+                  color: 'from-sky-500 to-blue-500',
                 },
                 {
-                  step: "STEP 4",
-                  title: "データ移行",
-                  duration: "2-3週間",
-                  description: "既存データの安全な移行",
+                  step: 'STEP 4',
+                  title: 'データ移行',
+                  duration: '2-3週間',
+                  description: '既存データの安全な移行',
                   icon: <Database className="w-8 h-8" />,
-                  color: "from-blue-500 to-blue-600"
+                  color: 'from-blue-500 to-blue-600',
                 },
                 {
-                  step: "STEP 5",
-                  title: "運用開始",
-                  duration: "継続サポート",
-                  description: "トレーニングと本番稼働",
+                  step: 'STEP 5',
+                  title: '運用開始',
+                  duration: '継続サポート',
+                  description: 'トレーニングと本番稼働',
                   icon: <Zap className="w-8 h-8" />,
-                  color: "from-blue-600 to-indigo-600"
-                }
+                  color: 'from-blue-600 to-indigo-600',
+                },
               ].map((process, index) => (
                 <div key={index} className="relative">
                   {/* Step card */}
                   <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:transform hover:-translate-y-2 relative z-10">
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${process.color} flex items-center justify-center mb-4 mx-auto`}>
-                      <div className="text-white">
-                        {process.icon}
-                      </div>
+                    <div
+                      className={`w-16 h-16 rounded-full bg-gradient-to-br ${process.color} flex items-center justify-center mb-4 mx-auto`}
+                    >
+                      <div className="text-white">{process.icon}</div>
                     </div>
                     <div className="text-sm font-bold text-sky-600 mb-2">{process.step}</div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h3>
-                    <div className="text-sm text-sky-600 font-semibold mb-3">{process.duration}</div>
+                    <div className="text-sm text-sky-600 font-semibold mb-3">
+                      {process.duration}
+                    </div>
                     <p className="text-sm text-slate-600">{process.description}</p>
                   </div>
-                  
+
                   {/* Connector dot for desktop */}
                   <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-sky-500 rounded-full z-20"></div>
                 </div>
@@ -521,7 +577,9 @@ const NetSuite = () => {
 
           <div className="mt-16 text-center">
             <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-8 max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">なぜ3ヶ月で導入できるのか？</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                なぜ3ヶ月で導入できるのか？
+              </h3>
               <div className="grid md:grid-cols-3 gap-4 text-left">
                 <div className="flex items-start">
                   <Check className="w-5 h-5 mr-2 text-green-500 mt-1 flex-shrink-0" />
@@ -554,9 +612,7 @@ const NetSuite = () => {
       <section id="services" className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              提供サービス
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">提供サービス</h2>
             <p className="text-xl text-slate-600">導入から運用まで、ワンストップでサポート</p>
           </div>
 
@@ -590,13 +646,15 @@ const NetSuite = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
               業界特化ソリューション
             </h2>
-            <p className="text-xl text-slate-600">貴社の業界・業務に最適化された専門ソリューション</p>
+            <p className="text-xl text-slate-600">
+              貴社の業界・業務に最適化された専門ソリューション
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SOLUTIONS.map((solution) => (
-              <div 
-                key={solution.title} 
+              <div
+                key={solution.title}
                 className="group cursor-pointer"
                 onClick={() => navigate(solution.path)}
               >
@@ -616,7 +674,7 @@ const NetSuite = () => {
 
       {/* Floating CTA Button for Mobile */}
       <div className="fixed bottom-6 right-6 z-40 md:hidden">
-        <button 
+        <button
           onClick={() => navigate('/contact')}
           className="bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-3 rounded-full shadow-2xl animate-bounce flex items-center font-bold"
         >
@@ -627,19 +685,16 @@ const NetSuite = () => {
 
       {/* Trust Building Section with Numbers */}
       <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
-        <StatsSection 
-          title="数字で見る導入効果"
-          stats={stats}
-          variant="gradient"
-        />
+        <StatsSection title="数字で見る導入効果" stats={stats} variant="gradient" />
         <div className="pb-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
               <p className="text-white text-lg mb-6">
-                中堅・中小企業のERP導入において、高額な初期投資を抑えながら<br />
+                中堅・中小企業のERP導入において、高額な初期投資を抑えながら
+                <br />
                 大企業並みのシステム環境を構築可能です
               </p>
-              <button 
+              <button
                 onClick={() => navigate('/contact')}
                 className="px-8 py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-xl"
               >
@@ -655,41 +710,46 @@ const NetSuite = () => {
       <section id="cases" className="py-20 px-4 bg-gradient-to-b from-white to-sky-50/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              業界別導入事例
-            </h2>
-            <p className="text-xl text-slate-600">製造業、小売業、サービス業など幅広い業界での成功実績</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">業界別導入事例</h2>
+            <p className="text-xl text-slate-600">
+              製造業、小売業、サービス業など幅広い業界での成功実績
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                industry: "製造業", 
-                company: "精密機器メーカーA社", 
-                challenge: "複数拠点の在庫管理が煩雑",
-                result: "在庫回転率40%向上・リードタイム50%短縮", 
-                icon: <Building2 className="w-8 h-8" />, 
-                color: "from-blue-400 to-blue-500" 
+              {
+                industry: '製造業',
+                company: '精密機器メーカーA社',
+                challenge: '複数拠点の在庫管理が煩雑',
+                result: '在庫回転率40%向上・リードタイム50%短縮',
+                icon: <Building2 className="w-8 h-8" />,
+                color: 'from-blue-400 to-blue-500',
               },
-              { 
-                industry: "小売・商社", 
-                company: "アパレル商社B社", 
-                challenge: "ECと実店舗の在庫連携が困難",
-                result: "残業時間50%削減・売上10%向上", 
-                icon: <Truck className="w-8 h-8" />, 
-                color: "from-sky-400 to-sky-500" 
+              {
+                industry: '小売・商社',
+                company: 'アパレル商社B社',
+                challenge: 'ECと実店舗の在庫連携が困難',
+                result: '残業時間50%削減・売上10%向上',
+                icon: <Truck className="w-8 h-8" />,
+                color: 'from-sky-400 to-sky-500',
               },
-              { 
-                industry: "サービス業", 
-                company: "IT企業C社", 
-                challenge: "プロジェクト収支の可視化が不十分",
-                result: "収益性30%改善・請求漏れゼロ化", 
-                icon: <Package className="w-8 h-8" />, 
-                color: "from-cyan-400 to-cyan-500" 
-              }
+              {
+                industry: 'サービス業',
+                company: 'IT企業C社',
+                challenge: 'プロジェクト収支の可視化が不十分',
+                result: '収益性30%改善・請求漏れゼロ化',
+                icon: <Package className="w-8 h-8" />,
+                color: 'from-cyan-400 to-cyan-500',
+              },
             ].map((study, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-sky-400 transition-all hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${study.color} text-white mb-4`}>
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-sky-400 transition-all hover:transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <div
+                  className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${study.color} text-white mb-4`}
+                >
                   {study.icon}
                 </div>
                 <div className="text-sm text-sky-600 font-semibold mb-2">{study.industry}</div>
@@ -700,7 +760,7 @@ const NetSuite = () => {
                   <p className="text-sm text-slate-500 mb-2">【成果】</p>
                   <p className="text-slate-800 font-semibold">{study.result}</p>
                 </div>
-                <button 
+                <button
                   onClick={() => navigate('/contact')}
                   className="text-sky-500 hover:text-sky-600 transition-colors flex items-center font-semibold"
                 >
@@ -717,32 +777,33 @@ const NetSuite = () => {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              よくあるご質問
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">よくあるご質問</h2>
             <p className="text-xl text-slate-600">NetSuite導入に関する疑問にお答えします</p>
           </div>
 
           <div className="space-y-4">
             {[
               {
-                q: "導入費用はどのくらいかかりますか？",
-                a: "企業規模や導入範囲により異なりますが、クラウド型のため初期投資を大幅に抑えられます。詳細は無料相談でご案内いたします。"
+                q: '導入費用はどのくらいかかりますか？',
+                a: '企業規模や導入範囲により異なりますが、クラウド型のため初期投資を大幅に抑えられます。詳細は無料相談でご案内いたします。',
               },
               {
-                q: "既存システムからのデータ移行は可能ですか？",
-                a: "はい、可能です。マスタ整備からデータクレンジングまで、安全で確実なデータ移行をサポートいたします。"
+                q: '既存システムからのデータ移行は可能ですか？',
+                a: 'はい、可能です。マスタ整備からデータクレンジングまで、安全で確実なデータ移行をサポートいたします。',
               },
               {
-                q: "導入後のサポート体制は？",
-                a: "24/7のヘルプデスク、定期的なトレーニング、運用改善提案など、導入後も継続的にサポートいたします。"
+                q: '導入後のサポート体制は？',
+                a: '24/7のヘルプデスク、定期的なトレーニング、運用改善提案など、導入後も継続的にサポートいたします。',
               },
               {
-                q: "カスタマイズはどの程度可能ですか？",
-                a: "SuiteScriptやワークフローを活用し、貴社独自の業務プロセスに合わせた柔軟なカスタマイズが可能です。"
-              }
+                q: 'カスタマイズはどの程度可能ですか？',
+                a: 'SuiteScriptやワークフローを活用し、貴社独自の業務プロセスに合わせた柔軟なカスタマイズが可能です。',
+              },
             ].map((item, index) => (
-              <div key={index} className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all">
+              <div
+                key={index}
+                className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all"
+              >
                 <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-start">
                   <span className="text-sky-500 mr-3">Q.</span>
                   {item.q}
@@ -756,7 +817,7 @@ const NetSuite = () => {
           </div>
 
           <div className="text-center mt-12">
-            <button 
+            <button
               onClick={() => navigate('/contact')}
               className="px-8 py-3 bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-xl"
             >
@@ -777,8 +838,14 @@ const NetSuite = () => {
               <span className="text-sm text-white font-semibold">平均回答時間：1営業日以内</span>
             </div>
           </div>
-          <CTASection 
-            title={<>今すぐ無料相談で<br />貴社に最適な導入プランをご提案</>}
+          <CTASection
+            title={
+              <>
+                今すぐ無料相談で
+                <br />
+                貴社に最適な導入プランをご提案
+              </>
+            }
             description="20年以上の経験を持つ専門家が、貴社の課題を解決します"
             primaryButtonText="無料相談を予約する"
             primaryButtonAction={() => navigate('/contact')}
