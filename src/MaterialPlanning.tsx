@@ -1,7 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Database, TrendingUp, Eye, AlertTriangle, Calculator, Truck, Target, Settings, Zap } from 'lucide-react';
+import {
+  BarChart3,
+  Database,
+  TrendingUp,
+  CheckCircle,
+  Eye,
+  AlertTriangle,
+  Calculator,
+  Truck,
+  ArrowRight,
+  Target,
+  Settings,
+  Zap
+} from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
@@ -58,20 +72,118 @@ const MaterialPlanning: React.FC = () => {
     { value: "2倍", label: "計画精度向上", description: "データドリブンな計画" }
   ];
 
-  // removed unused dashboardMetrics, benefits, processFlow, caseStudies
+  const dashboardMetrics = [
+    { metric: "在庫回転率", description: "資材別の回転率をリアルタイム表示" },
+    { metric: "リードタイム分析", description: "サプライヤー別の納期実績を可視化" },
+    { metric: "需要予測", description: "AIによる高精度な需要予測" },
+    { metric: "コスト分析", description: "調達コストの推移と予実管理" },
+    { metric: "品質指標", description: "サプライヤー別の品質実績" },
+    { metric: "リスク評価", description: "供給リスクの早期発見" }
+  ];
+
+  const benefits = [
+    { value: "30%", label: "調達コスト削減", description: "最適発注による削減" },
+    { value: "50%", label: "在庫削減", description: "適正在庫の維持" },
+    { value: "90%", label: "欠品防止", description: "事前アラートによる防止" },
+    { value: "2倍", label: "計画精度向上", description: "データドリブンな計画" }
+  ];
+
+  const processFlow = [
+    { step: "需要予測", description: "販売計画と連動した需要予測", icon: <BarChart3 className="w-6 h-6" /> },
+    { step: "所要量計算", description: "BOMベースの所要量自動計算", icon: <Calculator className="w-6 h-6" /> },
+    { step: "在庫確認", description: "現在庫と発注残の確認", icon: <Database className="w-6 h-6" /> },
+    { step: "発注提案", description: "最適な発注量とタイミング提案", icon: <TrendingUp className="w-6 h-6" /> },
+    { step: "発注実行", description: "承認後の自動発注処理", icon: <Truck className="w-6 h-6" /> }
+  ];
+
+  const caseStudies = [
+    {
+      industry: "自動車部品製造業 G社",
+      challenge: "複雑なサプライチェーンの管理",
+      result: "在庫回転率40%向上、調達コスト25%削減"
+    },
+    {
+      industry: "電子機器製造業 H社",
+      challenge: "部品の長納期による生産遅延",
+      result: "納期遵守率95%達成、緊急調達90%削減"
+    },
+    {
+      industry: "食品製造業 I社",
+      challenge: "原材料の価格変動と在庫管理",
+      result: "廃棄ロス70%削減、原価率5%改善"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <HeroSection 
+            badge={{
+              icon: <BarChart3 className="w-4 h-4 mr-2" />,
+              text: "戦略的資材管理プラットフォーム",
+              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
+              borderColor: "border border-sky-200",
+              textColor: "text-sky-700 font-bold"
+            }}
+            title={
+              <>
+                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
+                  資材計画の
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
+                  完全見える化
+                </span>
+              </>
+            }
+            description={
+              <>
+                <span className="text-lg text-slate-700">
+                  AIパワーで資材計画を最適化し、コストと在庫を同時に減らす
+                </span>
+                <br />
+                <span className="text-lg font-bold text-slate-900">
+                  調達コスト<span className="font-black text-sky-600 text-xl">30%削減</span>、在庫<span className="font-black text-sky-600 text-xl">50%削減</span>を実現
+                </span>
+              </>
+            }
+            actions={
+              <>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center"
+                  >
+                    今すぐ導入相談
+                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                  </button>
+                  <button 
+                    onClick={() => navigate('/netsuite')} 
+                    className="group px-8 py-4 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold transition-all shadow-lg hover:shadow-xl"
+                  >
+                    <span className="flex items-center justify-center">
+                      NetSuiteトップへ戻る
+                    </span>
+                  </button>
+                </div>
+              </>
+            }
+          />
+        </div>
 
       {/* 3つの主要機能 */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              資材計画を科学的に最適化する革新的機能群
+              3つの<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">主要機能</span>
             </h2>
+            <p className="text-xl text-slate-600 font-medium">資材計画を科学的に最適化する革新的機能群</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
