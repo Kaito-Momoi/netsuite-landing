@@ -8,9 +8,12 @@ import {
   Shield,
   Zap,
   BarChart3,
+  ArrowRight,
+  RefreshCw,
   Settings
 } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
@@ -71,14 +74,75 @@ const PaymentMatching: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <HeroSection 
+            badge={{
+              icon: <RefreshCw className="w-4 h-4 mr-2" />,
+              text: "入金消込自動化",
+              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
+              borderColor: "border border-sky-200",
+              textColor: "text-sky-700 font-bold"
+            }}
+            title={
+              <>
+                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
+                  手作業の入金消込から
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
+                  完全自動化へ
+                </span>
+              </>
+            }
+            description={
+              <>
+                <span className="text-lg text-slate-700">
+                  銀行データと売掛金の自動突合により
+                </span>
+                <br />
+                <span className="text-lg font-bold text-slate-900">
+                  経理業務の<span className="font-black text-sky-600 text-xl">80%削減</span>を実現
+                </span>
+              </>
+            }
+            actions={
+              <>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center"
+                  >
+                    今すぐ導入相談
+                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                  </button>
+                  <button 
+                    onClick={() => navigate('/netsuite')} 
+                    className="group px-8 py-4 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold transition-all shadow-lg hover:shadow-xl"
+                  >
+                    <span className="flex items-center justify-center">
+                      NetSuiteトップへ戻る
+                    </span>
+                  </button>
+                </div>
+              </>
+            }
+          />
+        </div>
+      </section>
 
       {/* 3つの主要機能 */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              手作業を完全自動化する革新的な機能群
+              3つの<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">主要機能</span>
             </h2>
+            <p className="text-xl text-slate-600 font-medium">手作業を完全自動化する革新的な機能群</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -181,7 +245,7 @@ const PaymentMatching: React.FC = () => {
           primaryButtonText="無料相談を予約する"
           primaryButtonAction={() => navigate('/contact')}
           secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={() => navigate('/netsuite/solutions')}
+          secondaryButtonAction={() => navigate('/netsuite#solutions')}
           gradient="from-sky-500 to-blue-600"
         />
       </section>

@@ -1,7 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AlertTriangle, Calendar, BarChart3, Filter, Database, Target, Settings, Zap } from 'lucide-react';
+import {
+  Package,
+  CheckCircle,
+  Phone,
+  AlertTriangle,
+  Calendar,
+  BarChart3,
+  Filter,
+  ArrowRight,
+  Database,
+  Target,
+  Settings,
+  Zap
+} from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
+import { FeatureGrid } from './components/FeatureCard';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
@@ -65,20 +80,103 @@ const InventoryAging: React.FC = () => {
     { value: "月次", label: "棚卸効率化", description: "データ活用による高速化" }
   ];
 
-  // removed unused analysisMetrics and caseStudies arrays
+  const analysisMetrics = [
+    { metric: "在庫金額推移", description: "経過日数別の在庫金額を時系列で表示" },
+    { metric: "カテゴリ分析", description: "商品カテゴリ別の滞留状況を可視化" },
+    { metric: "ABC分析連携", description: "売上貢献度と滞留期間のクロス分析" },
+    { metric: "季節性分析", description: "シーズン商品の適正在庫期間管理" },
+    { metric: "廃棄予測", description: "廃棄リスクの高い在庫を事前予測" },
+    { metric: "機会損失分析", description: "在庫切れによる販売機会損失を算出" }
+  ];
+
+  const caseStudies = [
+    {
+      industry: "食品卸売業 M社",
+      challenge: "賞味期限管理と廃棄ロスの増大",
+      result: "廃棄ロス80%削減、在庫回転率50%向上"
+    },
+    {
+      industry: "アパレル小売業 N社",
+      challenge: "シーズン商品の在庫管理",
+      result: "売り切り率90%達成、値引きロス60%削減"
+    },
+    {
+      industry: "電子部品商社 O社",
+      challenge: "陳腐化リスクの高い在庫管理",
+      result: "デッドストック70%削減、キャッシュフロー改善"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <HeroSection 
+            badge={{
+              icon: <Package className="w-4 h-4 mr-2" />,
+              text: "在庫最適化ソリューション",
+              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
+              borderColor: "border border-sky-200",
+              textColor: "text-sky-700 font-bold"
+            }}
+            title={
+              <>
+                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
+                  在庫エージングの
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
+                  完全見える化
+                </span>
+              </>
+            }
+            description={
+              <>
+                <span className="text-lg text-slate-700">
+                  在庫の滞留期間を可視化し、デッドストックのリスクを早期発見
+                </span>
+                <br />
+                <span className="text-lg font-bold text-slate-900">
+                  廃棄ロス<span className="font-black text-sky-600 text-xl">70%削減</span>、在庫回転率<span className="font-black text-sky-600 text-xl">2倍向上</span>を実現
+                </span>
+              </>
+            }
+            actions={
+              <>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center"
+                  >
+                    今すぐ導入相談
+                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                  </button>
+                  <button 
+                    onClick={() => navigate('/netsuite')} 
+                    className="group px-8 py-4 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold transition-all shadow-lg hover:shadow-xl"
+                  >
+                    <span className="flex items-center justify-center">
+                      NetSuiteトップへ戻る
+                    </span>
+                  </button>
+                </div>
+              </>
+            }
+          />
+        </div>
 
       {/* 3つの主要機能 */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              在庫最適化を実現する革新的な分析機能群
+              3つの<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">主要機能</span>
             </h2>
+            <p className="text-xl text-slate-600 font-medium">在庫最適化を実現する革新的な分析機能群</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -207,7 +305,7 @@ const InventoryAging: React.FC = () => {
           primaryButtonText="無料相談を予約する"
           primaryButtonAction={() => navigate('/contact')}
           secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={() => navigate('/netsuite/solutions')}
+          secondaryButtonAction={() => navigate('/netsuite#solutions')}
           gradient="from-sky-500 to-blue-600"
         />
       </section>

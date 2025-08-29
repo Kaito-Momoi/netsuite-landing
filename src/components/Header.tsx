@@ -43,17 +43,12 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
             {!showBackButton ? (
               <div className="hidden md:flex items-center space-x-8">
                 <button 
-                  onClick={() => navigate('/what-is-netsuite')}
+                  onClick={() => navigate('/services')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
                 >
-                  NetSuiteとは
+                  サービス
                 </button>
-                <button 
-                  onClick={() => navigate('/evangsol-strengths')}
-                  className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
-                >
-                  EvangSolの強み
-                </button>
+                <a href="#solutions" className="text-slate-700 hover:text-sky-500 transition-colors font-medium">ソリューション</a>
                 <button 
                   onClick={() => navigate('/case-studies')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
@@ -100,21 +95,12 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
           <div className="flex flex-col items-center justify-center h-full space-y-8">
             <button 
               onClick={() => {
-                navigate('/what-is-netsuite');
+                navigate('/services');
                 setIsMenuOpen(false);
               }}
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
-              NetSuiteとは
-            </button>
-            <button 
-              onClick={() => {
-                navigate('/evangsol-strengths');
-                setIsMenuOpen(false);
-              }}
-              className="text-2xl text-slate-700 hover:text-sky-500 transition-colors font-medium"
-            >
-              EvangSolの強み
+              サービス
             </button>
             <a href="#solutions" className="text-2xl text-slate-700 hover:text-sky-500">ソリューション</a>
             <button 

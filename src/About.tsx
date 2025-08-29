@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, Phone, Mail, Users, Calendar, Building, Globe, Briefcase, CreditCard, Award, Shield, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Users, Calendar, Building, Globe, Briefcase, CreditCard, Award, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 
@@ -38,17 +39,43 @@ const About: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
-      {/* Page Header */}
-      <section className="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              会社概要
-            </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              2005年設立以来、システムコンサルティングからNetSuite導入までワンストップでサポート
-            </p>
-          </div>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <HeroSection
+            badge={{
+              icon: <Building className="w-4 h-4 mr-2" />,
+              text: "Oracle NetSuite認定パートナー",
+              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
+              borderColor: "border border-sky-200",
+              textColor: "text-sky-700 font-bold"
+            }}
+            title={
+              <>
+                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
+                  20年の実績と革新
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
+                  EvangSol
+                </span>
+              </>
+            }
+            description={
+              <>
+                <span className="text-lg text-slate-700">
+                  2005年設立以来、システムコンサルティングから
+                </span>
+                <br />
+                <span className="text-lg font-bold text-slate-900">
+                  NetSuite導入まで<span className="font-black text-sky-600 text-xl">ワンストップ</span>でサポート
+                </span>
+              </>
+            }
+          />
         </div>
       </section>
 
