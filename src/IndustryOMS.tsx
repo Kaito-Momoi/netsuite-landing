@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, Shield, Database, CheckCircle, Building2, Truck, ShoppingBag, Factory, Settings, BarChart3, Target, Zap } from 'lucide-react';
+import { Package, Clock, Shield, Database, CheckCircle, Phone, Building2, Truck, ShoppingBag, Factory, Settings, BarChart3, ArrowLeft, Target, Zap } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
+import HeroSection from './components/HeroSection';
+import { FeatureGrid } from './components/FeatureCard';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import { Feature } from './types';
@@ -120,14 +122,26 @@ const IndustryOMS = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
+      <HeroSection
+        badge={{
+          icon: <Package className="w-4 h-4 mr-2" />,
+          text: "業界別最適化システム",
+          bgColor: "bg-sky-100",
+          borderColor: "border border-sky-300",
+          textColor: "text-sky-700"
+        }}
+        title="業界特化OMS（受注管理システム）"
+        description="業界特有の商習慣や業務フローに完全対応した受注管理システムを構築します。製造業、卸売業、小売業など、各業界の要件に最適化されたワークフローを実装し、受注から出荷、請求までの一連のプロセスを自動化します。"
+      />
 
       {/* 3つの主要機能 */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              業界特化で実現する受注業務の完全自動化
+              3つの<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">主要機能</span>
             </h2>
+            <p className="text-xl text-slate-600 font-medium">業界特化で実現する受注業務の完全自動化</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -271,7 +285,7 @@ const IndustryOMS = () => {
           primaryButtonText="無料相談を予約する"
           primaryButtonAction={() => navigate('/contact')}
           secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={() => navigate('/netsuite/solutions')}
+          secondaryButtonAction={() => navigate('/netsuite#solutions')}
           gradient="from-sky-500 to-blue-600"
         />
       </section>
