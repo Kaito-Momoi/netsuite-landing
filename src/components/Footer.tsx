@@ -6,55 +6,55 @@ const Footer: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <footer className="bg-slate-50 border-t border-slate-200 py-12 px-4">
+    <footer className="bg-white border-t-2 border-slate-200 py-16 px-6" role="contentinfo">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <img 
               src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`} 
               alt="EvangSol"
-              className="h-10 mb-4"
+              className="h-12 mb-4"
             />
-            <p className="text-slate-600 text-sm">
+            <p className="text-slate-700 text-base font-medium">
               Oracle NetSuite認定パートナー
             </p>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-slate-900">サービス</h3>
-            <ul className="space-y-2 text-slate-600 text-sm">
+            <h3 className="font-bold text-lg mb-4 text-slate-900">コンテンツ</h3>
+            <ul className="space-y-3">
               <li>
                 <button 
-                  onClick={() => navigate('/#services')}
-                  className="hover:text-sky-500 transition-colors text-left"
+                  onClick={() => navigate('/what-is-netsuite')}
+                  className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                 >
-                  導入支援
+                  NetSuiteとは
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => navigate('/#services')}
-                  className="hover:text-sky-500 transition-colors text-left"
+                  onClick={() => navigate('/evangsol-strengths')}
+                  className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                 >
-                  カスタマイズ開発
+                  EvangSolの強み
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => navigate('/#services')}
-                  className="hover:text-sky-500 transition-colors text-left"
+                  onClick={() => navigate('/case-studies')}
+                  className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                 >
-                  運用サポート
+                  導入事例
                 </button>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-slate-900">会社情報</h3>
-            <ul className="space-y-2 text-slate-600 text-sm">
+            <h3 className="font-bold text-lg mb-4 text-slate-900">会社情報</h3>
+            <ul className="space-y-3">
               <li>
                 <button 
                   onClick={() => navigate('/')}
-                  className="hover:text-sky-500 transition-colors text-left"
+                  className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                 >
                   ホーム
                 </button>
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               <li>
                 <button 
                   onClick={() => navigate('/about')}
-                  className="hover:text-sky-500 transition-colors text-left"
+                  className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                 >
                   会社概要
                 </button>
@@ -70,46 +70,47 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-slate-900">お問い合わせ</h3>
-            <div className="space-y-2 text-slate-600 text-sm">
-              <p className="flex items-center">
-                <Phone className="w-4 h-4 mr-2 text-sky-500" />
-                03-6231-1328
+            <h3 className="font-bold text-lg mb-4 text-slate-900">お問い合わせ</h3>
+            <div className="space-y-3">
+              <p className="flex items-center text-base text-slate-700">
+                <Phone className="w-5 h-5 mr-3 text-blue-600" aria-hidden="true" />
+                <span className="font-medium">03-6231-1328</span>
               </p>
-              <p className="flex items-center">
-                <Mail className="w-4 h-4 mr-2 text-sky-500" />
-                info@evangsol.co.jp
+              <p className="flex items-center text-base text-slate-700">
+                <Mail className="w-5 h-5 mr-3 text-blue-600" aria-hidden="true" />
+                <a href="mailto:info@evangsol.co.jp" className="font-medium hover:text-blue-600 hover:underline">info@evangsol.co.jp</a>
               </p>
-              <p className="flex items-center">
-                <Clock className="w-4 h-4 mr-2 text-sky-500" />
-                平日 9:00-18:00
+              <p className="flex items-center text-base text-slate-700">
+                <Clock className="w-5 h-5 mr-3 text-blue-600" aria-hidden="true" />
+                <span className="font-medium">平日 9:00-18:00</span>
               </p>
               <button 
                 onClick={() => navigate('/contact')}
-                className="mt-4 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors w-full"
+                className="mt-6 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-base"
+                aria-label="お問い合わせフォームを開く"
               >
                 お問い合わせフォームへ
               </button>
             </div>
           </div>
         </div>
-        <div className="border-t border-slate-200 pt-8">
-          <div className="flex flex-wrap justify-center gap-4 mb-4 text-sm">
+        <div className="border-t-2 border-slate-200 pt-8 mt-12">
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
             <button 
               onClick={() => navigate('/terms')}
-              className="text-slate-600 hover:text-sky-500 transition-colors"
+              className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
             >
               ご利用条件
             </button>
-            <span className="text-slate-400">|</span>
+            <span className="text-slate-400" aria-hidden="true">|</span>
             <button 
               onClick={() => navigate('/security-privacy')}
-              className="text-slate-600 hover:text-sky-500 transition-colors whitespace-nowrap"
+              className="text-base text-slate-700 hover:text-blue-600 hover:underline transition-all whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
             >
               情報セキュリティ・個人情報保護
             </button>
           </div>
-          <div className="text-center text-slate-600 text-sm">
+          <div className="text-center text-slate-700 text-base">
             <p>© 2025 EvangSol Co., Ltd. All rights reserved.</p>
           </div>
         </div>

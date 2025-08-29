@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Globe, Shield, TrendingUp, Database, Zap, BarChart3,
-  CheckCircle, ArrowLeft, ArrowRight, Cloud, RefreshCw, DollarSign,
-  Users, Building2, Layers, Award, Target, Clock,
-  Package, Settings, ChevronRight, Sparkles, Code,
-  Wrench, Rocket, Lightbulb, Puzzle, GitBranch,
-  Phone, FileText, Server, Lock, Cpu, Activity, Mail
+  CheckCircle, ArrowLeft, Cloud,
+  Users, Building2,
+  Package, Settings, Code,
+  Rocket, GitBranch,
+  Server, Lock, Activity
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
-import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import StatsSection from './components/StatsSection';
 import { FeatureGrid } from './components/FeatureCard';
@@ -232,40 +231,24 @@ const NetSuiteFeatures = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-100/30 via-transparent to-blue-100/30"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <HeroSection 
-            badge={{
-              icon: <Award className="w-4 h-4 mr-2 text-sky-600" />,
-              text: "世界No.1 クラウドERP",
-              bgColor: "bg-sky-100",
-              borderColor: "border border-sky-300",
-              textColor: "text-sky-700"
-            }}
-            title={
-              <>
-                <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-                  NetSuite
-                </span>
-                の革新的な強み
-              </>
-            }
-            description={
-              <>
-                31,000社以上が選ぶ理由 - 圧倒的なカスタマイズ性、
-                完全統合、真のクラウドが実現する次世代経営基盤
-              </>
-            }
-            subtitle="EvangSolが提供する専門的な導入・開発支援"
-          />
-
-          {/* Key Stats */}
-          <div className="mt-12">
-            <StatsSection stats={keyStats} variant="default" />
+      {/* Page Header */}
+      <section className="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              NetSuiteの機能
+            </h1>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              31,000社以上が選ぶ理由 - 圧倒的なカスタマイズ性、完全統合、真のクラウドが実現する次世代経営基盤
+            </p>
           </div>
+        </div>
+      </section>
+
+      {/* Key Stats */}
+      <section className="py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <StatsSection stats={keyStats} variant="default" />
         </div>
       </section>
 
@@ -553,4 +536,3 @@ const NetSuiteFeatures = () => {
 };
 
 export default NetSuiteFeatures;
-

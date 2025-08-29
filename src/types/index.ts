@@ -4,6 +4,11 @@ export interface Feature {
   icon: ReactNode;
   title: string;
   description: string;
+  bulletPoints?: string[];
+}
+
+export interface Solution extends Feature {
+  path: string;
 }
 
 export interface CaseStudy {
@@ -33,8 +38,18 @@ export interface HeroSectionProps {
   };
   title: ReactNode;
   subtitle?: ReactNode;
-  description: ReactNode;
+  description?: ReactNode;
   actions?: ReactNode;
+  primaryButton?: {
+    text: string;
+    onClick: () => void;
+    icon?: ReactNode;
+  };
+  secondaryButton?: {
+    text: string;
+    onClick: () => void;
+    icon?: ReactNode;
+  };
 }
 
 export interface ProcessStep {
@@ -64,6 +79,7 @@ export interface StatItem {
   value: string;
   label: string;
   description?: string;
+  suffix?: string;
 }
 
 export interface FooterLink {
