@@ -54,7 +54,7 @@ const ComparisonHome: React.FC = () => {
                 </li>
               </ul>
               <button
-                onClick={() => navigate('/netsuite')}
+                onClick={() => navigate('/site-a')}
                 className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
               >
                 サイト A を見る
@@ -99,7 +99,7 @@ const ComparisonHome: React.FC = () => {
                 </li>
               </ul>
               <button
-                onClick={() => navigate('/what-is-netsuite')}
+                onClick={() => navigate('/site-b')}
                 className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
               >
                 サイト B を見る
