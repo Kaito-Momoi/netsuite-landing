@@ -1,19 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Globe,
-  CheckCircle,
-  ShoppingCart,
-  Package,
-  Zap,
-  BarChart3,
-  ArrowRight,
-  Database,
-  Target,
-  Settings
-} from 'lucide-react';
+import { Globe, Package, Zap, BarChart3, Database, Target, Settings } from 'lucide-react';
 import NavigationBar from './components/NavigationBar';
-import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import StatsSection from './components/StatsSection';
@@ -79,101 +67,20 @@ const ECIntegration: React.FC = () => {
     { name: "その他", logo: "➕", description: "カスタムAPI開発対応" }
   ];
 
-  const benefits = [
-    { value: "60%", label: "業務効率向上", description: "受注処理時間の大幅削減" },
-    { value: "99.9%", label: "在庫精度", description: "リアルタイム在庫同期" },
-    { value: "24/7", label: "自動処理", description: "365日稼働の自動化" },
-    { value: "30%", label: "売上向上", description: "機会損失の削減効果" }
-  ];
-
-  const caseStudies = [
-    {
-      industry: "アパレル企業 A社",
-      challenge: "複数ECサイトの在庫管理が煩雑",
-      result: "在庫回転率40%向上、欠品率80%削減"
-    },
-    {
-      industry: "化粧品企業 B社",
-      challenge: "受注処理に1日3時間以上",
-      result: "受注処理時間90%削減、月間60時間の工数削減"
-    },
-    {
-      industry: "食品企業 C社",
-      challenge: "売り越しによるクレーム多発",
-      result: "売り越しゼロ達成、顧客満足度20%向上"
-    }
-  ];
+  // removed unused benefits and caseStudies arrays
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
       <NavigationBar showBackButton={true} variant="page" />
 
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <HeroSection 
-            badge={{
-              icon: <Globe className="w-4 h-4 mr-2" />,
-              text: "マルチチャネル統合プラットフォーム",
-              bgColor: "bg-gradient-to-r from-sky-100 to-blue-100",
-              borderColor: "border border-sky-200",
-              textColor: "text-sky-700 font-bold"
-            }}
-            title={
-              <>
-                <span className="text-slate-900 text-4xl md:text-5xl leading-tight">
-                  ECマルチチャネルの
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-4xl md:text-5xl font-black">
-                  完全統合を実現
-                </span>
-              </>
-            }
-            description={
-              <>
-                <span className="text-lg text-slate-700">
-                  Amazon、楽天、Shopifyなど主要ECサイトを統合管理
-                </span>
-                <br />
-                <span className="text-lg font-bold text-slate-900">
-                  売上機会損失を<span className="font-black text-sky-600 text-xl">ゼロ</span>にする統合プラットフォーム
-                </span>
-              </>
-            }
-            actions={
-              <>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                  <button 
-                    onClick={() => navigate('/contact')}
-                    className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center"
-                  >
-                    今すぐ導入相談
-                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
-                  </button>
-                  <button 
-                    onClick={() => navigate('/netsuite')} 
-                    className="group px-8 py-4 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold transition-all shadow-lg hover:shadow-xl"
-                  >
-                    <span className="flex items-center justify-center">
-                      NetSuiteトップへ戻る
-                    </span>
-                  </button>
-                </div>
-              </>
-            }
-          />
-        </div>
 
       {/* 3つの主要機能 */}
-      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              3つの<span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">主要機能</span>
+              ECマルチチャネル展開を成功に導く革新的な機能群
             </h2>
-            <p className="text-xl text-slate-600 font-medium">ECマルチチャネル展開を成功に導く革新的な機能群</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -298,7 +205,7 @@ const ECIntegration: React.FC = () => {
           primaryButtonText="無料相談を予約する"
           primaryButtonAction={() => navigate('/contact')}
           secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={() => navigate('/netsuite#solutions')}
+          secondaryButtonAction={() => navigate('/netsuite/solutions')}
           gradient="from-sky-500 to-blue-600"
         />
       </section>

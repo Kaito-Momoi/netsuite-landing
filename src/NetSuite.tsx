@@ -1,54 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, Check, ArrowRight, Menu, X, Phone, Mail, Clock, Users, TrendingUp, Settings, Globe, Shield, Zap, Database, BarChart3, Package, FileText, Layers, Building2, Truck, Calculator, RefreshCw, Sparkles, Award, Target, Star, ChevronRight, CheckCircle, Trophy, Briefcase, HeadphonesIcon, MessageSquare } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { ChevronDown, Check, ArrowRight, Menu, X, Phone, Clock, Users, Settings, Shield, Zap, Database, Package, FileText, Layers, Building2, Truck, Sparkles, Award, ChevronRight, CheckCircle, Trophy, MessageSquare } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import HeroSection from './components/HeroSection';
 import CTASection from './components/CTASection';
 import StatsSection from './components/StatsSection';
-import { FeatureGrid } from './components/FeatureCard';
+// import { FeatureGrid } from './components/FeatureCard';
 import { useScrollPosition } from './hooks/useScrollPosition';
-import { Feature, StatItem } from './types';
+import { StatItem } from './types';
+import { SOLUTIONS } from './constants/features';
 
 const NetSuite = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrolled = useScrollPosition(50);
-  const [activeSection, setActiveSection] = useState('hero');
-  const [activeTab, setActiveTab] = useState(0);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
 
-  const solutions: Feature[] = [
-    {
-      icon: <RefreshCw className="w-8 h-8" />,
-      title: "入金消込ソリューション",
-      description: "銀行口座や決済サービスの入金データを自動取得し、売掛金との突合を効率化"
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "ECデータ連携基盤",
-      description: "各種ECサイトやモール、決済サービスとNetSuiteをシームレスに連携"
-    },
-    {
-      icon: <Package className="w-8 h-8" />,
-      title: "業界特化OMS",
-      description: "製造、小売、商社など業界の特性に合わせた受注管理システムを提供"
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "資材計画の見える化",
-      description: "需要予測や生産計画と連動し、資材の発注・在庫状況をリアルタイムに可視化"
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: "ハンディ連携／WMS連携",
-      description: "倉庫内の入出庫、棚卸、ピッキング作業をハンディ端末やWMSと連動"
-    },
-    {
-      icon: <FileText className="w-8 h-8" />,
-      title: "在庫年齢表",
-      description: "在庫品目ごとの滞留期間を分析し、デッドストックのリスクを可視化"
+  // Use shared solutions list with routes
+
+  // Scroll to solutions when visiting /netsuite/solutions
+  useEffect(() => {
+    if (location.pathname.endsWith('/netsuite/solutions')) {
+      const el = document.getElementById('solutions');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
-  ];
+  }, [location.pathname]);
 
   const services = [
     {
@@ -77,12 +56,7 @@ const NetSuite = () => {
     }
   ];
 
-  const heroStats = [
-    { number: "3", label: "最短導入期間", suffix: "ヶ月", icon: <Target className="w-6 h-6" /> },
-    { number: "20-25", label: "残業時間削減", suffix: "%", icon: <TrendingUp className="w-6 h-6" /> },
-    { number: "0.01", label: "出荷ミス率", suffix: "%以下", icon: <Award className="w-6 h-6" /> },
-    { number: "40", label: "在庫回転率向上", suffix: "%", icon: <Sparkles className="w-6 h-6" /> }
-  ];
+  // removed unused heroStats
 
   const stats: StatItem[] = [
     { value: "20-25%", label: "残業時間削減", description: "月末売上処理業務の均一化により実現" },
@@ -135,68 +109,21 @@ const NetSuite = () => {
                 {isSolutionsOpen && (
                   <div className="absolute top-full left-0 -mt-2 pt-2 w-72">
                     <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden">
-                    <div className="py-2">
-                      <button
-                        onClick={() => navigate('/solutions/payment-matching')}
-                        className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                      >
-                        <RefreshCw className="w-5 h-5 text-sky-600 mr-3 mt-0.5" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-800 group-hover:text-sky-600">入金消込ソリューション</div>
-                          <div className="text-xs text-slate-600 mt-0.5">銀行データと売掛金の自動突合</div>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => navigate('/solutions/ec-integration')}
-                        className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                      >
-                        <Globe className="w-5 h-5 text-sky-600 mr-3 mt-0.5" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-800 group-hover:text-sky-600">ECデータ連携基盤</div>
-                          <div className="text-xs text-slate-600 mt-0.5">ECサイトとNetSuiteをシームレス連携</div>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => navigate('/solutions/industry-oms')}
-                        className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                      >
-                        <Package className="w-5 h-5 text-sky-600 mr-3 mt-0.5" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-800 group-hover:text-sky-600">業界特化OMS</div>
-                          <div className="text-xs text-slate-600 mt-0.5">業界特性に合わせた受注管理</div>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => navigate('/solutions/material-planning')}
-                        className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                      >
-                        <BarChart3 className="w-5 h-5 text-sky-600 mr-3 mt-0.5" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-800 group-hover:text-sky-600">資材計画の見える化</div>
-                          <div className="text-xs text-slate-600 mt-0.5">需要予測と在庫の最適化</div>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => navigate('/solutions/warehouse-integration')}
-                        className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                      >
-                        <Database className="w-5 h-5 text-sky-600 mr-3 mt-0.5" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-800 group-hover:text-sky-600">ハンディ連携／WMS連携</div>
-                          <div className="text-xs text-slate-600 mt-0.5">倉庫作業の効率化と自動化</div>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => navigate('/solutions/inventory-aging')}
-                        className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                      >
-                        <FileText className="w-5 h-5 text-sky-600 mr-3 mt-0.5" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-800 group-hover:text-sky-600">在庫年齢表</div>
-                          <div className="text-xs text-slate-600 mt-0.5">滞留在庫のリスク可視化</div>
-                        </div>
-                      </button>
-                    </div>
+                      <div className="py-2">
+                        {SOLUTIONS.map((s) => (
+                          <button
+                            key={s.title}
+                            onClick={() => navigate(s.path)}
+                            className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
+                          >
+                            <div className="w-5 h-5 text-sky-600 mr-3 mt-0.5">{s.icon}</div>
+                            <div className="text-left">
+                              <div className="font-medium text-slate-800 group-hover:text-sky-600">{s.title}</div>
+                              <div className="text-xs text-slate-600 mt-0.5">{s.description}</div>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -248,7 +175,12 @@ const NetSuite = () => {
             >
               サービス
             </button>
-            <a href="#solutions" className="text-2xl text-slate-700 hover:text-sky-500">ソリューション</a>
+            <button 
+              onClick={() => navigate('/netsuite/solutions')} 
+              className="text-2xl text-slate-700 hover:text-sky-500"
+            >
+              ソリューション
+            </button>
             <button 
               onClick={() => {
                 navigate('/case-studies');
@@ -280,7 +212,6 @@ const NetSuite = () => {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <HeroSection 
-            badge={undefined}
             title={
               <>
                 <span className="text-slate-900 text-5xl md:text-6xl leading-tight">
@@ -663,21 +594,11 @@ const NetSuite = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
+            {SOLUTIONS.map((solution) => (
               <div 
-                key={index} 
+                key={solution.title} 
                 className="group cursor-pointer"
-                onClick={() => {
-                  const routes = [
-                    '/solutions/payment-matching',
-                    '/solutions/ec-integration', 
-                    '/solutions/industry-oms',
-                    '/solutions/material-planning',
-                    '/solutions/warehouse-integration',
-                    '/solutions/inventory-aging'
-                  ];
-                  navigate(routes[index]);
-                }}
+                onClick={() => navigate(solution.path)}
               >
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-sky-50 border border-slate-200 hover:border-sky-400 transition-all duration-300 shadow-lg hover:shadow-xl p-6">
                   <div className="text-sky-500 mb-4">{solution.icon}</div>
