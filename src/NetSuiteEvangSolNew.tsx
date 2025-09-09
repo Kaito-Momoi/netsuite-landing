@@ -63,16 +63,13 @@ const NetSuiteEvangSolNew: React.FC = () => {
                 多拠点・多通貨・リアルタイム連結を実現するNetSuite OneWorld。<br />
                 導入から開発、AWS連携まで一社完結でTCOを最適化
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="flex justify-center items-center">
                 <button 
                   onClick={() => setShowContactForm(true)}
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl inline-flex items-center">
                   お問い合わせ
                   <ChevronRight className="ml-2" size={24} />
                 </button>
-                <a href="#proof" className="bg-white/10 backdrop-blur border-2 border-white/30 hover:bg-white/20 text-white px-10 py-5 rounded-full font-bold text-lg transition-all inline-flex items-center">
-                  事例・資料を受け取る
-                </a>
               </div>
             </div>
           </div>
@@ -504,17 +501,13 @@ const NetSuiteEvangSolNew: React.FC = () => {
             </div>
 
             {/* CTAボタン */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+            <div className="flex justify-center items-center mb-10">
               <button 
                  onClick={() => setShowContactForm(true)}
                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl inline-flex items-center">
                 お問い合わせ
                 <ChevronRight className="ml-2" size={24} />
               </button>
-              <a href="#download" 
-                 className="bg-white/10 backdrop-blur border-2 border-white/30 hover:bg-white/20 text-white px-10 py-5 rounded-full font-bold text-lg transition-all inline-flex items-center">
-                事例・資料を受け取る
-              </a>
             </div>
             
             {/* フォーム項目の推奨 */}

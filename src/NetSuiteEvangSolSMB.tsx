@@ -64,16 +64,13 @@ const NetSuiteEvangSolSMB: React.FC = () => {
                 販売・在庫・会計をひとつに。最小構成から始めて段階的に拡張。<br />
                 既存のECやWMSとも連携できるから、今の業務を止めません
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="flex justify-center items-center">
                 <button 
                   onClick={() => setShowContactForm(true)}
                   className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-full font-bold text-base lg:text-lg transition-all transform hover:scale-105 shadow-xl inline-flex items-center">
-                  まずは費用感を知る（無料見積）
+                  お問い合わせ
                   <ChevronRight className="ml-2" size={20} />
                 </button>
-                <a href="#proof" className="bg-white/20 backdrop-blur border-2 border-white/50 hover:bg-white/30 text-white px-8 py-4 rounded-full font-bold text-base lg:text-lg transition-all inline-flex items-center">
-                  成功事例を受け取る
-                </a>
               </div>
             </div>
           </div>
@@ -480,17 +477,13 @@ const NetSuiteEvangSolSMB: React.FC = () => {
             </div>
 
             {/* CTAボタン */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="flex justify-center items-center mb-8">
               <button 
                  onClick={() => setShowContactForm(true)}
                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl inline-flex items-center">
                 まずは費用感を知る（無料見積）
                 <ChevronRight className="ml-2" size={20} />
               </button>
-              <a href="#download" 
-                 className="bg-white/20 backdrop-blur border-2 border-white/50 hover:bg-white/30 text-white px-8 py-4 rounded-full font-bold transition-all inline-flex items-center">
-                資料・事例を受け取る
-              </a>
             </div>
             
             {/* 簡易フォーム項目 */}
