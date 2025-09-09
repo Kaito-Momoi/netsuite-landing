@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Phone,
   Mail,
   Send,
   User,
@@ -18,7 +17,6 @@ const Contact = () => {
     name: '',
     company: '',
     email: '',
-    phone: '',
     inquiryType: '',
     message: '',
   });
@@ -68,14 +66,13 @@ const Contact = () => {
           name: '',
           company: '',
           email: '',
-          phone: '',
           inquiryType: '',
           message: '',
         });
       }, 5000);
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('送信中にエラーが発生しました。お電話でお問い合わせください。');
+      alert('送信中にエラーが発生しました。メールでお問い合わせください。');
     }
   };
 
@@ -95,78 +92,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">お問い合わせ方法</h2>
-            <p className="text-xl text-slate-600">お客様のご都合に合わせてお選びください</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="group relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-              <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
-                <div className="flex items-center mb-6">
-                  <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
-                    <Phone className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">お電話でのお問い合わせ</h3>
-                    <p className="text-2xl font-black text-sky-600">03-6231-1328</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">
-                      お急ぎの場合におすすめ
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="w-5 h-5 text-sky-600 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">
-                      営業時間：平日 9:00-18:00
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <HeadphonesIcon className="w-5 h-5 text-sky-600 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">専門スタッフが対応</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-              <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-slate-200 hover:border-sky-400 transition-all">
-                <div className="flex items-center mb-6">
-                  <div className="bg-gradient-to-br from-cyan-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
-                    <Mail className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">メールでのお問い合わせ</h3>
-                    <p className="text-lg font-bold text-cyan-600">info@evangsol.co.jp</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">24時間受付可能</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="w-5 h-5 text-cyan-600 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">2営業日以内にご返信</span>
-                  </div>
-                  <div className="flex items-center">
-                    <MessageSquare className="w-5 h-5 text-cyan-600 mr-2" />
-                    <span className="text-sm text-slate-600 font-medium">詳細なご相談が可能</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Form */}
       <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
@@ -248,22 +173,6 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        電話番号
-                      </label>
-                      <div className="relative">
-                        <Phone className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:border-sky-400 transition-colors"
-                          placeholder="03-1234-5678"
-                        />
-                      </div>
-                    </div>
                   </div>
 
                   <div>
@@ -306,14 +215,9 @@ const Contact = () => {
                   <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 border border-sky-200">
                     <div className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-sky-600 mr-3 mt-0.5 flex-shrink-0" />
-                      <div className="text-sm text-slate-700 space-y-2">
+                      <div className="text-sm text-slate-700">
                         <p className="font-medium">
                           お問い合わせ内容を確認後、担当者よりご連絡させていただきます。
-                        </p>
-                        <p>
-                          お急ぎの場合は、お電話（
-                          <span className="font-bold text-sky-600">03-6231-1328</span>
-                          ）にてお問い合わせください。
                         </p>
                       </div>
                     </div>

@@ -40,6 +40,13 @@ export interface HeroSectionProps {
   subtitle?: ReactNode;
   description?: ReactNode;
   actions?: ReactNode;
+  /**
+   * Background variant: `light` renders the default light gradient background.
+   * `transparent` renders no background so parent sections can control it.
+   */
+  variant?: 'light' | 'transparent';
+  /** Renders content full-width instead of max-w container */
+  fullWidth?: boolean;
   primaryButton?: {
     text: string;
     onClick: () => void;
@@ -91,6 +98,5 @@ export interface ContactFormData {
   companyName: string;
   contactName: string;
   email: string;
-  phone: string;
   requirements: string;
 }

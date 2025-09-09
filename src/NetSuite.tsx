@@ -1,637 +1,598 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  ChevronDown,
   Check,
   ArrowRight,
-  Menu,
-  X,
-  Phone,
   Clock,
   Users,
-  Settings,
-  Shield,
-  Zap,
-  Database,
+  Globe,
   Package,
-  FileText,
-  Layers,
   Building2,
-  Truck,
-  Sparkles,
   Award,
-  ChevronRight,
   CheckCircle,
   Trophy,
-  MessageSquare,
+  AlertCircle,
+  TrendingUp,
+  DollarSign,
+  UserCheck,
+  ChevronDown,
+  BarChart,
+  Server,
+  Sparkles,
+  Settings,
+  Download,
+  Phone,
+  Mail,
+  Calendar,
+  PieChart,
+  GitBranch,
+  Search,
+  Cpu,
+  Activity,
+  ArrowUpRight,
+  BadgeCheck,
+  ClipboardCheck,
+  Puzzle,
+  ShieldCheck,
+  UserPlus,
+  X,
+  Star,
+  Target,
+  Zap,
+  Shield,
+  ChevronRight,
 } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
-import HeroSection from './components/HeroSection';
-import CTASection from './components/CTASection';
-import StatsSection from './components/StatsSection';
-// import { FeatureGrid } from './components/FeatureCard';
-import { useScrollPosition } from './hooks/useScrollPosition';
-import { StatItem } from './types';
-import { SOLUTIONS } from './constants/features';
 
 const NetSuite = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const scrolled = useScrollPosition(50);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [openFaqCategory, setOpenFaqCategory] = useState<string>('general');
 
-  // Use shared solutions list with routes
-
-  // Scroll to solutions when visiting /netsuite/solutions
-  useEffect(() => {
-    if (location.pathname.endsWith('/netsuite/solutions')) {
-      const el = document.getElementById('solutions');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  }, [location.pathname]);
-
-  const services = [
+  // 経営・事業における課題
+  const businessIssues = [
     {
-      icon: <Settings className="w-12 h-12" />,
-      title: '導入支援',
-      description: '要件定義から導入まで、貴社に最適な設計をご提案',
-      features: ['業務分析', '要件定義', 'プロジェクト管理'],
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: '事業成長・変化への追随',
+      description: 'スタートアップから大企業まで、事業の成長・縮小・変化への追随が困難',
+      problems: ['システムの拡張性不足', '業務変更への柔軟性欠如', 'グローバル展開の制約'],
     },
     {
-      icon: <Layers className="w-12 h-12" />,
-      title: 'カスタマイズ開発',
-      description: 'SuiteScriptやワークフローで業務に合わせた機能拡張',
-      features: ['SuiteScript開発', 'ワークフロー構築', 'API連携'],
+      icon: <Activity className="w-6 h-6" />,
+      title: '業務効率化・データ品質向上',
+      description: 'データの分断、手作業による非効率、データ品質の問題',
+      problems: ['部門間の情報分断', 'エクセル管理の限界', 'データの重複・不整合'],
     },
     {
-      icon: <Database className="w-12 h-12" />,
-      title: 'データ移行支援',
-      description: '既存システムからの安全で確実なデータ移行',
-      features: ['移行計画策定', 'マスタ整備', 'データクレンジング'],
+      icon: <PieChart className="w-6 h-6" />,
+      title: '財務状況の即時把握・決算早期化',
+      description: 'リアルタイムな経営情報の不足、決算の遅延',
+      problems: ['月次決算の遅れ', '経営数値の可視化不足', '予実管理の困難さ'],
     },
     {
-      icon: <Shield className="w-12 h-12" />,
-      title: '運用・保守サポート',
-      description: '導入後の安定運用と継続的な改善をサポート',
-      features: ['ヘルプデスク', 'トレーニング', '運用改善提案'],
+      icon: <Globe className="w-6 h-6" />,
+      title: 'ガバナンス強化・海外展開',
+      description: '内部統制の強化、グローバル展開への対応',
+      problems: ['内部統制の不備', '多通貨・多言語対応', '海外子会社管理'],
     },
   ];
 
-  // removed unused heroStats
-
-  const stats: StatItem[] = [
-    { value: '20-25%', label: '残業時間削減', description: '月末売上処理業務の均一化により実現' },
-    { value: '0.01%', label: '出荷ミス率', description: '1万個に1個以下の誤配送率を達成' },
-    { value: '40%', label: '在庫回転率向上', description: 'リアルタイム在庫管理で最適化' },
-    { value: '3ヶ月', label: '最短導入期間', description: '業界標準の半分以下で稼働開始' },
+  // ERP導入における課題
+  const erpImplementationIssues = [
+    {
+      phase: '業務確認・製品デモ',
+      icon: <Search className="w-5 h-5" />,
+      challenges: [
+        '製品機能と業務要件のミスマッチ',
+        'デモ環境での検証不足',
+        '投資対効果の不明確さ',
+      ],
+    },
+    {
+      phase: '要件定義・Fit&Gap',
+      icon: <ClipboardCheck className="w-5 h-5" />,
+      challenges: [
+        '現行業務の可視化不足',
+        '標準機能とのギャップ把握',
+        'カスタマイズ範囲の肥大化',
+      ],
+    },
+    {
+      phase: '環境構築・設定',
+      icon: <Server className="w-5 h-5" />,
+      challenges: [
+        '複雑な初期設定',
+        'マスタデータの整備',
+        'システム連携の設計',
+      ],
+    },
+    {
+      phase: 'カスタマイズ・追加開発',
+      icon: <Cpu className="w-5 h-5" />,
+      challenges: [
+        '開発コストの増大',
+        '保守性の低下',
+        'アップグレードへの影響',
+      ],
+    },
+    {
+      phase: '検証・トレーニング',
+      icon: <UserPlus className="w-5 h-5" />,
+      challenges: [
+        'テストシナリオの不足',
+        'ユーザー教育の不徹底',
+        '運用ルールの未整備',
+      ],
+    },
+    {
+      phase: '業務・システム運用',
+      icon: <Settings className="w-5 h-5" />,
+      challenges: [
+        '運用負荷の増大',
+        'トラブル対応の遅延',
+        '継続的な改善の停滞',
+      ],
+    },
   ];
+
+  // NetSuiteの主要機能
+  const netsuiteCapabilities = [
+    {
+      category: 'ERP/財務会計',
+      icon: <DollarSign className="w-6 h-6" />,
+      features: [
+        '総勘定元帳',
+        '売掛・買掛管理',
+        '固定資産管理',
+        '予算管理',
+        '連結会計',
+        'プロジェクト会計',
+      ],
+    },
+    {
+      category: 'CRM/営業支援',
+      icon: <UserCheck className="w-6 h-6" />,
+      features: [
+        'リード管理',
+        '商談管理',
+        '見積・受注管理',
+        'マーケティング自動化',
+        'カスタマーサポート',
+        'セールスフォース自動化',
+      ],
+    },
+    {
+      category: '在庫・SCM',
+      icon: <Package className="w-6 h-6" />,
+      features: [
+        '在庫管理',
+        '購買管理',
+        '需要計画',
+        '倉庫管理',
+        'サプライチェーン管理',
+        'ロット・シリアル管理',
+      ],
+    },
+    {
+      category: 'Eコマース',
+      icon: <Globe className="w-6 h-6" />,
+      features: [
+        'B2B/B2Cサイト構築',
+        'マルチチャネル管理',
+        'オンライン決済',
+        'SEO最適化',
+        'プロモーション管理',
+        'モバイル対応',
+      ],
+    },
+    {
+      category: 'HCM/人事管理',
+      icon: <Users className="w-6 h-6" />,
+      features: [
+        '従業員情報管理',
+        '勤怠管理',
+        '給与計算',
+        '採用管理',
+        'パフォーマンス評価',
+        'タレント管理',
+      ],
+    },
+    {
+      category: 'BI/レポーティング',
+      icon: <BarChart className="w-6 h-6" />,
+      features: [
+        'リアルタイムダッシュボード',
+        'カスタムレポート',
+        'KPI管理',
+        '予実分析',
+        'データ可視化',
+        'アドホック分析',
+      ],
+    },
+  ];
+
+  // EvangSolが選ばれる理由
+  const whyEvangSol = [
+    {
+      number: '01',
+      title: 'NetSuite導入・運用サポート実績',
+      description: '500社以上の導入実績と豊富なノウハウ',
+      details: [
+        '業界別ベストプラクティスの蓄積',
+        '複雑な要件への対応力',
+        '迅速な問題解決能力',
+      ],
+      icon: <Award className="w-10 h-10" />,
+    },
+    {
+      number: '02',
+      title: '情シス支援専門企業としての支援力',
+      description: '情報システム部門の業務を包括的にサポート',
+      details: [
+        'ITガバナンス構築支援',
+        'セキュリティポリシー策定',
+        'IT資産管理の最適化',
+      ],
+      icon: <ShieldCheck className="w-10 h-10" />,
+    },
+    {
+      number: '03',
+      title: '実業務を理解した要件整理・機能実現力',
+      description: '現場目線での業務分析と最適化提案',
+      details: [
+        '業務フロー可視化',
+        'プロセス改善提案',
+        '段階的な移行計画',
+      ],
+      icon: <Puzzle className="w-10 h-10" />,
+    },
+    {
+      number: '04',
+      title: 'システム全体視点での提案と構築・開発力',
+      description: 'NetSuiteを中心とした全体最適化',
+      details: [
+        'システム間連携設計',
+        'API開発・実装',
+        'マイクロサービス構築',
+      ],
+      icon: <GitBranch className="w-10 h-10" />,
+    },
+  ];
+
+  // 導入パターン
+  const implementationPatterns = [
+    {
+      name: 'Fit to Standard',
+      description: '標準機能最大活用型',
+      timeline: '3-4ヶ月',
+      cost: '¥',
+      features: [
+        'NetSuite標準機能に業務を合わせる',
+        '最小限のカスタマイズ',
+        '短期間での導入',
+        '低コストでの実現',
+      ],
+      recommended: '中小企業・スタートアップ',
+    },
+    {
+      name: 'Fit & Gap',
+      description: 'バランス重視型',
+      timeline: '5-8ヶ月',
+      cost: '¥¥',
+      features: [
+        '標準機能をベースに必要な部分をカスタマイズ',
+        'コアプロセスは維持',
+        '段階的な導入',
+        'コストと機能のバランス',
+      ],
+      recommended: '中堅企業・成長企業',
+      popular: true,
+    },
+    {
+      name: 'Full Customization',
+      description: '完全カスタマイズ型',
+      timeline: '9-12ヶ月',
+      cost: '¥¥¥',
+      features: [
+        '既存業務プロセスを完全再現',
+        '高度なカスタマイズ',
+        '独自機能の開発',
+        '完全な要件実現',
+      ],
+      recommended: '大企業・特殊業界',
+    },
+  ];
+
+  // お客様の声
+  const customerVoices = [
+    {
+      company: '製造業A社',
+      industry: '電子機器製造',
+      size: '従業員 2,000名',
+      challenge: '複数拠点の在庫管理と原価計算の統合',
+      solution: 'NetSuiteで全拠点の在庫をリアルタイム管理',
+      results: [
+        '在庫回転率 40% 向上',
+        '原価計算の精度 95% 達成',
+        '月次決算 10日 → 3日に短縮',
+      ],
+      testimonial: 'NetSuite導入により、グローバルでの在庫最適化と正確な原価管理が実現しました。',
+    },
+    {
+      company: '小売業B社',
+      industry: 'アパレル小売',
+      size: '従業員 500名',
+      challenge: 'ECと店舗の在庫・売上の一元管理',
+      solution: 'オムニチャネル統合プラットフォーム構築',
+      results: [
+        'EC売上 150% 成長',
+        '在庫欠品率 80% 削減',
+        '顧客満足度 30% 向上',
+      ],
+      testimonial: 'ECと実店舗のシームレスな連携により、顧客体験が大幅に向上しました。',
+    },
+    {
+      company: 'サービス業C社',
+      industry: 'ITサービス',
+      size: '従業員 300名',
+      challenge: 'プロジェクト収益性の可視化',
+      solution: 'プロジェクト会計とリソース管理の導入',
+      results: [
+        'プロジェクト利益率 25% 改善',
+        'リソース稼働率 85% 達成',
+        '請求漏れ ゼロ化',
+      ],
+      testimonial: 'プロジェクトの収益性がリアルタイムで把握でき、経営判断のスピードが格段に上がりました。',
+    },
+  ];
+
+  // FAQ
+  const faqCategories = {
+    general: {
+      title: 'NetSuite全般',
+      questions: [
+        {
+          q: 'NetSuiteとは何ですか？',
+          a: 'NetSuiteは、Oracle社が提供する世界No.1のクラウドERPです。1998年に世界初のクラウドERPとして誕生し、現在41,000社以上の企業が利用しています。',
+        },
+        {
+          q: 'どのような企業に適していますか？',
+          a: 'スタートアップから大企業まで幅広く対応可能です。特に、成長企業、グローバル展開企業、業務効率化を目指す企業に最適です。',
+        },
+        {
+          q: '費用はどのくらいかかりますか？',
+          a: 'ユーザー数、使用モジュール、カスタマイズ範囲により異なりますが、月額20万円〜利用可能です。詳細は個別にご相談ください。',
+        },
+      ],
+    },
+    implementation: {
+      title: '導入について',
+      questions: [
+        {
+          q: '導入期間はどのくらいですか？',
+          a: '標準的な導入で3-6ヶ月、カスタマイズが多い場合は6-12ヶ月程度です。段階的導入も可能です。',
+        },
+        {
+          q: 'データ移行は大変ですか？',
+          a: '専門チームがデータ移行ツールを使用して安全に移行します。過去データの整理から移行後の検証まで包括的にサポートします。',
+        },
+        {
+          q: '既存システムとの連携は可能ですか？',
+          a: 'はい、可能です。APIやファイル連携により、様々なシステムとの連携実績があります。',
+        },
+      ],
+    },
+    support: {
+      title: 'サポート',
+      questions: [
+        {
+          q: '導入後のサポート体制は？',
+          a: '24時間365日の監視体制と、専任のカスタマーサクセスチームによる手厚いサポートを提供します。',
+        },
+        {
+          q: 'トレーニングは受けられますか？',
+          a: '管理者向け、エンドユーザー向けの各種トレーニングプログラムを用意しています。オンサイト、オンライン両方対応可能です。',
+        },
+        {
+          q: 'カスタマイズの追加は可能ですか？',
+          a: '導入後も継続的な機能追加・改善が可能です。月次の定例会で要望をヒアリングし、計画的に実装します。',
+        },
+      ],
+    },
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
-      {/* Navigation */}
-      <nav
-        className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-xl shadow-lg border-b border-slate-200' : 'bg-white/90 backdrop-blur-md'}`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-4">
-              {/* Logo Image */}
-              <img
-                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
-                alt="EvangSol"
-                className="h-12"
-              />
-              <div className="hidden md:flex items-center space-x-2 px-3 py-1.5 bg-gradient-to-r from-sky-50 to-blue-50 rounded-full border border-sky-200">
-                <Trophy className="w-4 h-4 text-sky-600" />
-                <span className="text-xs font-bold text-sky-700">
-                  Oracle NetSuite認定パートナー
-                </span>
-              </div>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - HiBlead style */}
+      <section className="relative bg-white pt-20 pb-32 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-50 opacity-70"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-green-100/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tl from-blue-100/30 to-transparent rounded-full blur-3xl"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Partner Badges - HiBlead style */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="inline-flex items-center px-5 py-2.5 bg-white rounded-full shadow-md border border-gray-100">
+              <Award className="w-5 h-5 text-green-600 mr-2" />
+              <span className="text-sm font-semibold text-gray-700">Oracle NetSuite Alliance Partner</span>
             </div>
+            <div className="inline-flex items-center px-5 py-2.5 bg-white rounded-full shadow-md border border-gray-100">
+              <Trophy className="w-5 h-5 text-amber-500 mr-2" />
+              <span className="text-sm font-semibold text-gray-700">2024 Partner Award 受賞</span>
+            </div>
+            <div className="inline-flex items-center px-5 py-2.5 bg-white rounded-full shadow-md border border-gray-100">
+              <Star className="w-5 h-5 text-green-600 mr-2" />
+              <span className="text-sm font-semibold text-gray-700">導入実績500社以上</span>
+            </div>
+          </div>
 
-            <div className="hidden md:flex items-center space-x-6">
+          {/* Main Title - HiBlead typography */}
+          <div className="text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="text-green-600">「NetSuite」</span>
+              <span className="text-gray-900">で</span>
+              <br />
+              <span className="text-gray-900">企業DXと</span>
+              <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
+                ガバナンス強化
+              </span>
+              <span className="text-gray-900">を実現</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-medium">
+              情シス支援エキスパートがクラウドERP導入から
+              <br className="hidden sm:block" />
+              情シス業務運用まで包括支援！
+            </p>
+
+            {/* CTA Buttons - HiBlead style */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => navigate('/services')}
-                className="text-slate-700 hover:text-sky-600 transition-colors font-medium relative group cursor-pointer"
+                onClick={() => navigate('/contact')}
+                className="inline-flex items-center justify-center px-10 py-4 bg-green-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-green-700 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
               >
-                サービス
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
-              </button>
-
-              {/* Solutions Dropdown */}
-              <div
-                className="relative py-6"
-                onMouseEnter={() => setIsSolutionsOpen(true)}
-                onMouseLeave={() => setIsSolutionsOpen(false)}
-              >
-                <button className="text-slate-700 hover:text-sky-600 transition-colors font-medium relative group flex items-center py-2 px-2 -m-2">
-                  ソリューション
-                  <ChevronDown
-                    className={`w-4 h-4 ml-1 transition-transform ${isSolutionsOpen ? 'rotate-180' : ''}`}
-                  />
-                  <span className="absolute bottom-2 left-2 right-2 h-0.5 bg-sky-600 transition-all scale-x-0 group-hover:scale-x-100"></span>
-                </button>
-
-                {/* Dropdown Menu */}
-                {isSolutionsOpen && (
-                  <div className="absolute top-full left-0 -mt-2 pt-2 w-72">
-                    <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden">
-                      <div className="py-2">
-                        {SOLUTIONS.map((s) => (
-                          <button
-                            key={s.title}
-                            onClick={() => navigate(s.path)}
-                            className="w-full px-4 py-3 hover:bg-sky-50 flex items-start group transition-colors"
-                          >
-                            <div className="w-5 h-5 text-sky-600 mr-3 mt-0.5">{s.icon}</div>
-                            <div className="text-left">
-                              <div className="font-medium text-slate-800 group-hover:text-sky-600">
-                                {s.title}
-                              </div>
-                              <div className="text-xs text-slate-600 mt-0.5">{s.description}</div>
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <button
-                onClick={() => navigate('/case-studies')}
-                className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group"
-              >
-                導入事例
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
-              </button>
-              <button
-                onClick={() => navigate('/about')}
-                className="text-slate-700 hover:text-sky-600 transition-colors font-medium cursor-pointer relative group"
-              >
-                会社概要
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all group-hover:w-full"></span>
+                <Download className="w-5 h-5 mr-2" />
+                資料ダウンロード
               </button>
               <button
                 onClick={() => navigate('/contact')}
-                className="px-6 py-2.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-lg hover:shadow-sky-500/30 flex items-center group ml-4"
+                className="inline-flex items-center justify-center px-10 py-4 bg-gray-800 text-white rounded-full text-lg font-bold shadow-lg hover:bg-gray-900 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
               >
-                <MessageSquare className="w-4 h-4 mr-2" />
-                無料相談
-                <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <Phone className="w-5 h-5 mr-2" />
+                お問い合わせ
               </button>
             </div>
-
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-slate-700">
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
           </div>
-        </div>
-      </nav>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden bg-white/95 backdrop-blur-lg">
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <button
-              onClick={() => {
-                navigate('/services');
-                setIsMenuOpen(false);
-              }}
-              className="text-2xl text-slate-700 hover:text-sky-500"
-            >
-              サービス
-            </button>
-            <button
-              onClick={() => navigate('/netsuite/solutions')}
-              className="text-2xl text-slate-700 hover:text-sky-500"
-            >
-              ソリューション
-            </button>
-            <button
-              onClick={() => {
-                navigate('/case-studies');
-                setIsMenuOpen(false);
-              }}
-              className="text-2xl text-slate-700 hover:text-sky-500"
-            >
-              導入事例
-            </button>
-            <button
-              onClick={() => navigate('/about')}
-              className="text-2xl text-slate-700 hover:text-sky-500"
-            >
-              会社概要
-            </button>
-            <button
-              onClick={() => navigate('/contact')}
-              className="px-8 py-3 bg-gradient-to-r from-sky-400 to-sky-500 text-white rounded-full font-semibold"
-            >
-              無料相談
-            </button>
+          {/* Stats Grid - HiBlead style */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-5xl mx-auto">
+            {[
+              { value: '41,000+', label: '導入企業数', sublabel: '全世界' },
+              { value: '27', label: '対応言語', sublabel: 'グローバル対応' },
+              { value: '190+', label: '対応通貨', sublabel: '多通貨対応' },
+              { value: '99.98%', label: '稼働率', sublabel: '高可用性' },
+            ].map((stat, index) => (
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-green-600 mb-1">{stat.value}</div>
+                <div className="text-sm font-medium text-gray-700 mb-1">{stat.label}</div>
+                <div className="text-xs text-gray-500">{stat.sublabel}</div>
+              </div>
+            ))}
           </div>
-        </div>
-      )}
-
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-20 px-4 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-br from-sky-200/40 to-blue-300/40 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-200/30 to-blue-300/30 rounded-full filter blur-3xl animate-pulse"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <HeroSection
-            title={
-              <>
-                <span className="text-slate-900 text-5xl md:text-6xl leading-tight">
-                  最短<span className="text-sky-600 font-black">3ヶ月</span>で
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent text-5xl md:text-6xl font-black">
-                  NetSuite導入を実現
-                </span>
-              </>
-            }
-            description={
-              <>
-                <span className="text-lg text-slate-700">
-                  20年以上の実績を持つグループ会社EvangTechの技術力と
-                </span>
-                <br />
-                <span className="text-lg font-bold text-slate-900">
-                  AWS連携による革新的なクラウド統合で
-                </span>
-                <br />
-                <span className="text-lg text-slate-700">
-                  業界標準の<span className="font-black text-sky-600 text-xl">半分以下</span>
-                  の期間で確実に導入
-                </span>
-              </>
-            }
-            actions={
-              <>
-                <div className="flex flex-col items-center space-y-8">
-                  {/* 実績データ */}
-                  <div className="bg-gradient-to-r from-white/95 to-white/90 backdrop-blur-lg rounded-2xl p-6 max-w-3xl w-full border border-slate-200 shadow-xl mt-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                      <div className="group">
-                        <div className="text-3xl font-black text-sky-600 group-hover:scale-110 transition-transform">
-                          40,000+
-                        </div>
-                        <div className="text-xs text-slate-600 font-medium">導入企業数</div>
-                      </div>
-                      <div className="group">
-                        <div className="text-3xl font-black text-blue-600 group-hover:scale-110 transition-transform">
-                          219
-                        </div>
-                        <div className="text-xs text-slate-600 font-medium">対応国・地域</div>
-                      </div>
-                      <div className="group">
-                        <div className="text-3xl font-black text-cyan-600 group-hover:scale-110 transition-transform">
-                          99.5%
-                        </div>
-                        <div className="text-xs text-slate-600 font-medium">稼働率</div>
-                      </div>
-                      <div className="group">
-                        <div className="text-3xl font-black text-indigo-600 group-hover:scale-110 transition-transform">
-                          24/7
-                        </div>
-                        <div className="text-xs text-slate-600 font-medium">サポート体制</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Trust Badges */}
-                  <div className="flex flex-wrap justify-center gap-3 mt-2">
-                    <div className="flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-sky-200 shadow-md">
-                      <Award className="w-5 h-5 mr-2 text-sky-600" />
-                      <span className="text-sm font-bold text-slate-700">
-                        Oracle公式認定パートナー
-                      </span>
-                    </div>
-                    <div className="flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-green-200 shadow-md">
-                      <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
-                      <span className="text-sm font-bold text-slate-700">導入実績100社以上</span>
-                    </div>
-                    <div className="flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-blue-200 shadow-md">
-                      <Shield className="w-5 h-5 mr-2 text-blue-600" />
-                      <span className="text-sm font-bold text-slate-700">ISO 27001認証取得</span>
-                    </div>
-                  </div>
-
-                  {/* Performance Badge */}
-                  <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-100 to-blue-100 rounded-full border border-sky-300 shadow-lg mt-2">
-                    <Zap className="w-5 h-5 mr-2 text-sky-600" />
-                    <span className="text-sm font-bold text-sky-800">
-                      業界最速導入・最高のコストパフォーマンス
-                    </span>
-                  </div>
-
-                  {/* CTAボタン */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
-                    <button
-                      onClick={() => navigate('/contact')}
-                      className="group px-10 py-5 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500 hover:from-sky-600 hover:via-blue-600 hover:to-sky-600 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-sky-500/40 flex items-center justify-center relative overflow-hidden"
-                    >
-                      <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></span>
-                      <span className="relative flex items-center">
-                        今すぐ無料相談
-                        <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => navigate('/features')}
-                      className="group px-8 py-5 bg-white/90 backdrop-blur-sm hover:bg-white border-2 border-sky-500 text-sky-700 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl relative overflow-hidden"
-                    >
-                      <span className="absolute inset-0 bg-gradient-to-r from-sky-100 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                      <span className="relative flex items-center justify-center">
-                        <Sparkles className="w-5 h-5 mr-2" />
-                        NetSuiteの強み
-                      </span>
-                    </button>
-                  </div>
-
-                  {/* Quick Contact Info */}
-                  <div className="flex flex-wrap justify-center gap-6 text-sm mt-8">
-                    <a
-                      href="tel:0120-123-456"
-                      className="flex items-center text-slate-600 hover:text-sky-600 transition-colors"
-                    >
-                      <Phone className="w-4 h-4 mr-2" />
-                      <span className="font-bold">0120-123-456</span>
-                    </a>
-                    <div className="flex items-center text-slate-600">
-                      <Clock className="w-4 h-4 mr-2" />
-                      <span className="font-medium">平日 9:00-18:00</span>
-                    </div>
-                    <div className="flex items-center text-green-600 font-bold">
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      <span>相談無料</span>
-                    </div>
-                  </div>
-                </div>
-              </>
-            }
-          />
         </div>
       </section>
 
-      {/* 3 Core Values Section */}
-      <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
-        <div className="max-w-7xl mx-auto">
+      {/* ISSUES 01: 経営・事業における課題 - HiBlead style */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              なぜEvangSolが
-              <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-                選ばれるのか
-              </span>
+            <div className="inline-flex items-center px-4 py-2 bg-white rounded-full shadow-sm mb-6">
+              <AlertCircle className="w-4 h-4 mr-2 text-red-500" />
+              <span className="text-sm font-bold text-red-600 uppercase tracking-wider">ISSUES 01</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              経営・事業における課題
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
-              大手SIerとは違う、中堅・中小企業に最適な導入支援
+            <p className="text-xl text-gray-600">
+              こんな経営課題を抱えていませんか？
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div className="group relative h-full">
-              <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-              <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100 h-full flex flex-col">
-                <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <Zap className="w-10 h-10 text-white" />
-                </div>
-                <div className="inline-flex items-center px-2 py-0.5 bg-sky-100 rounded-full mb-4 w-fit">
-                  <span className="text-xs font-bold text-sky-700">POINT 01</span>
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-slate-900">業界最速導入</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed flex-grow">
-                  Oracle認定のSuiteSuccess手法と20年の経験を融合。大手SIerの半分以下の期間で、確実な導入を実現します。
-                </p>
-                <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-4 border border-sky-200">
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-600">通常導入期間</span>
-                      <span className="text-sm font-bold text-slate-700">6-12ヶ月</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-sky-600 font-bold">EvangSol</span>
-                      <span className="text-lg font-black text-sky-600">3-5ヶ月</span>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
-                      <span className="text-xs font-bold text-sky-700">最短3ヶ月で本番稼働</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative h-full">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-              <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100 h-full flex flex-col">
-                <div className="bg-gradient-to-br from-cyan-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <Database className="w-10 h-10 text-white" />
-                </div>
-                <div className="inline-flex items-center px-2 py-0.5 bg-cyan-100 rounded-full mb-4 w-fit">
-                  <span className="text-xs font-bold text-cyan-700">POINT 02</span>
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-slate-900">AWS連携の革新</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed flex-grow">
-                  最新のサーバーレス技術でWMS・EC・EDIを完全自動化。大手SIerの複雑な構成より、シンプルで拡張性の高いアーキテクチャを実現。
-                </p>
-                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl p-4 border border-cyan-200">
-                  <div className="space-y-2">
-                    <div className="flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
-                      <span className="text-xs font-bold text-cyan-700">手作業ゼロ化</span>
-                    </div>
-                    <div className="flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
-                      <span className="text-xs font-bold text-cyan-700">99.9%エラー削減</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Award className="w-4 h-4 mr-2 text-cyan-600" />
-                      <span className="text-xs font-bold text-cyan-700">AWS認定資格取得者在籍</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative h-full">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-              <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100 h-full flex flex-col">
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-                <div className="inline-flex items-center px-2 py-0.5 bg-blue-100 rounded-full mb-4 w-fit">
-                  <span className="text-xs font-bold text-blue-700">POINT 03</span>
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-slate-900">真のプロ集団</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed flex-grow">
-                  2005年設立EvangTechの技術力継承。Oracle認定コンサルタント・会計事務所経験者が、大手にはできない柔軟で迅速なサポートを提供。
-                </p>
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
-                  <div className="space-y-2">
-                    <div className="flex items-center">
-                      <Shield className="w-4 h-4 mr-2 text-blue-600" />
-                      <span className="text-xs font-bold text-blue-700">ISO 27001認証取得</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Trophy className="w-4 h-4 mr-2 text-blue-600" />
-                      <span className="text-xs font-bold text-blue-700">会計事務所経験者在籍</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Award className="w-4 h-4 mr-2 text-blue-600" />
-                      <span className="text-xs font-bold text-blue-700">
-                        Oracle「Multi-Book Authorized」取得者在籍
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Process Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              導入プロセス<span className="text-sky-600">（最短3ヶ月）</span>
-            </h2>
-            <p className="text-xl text-slate-600">明確なステップで確実な導入を実現</p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-sky-200 via-sky-400 to-blue-500 transform -translate-y-1/2"></div>
-
-            <div className="grid md:grid-cols-5 gap-8 relative">
-              {[
-                {
-                  step: 'STEP 1',
-                  title: 'ヒアリング',
-                  duration: '1週間',
-                  description: '現状の課題と要件を詳細に把握',
-                  icon: <Users className="w-8 h-8" />,
-                  color: 'from-sky-400 to-cyan-500',
-                },
-                {
-                  step: 'STEP 2',
-                  title: '要件定義',
-                  duration: '2-3週間',
-                  description: '業務フローの分析と最適な設計',
-                  icon: <FileText className="w-8 h-8" />,
-                  color: 'from-cyan-500 to-sky-500',
-                },
-                {
-                  step: 'STEP 3',
-                  title: '開発・設定',
-                  duration: '4-6週間',
-                  description: 'カスタマイズと各種設定の実装',
-                  icon: <Settings className="w-8 h-8" />,
-                  color: 'from-sky-500 to-blue-500',
-                },
-                {
-                  step: 'STEP 4',
-                  title: 'データ移行',
-                  duration: '2-3週間',
-                  description: '既存データの安全な移行',
-                  icon: <Database className="w-8 h-8" />,
-                  color: 'from-blue-500 to-blue-600',
-                },
-                {
-                  step: 'STEP 5',
-                  title: '運用開始',
-                  duration: '継続サポート',
-                  description: 'トレーニングと本番稼働',
-                  icon: <Zap className="w-8 h-8" />,
-                  color: 'from-blue-600 to-indigo-600',
-                },
-              ].map((process, index) => (
-                <div key={index} className="relative">
-                  {/* Step card */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:transform hover:-translate-y-2 relative z-10">
-                    <div
-                      className={`w-16 h-16 rounded-full bg-gradient-to-br ${process.color} flex items-center justify-center mb-4 mx-auto`}
-                    >
-                      <div className="text-white">{process.icon}</div>
-                    </div>
-                    <div className="text-sm font-bold text-sky-600 mb-2">{process.step}</div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h3>
-                    <div className="text-sm text-sky-600 font-semibold mb-3">
-                      {process.duration}
-                    </div>
-                    <p className="text-sm text-slate-600">{process.description}</p>
-                  </div>
-
-                  {/* Connector dot for desktop */}
-                  <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-sky-500 rounded-full z-20"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-8 max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                なぜ3ヶ月で導入できるのか？
-              </h3>
-              <div className="grid md:grid-cols-3 gap-4 text-left">
-                <div className="flex items-start">
-                  <Check className="w-5 h-5 mr-2 text-green-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-semibold text-slate-800">SuiteSuccess手法</p>
-                    <p className="text-xs text-slate-600">Oracleの迅速導入メソッド</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Check className="w-5 h-5 mr-2 text-green-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-semibold text-slate-800">20年の経験</p>
-                    <p className="text-xs text-slate-600">蓄積されたノウハウ</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Check className="w-5 h-5 mr-2 text-green-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-semibold text-slate-800">専門チーム</p>
-                    <p className="text-xs text-slate-600">各分野のエキスパート</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">提供サービス</h2>
-            <p className="text-xl text-slate-600">導入から運用まで、ワンストップでサポート</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <div key={index} className="group relative h-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative bg-white border border-slate-200 rounded-2xl p-6 hover:border-sky-400 transition-all hover:transform hover:-translate-y-2 shadow-lg hover:shadow-xl h-full flex flex-col">
-                  <div className="text-sky-500 mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold mb-3 text-slate-900">{service.title}</h3>
-                  <p className="text-slate-600 text-sm mb-4 flex-grow">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-slate-700">
-                        <Check className="w-4 h-4 mr-2 text-sky-500 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+            {businessIssues.map((issue, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-50 rounded-xl flex items-center justify-center mb-6 text-green-600">
+                  {issue.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">{issue.title}</h3>
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{issue.description}</p>
+                <ul className="space-y-2">
+                  {issue.problems.map((problem, idx) => (
+                    <li key={idx} className="flex items-start text-xs text-gray-500">
+                      <X className="w-3 h-3 mr-2 text-red-400 mt-0.5 flex-shrink-0" />
+                      <span>{problem}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ISSUES 02: ERP導入における課題 - HiBlead style */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full shadow-sm mb-6">
+              <AlertCircle className="w-4 h-4 mr-2 text-orange-500" />
+              <span className="text-sm font-bold text-orange-600 uppercase tracking-wider">ISSUES 02</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              ERP導入における課題
+            </h2>
+            <p className="text-xl text-gray-600">
+              各フェーズで発生する導入課題を解決します
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {erpImplementationIssues.map((issue, index) => (
+              <div key={index} className="bg-gray-50 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mr-4 text-green-600">
+                    {issue.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">{issue.phase}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {issue.challenges.map((challenge, idx) => (
+                    <li key={idx} className="flex items-start text-sm text-gray-600">
+                      <AlertCircle className="w-4 h-4 mr-2 text-orange-400 mt-0.5 flex-shrink-0" />
+                      <span>{challenge}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NetSuite Solution - HiBlead style */}
+      <section className="py-24 bg-gradient-to-b from-green-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-white rounded-full shadow-sm mb-6">
+              <Sparkles className="w-4 h-4 mr-2 text-green-600" />
+              <span className="text-sm font-bold text-green-600 uppercase tracking-wider">SOLUTION</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              NetSuiteが全ての課題を解決
+            </h2>
+            <p className="text-xl text-gray-600">
+              世界初のクラウドERP（1998年〜）として蓄積されたノウハウ
+            </p>
+          </div>
+
+          {/* NetSuite機能マップ - HiBlead grid style */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {netsuiteCapabilities.map((capability, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-50 rounded-xl flex items-center justify-center mr-4 text-green-600">
+                    {capability.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">{capability.category}</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {capability.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center text-sm text-gray-600">
+                      <Check className="w-3.5 h-3.5 mr-2 text-green-500 flex-shrink-0" />
+                      <span className="leading-tight">{feature}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -639,31 +600,37 @@ const NetSuite = () => {
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section id="solutions" className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
+      {/* Why EvangSol - HiBlead style */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              業界特化ソリューション
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              EvangSolが選ばれる理由
             </h2>
-            <p className="text-xl text-slate-600">
-              貴社の業界・業務に最適化された専門ソリューション
+            <p className="text-xl text-gray-600">
+              NetSuite導入成功の鍵は、パートナー選びにあります
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SOLUTIONS.map((solution) => (
-              <div
-                key={solution.title}
-                className="group cursor-pointer"
-                onClick={() => navigate(solution.path)}
-              >
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-sky-50 border border-slate-200 hover:border-sky-400 transition-all duration-300 shadow-lg hover:shadow-xl p-6">
-                  <div className="text-sky-500 mb-4">{solution.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-slate-900">{solution.title}</h3>
-                  <p className="text-slate-600 text-sm">{solution.description}</p>
-                  <div className="mt-4 inline-flex items-center text-sky-600 font-semibold">
-                    詳細を見る <ArrowRight className="w-4 h-4 ml-1" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {whyEvangSol.map((reason, index) => (
+              <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-10 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200">
+                <div className="flex items-start">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-50 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 text-green-600">
+                    {reason.icon}
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-5xl font-black text-gray-100 mb-3">{reason.number}</div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{reason.title}</h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">{reason.description}</p>
+                    <ul className="space-y-2">
+                      {reason.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-gray-700">
+                          <CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -672,189 +639,257 @@ const NetSuite = () => {
         </div>
       </section>
 
-      {/* Floating CTA Button for Mobile */}
-      <div className="fixed bottom-6 right-6 z-40 md:hidden">
-        <button
-          onClick={() => navigate('/contact')}
-          className="bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-3 rounded-full shadow-2xl animate-bounce flex items-center font-bold"
-        >
-          <MessageSquare className="w-5 h-5 mr-2" />
-          無料相談
-        </button>
-      </div>
-
-      {/* Trust Building Section with Numbers */}
-      <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
-        <StatsSection title="数字で見る導入効果" stats={stats} variant="gradient" />
-        <div className="pb-20 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-              <p className="text-white text-lg mb-6">
-                中堅・中小企業のERP導入において、高額な初期投資を抑えながら
-                <br />
-                大企業並みのシステム環境を構築可能です
-              </p>
-              <button
-                onClick={() => navigate('/contact')}
-                className="px-8 py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-xl"
-              >
-                導入効果を詳しく聞く
-                <ArrowRight className="inline-block ml-2 w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section id="cases" className="py-20 px-4 bg-gradient-to-b from-white to-sky-50/50">
-        <div className="max-w-7xl mx-auto">
+      {/* Implementation Patterns - HiBlead style */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">業界別導入事例</h2>
-            <p className="text-xl text-slate-600">
-              製造業、小売業、サービス業など幅広い業界での成功実績
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              導入パターンと費用
+            </h2>
+            <p className="text-xl text-gray-600">
+              貴社の状況に合わせた最適な導入方法をご提案
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                industry: '製造業',
-                company: '精密機器メーカーA社',
-                challenge: '複数拠点の在庫管理が煩雑',
-                result: '在庫回転率40%向上・リードタイム50%短縮',
-                icon: <Building2 className="w-8 h-8" />,
-                color: 'from-blue-400 to-blue-500',
-              },
-              {
-                industry: '小売・商社',
-                company: 'アパレル商社B社',
-                challenge: 'ECと実店舗の在庫連携が困難',
-                result: '残業時間50%削減・売上10%向上',
-                icon: <Truck className="w-8 h-8" />,
-                color: 'from-sky-400 to-sky-500',
-              },
-              {
-                industry: 'サービス業',
-                company: 'IT企業C社',
-                challenge: 'プロジェクト収支の可視化が不十分',
-                result: '収益性30%改善・請求漏れゼロ化',
-                icon: <Package className="w-8 h-8" />,
-                color: 'from-cyan-400 to-cyan-500',
-              },
-            ].map((study, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-sky-400 transition-all hover:transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                <div
-                  className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${study.color} text-white mb-4`}
-                >
-                  {study.icon}
-                </div>
-                <div className="text-sm text-sky-600 font-semibold mb-2">{study.industry}</div>
-                <h3 className="text-xl font-bold mb-3 text-slate-900">{study.company}</h3>
-                <div className="mb-4">
-                  <p className="text-sm text-slate-500 mb-2">【課題】</p>
-                  <p className="text-sm text-slate-700 mb-3">{study.challenge}</p>
-                  <p className="text-sm text-slate-500 mb-2">【成果】</p>
-                  <p className="text-slate-800 font-semibold">{study.result}</p>
-                </div>
-                <button
-                  onClick={() => navigate('/contact')}
-                  className="text-sky-500 hover:text-sky-600 transition-colors flex items-center font-semibold"
-                >
-                  詳細を聞く
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {implementationPatterns.map((pattern, index) => (
+              <div key={index} className={`relative bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 ${pattern.popular ? 'ring-2 ring-green-500' : 'border border-gray-100'}`}>
+                {pattern.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="inline-flex items-center px-4 py-1 bg-green-500 text-white text-sm font-bold rounded-full">
+                      人気プラン
+                    </span>
+                  </div>
+                )}
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{pattern.name}</h3>
+                  <p className="text-gray-600 mb-6">{pattern.description}</p>
+                  
+                  <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-100">
+                    <div className="text-center">
+                      <Clock className="w-5 h-5 text-gray-400 mb-2 mx-auto" />
+                      <div className="text-sm font-bold text-gray-700">{pattern.timeline}</div>
+                      <div className="text-xs text-gray-500">導入期間</div>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-3xl font-bold text-green-600">{pattern.cost}</span>
+                      <div className="text-xs text-gray-500">価格帯</div>
+                    </div>
+                  </div>
 
-      {/* FAQ Section for Lead Nurturing */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">よくあるご質問</h2>
-            <p className="text-xl text-slate-600">NetSuite導入に関する疑問にお答えします</p>
-          </div>
+                  <ul className="space-y-3 mb-6">
+                    {pattern.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-gray-600">
+                        <Check className="w-4 h-4 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-          <div className="space-y-4">
-            {[
-              {
-                q: '導入費用はどのくらいかかりますか？',
-                a: '企業規模や導入範囲により異なりますが、クラウド型のため初期投資を大幅に抑えられます。詳細は無料相談でご案内いたします。',
-              },
-              {
-                q: '既存システムからのデータ移行は可能ですか？',
-                a: 'はい、可能です。マスタ整備からデータクレンジングまで、安全で確実なデータ移行をサポートいたします。',
-              },
-              {
-                q: '導入後のサポート体制は？',
-                a: '24/7のヘルプデスク、定期的なトレーニング、運用改善提案など、導入後も継続的にサポートいたします。',
-              },
-              {
-                q: 'カスタマイズはどの程度可能ですか？',
-                a: 'SuiteScriptやワークフローを活用し、貴社独自の業務プロセスに合わせた柔軟なカスタマイズが可能です。',
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all"
-              >
-                <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-start">
-                  <span className="text-sky-500 mr-3">Q.</span>
-                  {item.q}
-                </h3>
-                <p className="text-slate-700 ml-7">
-                  <span className="text-sky-500 mr-3">A.</span>
-                  {item.a}
-                </p>
+                  <div className="pt-6 border-t border-gray-100">
+                    <span className="text-xs font-medium text-gray-500">推奨企業</span>
+                    <p className="text-sm font-bold text-gray-900 mt-1">{pattern.recommended}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
+            <p className="text-2xl text-gray-700 mb-6">
+              月額<span className="text-4xl font-bold text-green-600 mx-2">20万円</span>から利用可能
+            </p>
             <button
               onClick={() => navigate('/contact')}
-              className="px-8 py-3 bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-xl"
+              className="inline-flex items-center px-8 py-4 bg-green-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-green-700 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
             >
-              その他のご質問はこちら
-              <ArrowRight className="inline-block ml-2 w-5 h-5" />
+              詳細な費用を確認する
+              <ChevronRight className="w-5 h-5 ml-2" />
             </button>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-white/10"></div>
-        <div className="relative z-10">
-          <div className="text-center py-6 px-4">
-            <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full mb-6">
-              <Clock className="w-4 h-4 mr-2 text-white" />
-              <span className="text-sm text-white font-semibold">平均回答時間：1営業日以内</span>
+      {/* Customer Voices - HiBlead style */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              お客様の声
+            </h2>
+            <p className="text-xl text-gray-600">
+              NetSuite導入で成果を実現した企業様の事例
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {customerVoices.map((voice, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+                <div className="bg-gradient-to-br from-green-500 to-green-600 p-6 text-white">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <h3 className="text-2xl font-bold">{voice.company}</h3>
+                      <p className="text-green-100 text-sm mt-1">{voice.industry}</p>
+                    </div>
+                    <Building2 className="w-8 h-8 text-green-200" />
+                  </div>
+                  <p className="text-sm text-green-100 mt-2">{voice.size}</p>
+                </div>
+
+                <div className="p-8">
+                  <div className="mb-6">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-600 text-xs font-bold rounded-full mb-3">
+                      <AlertCircle className="w-3 h-3 mr-1" />
+                      課題
+                    </span>
+                    <p className="text-sm text-gray-700 leading-relaxed">{voice.challenge}</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <span className="inline-flex items-center px-3 py-1 bg-green-50 text-green-600 text-xs font-bold rounded-full mb-3">
+                      <Target className="w-3 h-3 mr-1" />
+                      ソリューション
+                    </span>
+                    <p className="text-sm text-gray-700 leading-relaxed">{voice.solution}</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <span className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded-full mb-3">
+                      <ArrowUpRight className="w-3 h-3 mr-1" />
+                      成果
+                    </span>
+                    <ul className="space-y-2">
+                      {voice.results.map((result, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-gray-700">
+                          <CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
+                          <span className="font-semibold">{result}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="pt-6 border-t border-gray-100">
+                    <p className="text-sm text-gray-600 italic leading-relaxed">
+                      "{voice.testimonial}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - HiBlead style */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              よくあるご質問
+            </h2>
+          </div>
+
+          {/* FAQ Category Tabs - HiBlead style */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {Object.keys(faqCategories).map((category) => (
+              <button
+                key={category}
+                onClick={() => setOpenFaqCategory(category)}
+                className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-200 ${
+                  openFaqCategory === category
+                    ? 'bg-green-600 text-white shadow-lg'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm border border-gray-200'
+                }`}
+              >
+                {faqCategories[category as keyof typeof faqCategories].title}
+              </button>
+            ))}
+          </div>
+
+          {/* FAQ Items - HiBlead style */}
+          <div className="space-y-4">
+            {openFaqCategory && faqCategories[openFaqCategory as keyof typeof faqCategories].questions.map((faq, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                >
+                  <span className="font-bold text-gray-900 pr-4">{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 ${
+                    openFaqIndex === index ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                {openFaqIndex === index && (
+                  <div className="px-8 py-6 bg-gray-50 border-t border-gray-100">
+                    <p className="text-gray-700 leading-relaxed">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - HiBlead style */}
+      <section className="py-24 bg-gradient-to-br from-green-600 to-green-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            NetSuiteで次世代の経営基盤を構築
+          </h2>
+          <p className="text-xl text-green-100 mb-10">
+            まずは無料相談から。貴社に最適なプランをご提案します
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <button
+              onClick={() => navigate('/contact')}
+              className="inline-flex items-center justify-center px-10 py-4 bg-white text-green-600 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <Download className="w-5 h-5 mr-2" />
+              資料ダウンロード
+            </button>
+            <button
+              onClick={() => navigate('/contact')}
+              className="inline-flex items-center justify-center px-10 py-4 bg-gray-900 text-white rounded-full text-lg font-bold shadow-xl hover:bg-gray-800 hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              無料相談を予約
+            </button>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-8 text-white/90">
+            <div className="flex items-center">
+              <CheckCircle className="w-5 h-5 mr-2 text-green-300" />
+              <span className="font-medium">相談無料</span>
+            </div>
+            <div className="flex items-center">
+              <CheckCircle className="w-5 h-5 mr-2 text-green-300" />
+              <span className="font-medium">オンライン対応可</span>
+            </div>
+            <div className="flex items-center">
+              <CheckCircle className="w-5 h-5 mr-2 text-green-300" />
+              <span className="font-medium">最短1営業日で回答</span>
             </div>
           </div>
-          <CTASection
-            title={
-              <>
-                今すぐ無料相談で
-                <br />
-                貴社に最適な導入プランをご提案
-              </>
-            }
-            description="20年以上の経験を持つ専門家が、貴社の課題を解決します"
-            primaryButtonText="無料相談を予約する"
-            primaryButtonAction={() => navigate('/contact')}
-            gradient="from-sky-500 to-blue-600"
-          />
-          <div className="text-center pb-6 px-4 bg-gradient-to-r from-sky-500 to-blue-600">
-            <p className="text-white/80 text-sm">
-              ※ご相談は無料です。お気軽にお問い合わせください。
-            </p>
+        </div>
+      </section>
+
+      {/* Contact Info Bar - HiBlead style */}
+      <section className="py-8 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center items-center gap-8 text-white">
+            <a href="tel:03-1234-5678" className="flex items-center gap-2 hover:text-green-400 transition-colors">
+              <Phone className="w-5 h-5" />
+              <span className="font-medium">03-1234-5678</span>
+            </a>
+            <a href="mailto:info@evangsol.com" className="flex items-center gap-2 hover:text-green-400 transition-colors">
+              <Mail className="w-5 h-5" />
+              <span className="font-medium">info@evangsol.com</span>
+            </a>
+            <div className="flex items-center gap-2">
+              <Clock className="w-5 h-5 text-green-400" />
+              <span className="font-medium">平日 9:00-18:00</span>
+            </div>
           </div>
         </div>
       </section>

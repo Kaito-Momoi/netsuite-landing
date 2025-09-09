@@ -314,13 +314,8 @@ const SecurityPrivacy: React.FC = () => {
                   info@evangsol.co.jp
                 </a>
               </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-2 text-sky-500" />
-                <strong className="text-gray-800 mr-4">電話：</strong>
-                <span className="text-gray-700">03-6231-1328</span>
-              </div>
               <div className="flex items-start">
-                <strong className="text-gray-800 w-32">受付時間：</strong>
+                <strong className="text-gray-800 w-32">営業時間：</strong>
                 <span className="text-gray-700">平日 9:00～18:00（土日祝日を除く）</span>
               </div>
             </div>

@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   MapPin,
-  Phone,
   Mail,
   Users,
   Calendar,
@@ -35,8 +34,6 @@ const About: React.FC = () => {
       value: '〒103-0023 東京都中央区日本橋本町4-15-11 一橋ビル6F',
       icon: <MapPin className="w-5 h-5" />,
     },
-    { label: '電話番号', value: '03-6231-1328', icon: <Phone className="w-5 h-5" /> },
-    { label: 'FAX', value: '03-6231-1348', icon: <Phone className="w-5 h-5" /> },
     { label: 'メール', value: 'info@evangsol.co.jp', icon: <Mail className="w-5 h-5" /> },
     { label: 'URL', value: 'https://www.evangsol.co.jp', icon: <Globe className="w-5 h-5" /> },
   ];
@@ -230,14 +227,12 @@ const About: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-6 pt-6 border-t border-slate-200 flex justify-center space-x-6">
-              <div className="flex items-center">
-                <Phone className="w-4 h-4 mr-2 text-sky-500" />
-                <span className="text-slate-700">03-6231-1328</span>
-              </div>
+            <div className="mt-6 pt-6 border-t border-slate-200 flex justify-center">
               <div className="flex items-center">
                 <Mail className="w-4 h-4 mr-2 text-sky-500" />
-                <span className="text-slate-700">03-6231-1348 (FAX)</span>
+                <a href="mailto:info@evangsol.co.jp" className="text-sky-600 hover:text-sky-700 transition-colors">
+                  info@evangsol.co.jp
+                </a>
               </div>
             </div>
           </div>

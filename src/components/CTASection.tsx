@@ -26,7 +26,7 @@ const CTASectionComponent: React.FC<CTASectionProps> = ({
         <div className="flex justify-center gap-6 flex-wrap">
           <button
             onClick={primaryButtonAction}
-            className="px-8 py-4 bg-white text-blue-700 rounded-lg font-bold text-base hover:bg-slate-50 transition-all focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+            className="px-8 py-4 bg-white text-blue-700 rounded-lg font-bold text-base hover:bg-sky-50 hover:text-blue-800 transition-colors focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
             aria-label={primaryButtonText}
           >
             {primaryButtonText}

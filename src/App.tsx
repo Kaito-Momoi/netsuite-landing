@@ -19,6 +19,9 @@ const TermsOfUse = lazy(() => import('./TermsOfUse'));
 const SecurityPrivacy = lazy(() => import('./SecurityPrivacy'));
 const Services = lazy(() => import('./Services'));
 const CaseStudies = lazy(() => import('./CaseStudies'));
+const NetSuiteEvangSol = lazy(() => import('./NetSuiteEvangSol'));
+const NetSuiteEvangSolNew = lazy(() => import('./NetSuiteEvangSolNew'));
+const NetSuiteEvangSolSMB = lazy(() => import('./NetSuiteEvangSolSMB'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -32,7 +35,8 @@ function App() {
       <ScrollToTop />
       <Suspense fallback={<LoadingSpinner />}>
         <Routes>
-          <Route path="/" element={<ComparisonHome />} />
+          <Route path="/" element={<NetSuite />} />
+          <Route path="/comparison" element={<ComparisonHome />} />
           <Route path="/site-a" element={<NetSuite />} />
           <Route path="/site-b" element={<WhatIsNetSuite />} />
           <Route path="/what-is-netsuite" element={<WhatIsNetSuite />} />
@@ -52,6 +56,10 @@ function App() {
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/security-privacy" element={<SecurityPrivacy />} />
+          <Route path="/netsuite-evangsol" element={<NetSuiteEvangSol />} />
+          <Route path="/netsuite-hybrit" element={<NetSuiteEvangSol />} />
+          <Route path="/netsuite-evangsol-new" element={<NetSuiteEvangSolNew />} />
+          <Route path="/netsuite-evangsol-smb" element={<NetSuiteEvangSolSMB />} />
         </Routes>
       </Suspense>
     </Router>

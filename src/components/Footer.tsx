@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, Mail, Clock } from 'lucide-react';
+import { Mail, Clock } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
@@ -70,10 +70,6 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-bold text-lg mb-4 text-slate-900">お問い合わせ</h3>
             <div className="space-y-3">
-              <p className="flex items-center text-base text-slate-700">
-                <Phone className="w-5 h-5 mr-3 text-blue-600" aria-hidden="true" />
-                <span className="font-medium">03-6231-1328</span>
-              </p>
               <p className="flex items-center text-base text-slate-700">
                 <Mail className="w-5 h-5 mr-3 text-blue-600" aria-hidden="true" />
                 <a
