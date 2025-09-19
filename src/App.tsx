@@ -22,6 +22,7 @@ const CaseStudies = lazy(() => import('./CaseStudies'));
 const NetSuiteEvangSol = lazy(() => import('./NetSuiteEvangSol'));
 const NetSuiteEvangSolNew = lazy(() => import('./NetSuiteEvangSolNew'));
 const NetSuiteEvangSolSMB = lazy(() => import('./NetSuiteEvangSolSMB'));
+const NetSuiteUnified = lazy(() => import('./NetSuiteUnified'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -60,6 +61,7 @@ function App() {
           <Route path="/netsuite-hybrit" element={<NetSuiteEvangSol />} />
           <Route path="/netsuite-evangsol-new" element={<NetSuiteEvangSolNew />} />
           <Route path="/netsuite-evangsol-smb" element={<NetSuiteEvangSolSMB />} />
+          <Route path="/netsuite-unified" element={<NetSuiteUnified />} />
         </Routes>
       </Suspense>
     </Router>

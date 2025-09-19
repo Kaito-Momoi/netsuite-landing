@@ -49,6 +49,13 @@ const NavigationBar: React.FC<NavigationProps> = React.memo(
                   EvangSolの強み
                 </button>
                 <button
+                  onClick={() => navigate('/netsuite-unified')}
+                  className="px-4 py-2 text-base text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-all font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  role="menuitem"
+                >
+                  統合ページ
+                </button>
+                <button
                   onClick={() => navigate('/contact')}
                   className="px-4 py-2 text-base text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-all font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   role="menuitem"
