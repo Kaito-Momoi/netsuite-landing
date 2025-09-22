@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle,
@@ -9,204 +9,510 @@ import {
   Zap,
   BarChart3,
   Settings,
+  ArrowRight,
+  TrendingUp,
+  Award,
+  Sparkles,
+  DollarSign,
+  FileSearch,
+  GitBranch,
+  Cpu,
+  Rocket,
+  Brain,
+  Play,
+  Pause,
+  ChevronRight,
+  Layers,
+  Building,
 } from 'lucide-react';
-import NavigationBar from './components/NavigationBar';
-import CTASection from './components/CTASection';
-import Footer from './components/Footer';
-import StatsSection from './components/StatsSection';
-import { Feature, StatItem } from './types';
+import ModernNavigationBar from './components/ModernNavigationBar';
+import ModernFooter from './components/ModernFooter';
+import ContactModal from './components/ContactModal';
+import { Feature } from './types';
 
-// Hoisted constants to avoid re-allocations on re-render
-const FEATURES: Feature[] = [
+// Main features with enhanced descriptions
+const MAIN_FEATURES: Feature[] = [
   {
-    icon: <Zap className="w-8 h-8" />,
-    title: '自動マッチング',
-    description: 'AIを活用した高精度な自動マッチング機能により、手作業を最小限に抑えます',
+    icon: <Brain className="w-10 h-10" />,
+    title: 'AI自動マッチング',
+    description: '機械学習により、複雑な入金パターンも高精度で自動消込。学習により精度が向上',
+    bulletPoints: ['99.5%の高精度マッチング', '複雑なパターン認識', '継続的な学習・改善'],
   },
   {
-    icon: <CheckCircle className="w-8 h-8" />,
+    icon: <Zap className="w-10 h-10" />,
     title: 'リアルタイム処理',
-    description: '銀行データとの連携により、入金情報をリアルタイムで処理・消込が可能です',
+    description: '銀行APIと直接連携し、入金発生と同時に自動処理を開始。処理遅延ゼロを実現',
+    bulletPoints: ['即時データ取得', '24/365稼働', '処理遅延ゼロ'],
   },
   {
-    icon: <BarChart3 className="w-8 h-8" />,
-    title: '可視化レポート',
-    description: '消込状況や未消込残高を一目で把握できるダッシュボードを提供します',
+    icon: <BarChart3 className="w-10 h-10" />,
+    title: '高度な可視化',
+    description: 'リアルタイムダッシュボードで、消込状況・キャッシュフローを即座に把握',
+    bulletPoints: ['リアルタイム更新', '多角的分析', 'アラート機能'],
   },
 ];
 
-const DETAILED_FEATURES: Feature[] = [
+// Detailed capabilities
+const CAPABILITIES = [
   {
-    icon: <Database className="w-6 h-6" />,
-    title: '銀行データ自動取込',
-    description: '複数の銀行フォーマットに対応し、自動でデータを取り込みます',
+    icon: <Database className="w-8 h-8" />,
+    title: 'マルチバンク対応',
+    description: '国内外の主要銀行フォーマットに完全対応。API連携で自動取込',
   },
   {
-    icon: <Target className="w-6 h-6" />,
-    title: '高精度マッチング',
-    description: '請求書番号、金額、顧客名など複数の条件で自動マッチング',
+    icon: <FileSearch className="w-8 h-8" />,
+    title: '高度なパターン認識',
+    description: '請求書番号・金額・顧客名・入金日など複数条件での自動マッチング',
   },
   {
-    icon: <Clock className="w-6 h-6" />,
-    title: '処理時間短縮',
-    description: '従来の手作業と比較して80%以上の時間削減を実現',
+    icon: <Shield className="w-8 h-8" />,
+    title: '内部統制機能',
+    description: '承認ワークフロー・監査ログ・権限管理で内部統制を強化',
   },
   {
-    icon: <Shield className="w-6 h-6" />,
-    title: '内部統制強化',
-    description: '承認ワークフローと監査ログで内部統制を強化',
+    icon: <GitBranch className="w-8 h-8" />,
+    title: 'ワークフロー自動化',
+    description: '例外処理も含めた消込プロセス全体を自動化',
+  },
+  {
+    icon: <Cpu className="w-8 h-8" />,
+    title: 'API連携',
+    description: '他システムとのシームレスな連携でエンドツーエンド自動化',
+  },
+  {
+    icon: <TrendingUp className="w-8 h-8" />,
+    title: '予測分析',
+    description: '入金予測・キャッシュフロー予測で経営判断を支援',
   },
 ];
 
-const STATS: StatItem[] = [
-  { value: '80%', label: '処理時間削減', description: '手作業からの自動化による効率化' },
-  { value: '99.5%', label: 'マッチング精度', description: 'AI技術による高精度な突合' },
-  { value: '50%', label: 'コスト削減', description: '人件費と作業時間の大幅削減' },
-  { value: '0.01%', label: 'エラー率', description: 'ヒューマンエラーをほぼゼロに' },
+// Impact metrics
+const IMPACT_METRICS = [
+  { value: '95%', label: '作業時間削減', sublabel: '月間200時間→10時間' },
+  { value: '99.9%', label: '精度達成', sublabel: 'ヒューマンエラーゼロ' },
+  { value: '60%', label: 'コスト削減', sublabel: '人件費・残業代削減' },
+  { value: '即日', label: '月次決算', sublabel: '締め後即日完了' },
 ];
 
-const PROCESS = [
+// Implementation phases
+const PHASES = [
   {
-    step: 'STEP 1',
-    title: '現状分析',
-    description: '業務フローと課題の把握',
-    icon: <Target className="w-6 h-6" />,
+    phase: 'Phase 1',
+    title: '現状分析・要件定義',
+    duration: '2週間',
+    activities: ['業務フロー分析', 'マッチングルール定義', 'システム要件確認'],
+    icon: <Target className="w-8 h-8" />,
   },
   {
-    step: 'STEP 2',
-    title: '設計',
-    description: '最適なマッチングルール設計',
-    icon: <Database className="w-6 h-6" />,
+    phase: 'Phase 2',
+    title: 'システム構築',
+    duration: '3-4週間',
+    activities: ['NetSuite設定', 'API連携構築', 'マッチングロジック実装'],
+    icon: <Settings className="w-8 h-8" />,
   },
   {
-    step: 'STEP 3',
-    title: '実装',
-    description: 'NetSuiteへの設定と連携構築',
-    icon: <Settings className="w-6 h-6" />,
+    phase: 'Phase 3',
+    title: 'テスト・調整',
+    duration: '2週間',
+    activities: ['並行稼働テスト', 'マッチング精度調整', '例外処理確認'],
+    icon: <FileSearch className="w-8 h-8" />,
   },
   {
-    step: 'STEP 4',
-    title: '運用開始',
-    description: 'トレーニングとサポート',
-    icon: <Zap className="w-6 h-6" />,
+    phase: 'Phase 4',
+    title: '本番稼働・最適化',
+    duration: '継続',
+    activities: ['本番運用開始', 'AI学習による精度向上', '継続的改善'],
+    icon: <Rocket className="w-8 h-8" />,
   },
 ];
+
+// Success case study
+const CASE_STUDY = {
+  company: '大手製造業 A社',
+  challenge: '月間5,000件の入金処理に10名体制で対応。月次決算に5営業日を要していた',
+  solution: 'AI自動マッチングと例外処理ワークフローを導入',
+  results: [
+    { metric: '処理時間', before: '200時間/月', after: '8時間/月', improvement: '96%削減' },
+    { metric: '人員', before: '10名', after: '1名', improvement: '90%削減' },
+    { metric: '月次決算', before: '5営業日', after: '即日', improvement: '5日短縮' },
+    { metric: 'エラー率', before: '2.5%', after: '0.01%', improvement: '99.6%改善' },
+  ],
+  quote: '導入後、経理部門は単純作業から解放され、より戦略的な業務に注力できるようになりました。月次決算の早期化により、経営判断も迅速化しています。',
+};
 
 const PaymentMatching: React.FC = () => {
   const navigate = useNavigate();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const goContact = useCallback(() => navigate('/contact'), [navigate]);
-  const goSolutions = useCallback(() => navigate('/netsuite/solutions'), [navigate]);
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    setIsVisible(true);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isPlaying) {
+      const interval = setInterval(() => {
+        setActiveFeature((prev) => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isPlaying]);
+
+  const openContactModal = useCallback(() => setIsContactModalOpen(true), []);
+  const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
-      <NavigationBar showBackButton={true} variant="page" />
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/90 via-black to-cyan-950/90"></div>
 
-      {/* 3つの主要機能 */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              手作業を完全自動化する革新的な機能群
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {FEATURES.map((feature) => (
-              <div key={feature.title} className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-                <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100">
-                  <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                    <div className="text-white">{feature.icon}</div>
-                  </div>
-                  <h3 className="text-xl font-black mb-4 text-slate-900">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Animated gradient orbs */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
         </div>
-      </section>
 
-      {/* 詳細機能 */}
-      <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">主な機能</h2>
-            <p className="text-xl text-slate-600">業務効率を最大化する充実の機能群</p>
-          </div>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-50" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`
+        }}></div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {DETAILED_FEATURES.map((feature) => (
-              <div
-                key={feature.title}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-slate-200 hover:border-sky-400"
-              >
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-br from-sky-100 to-blue-100 p-3 rounded-lg mr-4">
-                    <div className="text-sky-600">{feature.icon}</div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
-                    <p className="text-slate-600">{feature.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 導入効果 Stats Section */}
-      <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
-        <StatsSection title="導入効果" stats={STATS} variant="gradient" />
-      </section>
-
-      {/* プロセスフロー */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">導入プロセス</h2>
-            <p className="text-xl text-slate-600">スムーズな導入と確実な運用開始</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {PROCESS.map((process) => (
-              <div key={process.step} className="relative">
-                <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:transform hover:-translate-y-2 border border-slate-200">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center mb-4 mx-auto">
-                    <div className="text-white">{process.icon}</div>
-                  </div>
-                  <div className="text-sm font-bold text-sky-600 mb-2">{process.step}</div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h3>
-                  <p className="text-sm text-slate-600">{process.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative overflow-hidden">
-        <CTASection
-          title={
-            <>
-              入金消込業務を
-              <br />
-              今すぐ効率化しませんか？
-            </>
-          }
-          description="詳細な情報や無料相談をご希望の方はお気軽にお問い合わせください"
-          primaryButtonText="無料相談を予約する"
-          primaryButtonAction={goContact}
-          secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={goSolutions}
-          gradient="from-sky-500 to-blue-600"
+        {/* Interactive glow */}
+        <div
+          className="pointer-events-none fixed w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full blur-3xl transition-all duration-300"
+          style={{
+            left: `${mousePosition.x - 192}px`,
+            top: `${mousePosition.y - 192}px`,
+          }}
         />
+      </div>
+
+      <ModernNavigationBar
+        showBackButton={true}
+        variant="page"
+        onContactClick={openContactModal}
+      />
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
+        <div className="text-center max-w-6xl mx-auto">
+          {/* Premium Badge */}
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <DollarSign className="w-5 h-5 text-yellow-400 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              財務プロセス自動化ソリューション
+            </span>
+            <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+          </div>
+
+          {/* Main Title with 3D effect */}
+          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h1 className="text-5xl md:text-7xl font-black mb-6">
+              <div className="absolute inset-0 text-5xl md:text-7xl font-black text-blue-900/30 blur-sm transform translate-x-2 translate-y-2">
+                入金消込ソリューション
+              </div>
+              <span className="relative bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                入金消込ソリューション
+              </span>
+            </h1>
+            <p className="text-2xl md:text-3xl text-gray-300">
+              AIが変える、経理業務の未来
+            </p>
+          </div>
+
+          {/* Animated Feature Carousel */}
+          <div className="relative h-20 mb-12">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {[
+                { text: '99.9%の自動化率', icon: <Cpu className="w-8 h-8" />, gradient: 'from-blue-400 to-cyan-400' },
+                { text: '処理時間95%削減', icon: <Clock className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
+                { text: 'リアルタイム処理', icon: <Zap className="w-8 h-8" />, gradient: 'from-teal-400 to-green-400' },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                >
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
+                    <div className="text-black">{item.icon}</div>
+                  </div>
+                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Play/Pause control */}
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="mb-12 p-3 bg-white/10 backdrop-blur rounded-full hover:bg-white/20 transition-all"
+            aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
+          >
+            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+          </button>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={openContactModal}
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+            >
+              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+              デモを見る
+            </button>
+            <button
+              onClick={() => navigate('/netsuite/solutions')}
+              className="px-8 py-4 bg-gray-900/70 border border-blue-500/30 text-white font-bold text-lg rounded-full hover:bg-gray-900/90 hover:border-blue-400/60 transition-all duration-300"
+            >
+              ソリューション一覧へ
+            </button>
+          </div>
+        </div>
       </section>
 
-      <Footer />
+      {/* Main Features Section */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              革新的な3つのコア機能
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              最先端テクノロジーで入金消込業務を完全自動化
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {MAIN_FEATURES.map((feature, index) => (
+              <div key={index} className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
+                <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-blue-500/30">
+                    <div className="text-blue-400">{feature.icon}</div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+                  <p className="text-gray-400 mb-6">{feature.description}</p>
+                  {feature.bulletPoints && (
+                    <ul className="space-y-3">
+                      {feature.bulletPoints.map((point, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                          <span className="text-gray-300">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities Grid */}
+      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+              包括的な機能群
+            </h2>
+            <p className="text-xl text-gray-400">
+              入金消込のあらゆる課題を解決
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CAPABILITIES.map((capability, index) => (
+              <div
+                key={index}
+                className="group relative"
+                onMouseEnter={() => setHoveredCapability(index)}
+                onMouseLeave={() => setHoveredCapability(null)}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-teal-600/10 rounded-2xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-0'}`}></div>
+                <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-500/50 transition-all">
+                  <div className="flex items-start">
+                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-600/20 to-teal-600/20 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border border-cyan-500/30">
+                      <div className="text-cyan-400">{capability.icon}</div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-2">{capability.title}</h3>
+                      <p className="text-sm text-gray-400">{capability.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Metrics */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 backdrop-blur-xl rounded-3xl p-12 border border-blue-500/20">
+            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              導入効果
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {IMPACT_METRICS.map((metric, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+                    {metric.value}
+                  </div>
+                  <div className="text-lg font-bold text-white mb-1">{metric.label}</div>
+                  <div className="text-sm text-gray-400">{metric.sublabel}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-12 border border-gray-700">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-400/30 rounded-full mb-6">
+                <Award className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-semibold text-green-400">導入成功事例</span>
+              </div>
+              <h2 className="text-3xl font-bold text-white mb-4">{CASE_STUDY.company}</h2>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 mb-12">
+              <div>
+                <h3 className="text-xl font-bold text-blue-400 mb-4">課題</h3>
+                <p className="text-gray-300 mb-6">{CASE_STUDY.challenge}</p>
+                <h3 className="text-xl font-bold text-green-400 mb-4">ソリューション</h3>
+                <p className="text-gray-300">{CASE_STUDY.solution}</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-orange-400 mb-6">導入結果</h3>
+                <div className="space-y-4">
+                  {CASE_STUDY.results.map((result, index) => (
+                    <div key={index} className="grid grid-cols-3 gap-4 p-3 bg-gray-800/50 rounded-lg">
+                      <div className="text-sm text-gray-400">{result.metric}</div>
+                      <div className="text-sm text-gray-500 line-through">{result.before}</div>
+                      <div className="text-sm font-bold text-green-400">{result.after}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700">
+              <p className="text-gray-300 italic">&ldquo;{CASE_STUDY.quote}&rdquo;</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Implementation Timeline */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              導入ロードマップ
+            </h2>
+            <p className="text-xl text-gray-400">
+              最短6週間で本番稼働を実現
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connection line */}
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hidden lg:block"></div>
+
+            <div className="grid lg:grid-cols-4 gap-8">
+              {PHASES.map((phase, index) => (
+                <div key={index} className="relative">
+                  <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all hover:scale-105">
+                    <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      {index + 1}
+                    </div>
+                    <div className="text-purple-400 mb-4">{phase.icon}</div>
+                    <div className="text-sm font-bold text-purple-300 mb-2">{phase.phase}</div>
+                    <h3 className="text-lg font-bold text-white mb-2">{phase.title}</h3>
+                    <div className="text-sm text-orange-400 font-semibold mb-4">{phase.duration}</div>
+                    <ul className="space-y-2">
+                      {phase.activities.map((activity, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <ChevronRight className="w-4 h-4 text-gray-500 mt-0.5 mr-2 flex-shrink-0" />
+                          <span className="text-xs text-gray-400">{activity}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            入金消込業務の自動化で
+            <br />
+            経理部門を戦略的組織へ
+          </h2>
+          <p className="text-xl text-gray-300 mb-12">
+            今すぐ始めれば、来月には効果を実感できます
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={openContactModal}
+              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+            >
+              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+              無料デモを予約
+            </button>
+            <button
+              onClick={() => navigate('/contact')}
+              className="px-10 py-5 bg-gray-900/70 border border-blue-500/30 text-white font-bold text-lg rounded-full hover:bg-gray-900/90 hover:border-blue-400/60 transition-all duration-300"
+            >
+              資料請求
+            </button>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="mt-16 flex flex-wrap justify-center gap-8">
+            {[
+              { label: '導入企業500社以上', icon: <Building className="w-5 h-5" /> },
+              { label: '満足度98%', icon: <Award className="w-5 h-5" /> },
+              { label: '24時間サポート', icon: <Shield className="w-5 h-5" /> },
+            ].map((badge, idx) => (
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 backdrop-blur rounded-full border border-gray-700">
+                <div className="text-yellow-400">{badge.icon}</div>
+                <span className="text-sm text-gray-300">{badge.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ModernFooter />
+
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
   );
 };

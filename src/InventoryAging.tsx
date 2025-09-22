@@ -1,250 +1,701 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  AlertTriangle,
   Calendar,
+  AlertTriangle,
   BarChart3,
   Filter,
   Database,
   Target,
   Settings,
   Zap,
+  TrendingUp,
+  CheckCircle,
+  ArrowRight,
+  Sparkles,
+  Trophy,
+  Building2,
+  Clock,
+  Shield,
+  Rocket,
+  Lightbulb,
+  Award,
+  HeartHandshake,
+  MousePointer,
+  Play,
+  Pause,
+  Code,
+  Star,
+  Quote,
+  Package,
+  Activity,
+  TrendingDown,
+  Eye,
+  Layers,
 } from 'lucide-react';
-import NavigationBar from './components/NavigationBar';
-import CTASection from './components/CTASection';
-import Footer from './components/Footer';
-import StatsSection from './components/StatsSection';
-import { Feature, StatItem } from './types';
+import ModernNavigationBar from './components/ModernNavigationBar';
+import ModernFooter from './components/ModernFooter';
+import ContactModal from './components/ContactModal';
+
+// Core Features for Inventory Aging
+const CORE_FEATURES = [
+  {
+    icon: <Calendar className="w-8 h-8" />,
+    title: '経過日数分析',
+    description: '在庫の滞留期間を自動計算し、経過日数別に分類・可視化',
+    bulletPoints: ['自動滞留期間計算', '多段階分類システム', 'ビジュアル化ダッシュボード'],
+  },
+  {
+    icon: <AlertTriangle className="w-8 h-8" />,
+    title: 'デッドストック検知',
+    description: '長期滞留在庫を自動検出し、廃棄リスクを事前にアラート',
+    bulletPoints: ['予防的リスク検知', 'カスタマイズ可能閾値', '多段階アラート'],
+  },
+  {
+    icon: <BarChart3 className="w-8 h-8" />,
+    title: '回転率分析',
+    description: '品目別・カテゴリ別の在庫回転率を分析し、最適在庫を提案',
+    bulletPoints: ['詳細回転率分析', '最適在庫水準提案', 'パフォーマンス追跡'],
+  },
+];
+
+// Advanced Capabilities
+const ADVANCED_CAPABILITIES = [
+  {
+    icon: <Filter className="w-6 h-6" />,
+    title: '多角的分析',
+    description: '倉庫別、カテゴリ別、サプライヤー別など多様な切り口で分析',
+  },
+  {
+    icon: <Database className="w-6 h-6" />,
+    title: 'リアルタイム監視',
+    description: '在庫変動をリアルタイムで監視し、滞留状況を即座に把握',
+  },
+  {
+    icon: <Target className="w-6 h-6" />,
+    title: '予測分析',
+    description: '過去のデータから将来の滞留リスクを予測し、事前対策を提案',
+  },
+  {
+    icon: <Settings className="w-6 h-6" />,
+    title: '自動アラート',
+    description: '設定した基準を超えた在庫を自動検知し、担当者にアラート通知',
+  },
+  {
+    icon: <Activity className="w-6 h-6" />,
+    title: 'ABC分析連携',
+    description: '在庫重要度と滞留期間を組み合わせた高度な分析機能',
+  },
+  {
+    icon: <Eye className="w-6 h-6" />,
+    title: '可視化レポート',
+    description: '経営層向けの戦略的レポートと現場向けのアクションレポートを自動生成',
+  },
+];
+
+// Impact Metrics
+const IMPACT_METRICS = [
+  { value: '70%', label: '廃棄ロス削減', description: '早期対応による削減効果', color: 'from-red-400 to-rose-400' },
+  { value: '40%', label: '在庫削減', description: '適正在庫の維持による削減', color: 'from-rose-400 to-pink-400' },
+  { value: '2倍', label: '回転率向上', description: '滞留在庫の削減による改善', color: 'from-pink-400 to-purple-400' },
+  { value: '月次', label: '棚卸効率化', description: 'データ活用による高速化', color: 'from-purple-400 to-indigo-400' },
+];
+
+// Case Study
+const CASE_STUDY = {
+  company: '株式会社グローバルトレーディング',
+  industry: '商社・卸売業',
+  headline: '在庫エージング分析で廃棄ロス70%削減と在庫回転率2倍を実現',
+  summary: '多品種の商品を扱う商社において、従来の経験ベース在庫管理からNetSuiteベースのデータドリブン在庫管理に移行。エージング分析により、デッドストックの早期発見と処分戦略の最適化を実現。',
+  location: '〒100-0005 東京都千代田区丸の内2-4-1',
+  employees: '300～499名',
+  results: {
+    before: {
+      title: '導入前の課題',
+      metrics: [
+        { label: '廃棄ロス', value: '年間 ¥200M', color: 'text-red-400' },
+        { label: '在庫回転率', value: '3.2回/年', color: 'text-red-400' },
+        { label: '滞留在庫比率', value: '25%', color: 'text-red-400' },
+        { label: '棚卸期間', value: '2週間', color: 'text-red-400' },
+      ],
+    },
+    after: {
+      title: '導入後の成果',
+      metrics: [
+        { label: '廃棄ロス', value: '年間 ¥60M', color: 'text-rose-400' },
+        { label: '在庫回転率', value: '6.4回/年', color: 'text-rose-400' },
+        { label: '滞留在庫比率', value: '8%', color: 'text-rose-400' },
+        { label: '棚卸期間', value: '3日', color: 'text-rose-400' },
+      ],
+    },
+  },
+  quote: {
+    text: '「NetSuiteの在庫エージング機能により、以前は感覚的に行っていた在庫処分判断が、データに基づいた戦略的な意思決定に変わりました。廃棄ロスが70%削減され、同時に在庫回転率も2倍に向上したことで、キャッシュフローが大幅に改善しました。」',
+    author: '株式会社グローバルトレーディング 物流統括部長 鈴木 雅人 氏',
+  },
+};
+
+// Aging Categories
+const AGING_CATEGORIES = [
+  {
+    period: '0-30日',
+    description: '適正在庫',
+    color: 'from-green-400 to-emerald-400',
+    action: '通常管理',
+    bgColor: 'bg-green-500/20 border-green-500/30'
+  },
+  {
+    period: '31-90日',
+    description: '要注意',
+    color: 'from-yellow-400 to-amber-400',
+    action: '販促検討',
+    bgColor: 'bg-yellow-500/20 border-yellow-500/30'
+  },
+  {
+    period: '91-180日',
+    description: '警告',
+    color: 'from-orange-400 to-red-400',
+    action: '値引き処分',
+    bgColor: 'bg-orange-500/20 border-orange-500/30'
+  },
+  {
+    period: '180日以上',
+    description: '危険',
+    color: 'from-red-400 to-rose-400',
+    action: '廃棄検討',
+    bgColor: 'bg-red-500/20 border-red-500/30'
+  },
+];
+
+// Implementation Roadmap
+const IMPLEMENTATION_PHASES = [
+  {
+    phase: 'Phase 1',
+    title: '在庫分析・要件定義',
+    duration: '2-3週間',
+    description: '現在の在庫状況と滞留パターンを詳細に分析し、課題を特定',
+    icon: <MousePointer className="w-8 h-8" />,
+    deliverables: ['在庫データ分析', '滞留パターン調査', 'エージングルール設計'],
+  },
+  {
+    phase: 'Phase 2',
+    title: 'システム設計・開発',
+    duration: '4-6週間',
+    description: 'NetSuite上にカスタマイズされた在庫エージング機能を構築',
+    icon: <Code className="w-8 h-8" />,
+    deliverables: ['システム設計書', 'エージング機能開発', 'アラート設定'],
+  },
+  {
+    phase: 'Phase 3',
+    title: 'データ統合・テスト',
+    duration: '3-4週間',
+    description: '既存在庫データの統合と機能テスト、精度検証を実施',
+    icon: <Database className="w-8 h-8" />,
+    deliverables: ['データクレンジング', '機能テスト', '分析精度検証'],
+  },
+  {
+    phase: 'Phase 4',
+    title: '本稼働・最適化',
+    duration: '継続的',
+    description: '本番運用開始後の継続的な改善とサポートを提供',
+    icon: <Rocket className="w-8 h-8" />,
+    deliverables: ['ユーザートレーニング', '本稼働開始', '継続的改善サポート'],
+  },
+];
 
 const InventoryAging: React.FC = () => {
   const navigate = useNavigate();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
 
-  const features: Feature[] = [
-    {
-      icon: <Calendar className="w-8 h-8" />,
-      title: '経過日数分析',
-      description: '在庫の滞留期間を自動計算し、経過日数別に分類・可視化',
-    },
-    {
-      icon: <AlertTriangle className="w-8 h-8" />,
-      title: 'デッドストック検知',
-      description: '長期滞留在庫を自動検出し、廃棄リスクを事前にアラート',
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: '回転率分析',
-      description: '品目別・カテゴリ別の在庫回転率を分析し、最適在庫を提案',
-    },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      if (statsRef.current) {
+        const rect = statsRef.current.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setStatsVisible(true);
+        }
+      }
+    };
 
-  const detailedFeatures: Feature[] = [
-    {
-      icon: <Filter className="w-6 h-6" />,
-      title: '多角的分析',
-      description: '倉庫別、カテゴリ別、サプライヤー別など多様な切り口で分析',
-    },
-    {
-      icon: <Database className="w-6 h-6" />,
-      title: 'リアルタイム監視',
-      description: '在庫変動をリアルタイムで監視し、滞留状況を即座に把握',
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: '予測分析',
-      description: '過去のデータから将来の滞留リスクを予測し、事前対策を提案',
-    },
-    {
-      icon: <Settings className="w-6 h-6" />,
-      title: '自動アラート',
-      description: '設定した基準を超えた在庫を自動検知し、担当者にアラート通知',
-    },
-  ];
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
 
-  const agingCategories = [
-    { period: '0-30日', description: '適正在庫', color: '緑', action: '通常管理' },
-    { period: '31-90日', description: '要注意', color: '黄', action: '販促検討' },
-    { period: '91-180日', description: '警告', color: '橙', action: '値引き処分' },
-    { period: '180日以上', description: '危険', color: '赤', action: '廃棄検討' },
-  ];
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    setIsVisible(true);
+    handleScroll();
 
-  const stats: StatItem[] = [
-    { value: '70%', label: '廃棄ロス削減', description: '早期対応による削減' },
-    { value: '40%', label: '在庫削減', description: '適正在庫の維持' },
-    { value: '2倍', label: '回転率向上', description: '滞留在庫の削減' },
-    { value: '月次', label: '棚卸効率化', description: 'データ活用による高速化' },
-  ];
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
-  // removed unused analysisMetrics and caseStudies arrays
+  useEffect(() => {
+    if (isPlaying) {
+      const interval = setInterval(() => {
+        setActiveFeature((prev) => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isPlaying]);
+
+  const openContactModal = useCallback(() => setIsContactModalOpen(true), []);
+  const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/30 to-white">
-      <NavigationBar showBackButton={true} variant="page" />
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Multi-layered Animated Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-rose-900/20"></div>
 
-      {/* 3つの主要機能 */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white via-slate-50/50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900">
-              在庫最適化を実現する革新的な分析機能群
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
-                <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all border border-slate-100">
-                  <div className="bg-gradient-to-br from-sky-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                    <div className="text-white">{feature.icon}</div>
-                  </div>
-                  <h3 className="text-xl font-black mb-4 text-slate-900">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Animated mesh gradient */}
+        <div className="absolute inset-0 opacity-30 overflow-hidden">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-0 right-0 w-72 h-72 bg-rose-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         </div>
-      </section>
 
-      {/* 詳細機能 */}
-      <section className="py-20 px-4 bg-gradient-to-b from-sky-50/30 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">主な機能</h2>
-            <p className="text-xl text-slate-600">在庫管理を高度化する充実の機能群</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {detailedFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-slate-200 hover:border-sky-400"
-              >
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-br from-sky-100 to-blue-100 p-3 rounded-lg mr-4">
-                    <div className="text-sky-600">{feature.icon}</div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
-                    <p className="text-slate-600">{feature.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Particle field */}
+        <div className="absolute inset-0">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+              }}
+            >
+              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+            </div>
+          ))}
         </div>
-      </section>
 
-      {/* エージング分類 */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-              エージング分類と対応策
-            </h2>
-            <p className="text-xl text-slate-600">在庫滞留期間に応じた段階的アプローチ</p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {agingCategories.map((category, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-slate-200 hover:border-sky-400"
-              >
-                <div
-                  className={`w-full h-2 rounded-full mb-4 ${
-                    index === 0
-                      ? 'bg-green-500'
-                      : index === 1
-                        ? 'bg-yellow-500'
-                        : index === 2
-                          ? 'bg-orange-500'
-                          : 'bg-red-500'
-                  }`}
-                ></div>
-                <h3 className="text-lg font-bold mb-2 text-slate-900">{category.period}</h3>
-                <p className="text-sm text-slate-600 mb-1">状態: {category.description}</p>
-                <p className="text-sm font-semibold text-sky-600">対応: {category.action}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 導入効果 Stats Section */}
-      <section className="bg-gradient-to-r from-sky-500 to-blue-600 relative overflow-hidden">
-        <StatsSection title="導入効果" stats={stats} variant="gradient" />
-      </section>
-
-      {/* プロセスフロー */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">導入プロセス</h2>
-            <p className="text-xl text-slate-600">スムーズな導入と確実な運用開始</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                step: 'STEP 1',
-                title: '在庫分析',
-                description: '現在の在庫状況と滞留パターンを分析',
-                icon: <Target className="w-6 h-6" />,
-              },
-              {
-                step: 'STEP 2',
-                title: 'ルール設定',
-                description: 'エージング期間と対応アクションの定義',
-                icon: <Database className="w-6 h-6" />,
-              },
-              {
-                step: 'STEP 3',
-                title: 'システム構築',
-                description: 'NetSuiteへの分析機能実装',
-                icon: <Settings className="w-6 h-6" />,
-              },
-              {
-                step: 'STEP 4',
-                title: '運用開始',
-                description: 'トレーニングとサポート',
-                icon: <Zap className="w-6 h-6" />,
-              },
-            ].map((process, index) => (
-              <div key={index} className="relative">
-                <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:transform hover:-translate-y-2 border border-slate-200">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center mb-4 mx-auto">
-                    <div className="text-white">{process.icon}</div>
-                  </div>
-                  <div className="text-sm font-bold text-sky-600 mb-2">{process.step}</div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h3>
-                  <p className="text-sm text-slate-600">{process.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative overflow-hidden">
-        <CTASection
-          title={
-            <>
-              在庫エージングで
-              <br />
-              経営効率を今すぐ改善しませんか？
-            </>
-          }
-          description="詳細な情報や無料相談をご希望の方はお気軽にお問い合わせください"
-          primaryButtonText="無料相談を予約する"
-          primaryButtonAction={() => navigate('/contact')}
-          secondaryButtonText="他のソリューションを見る"
-          secondaryButtonAction={() => navigate('/netsuite/solutions')}
-          gradient="from-sky-500 to-blue-600"
+        {/* Interactive cursor glow */}
+        <div
+          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-red-500/20 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
+          style={{
+            left: `${Math.max(0, Math.min(mousePosition.x - 128, window.innerWidth - 256))}px`,
+            top: `${mousePosition.y - 128}px`,
+          }}
         />
+      </div>
+
+      <ModernNavigationBar
+        showBackButton={true}
+        variant="page"
+        onContactClick={openContactModal}
+      />
+
+      {/* Hero Section with Enhanced 3D Typography */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
+        <div className="text-center max-w-6xl mx-auto">
+          {/* Premium Badge */}
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600/20 to-rose-600/20 backdrop-blur-xl rounded-full border border-red-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Package className="w-5 h-5 text-red-400 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+              在庫最適化 特化ソリューション
+            </span>
+            <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+          </div>
+
+          {/* 3D Title */}
+          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h1 className="text-6xl md:text-8xl font-black">
+              {/* 3D Shadow layers */}
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-red-900/20 blur-sm transform translate-x-4 translate-y-4">
+                在庫分析の革新
+              </div>
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-rose-900/20 blur-sm transform -translate-x-2 translate-y-2">
+                在庫分析の革新
+              </div>
+              <span className="relative bg-gradient-to-r from-red-400 via-rose-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
+                在庫分析の革新
+              </span>
+            </h1>
+          </div>
+
+          {/* Subtitle with animation */}
+          <p className={`text-2xl md:text-3xl mb-4 text-gray-300 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            エージング分析で実現する在庫最適化
+          </p>
+
+          {/* Animated feature rotator */}
+          <div className="relative h-20 mb-12">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {[
+                { text: '経過日数分析', icon: <Calendar />, gradient: 'from-red-400 to-rose-400' },
+                { text: 'デッドストック検知', icon: <AlertTriangle />, gradient: 'from-rose-400 to-pink-400' },
+                { text: '回転率分析', icon: <BarChart3 />, gradient: 'from-pink-400 to-purple-400' },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                >
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
+                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-black' })}
+                  </div>
+                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Play/Pause control */}
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="mb-12 p-3 bg-white/10 backdrop-blur rounded-full hover:bg-white/20 transition-all"
+            aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
+          >
+            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+          </button>
+
+          {/* Call to Action */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+              onClick={openContactModal}
+              className="px-8 py-4 bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+            >
+              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+              無料診断を開始
+            </button>
+          </div>
+        </div>
       </section>
 
-      <Footer />
+      {/* Main Content */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-7xl mx-auto space-y-32">
+
+          {/* Core Features Section */}
+          <div className="space-y-20">
+            <div className="text-center">
+              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+                革新的な在庫エージング機能
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                在庫の滞留状況をデータドリブンで分析し、戦略的な在庫最適化を実現
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {CORE_FEATURES.map((feature, index) => (
+                <div key={index} className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-rose-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                  <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-red-500/50 transition-all hover:scale-105 h-full">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-rose-500 to-pink-500"></div>
+
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-600/20 to-rose-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-red-500/30">
+                      <div className="text-red-400">{feature.icon}</div>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
+                    <p className="text-gray-400 mb-6 leading-relaxed">{feature.description}</p>
+
+                    <ul className="space-y-2">
+                      {feature.bulletPoints.map((point, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <CheckCircle className="w-4 h-4 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                          <span className="text-sm text-gray-300">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Aging Categories Section */}
+          <div className="space-y-20">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">
+                エージング分類と対応策
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                在庫滞留期間に応じた段階的アプローチで効果的な在庫管理を実現
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {AGING_CATEGORIES.map((category, index) => (
+                <div key={index} className="group relative">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`}></div>
+                  <div className={`relative ${category.bgColor} backdrop-blur-xl rounded-xl p-6 border hover:scale-105 transition-all h-full`}>
+                    <div className={`w-full h-2 rounded-full mb-4 bg-gradient-to-r ${category.color}`}></div>
+
+                    <h3 className="text-xl font-bold mb-3 text-white">{category.period}</h3>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-sm text-gray-300">状態: <span className="font-semibold">{category.description}</span></p>
+                      <p className="text-sm text-gray-300">対応: <span className="font-semibold">{category.action}</span></p>
+                    </div>
+
+                    <div className={`inline-flex px-3 py-1 rounded-full bg-gradient-to-r ${category.color} text-black text-xs font-bold`}>
+                      {category.description}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Advanced Capabilities Grid */}
+          <div className="space-y-20">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                高度な機能群
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                在庫管理を革新する包括的ソリューション
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ADVANCED_CAPABILITIES.map((capability, index) => (
+                <div
+                  key={index}
+                  className="group relative"
+                  onMouseEnter={() => setHoveredCapability(index)}
+                  onMouseLeave={() => setHoveredCapability(null)}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-r from-red-600/10 to-rose-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
+                  <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-xl p-6 border border-gray-700/50 hover:border-red-500/50 transition-all hover:scale-105 h-full">
+                    <div className="flex items-start">
+                      <div className="bg-gradient-to-br from-red-100/10 to-rose-100/10 p-3 rounded-lg mr-4 border border-red-500/20">
+                        <div className="text-red-400">{capability.icon}</div>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-white mb-2">{capability.title}</h3>
+                        <p className="text-sm text-gray-400 leading-relaxed">{capability.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Impact Metrics Section */}
+          <div ref={statsRef} className="space-y-20">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+                導入効果
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {IMPACT_METRICS.map((metric, index) => (
+                <div
+                  key={index}
+                  className={`transform transition-all duration-1000 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                >
+                  <div className="text-center">
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${metric.color} mb-4`}>
+                      <TrendingDown className="w-10 h-10 text-black" />
+                    </div>
+                    <div className={`text-3xl font-black bg-gradient-to-r ${metric.color} bg-clip-text text-transparent mb-2`}>
+                      {metric.value}
+                    </div>
+                    <div className="text-lg font-bold text-white mb-1">{metric.label}</div>
+                    <div className="text-sm text-gray-400">{metric.description}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Case Study Section */}
+          <div className="bg-gradient-to-br from-red-900/20 to-rose-900/20 backdrop-blur-xl rounded-3xl p-12 border border-red-500/20">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-400/30 rounded-full text-sm font-semibold text-red-200 mb-6">
+                <Trophy className="w-4 h-4" />
+                導入事例
+              </div>
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+                成功事例
+              </h2>
+            </div>
+
+            <div className="grid lg:grid-cols-[1fr,1.2fr] gap-12 items-start mb-12">
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-4">{CASE_STUDY.company}</h3>
+                <p className="text-sm text-red-200 mb-2">{CASE_STUDY.industry}</p>
+                <p className="text-lg text-red-200 font-semibold mb-6">{CASE_STUDY.headline}</p>
+                <p className="text-gray-200 leading-relaxed mb-6">{CASE_STUDY.summary}</p>
+
+                <div className="flex flex-wrap gap-3 text-sm text-gray-200 mb-8">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-red-400/20 rounded-full">
+                    <Building2 className="w-4 h-4 text-red-300" />
+                    <span>{CASE_STUDY.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-red-400/20 rounded-full">
+                    <Package className="w-4 h-4 text-red-300" />
+                    <span>{CASE_STUDY.employees}</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={openContactModal}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold rounded-full shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/50 hover:scale-105 transition-all"
+                >
+                  <Rocket className="w-4 h-4" />
+                  同様の成果を実現する
+                </button>
+              </div>
+
+              <div className="bg-gray-900/70 border border-red-400/20 rounded-2xl p-6">
+                <div className="text-red-300 mb-4">
+                  <Quote className="w-8 h-8" />
+                </div>
+                <p className="text-gray-100 leading-relaxed italic mb-6">
+                  {CASE_STUDY.quote.text}
+                </p>
+                <p className="text-sm text-gray-400">{CASE_STUDY.quote.author}</p>
+              </div>
+            </div>
+
+            {/* Before/After Comparison */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6">
+                <h4 className="text-xl font-bold text-red-300 mb-6 flex items-center gap-3">
+                  <AlertTriangle className="w-6 h-6" />
+                  {CASE_STUDY.results.before.title}
+                </h4>
+                <div className="space-y-4">
+                  {CASE_STUDY.results.before.metrics.map((metric, idx) => (
+                    <div key={idx} className="flex justify-between items-center">
+                      <span className="text-gray-300">{metric.label}</span>
+                      <span className={`font-bold ${metric.color}`}>{metric.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-green-900/20 border border-green-500/30 rounded-xl p-6">
+                <h4 className="text-xl font-bold text-green-300 mb-6 flex items-center gap-3">
+                  <Trophy className="w-6 h-6" />
+                  {CASE_STUDY.results.after.title}
+                </h4>
+                <div className="space-y-4">
+                  {CASE_STUDY.results.after.metrics.map((metric, idx) => (
+                    <div key={idx} className="flex justify-between items-center">
+                      <span className="text-gray-300">{metric.label}</span>
+                      <span className={`font-bold ${metric.color}`}>{metric.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Implementation Roadmap */}
+          <div className="space-y-20">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+                導入ロードマップ
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                確実な成功を保証する段階的アプローチ
+              </p>
+            </div>
+
+            <div className="relative">
+              {/* Connection Line */}
+              <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-red-500 via-rose-500 to-pink-500 hidden lg:block"></div>
+
+              <div className="grid lg:grid-cols-4 gap-8 relative">
+                {IMPLEMENTATION_PHASES.map((phase, index) => (
+                  <div key={index} className="relative group">
+                    <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-red-500/50 transition-all hover:scale-105 h-full">
+                      <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-12 h-12 bg-gradient-to-r from-red-500 to-rose-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        {index + 1}
+                      </div>
+
+                      <div className="text-red-400 mb-4">{phase.icon}</div>
+                      <div className="text-red-400 text-sm font-bold mb-2">{phase.phase}</div>
+                      <h3 className="text-xl font-bold mb-2 text-white">{phase.title}</h3>
+                      <p className="text-gray-400 mb-4">{phase.description}</p>
+
+                      <div className="inline-flex items-center px-3 py-1 bg-red-900/50 rounded-full mb-4">
+                        <Clock className="w-4 h-4 mr-2 text-red-400" />
+                        <span className="text-sm text-red-300">{phase.duration}</span>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-gray-300">主要成果物:</h4>
+                        <ul className="space-y-1">
+                          {phase.deliverables.map((deliverable, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <CheckCircle className="w-3 h-3 text-red-400 mt-1 mr-2 flex-shrink-0" />
+                              <span className="text-xs text-gray-400">{deliverable}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-red-400 via-rose-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
+            在庫最適化の未来を、今始めよう
+          </h2>
+          <p className="text-xl text-gray-300 mb-12">
+            エージング分析で、在庫効率と収益性を飛躍的に向上
+          </p>
+
+          <div className="flex justify-center mb-16">
+            <button
+              onClick={openContactModal}
+              className="px-10 py-5 bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+            >
+              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+              無料相談を開始する
+            </button>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-8">
+            {[
+              { label: '在庫最適化特化', icon: <Package className="w-6 h-6" /> },
+              { label: 'データ分析技術', icon: <Lightbulb className="w-6 h-6" /> },
+              { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
+            ].map((badge, idx) => (
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 backdrop-blur rounded-full border border-gray-700">
+                <div className="text-red-400">{badge.icon}</div>
+                <span className="text-sm text-gray-300">{badge.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ModernFooter />
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
   );
 };
