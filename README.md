@@ -80,14 +80,14 @@ npm run build
   - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-evangsol-smb
   - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-unified
 
-- EvangSol Site コンテンツ
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/introduction
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/strengths
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/achievements
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/solutions
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/about
-  - https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/contact
+- EvangSol Site コンテンツ（ソース ↔ 公開URL）
+  - [HomePage.tsx](evangsol-site/src/pages/HomePage.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/
+  - [Introduction.tsx](evangsol-site/src/pages/Introduction.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/introduction
+  - [Strengths.tsx](evangsol-site/src/pages/Strengths.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/strengths
+  - [Achievements.tsx](evangsol-site/src/pages/Achievements.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/achievements
+  - [Solutions.tsx](evangsol-site/src/pages/Solutions.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/solutions
+  - [About.tsx](evangsol-site/src/pages/About.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/about
+  - [Contact.tsx](evangsol-site/src/pages/Contact.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/contact
 
 ## ライセンス
 
