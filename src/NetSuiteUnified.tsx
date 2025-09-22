@@ -43,6 +43,7 @@ import {
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
+import ContactModal from './components/ContactModal';
 import { SOLUTIONS } from './constants/features';
 import { Feature } from './types';
 
@@ -180,6 +181,7 @@ const PROCESS_STEPS = [
 
 const NetSuiteUnified: React.FC = () => {
   const navigate = useNavigate();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -223,19 +225,20 @@ const NetSuiteUnified: React.FC = () => {
     }
   }, [isPlaying]);
 
-  const goContact = useCallback(() => navigate('/contact'), [navigate]);
+  const openContactModal = useCallback(() => setIsContactModalOpen(true), []);
+  const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Multi-layered Animated Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-orange-900/20"></div>
 
         {/* Animated mesh gradient */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute top-0 -right-4 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute inset-0 opacity-30 overflow-hidden">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         </div>
 
         {/* Particle field */}
@@ -258,15 +261,19 @@ const NetSuiteUnified: React.FC = () => {
 
         {/* Interactive cursor glow */}
         <div
-          className="pointer-events-none absolute w-64 h-64 bg-gradient-radial from-purple-500/20 to-transparent rounded-full blur-3xl transition-all duration-200"
+          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-purple-500/20 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
           style={{
-            left: `${mousePosition.x - 128}px`,
+            left: `${Math.max(0, Math.min(mousePosition.x - 128, window.innerWidth - 256))}px`,
             top: `${mousePosition.y - 128}px`,
           }}
         />
       </div>
 
-      <ModernNavigationBar showBackButton={false} variant="page" />
+      <ModernNavigationBar
+        showBackButton={false}
+        variant="page"
+        onContactClick={openContactModal}
+      />
 
       {/* Hero Section with Enhanced 3D Typography */}
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
@@ -336,7 +343,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* Call to Action */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
-              onClick={goContact}
+              onClick={openContactModal}
               className="px-8 py-4 bg-gradient-to-r from-purple-500 to-orange-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
@@ -517,7 +524,7 @@ const NetSuiteUnified: React.FC = () => {
                         <ArrowRight className="w-4 h-4" />
                       </a>
                       <button
-                        onClick={goContact}
+                        onClick={openContactModal}
                         className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900/70 border border-orange-400/30 text-white font-bold rounded-full hover:border-orange-400/60 hover:bg-gray-900/90 transition-all"
                       >
                         <Rocket className="w-4 h-4" />
@@ -747,15 +754,15 @@ const NetSuiteUnified: React.FC = () => {
             導入プロセス
           </h2>
 
-          <div className="relative">
+          <div className="relative overflow-visible px-4">
             {/* Connection Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hidden lg:block"></div>
+            <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hidden lg:block"></div>
 
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div className="grid lg:grid-cols-4 gap-8 relative">
               {PROCESS_STEPS.map((process, index) => (
                 <div key={index} className="relative group">
                   <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all hover:scale-105">
-                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
+                    <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-12 h-12 bg-gradient-to-r from-purple-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
                       {process.step}
                     </div>
                     <div className="text-purple-400 mb-4">{process.icon}</div>
@@ -784,23 +791,14 @@ const NetSuiteUnified: React.FC = () => {
             NetSuite × EvangSolで、競争力を高める経営基盤を構築
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex justify-center">
             <button
-              onClick={goContact}
+              onClick={openContactModal}
               className="px-10 py-5 bg-gradient-to-r from-purple-500 to-orange-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               今すぐ無料相談
             </button>
-            <a
-              href={CASE_STUDY.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gray-800/50 backdrop-blur text-white font-bold text-lg rounded-full border border-gray-600 hover:bg-gray-700/50 hover:border-gray-500 transition-all duration-300"
-            >
-              <Trophy className="w-6 h-6" />
-              実績を見る
-            </a>
           </div>
 
           {/* Trust Badges */}
@@ -820,6 +818,9 @@ const NetSuiteUnified: React.FC = () => {
       </section>
 
       <ModernFooter />
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
   );
 };

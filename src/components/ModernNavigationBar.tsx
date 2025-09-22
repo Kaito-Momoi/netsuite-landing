@@ -19,7 +19,7 @@ import {
 import { NavigationProps } from '../types';
 
 const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
-  ({ showBackButton = true, variant = 'page' }) => {
+  ({ showBackButton = true, variant = 'page', onContactClick }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [scrolled, setScrolled] = useState(false);
@@ -244,7 +244,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
               <div className="flex items-center gap-4">
                 {/* Futuristic CTA Button */}
                 <button
-                  onClick={() => navigate('/contact')}
+                  onClick={() => onContactClick ? onContactClick() : navigate('/contact')}
                   className="hidden sm:flex items-center gap-2 px-6 py-3 relative overflow-hidden rounded-full font-bold transition-all duration-500 group"
                   role="menuitem"
                 >
@@ -323,7 +323,11 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 {/* Mobile Contact Button */}
                 <button
                   onClick={() => {
-                    navigate('/contact');
+                    if (onContactClick) {
+                      onContactClick();
+                    } else {
+                      navigate('/contact');
+                    }
                     setMobileMenuOpen(false);
                   }}
                   className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-600 to-orange-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"

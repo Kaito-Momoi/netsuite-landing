@@ -26,6 +26,7 @@ export interface Benefit {
 export interface NavigationProps {
   showBackButton?: boolean;
   variant?: 'home' | 'page';
+  onContactClick?: () => void;
 }
 
 export interface HeroSectionProps {
