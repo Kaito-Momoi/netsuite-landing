@@ -83,7 +83,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
 
     const navItems = [
       {
-        label: 'ホーム',
+        label: 'Home',
         icon: <Home className="w-3 h-3" />,
         gradient: 'from-purple-500 to-pink-500',
         section: 'home'
@@ -101,13 +101,13 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         section: 'evangsol'
       },
       {
-        label: 'マッチング',
+        label: 'Matching',
         icon: <Zap className="w-3 h-3" />,
         gradient: 'from-purple-500 to-orange-500',
         section: 'matching'
       },
       {
-        label: 'ソリューション',
+        label: 'Solutions',
         icon: <Sparkles className="w-3 h-3" />,
         gradient: 'from-green-500 to-emerald-500',
         section: 'solutions'
@@ -155,7 +155,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
               : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-md py-4 top-1'
           }`}
           role="navigation"
-          aria-label="メインナビゲーション"
+          aria-label="Main navigation"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-between items-center">
@@ -164,7 +164,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 <button
                   onClick={() => navigate('/')}
                   className="group flex items-center gap-3 relative"
-                  aria-label="ホームページへ戻る"
+                  aria-label="Return to home page"
                 >
                   <div className="relative">
                     {/* Hexagon frame with animated border */}
@@ -258,7 +258,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                       <div className="absolute inset-0 bg-white/50 blur-md group-hover:animate-ping"></div>
                     </div>
-                    <span>お問い合わせ</span>
+                    <span>Contact Us</span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
 
@@ -271,10 +271,10 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   <button
                     onClick={() => navigate(-1)}
                     className="flex items-center px-4 py-2 text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/10"
-                    aria-label="前のページに戻る"
+                    aria-label="Go back to previous page"
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
-                    <span className="hidden sm:inline">戻る</span>
+                    <span className="hidden sm:inline">Back</span>
                   </button>
                 )}
 
@@ -282,7 +282,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-                  aria-label="メニューを開く"
+                  aria-label="Open menu"
                 >
                   {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
@@ -333,7 +333,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-600 to-orange-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"
                 >
                   <Mail className="w-5 h-5" />
-                  お問い合わせ
+                  Contact Us
                 </button>
               </nav>
             </div>

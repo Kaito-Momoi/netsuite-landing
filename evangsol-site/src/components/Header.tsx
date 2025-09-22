@@ -8,13 +8,13 @@ const Header: React.FC = () => {
   const location = useLocation()
 
   const navItems = [
-    { path: '/', label: 'ホーム' },
-    { path: '/introduction', label: '会社紹介' },
-    { path: '/strengths', label: '強み' },
-    { path: '/achievements', label: '実績' },
-    { path: '/solutions', label: 'ソリューション' },
-    { path: '/about', label: '会社概要' },
-    { path: '/contact', label: 'お問い合わせ' }
+    { path: '/', label: 'Home' },
+    { path: '/introduction', label: 'Introduction' },
+    { path: '/strengths', label: 'Strengths' },
+    { path: '/achievements', label: 'Achievements' },
+    { path: '/solutions', label: 'Solutions' },
+    { path: '/about', label: 'Company Overview' },
+    { path: '/contact', label: 'Contact' }
   ]
 
   return (

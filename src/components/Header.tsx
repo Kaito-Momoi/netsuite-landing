@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
                 />
               </button>
               <span className="text-xs text-slate-600 border-l border-slate-300 ml-3 pl-3">
-                Oracle NetSuite認定パートナー
+                Oracle NetSuite Certified Partner
               </span>
             </div>
 
@@ -45,31 +45,31 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
                   onClick={() => navigate('/what-is-netsuite')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
                 >
-                  NetSuiteとは
+                  What is NetSuite
                 </button>
                 <button
                   onClick={() => navigate('/evangsol-strengths')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
                 >
-                  EvangSolの強み
+                  EvangSol Strengths
                 </button>
                 <button
                   onClick={() => navigate('/case-studies')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
                 >
-                  導入事例
+                  Case Studies
                 </button>
                 <button
                   onClick={() => navigate('/about')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
                 >
-                  会社概要
+                  Company Overview
                 </button>
                 <button
                   onClick={() => navigate('/contact')}
                   className="px-6 py-2.5 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-sky-500/25"
                 >
-                  無料相談
+                  Free Consultation
                 </button>
               </div>
             ) : (
@@ -78,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
                   onClick={() => navigate('/')}
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium flex items-center cursor-pointer"
                 >
-                  ホームに戻る
+                  Back to Home
                 </button>
               </div>
             )}
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
               }}
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
-              NetSuiteとは
+              What is NetSuite
             </button>
             <button
               onClick={() => {
@@ -110,10 +110,10 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
               }}
               className="text-2xl text-slate-700 hover:text-sky-500 transition-colors font-medium"
             >
-              EvangSolの強み
+              EvangSol Strengths
             </button>
             <a href="#solutions" className="text-2xl text-slate-700 hover:text-sky-500">
-              ソリューション
+              Solutions
             </a>
             <button
               onClick={() => {
@@ -122,19 +122,19 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
               }}
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
-              導入事例
+              Case Studies
             </button>
             <button
               onClick={() => navigate('/about')}
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
-              会社概要
+              Company Overview
             </button>
             <button
               onClick={() => navigate('/contact')}
               className="px-8 py-3 bg-gradient-to-r from-sky-400 to-sky-500 text-white rounded-full font-semibold"
             >
-              無料相談
+              Free Consultation
             </button>
           </div>
         </div>
