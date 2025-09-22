@@ -36,7 +36,7 @@ function App() {
       <ScrollToTop />
       <Suspense fallback={<LoadingSpinner />}>
         <Routes>
-          <Route path="/" element={<NetSuite />} />
+          <Route path="/" element={<NetSuiteUnified />} />
           <Route path="/comparison" element={<ComparisonHome />} />
           <Route path="/site-a" element={<NetSuite />} />
           <Route path="/site-b" element={<WhatIsNetSuite />} />

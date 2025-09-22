@@ -54,12 +54,6 @@ const ModernFooter: React.FC = () => {
     ],
   };
 
-  const stats = [
-    { value: '50+', label: '導入実績', icon: <Trophy className="w-5 h-5" /> },
-    { value: '100%', label: '満足度', icon: <Heart className="w-5 h-5" /> },
-    { value: '24/7', label: 'サポート', icon: <Clock className="w-5 h-5" /> },
-    { value: '2拠点', label: '全国対応', icon: <MapPin className="w-5 h-5" /> },
-  ];
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -156,31 +150,11 @@ const ModernFooter: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="relative border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center group cursor-pointer">
-                <div className="inline-flex p-3 rounded-2xl bg-gradient-to-r from-purple-900/50 to-orange-900/50 mb-4 group-hover:scale-110 transition-transform">
-                  <div className="text-purple-400 group-hover:text-orange-400 transition-colors">
-                    {stat.icon}
-                  </div>
-                </div>
-                <div className="text-4xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-gray-500">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Main Footer Content */}
       <div className="relative">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid lg:grid-cols-5 gap-12">
+          <div className="grid lg:grid-cols-4 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <div className="mb-8">
@@ -189,7 +163,7 @@ const ModernFooter: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-orange-600 rounded-xl blur-lg opacity-50"></div>
                     <div className="relative bg-black rounded-xl p-3 border border-white/20">
                       <img
-                        src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                        src={`${process.env.PUBLIC_URL}/EvangSol_logo - White.png`}
                         alt="EvangSol"
                         className="h-8"
                       />
@@ -207,26 +181,6 @@ const ModernFooter: React.FC = () => {
                   日本企業のDXを成功に導くパートナーです。
                 </p>
 
-                {/* Social Links */}
-                <div className="flex gap-3">
-                  {[
-                    { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
-                    { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn' },
-                    { icon: <Github className="w-5 h-5" />, href: '#', label: 'GitHub' },
-                    { icon: <Globe className="w-5 h-5" />, href: '#', label: 'Website' },
-                  ].map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      aria-label={social.label}
-                      className="p-3 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-orange-600/20 hover:border-purple-500/30 transition-all duration-300 group"
-                    >
-                      <span className="text-gray-400 group-hover:text-white transition-colors">
-                        {social.icon}
-                      </span>
-                    </a>
-                  ))}
-                </div>
               </div>
 
               {/* Contact Info */}
@@ -253,33 +207,6 @@ const ModernFooter: React.FC = () => {
             </div>
 
             {/* Links Sections */}
-            <div>
-              <h4 className="font-bold text-white mb-6 flex items-center gap-2">
-                <Code className="w-4 h-4 text-purple-400" />
-                製品・ソリューション
-              </h4>
-              <ul className="space-y-3">
-                {footerLinks.products.map((link) => (
-                  <li key={link.path}>
-                    <button
-                      onClick={() => navigate(link.path)}
-                      onMouseEnter={() => setHoveredLink(link.path)}
-                      onMouseLeave={() => setHoveredLink(null)}
-                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
-                    >
-                      <span className={`transition-all ${hoveredLink === link.path ? 'text-purple-400' : ''}`}>
-                        {link.icon}
-                      </span>
-                      {link.label}
-                      <ChevronRight className={`w-3 h-3 transition-all ${
-                        hoveredLink === link.path ? 'translate-x-1 opacity-100' : 'opacity-0'
-                      }`} />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             <div>
               <h4 className="font-bold text-white mb-6 flex items-center gap-2">
                 <Building2 className="w-4 h-4 text-orange-400" />
@@ -356,35 +283,19 @@ const ModernFooter: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom Bar - Scroll to Top Only */}
       <div className="relative border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-center md:text-left">
-              <p className="text-gray-500 text-sm">
-                © {currentYear} EvangSol. All rights reserved.
-              </p>
-              <p className="text-xs text-gray-600 mt-1 flex items-center gap-1 justify-center md:justify-start">
-                Built with <Heart className="w-3 h-3 text-red-500 animate-pulse" /> by EvangSol Team
-              </p>
-            </div>
-
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-xs text-gray-500">
-                <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />
-                Powered by NetSuite
-              </div>
-              <div className="h-6 w-px bg-white/10"></div>
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="p-2 bg-gradient-to-r from-purple-600/20 to-orange-600/20 border border-purple-500/30 rounded-full hover:border-purple-400/60 transition-all hover:scale-110 group"
-                aria-label="ページトップへ戻る"
-              >
-                <svg className="w-5 h-5 text-purple-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                </svg>
-              </button>
-            </div>
+          <div className="flex justify-end">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="p-2 bg-gradient-to-r from-purple-600/20 to-orange-600/20 border border-purple-500/30 rounded-full hover:border-purple-400/60 transition-all hover:scale-110 group"
+              aria-label="ページトップへ戻る"
+            >
+              <svg className="w-5 h-5 text-purple-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

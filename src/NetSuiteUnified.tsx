@@ -30,10 +30,9 @@ import {
   Workflow,
   Network,
   ChevronRight,
-  ChevronDown,
+  Quote,
   Star,
   Heart,
-  Activity,
   Play,
   Pause,
   Cpu,
@@ -41,7 +40,6 @@ import {
   Layers,
   Settings,
   Box,
-  DollarSign,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
@@ -86,8 +84,8 @@ const CORE_FEATURES: Feature[] = [
 const STRENGTHS: Feature[] = [
   {
     icon: <Code className="w-8 h-8" />,
-    title: '圧倒的な開発力',
-    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも完全にシステム化',
+    title: '高い開発力',
+    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
     bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
   },
   {
@@ -115,6 +113,38 @@ const STRENGTHS: Feature[] = [
     bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援'],
   },
 ];
+
+const CASE_STUDY = {
+  company: '株式会社グリーンハウス',
+  headline: 'レガシーERPからNetSuiteへ基幹システムを移行し、柔軟でスピーディな成長基盤を構築',
+  summary:
+    '幅広い製品ラインを展開する電子機器メーカー。SAP ECC 6.0のEOSを機にNetSuiteへ刷新し、基幹業務・顧客管理・ワークフローを一体化。ガバナンス強化と迅速な経営判断を支える成長基盤を整備。',
+  location: '〒150-0013 東京都渋谷区恵比寿1-19-15 ウノサワ東急ビル5階',
+  employees: '100～249名',
+  partner: '導入パートナー: 株式会社EvangSol（エバンソル）',
+  link: 'https://www.netsuite.co.jp/customer-testimonials/greenhouse-manufacturing.shtml',
+  quote: {
+    text: '「返品管理プロセスをNetSuiteに統合することで、申請から承認までのリードタイムが従来の1/10以下に短縮され、業務の効率化が実現しました。さらに、営業部門の利益管理や予実管理も追加で統合することで、属人化された業務から脱却し、よりスムーズな作業環境を実現するなど、継続的な改善に取り組んでいきます」',
+    author: '株式会社グリーンハウス 取締役 兼 マーケティング担当執行役員 奥寺 貴哉 氏',
+  },
+  highlights: [
+    {
+      icon: <Clock className="w-8 h-8" />,
+      title: '承認リードタイムを1/10以下に短縮',
+      description: '返品管理の申請〜承認をNetSuiteに統合し、スピーディな意思決定を実現。',
+    },
+    {
+      icon: <Workflow className="w-8 h-8" />,
+      title: '基幹業務とワークフローを一体化',
+      description: '受発注から申請・承認のプロセスをクラウド上で集約し、属人化を解消。',
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: '経営の可視化と継続的改善',
+      description: '営業部門の利益・予実管理をNetSuiteで統合し、継続的な改善と成長を支援。',
+    },
+  ],
+};
 
 // Process Steps
 const PROCESS_STEPS = [
@@ -150,7 +180,6 @@ const PROCESS_STEPS = [
 
 const NetSuiteUnified: React.FC = () => {
   const navigate = useNavigate();
-  const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -161,7 +190,6 @@ const NetSuiteUnified: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
       // Check if stats section is visible
       if (statsRef.current) {
         const rect = statsRef.current.getBoundingClientRect();
@@ -200,7 +228,7 @@ const NetSuiteUnified: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Multi-layered Animated Background */}
-      <div className="fixed inset-0 z-0">
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-orange-900/20"></div>
 
         {/* Animated mesh gradient */}
@@ -242,15 +270,12 @@ const NetSuiteUnified: React.FC = () => {
 
       {/* Hero Section with Enhanced 3D Typography */}
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
-        <div
-          className="text-center max-w-6xl mx-auto"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-        >
+        <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
           <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-orange-600/20 backdrop-blur-xl rounded-full border border-purple-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
             <span className="text-sm font-semibold bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
-              日本最強のNetSuite導入パートナー
+              日本有数のNetSuite導入パートナー
             </span>
             <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
           </div>
@@ -273,14 +298,14 @@ const NetSuiteUnified: React.FC = () => {
 
           {/* Subtitle with animation */}
           <p className={`text-2xl md:text-3xl mb-4 text-gray-300 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            無限の可能性を、現実のビジネスへ
+            多彩な可能性を、現実のビジネスへ
           </p>
 
           {/* Animated feature rotator */}
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: 'カスタマイズ無限大', icon: <Code />, gradient: 'from-purple-400 to-pink-400' },
+                { text: '柔軟なカスタマイズ', icon: <Code />, gradient: 'from-purple-400 to-pink-400' },
                 { text: '完全クラウド対応', icon: <Cloud />, gradient: 'from-blue-400 to-cyan-400' },
                 { text: 'AI機能搭載', icon: <Cpu />, gradient: 'from-green-400 to-emerald-400' },
               ].map((item, index) => (
@@ -319,10 +344,6 @@ const NetSuiteUnified: React.FC = () => {
             </button>
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <ChevronDown className="w-10 h-10 text-purple-400" />
-          </div>
         </div>
       </section>
 
@@ -330,18 +351,39 @@ const NetSuiteUnified: React.FC = () => {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto space-y-32">
           {/* 1. NetSuite */}
-          <div className="space-y-20">
+          <div id="netsuite" className="space-y-20 scroll-mt-20">
               <div className="text-center">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  NetSuiteの革新的機能
+                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                  NetSuiteの実用的な機能
                 </h2>
                 <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-                  世界最高峰のクラウドERPが提供する、無限の可能性
+                  世界トップクラスのクラウドERPが提供する、幅広い拡張性
                 </p>
               </div>
 
+              {/* Core Modules Grid */}
+              <div>
+                <h3 className="text-3xl font-bold text-center mb-12">モジュール一覧</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {CORE_FEATURES.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="group relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-orange-500/50 transition-all hover:scale-105"
+                    >
+                      <div className="w-16 h-16 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-orange-500/30">
+                        <div className="text-orange-400">{feature.icon}</div>
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                      <p className="text-gray-400">{feature.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Customization Tools with Enhanced Design */}
-              <div className="grid lg:grid-cols-3 gap-8 mb-16">
+              <div>
+                <h3 className="text-3xl font-bold text-center mb-12">NetSuiteのカスタマイズ性</h3>
+                <div className="grid lg:grid-cols-3 gap-8 mb-16">
                 {[
                   {
                     icon: <PenTool className="w-12 h-12" />,
@@ -349,13 +391,6 @@ const NetSuiteUnified: React.FC = () => {
                     subtitle: 'JavaScriptベース開発',
                     features: ['完全なカスタムロジック', 'イベントドリブン処理', 'API統合'],
                     gradient: 'from-violet-500 to-purple-500',
-                    code: `// 承認フロー自動化の例
-function beforeSubmit(context) {
-  if (context.type === 'create') {
-    // 金額に応じた承認者自動設定
-    setApprover(record);
-  }
-}`,
                   },
                   {
                     icon: <Workflow className="w-12 h-12" />,
@@ -363,7 +398,6 @@ function beforeSubmit(context) {
                     subtitle: 'ビジュアルワークフロー',
                     features: ['ドラッグ&ドロップ設計', '複雑な承認フロー', '自動化処理'],
                     gradient: 'from-blue-500 to-cyan-500',
-                    visual: true,
                   },
                   {
                     icon: <Network className="w-12 h-12" />,
@@ -371,40 +405,16 @@ function beforeSubmit(context) {
                     subtitle: 'Web Services API',
                     features: ['SOAP/REST対応', 'リアルタイム連携', 'バッチ処理'],
                     gradient: 'from-emerald-500 to-teal-500',
-                    code: `// API連携の例
-POST /api/v1/record/salesorder
-{
-  "entity": {"id": "12345"},
-  "items": [...]
-}`,
                   },
                 ].map((tool, index) => (
                   <div key={index} className="group relative">
                     <div className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`}></div>
-                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-gray-600 transition-all">
+                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-gray-600 transition-all h-full">
                       <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${tool.gradient} mb-6`}>
                         {tool.icon}
                       </div>
                       <h3 className="text-2xl font-bold mb-2">{tool.title}</h3>
                       <p className="text-gray-400 mb-6">{tool.subtitle}</p>
-
-                      {tool.code && (
-                        <div className="bg-black/50 rounded-lg p-4 mb-6 font-mono text-xs text-green-400">
-                          <pre>{tool.code}</pre>
-                        </div>
-                      )}
-
-                      {tool.visual && (
-                        <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-lg p-6 mb-6">
-                          <div className="flex items-center justify-between">
-                            <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-                            <ChevronRight className="text-gray-500" />
-                            <div className="w-8 h-8 bg-cyan-500 rounded-full"></div>
-                            <ChevronRight className="text-gray-500" />
-                            <div className="w-8 h-8 bg-green-500 rounded-full"></div>
-                          </div>
-                        </div>
-                      )}
 
                       <ul className="space-y-3">
                         {tool.features.map((feature, idx) => (
@@ -417,82 +427,18 @@ POST /api/v1/record/salesorder
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Core Modules Grid */}
-              <div>
-                <h3 className="text-3xl font-bold text-center mb-12">統合モジュール一覧</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {CORE_FEATURES.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="group relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-blue-500/50 transition-all hover:scale-105"
-                    >
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-blue-500/30">
-                        <div className="text-blue-400">{feature.icon}</div>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                      <p className="text-gray-400">{feature.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 2024 Updates with Animation */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-3xl blur-3xl animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-green-900/40 to-emerald-900/40 backdrop-blur-xl rounded-3xl p-12 border border-green-500/30">
-                  <div className="flex items-center gap-3 mb-8">
-                    <Sparkles className="w-8 h-8 text-green-400 animate-pulse" />
-                    <h3 className="text-3xl font-bold text-green-300">2024年最新アップデート</h3>
-                  </div>
-
-                  <div className="grid md:grid-cols-3 gap-8">
-                    {[
-                      {
-                        title: 'AI機能強化',
-                        icon: <Cpu className="w-8 h-8" />,
-                        features: ['予測分析の精度向上', '自動仕訳提案機能', '需要予測の最適化'],
-                      },
-                      {
-                        title: '日本対応強化',
-                        icon: <Globe className="w-8 h-8" />,
-                        features: ['インボイス制度完全対応', '電子帳簿保存法対応', '日本語UIの改善'],
-                      },
-                      {
-                        title: 'パフォーマンス向上',
-                        icon: <Zap className="w-8 h-8" />,
-                        features: ['処理速度の大幅向上', 'API応答時間の短縮', 'データベース最適化'],
-                      },
-                    ].map((update, index) => (
-                      <div key={index}>
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="text-green-400">{update.icon}</div>
-                          <h4 className="text-xl font-bold text-green-400">{update.title}</h4>
-                        </div>
-                        <ul className="space-y-3">
-                          {update.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-3" />
-                              <span className="text-gray-300">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
           </div>
 
           {/* 2. EvangSol */}
-          <div className="space-y-20">
+          <div id="evangsol" className="space-y-20 scroll-mt-20">
               <div className="text-center">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                  EvangSolの圧倒的強み
+                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  EvangSolの強み
                 </h2>
                 <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-                  技術力と情熱で、NetSuiteの可能性を最大限に引き出します
+                  技術力と情熱で、NetSuiteの価値を引き出します
                 </p>
               </div>
 
@@ -505,12 +451,12 @@ POST /api/v1/record/salesorder
                     onMouseEnter={() => setHoveredStrength(index)}
                     onMouseLeave={() => setHoveredStrength(null)}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-2xl blur-xl transition-all ${hoveredStrength === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                    <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-orange-500/50 transition-all hover:scale-105">
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500"></div>
+                    <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl blur-xl transition-all ${hoveredStrength === index ? 'opacity-40' : 'opacity-20'}`}></div>
+                    <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500"></div>
 
-                      <div className="w-14 h-14 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-orange-500/30">
-                        <div className="text-orange-400">{strength.icon}</div>
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-blue-500/30">
+                        <div className="text-blue-400">{strength.icon}</div>
                       </div>
 
                       <h3 className="text-lg font-bold text-white mb-3">{strength.title}</h3>
@@ -535,33 +481,67 @@ POST /api/v1/record/salesorder
 
               {/* Case Study Highlight */}
               <div className="bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-xl rounded-3xl p-12 border border-orange-500/20">
-                <h3 className="text-3xl font-bold text-center mb-8 text-orange-400">導入成功事例</h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  {[
-                    {
-                      industry: '製造業',
-                      result: '在庫管理の大幅改善',
-                      period: '短期間での導入完了',
-                      icon: <Box className="w-8 h-8" />,
-                    },
-                    {
-                      industry: '小売業',
-                      result: '売上予測精度の向上',
-                      period: '効率的な導入プロセス',
-                      icon: <ShoppingCart className="w-8 h-8" />,
-                    },
-                    {
-                      industry: 'サービス業',
-                      result: '業務時間の大幅削減',
-                      period: '迅速な導入実現',
-                      icon: <Users className="w-8 h-8" />,
-                    },
-                  ].map((study, index) => (
+                <div className="grid lg:grid-cols-[1.6fr,1fr] gap-12 items-start">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-400/30 rounded-full text-sm font-semibold text-orange-200 mb-6">
+                      <Trophy className="w-4 h-4" />
+                      導入実績
+                    </div>
+                    <h3 className="text-3xl font-bold text-white mb-4">{CASE_STUDY.company}</h3>
+                    <p className="text-lg text-orange-200 font-semibold mb-4">{CASE_STUDY.headline}</p>
+                    <p className="text-sm md:text-base text-gray-200 leading-relaxed mb-6">
+                      {CASE_STUDY.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-3 text-xs md:text-sm text-gray-200">
+                      <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-orange-400/20 rounded-full">
+                        <Building2 className="w-4 h-4 text-orange-300" />
+                        <span>{CASE_STUDY.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-orange-400/20 rounded-full">
+                        <Users className="w-4 h-4 text-orange-300" />
+                        <span>{CASE_STUDY.employees}</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-orange-400/20 rounded-full">
+                        <HeartHandshake className="w-4 h-4 text-orange-300" />
+                        <span>{CASE_STUDY.partner}</span>
+                      </div>
+                    </div>
+                    <div className="mt-8 flex flex-wrap gap-4">
+                      <a
+                        href={CASE_STUDY.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-full shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105 transition-all"
+                      >
+                        実績を見る
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                      <button
+                        onClick={goContact}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900/70 border border-orange-400/30 text-white font-bold rounded-full hover:border-orange-400/60 hover:bg-gray-900/90 transition-all"
+                      >
+                        <Rocket className="w-4 h-4" />
+                        無料相談を依頼
+                      </button>
+                    </div>
+                  </div>
+                  <div className="bg-gray-900/70 border border-orange-400/20 rounded-2xl p-6">
+                    <div className="text-orange-300 mb-4">
+                      <Quote className="w-8 h-8" />
+                    </div>
+                    <p className="text-sm md:text-base text-gray-100 leading-relaxed italic mb-6">
+                      {CASE_STUDY.quote.text}
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-400">{CASE_STUDY.quote.author}</p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-6 mt-12">
+                  {CASE_STUDY.highlights.map((highlight, index) => (
                     <div key={index} className="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
-                      <div className="text-orange-400 mb-4">{study.icon}</div>
-                      <h4 className="text-xl font-bold text-white mb-2">{study.industry}</h4>
-                      <p className="text-green-400 font-bold mb-2">{study.result}</p>
-                      <p className="text-gray-400 text-sm">{study.period}</p>
+                      <div className="text-orange-300 mb-4">{highlight.icon}</div>
+                      <h4 className="text-lg font-bold text-white mb-3">{highlight.title}</h4>
+                      <p className="text-sm text-gray-300 leading-relaxed">{highlight.description}</p>
                     </div>
                   ))}
                 </div>
@@ -569,18 +549,18 @@ POST /api/v1/record/salesorder
           </div>
 
           {/* 3. Perfect Match */}
-          <div>
+          <div id="matching" className="scroll-mt-20">
               {/* Perfect Match Section with Animation */}
               <div className="text-center">
                 <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
-                  完璧なマッチング
+                  理想的なマッチング
                 </h2>
 
                 {/* Key Benefits */}
                 <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
                   {[
-                    { label: 'グローバル展開', description: '世界中の企業が信頼', icon: <Globe />, delay: 0, color: 'from-blue-400 to-cyan-400' },
-                    { label: '豊富な実績', description: '多数の成功事例', icon: <Award />, delay: 0.1, color: 'from-orange-400 to-red-400' },
+                    { label: 'グローバル展開', description: '世界中の企業が信頼', icon: <Globe />, delay: 0, color: 'from-orange-400 to-red-400' },
+                    { label: '豊富な実績', description: '多数の成功事例', icon: <Award />, delay: 0.1, color: 'from-blue-400 to-cyan-400' },
                     { label: '高い満足度', description: '継続的な改善サポート', icon: <Heart />, delay: 0.2, color: 'from-pink-400 to-rose-400' },
                     { label: '業務効率化', description: '大幅な生産性向上', icon: <TrendingUp />, delay: 0.3, color: 'from-green-400 to-emerald-400' },
                   ].map((benefit, index) => (
@@ -604,13 +584,13 @@ POST /api/v1/record/salesorder
                 <div className="grid lg:grid-cols-3 gap-8">
                   {/* NetSuite Card */}
                   <div className="group relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all hover:scale-105">
-                      <Cloud className="w-16 h-16 text-blue-400 mb-6" />
-                      <h3 className="text-2xl font-bold text-blue-400 mb-4">NetSuite</h3>
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
+                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-orange-500/30 hover:border-orange-400/60 transition-all hover:scale-105 h-full">
+                      <Cloud className="w-16 h-16 text-orange-400 mb-6" />
+                      <h3 className="text-2xl font-bold text-orange-400 mb-4">NetSuite</h3>
                       <p className="text-gray-400 mb-6">世界No.1クラウドERP</p>
                       <ul className="space-y-3 text-left">
-                        {['無限のカスタマイズ性', 'グローバル標準機能', '継続的アップデート'].map((item, idx) => (
+                        {['高いカスタマイズ性', 'グローバル標準機能', '継続的アップデート'].map((item, idx) => (
                           <li key={idx} className="flex items-start">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
                             <span className="text-gray-300">{item}</span>
@@ -623,13 +603,13 @@ POST /api/v1/record/salesorder
                   {/* Synergy Card */}
                   <div className="group relative transform lg:scale-110">
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-600/30 to-orange-600/30 rounded-3xl blur-2xl animate-pulse"></div>
-                    <div className="relative bg-gradient-to-br from-gray-900 via-purple-900/20 to-orange-900/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-transparent bg-clip-padding"
+                    <div className="relative bg-gradient-to-br from-gray-900 via-purple-900/20 to-orange-900/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-transparent bg-clip-padding h-full"
                          style={{ backgroundImage: 'linear-gradient(to right bottom, rgba(147, 51, 234, 0.3), rgba(251, 146, 60, 0.3)), linear-gradient(to right bottom, #111, #111)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box' }}>
                       <Zap className="w-16 h-16 text-yellow-400 mb-6 animate-pulse" />
                       <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent mb-4">
                         相乗効果
                       </h3>
-                      <p className="text-gray-300 font-bold mb-6">最強の組み合わせ</p>
+                      <p className="text-gray-300 font-bold mb-6">信頼できる組み合わせ</p>
                       <ul className="space-y-3 text-left">
                         {[
                           { label: '業務効率の大幅向上', icon: <Star /> },
@@ -647,13 +627,13 @@ POST /api/v1/record/salesorder
 
                   {/* EvangSol Card */}
                   <div className="group relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-orange-500/30 hover:border-orange-400/60 transition-all hover:scale-105">
-                      <Code className="w-16 h-16 text-orange-400 mb-6" />
-                      <h3 className="text-2xl font-bold text-orange-400 mb-4">EvangSol</h3>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
+                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all hover:scale-105 h-full">
+                      <Code className="w-16 h-16 text-blue-400 mb-6" />
+                      <h3 className="text-2xl font-bold text-blue-400 mb-4">EvangSol</h3>
                       <p className="text-gray-400 mb-6">開発特化型パートナー</p>
                       <ul className="space-y-3 text-left">
-                        {['圧倒的な開発力', '日本企業への理解', '迅速な実装'].map((item, idx) => (
+                        {['高い開発力', '日本企業への理解', '迅速な実装'].map((item, idx) => (
                           <li key={idx} className="flex items-start">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
                             <span className="text-gray-300">{item}</span>
@@ -666,22 +646,22 @@ POST /api/v1/record/salesorder
               </div>
 
               {/* Visual Comparison Section */}
-              <div className="relative">
+              <div className="relative mt-20">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-orange-900/20 rounded-3xl blur-3xl"></div>
                 <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-3xl p-12 border border-gray-700/50">
                   <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                    なぜEvangSol × NetSuiteが最強なのか？
+                    EvangSol × NetSuiteが選ばれる理由
                   </h3>
 
                   <div className="grid md:grid-cols-2 gap-12">
                     <div className="space-y-6">
                       <h4 className="text-2xl font-bold text-purple-400 flex items-center gap-3">
                         <Lightbulb className="w-8 h-8" />
-                        圧倒的な開発力
+                        高い開発力
                       </h4>
                       <p className="text-gray-300 leading-relaxed">
-                        NetSuiteの持つ無限のカスタマイズ可能性を、EvangSolの技術力で100%活用。
-                        SuiteScript、SuiteFlow、SuiteTalkを駆使し、あなたの業務に完璧にフィットするシステムを構築します。
+                        NetSuiteの柔軟なカスタマイズ機能を、EvangSolの技術力でしっかり活用。
+                        SuiteScript、SuiteFlow、SuiteTalkを駆使し、あなたの業務に適合するシステムを構築します。
                       </p>
                       <div className="grid grid-cols-3 gap-4">
                         {[
@@ -710,7 +690,7 @@ POST /api/v1/record/salesorder
                         {[
                           { label: '全国対応', sublabel: '東京・札幌' },
                           { label: '豊富な', sublabel: '経験' },
-                          { label: '無限の', sublabel: '成長性' },
+                          { label: '高い', sublabel: '成長性' },
                         ].map((metric, idx) => (
                           <div key={idx} className="text-center">
                             <div className="text-xl font-bold text-purple-400">{metric.label}</div>
@@ -725,7 +705,7 @@ POST /api/v1/record/salesorder
           </div>
 
           {/* 4. Solutions */}
-          <div className="space-y-20">
+          <div id="solutions" className="space-y-20 scroll-mt-20">
               <div className="text-center">
                 <h2 className="text-5xl font-bold mb-6">
                   <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
@@ -737,7 +717,7 @@ POST /api/v1/record/salesorder
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {SOLUTIONS.map((solution, index) => (
                   <div
                     key={index}
@@ -759,37 +739,6 @@ POST /api/v1/record/salesorder
                 ))}
               </div>
 
-              {/* ROI Calculator Mock */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-3xl blur-3xl"></div>
-                <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-3xl p-12 border border-green-500/20">
-                  <h3 className="text-3xl font-bold text-center mb-8 text-green-400">
-                    ROI シミュレーター
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                      <h4 className="text-xl font-bold text-white mb-6">導入効果を可視化</h4>
-                      <div className="space-y-4">
-                        {[
-                          { label: '従業員数', value: '中規模企業' },
-                          { label: '処理効率', value: '大幅向上' },
-                          { label: '業務時間', value: '大幅削減' },
-                        ].map((item, idx) => (
-                          <div key={idx} className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                            <span className="text-gray-400">{item.label}</span>
-                            <span className="text-white font-bold">{item.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-5xl font-black text-green-400 mb-4">高ROI</div>
-                      <div className="text-xl text-gray-400 mb-2">確実な投資効果</div>
-                      <div className="text-2xl font-bold text-white">短期間での投資回収を実現</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
           </div>
 
           {/* 5. Process Timeline */}
@@ -821,58 +770,7 @@ POST /api/v1/record/salesorder
               ))}
             </div>
           </div>
-          </div>
-
-          {/* 6. Success Metrics */}
-          <div className="space-y-20">
-            <div className="bg-gradient-to-br from-purple-900/30 via-pink-900/30 to-orange-900/30 backdrop-blur-xl rounded-3xl p-12 border border-purple-500/20">
-            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              導入効果実績ダッシュボード
-            </h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-              {[
-                { label: '業務効率', description: '大幅な向上を実現', icon: <TrendingUp className="w-8 h-8" />, color: 'from-green-400 to-emerald-400' },
-                { label: '作業時間', description: '大幅な削減を達成', icon: <Clock className="w-8 h-8" />, color: 'from-blue-400 to-cyan-400' },
-                { label: 'コスト', description: '大幅な削減効果', icon: <DollarSign className="w-8 h-8" />, color: 'from-purple-400 to-pink-400' },
-                { label: '顧客満足度', description: '継続的な向上', icon: <HeartHandshake className="w-8 h-8" />, color: 'from-orange-400 to-red-400' },
-              ].map((metric, index) => (
-                <div key={index} className="text-center group cursor-pointer">
-                  <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-r ${metric.color} mb-4 group-hover:scale-110 transition-transform`}>
-                    <div className="text-white">{metric.icon}</div>
-                  </div>
-                  <div className={`text-3xl font-black bg-gradient-to-r ${metric.color} bg-clip-text text-transparent mb-2`}>
-                    {metric.label}
-                  </div>
-                  <div className="text-gray-400">{metric.description}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Real-time Activity Feed Mock */}
-            <div className="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                <Activity className="w-5 h-5 text-green-400 animate-pulse" />
-                リアルタイム導入状況
-              </h3>
-              <div className="space-y-3">
-                {[
-                  { time: '最近', event: '製造業A社: 在庫管理モジュール稼働開始', status: 'success' },
-                  { time: '最近', event: '小売業B社: POSシステム連携完了', status: 'success' },
-                  { time: '進行中', event: 'サービス業C社: 承認フロー設定中', status: 'progress' },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full ${item.status === 'success' ? 'bg-green-400' : 'bg-yellow-400'} animate-pulse`}></div>
-                      <span className="text-sm text-gray-300">{item.event}</span>
-                    </div>
-                    <span className="text-xs text-gray-500">{item.time}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          </div>
+        </div>
         </div>
       </section>
 
@@ -883,7 +781,7 @@ POST /api/v1/record/salesorder
             未来のビジネスを、今始めよう
           </h2>
           <p className="text-xl text-gray-300 mb-12">
-            NetSuite × EvangSolで、競合を圧倒する経営基盤を構築
+            NetSuite × EvangSolで、競争力を高める経営基盤を構築
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -895,13 +793,13 @@ POST /api/v1/record/salesorder
               今すぐ無料相談
             </button>
             <a
-              href="https://www.netsuite.co.jp/customer-testimonials.shtml"
+              href={CASE_STUDY.link}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gray-800/50 backdrop-blur text-white font-bold text-lg rounded-full border border-gray-600 hover:bg-gray-700/50 hover:border-gray-500 transition-all duration-300"
             >
               <Trophy className="w-6 h-6" />
-              導入事例を見る
+              実績を見る
             </a>
           </div>
 
