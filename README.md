@@ -1,94 +1,136 @@
-# NetSuite Landing Page
+# NetSuite × EvangSol プロジェクト
 
-NetSuite 向けのランディングページを構築するための React アプリケーションです。
-レスポンシブで軽量なページを素早く立ち上げられることを目的としています。
+NetSuite ERPソリューションとEvangSolのサービスを紹介する統合プラットフォーム
 
-## 主な機能
+## 📁 プロジェクト構成
 
-- NetSuite 用に調整されたコンテンツ構成
-- React Router によるページ遷移
-- Tailwind CSS を用いたレスポンシブデザイン
+### 1. NetSuiteランディングページ
+NetSuite ERPソリューションの紹介とEvangSolの強みを統合したランディングページ
 
-## 使用技術
+### 2. EvangSolコーポレートサイト
+株式会社EvangSolの企業情報とサービスを紹介するコーポレートサイト
 
-- [React](https://react.dev/)
+## 🌐 公開URL
+
+### NetSuiteランディングページ
+- **メインページ**: https://kaito-momoi.github.io/netsuite-landing/
+- **ソリューション詳細**:
+  - 入金消込: https://kaito-momoi.github.io/netsuite-landing/#/solutions/payment-matching
+  - EC統合: https://kaito-momoi.github.io/netsuite-landing/#/solutions/ec-integration
+  - 業界別OMS: https://kaito-momoi.github.io/netsuite-landing/#/solutions/industry-oms
+  - 資材計画: https://kaito-momoi.github.io/netsuite-landing/#/solutions/material-planning
+  - 倉庫統合: https://kaito-momoi.github.io/netsuite-landing/#/solutions/warehouse-integration
+  - 在庫エージング: https://kaito-momoi.github.io/netsuite-landing/#/solutions/inventory-aging
+- **その他**:
+  - 利用規約: https://kaito-momoi.github.io/netsuite-landing/#/terms
+  - セキュリティ・プライバシー: https://kaito-momoi.github.io/netsuite-landing/#/security-privacy
+
+### EvangSolコーポレートサイト
+- **ホームページ**: https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/
+- **各ページ** (React Router):
+  - ホーム別パス: https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/homepage/
+  - 会社紹介: /introduction
+  - 強み: /strengths
+  - 実績: /achievements
+  - ソリューション: /solutions
+  - 会社概要: /about
+  - お問い合わせ: /contact
+
+## 🛠 技術スタック
+
+### 共通
+- [React](https://react.dev/) 18
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [React Router](https://reactrouter.com/)
 - [lucide-react](https://lucide.dev/)（アイコン）
 
-## 動作環境
+### NetSuiteランディング
+- [React Router](https://reactrouter.com/) (HashRouter)
+- [Framer Motion](https://www.framer.com/motion/)（アニメーション）
 
-- Node.js 18 以降
-- npm 9 以降
+### EvangSolサイト
+- [Vite](https://vitejs.dev/)（ビルドツール）
+- [React Router DOM](https://reactrouter.com/)
 
-## セットアップ
+## 💻 開発環境
+
+### 必要要件
+- Node.js 18以降
+- npm 9以降
+
+### セットアップ
 
 ```bash
-git clone <repo>
+# リポジトリのクローン
+git clone https://github.com/Kaito-Momoi/netsuite-landing.git
 cd netsuite-landing
+
+# NetSuiteランディングページ
 npm install
+npm start  # http://localhost:3000
+
+# EvangSolサイト
+cd evangsol-site
+npm install
+npm run dev  # http://localhost:3003
 ```
 
-## 開発サーバーの起動
+### ビルド
 
 ```bash
-npm start
-```
-
-## テストの実行
-
-```bash
-npm test
-```
-
-## ビルド
-
-```bash
+# NetSuiteランディングページ
 npm run build
+# -> /build ディレクトリに出力
+
+# EvangSolサイト
+cd evangsol-site
+npm run build
+# -> /evangsol-site/dist ディレクトリに出力
 ```
 
-アプリケーションは `build/` ディレクトリに出力されます。
+## 📝 プロジェクト構造
 
-## 公開URL
+```
+netsuite-landing/
+├── src/                        # NetSuiteランディングページ
+│   ├── NetSuiteUnified.tsx    # メインランディングページ
+│   ├── solutions/              # ソリューション詳細ページ
+│   └── components/             # 共有コンポーネント
+├── evangsol-site/              # EvangSolコーポレートサイト（開発用）
+│   ├── src/
+│   │   ├── pages/             # 各ページコンポーネント
+│   │   └── components/        # 共有コンポーネント
+│   └── dist/                  # ビルド出力
+├── evangsol-site-deploy/       # EvangSolサイト（GitHub Pages用）
+└── build/                      # NetSuiteランディングビルド出力
+```
 
-- メインサイト（HashRouter 経由）
-  - https://kaito-momoi.github.io/netsuite-landing/#/
-  - https://kaito-momoi.github.io/netsuite-landing/#/comparison
-  - https://kaito-momoi.github.io/netsuite-landing/#/site-a
-  - https://kaito-momoi.github.io/netsuite-landing/#/site-b
-  - https://kaito-momoi.github.io/netsuite-landing/#/what-is-netsuite
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite/solutions
-  - https://kaito-momoi.github.io/netsuite-landing/#/evangsol-strengths
-  - https://kaito-momoi.github.io/netsuite-landing/#/about
-  - https://kaito-momoi.github.io/netsuite-landing/#/services
-  - https://kaito-momoi.github.io/netsuite-landing/#/contact
-  - https://kaito-momoi.github.io/netsuite-landing/#/features
-  - https://kaito-momoi.github.io/netsuite-landing/#/solutions/payment-matching
-  - https://kaito-momoi.github.io/netsuite-landing/#/solutions/ec-integration
-  - https://kaito-momoi.github.io/netsuite-landing/#/solutions/industry-oms
-  - https://kaito-momoi.github.io/netsuite-landing/#/solutions/material-planning
-  - https://kaito-momoi.github.io/netsuite-landing/#/solutions/warehouse-integration
-  - https://kaito-momoi.github.io/netsuite-landing/#/solutions/inventory-aging
-  - https://kaito-momoi.github.io/netsuite-landing/#/case-studies
-  - https://kaito-momoi.github.io/netsuite-landing/#/terms
-  - https://kaito-momoi.github.io/netsuite-landing/#/security-privacy
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-evangsol
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-hybrit
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-evangsol-new
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-evangsol-smb
-  - https://kaito-momoi.github.io/netsuite-landing/#/netsuite-unified
+## 🚀 デプロイ
 
-- EvangSol Site コンテンツ（ソース ↔ 公開URL）
-  - [HomePage.tsx](evangsol-site/src/pages/HomePage.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/
-  - [Introduction.tsx](evangsol-site/src/pages/Introduction.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/introduction
-  - [Strengths.tsx](evangsol-site/src/pages/Strengths.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/strengths
-  - [Achievements.tsx](evangsol-site/src/pages/Achievements.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/achievements
-  - [Solutions.tsx](evangsol-site/src/pages/Solutions.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/solutions
-  - [About.tsx](evangsol-site/src/pages/About.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/about
-  - [Contact.tsx](evangsol-site/src/pages/Contact.tsx) ↔ https://kaito-momoi.github.io/netsuite-landing/EvangSol-Site/contact
+GitHub Pagesで自動デプロイされます。`main`ブランチへのpush時に自動更新。
 
-## ライセンス
+### 手動デプロイ
 
-このプロジェクトは MIT ライセンスの下で公開されています。
+```bash
+# 両サイトをビルド
+npm run build
+cd evangsol-site && npm run build
+
+# EvangSolサイトのデプロイファイルをコピー
+cp -r evangsol-site/dist/* evangsol-site-deploy/
+
+# コミット＆プッシュ
+git add .
+git commit -m "Deploy updates"
+git push
+```
+
+## 📄 ライセンス
+
+MIT License
+
+## 📞 お問い合わせ
+
+株式会社EvangSol
+- Email: info@evangsol.jp
+- Website: https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/
