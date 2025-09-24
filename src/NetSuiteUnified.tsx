@@ -292,13 +292,13 @@ const NetSuiteUnified: React.FC = () => {
             <h1 className="text-6xl md:text-8xl font-black">
               {/* 3D Shadow layers */}
               <div className="absolute inset-0 text-6xl md:text-8xl font-black text-purple-900/20 blur-sm transform translate-x-4 translate-y-4">
-                NetSuite × EvangSol
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-purple-800/30 transition-colors">EvangSol</a>
               </div>
               <div className="absolute inset-0 text-6xl md:text-8xl font-black text-orange-900/20 blur-sm transform -translate-x-2 translate-y-2">
-                NetSuite × EvangSol
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-800/30 transition-colors">EvangSol</a>
               </div>
               <span className="relative bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
-                NetSuite × EvangSol
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-300 transition-colors cursor-pointer">EvangSol</a>
               </span>
             </h1>
           </div>
@@ -349,6 +349,15 @@ const NetSuiteUnified: React.FC = () => {
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               今すぐ始める
             </button>
+            <a
+              href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-700 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-gray-500/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 group border border-gray-600"
+            >
+              <Globe className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+              EvangSol企業サイトへ
+            </a>
           </div>
 
         </div>

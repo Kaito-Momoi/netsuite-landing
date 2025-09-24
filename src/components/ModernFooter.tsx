@@ -45,7 +45,7 @@ const ModernFooter: React.FC = () => {
       { label: '業界別OMS', path: '/solutions/industry-oms', icon: <Shield className="w-3 h-3" /> },
     ],
     company: [
-      { label: 'EvangSolについて', href: 'https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/#/', external: true, icon: <Building2 className="w-3 h-3" /> },
+      { label: 'EvangSolについて', href: 'https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html', external: true, icon: <Building2 className="w-3 h-3" /> },
       { label: '導入事例', path: '/case-studies', icon: <Award className="w-3 h-3" /> },
       { label: 'サービス', path: '/services', icon: <Rocket className="w-3 h-3" /> },
       { label: 'お問い合わせ', path: '/contact', icon: <Mail className="w-3 h-3" /> },
