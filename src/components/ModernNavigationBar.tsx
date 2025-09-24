@@ -193,7 +193,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 animate-gradient-x"></div>
                     </div>
                     <div className="text-[10px] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-bold tracking-wider mt-0.5 animate-gradient-x">
-                      ORACLE NETSUITE PARTNER
+                      ORACLE NetSuite PARTNER
                     </div>
                   </div>
                 </button>
