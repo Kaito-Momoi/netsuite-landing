@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/netsuite-landing/static/css/main.4f1fc0b9.css",
+    "main.js": "/netsuite-landing/static/js/main.6090be20.js",
+    "static/js/229.dcb39bbc.chunk.js": "/netsuite-landing/static/js/229.dcb39bbc.chunk.js",
+    "static/js/169.56a51c2d.chunk.js": "/netsuite-landing/static/js/169.56a51c2d.chunk.js",
+    "static/js/756.ded71196.chunk.js": "/netsuite-landing/static/js/756.ded71196.chunk.js",
+    "static/js/208.88efe2e0.chunk.js": "/netsuite-landing/static/js/208.88efe2e0.chunk.js",
+    "static/js/808.e4662ca8.chunk.js": "/netsuite-landing/static/js/808.e4662ca8.chunk.js",
+    "static/js/332.85986954.chunk.js": "/netsuite-landing/static/js/332.85986954.chunk.js",
+    "static/js/471.3709299c.chunk.js": "/netsuite-landing/static/js/471.3709299c.chunk.js",
+    "static/js/952.00296e02.chunk.js": "/netsuite-landing/static/js/952.00296e02.chunk.js",
+    "static/js/340.e1342f70.chunk.js": "/netsuite-landing/static/js/340.e1342f70.chunk.js",
+    "static/js/453.fccb5d4c.chunk.js": "/netsuite-landing/static/js/453.fccb5d4c.chunk.js",
+    "static/js/33.47798a7c.chunk.js": "/netsuite-landing/static/js/33.47798a7c.chunk.js",
+    "static/js/974.a5b7b44f.chunk.js": "/netsuite-landing/static/js/974.a5b7b44f.chunk.js",
+    "index.html": "/netsuite-landing/index.html",
+    "main.4f1fc0b9.css.map": "/netsuite-landing/static/css/main.4f1fc0b9.css.map",
+    "main.6090be20.js.map": "/netsuite-landing/static/js/main.6090be20.js.map",
+    "229.dcb39bbc.chunk.js.map": "/netsuite-landing/static/js/229.dcb39bbc.chunk.js.map",
+    "169.56a51c2d.chunk.js.map": "/netsuite-landing/static/js/169.56a51c2d.chunk.js.map",
+    "756.ded71196.chunk.js.map": "/netsuite-landing/static/js/756.ded71196.chunk.js.map",
+    "208.88efe2e0.chunk.js.map": "/netsuite-landing/static/js/208.88efe2e0.chunk.js.map",
+    "808.e4662ca8.chunk.js.map": "/netsuite-landing/static/js/808.e4662ca8.chunk.js.map",
+    "332.85986954.chunk.js.map": "/netsuite-landing/static/js/332.85986954.chunk.js.map",
+    "471.3709299c.chunk.js.map": "/netsuite-landing/static/js/471.3709299c.chunk.js.map",
+    "952.00296e02.chunk.js.map": "/netsuite-landing/static/js/952.00296e02.chunk.js.map",
+    "340.e1342f70.chunk.js.map": "/netsuite-landing/static/js/340.e1342f70.chunk.js.map",
+    "453.fccb5d4c.chunk.js.map": "/netsuite-landing/static/js/453.fccb5d4c.chunk.js.map",
+    "33.47798a7c.chunk.js.map": "/netsuite-landing/static/js/33.47798a7c.chunk.js.map",
+    "974.a5b7b44f.chunk.js.map": "/netsuite-landing/static/js/974.a5b7b44f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f1fc0b9.css",
+    "static/js/main.6090be20.js"
+  ]
+}
