@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvangSol Test</title>
+  </head>
+  <body>
+    <h1>EvangSol Site Test</h1>
+    <p>If you see this, basic HTML is working.</p>
+    <div id="root">Root element is here.</div>
+
+    <h2>Asset Tests:</h2>
+    <p>CSS: <link rel="stylesheet" href="/netsuite-landing/evangsol-site-deploy/assets/index-Cok85jfL.css"></p>
+    <p>Logo: <img src="/netsuite-landing/evangsol-site-deploy/assets/EvangSol_logo-DFLCL9Uc.png" alt="Logo" width="100"></p>
+
+    <script>
+      console.log('Test page loaded');
+      console.log('Root element:', document.getElementById('root'));
+    </script>
+
+    <script type="module">
+      console.log('Module script loading...');
+      import('/netsuite-landing/evangsol-site-deploy/assets/index-CrtC4_qZ.js')
+        .then(() => console.log('JS loaded successfully'))
+        .catch(err => console.error('JS load error:', err));
+    </script>
+  </body>
+</html>
