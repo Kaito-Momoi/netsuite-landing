@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const HomePage: React.FC = () => {
@@ -77,14 +77,6 @@ const HomePage: React.FC = () => {
               実績を確認する
             </Link>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="scroll-indicator"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <ChevronDown />
         </motion.div>
       </motion.div>
     </section>
