@@ -30,7 +30,7 @@ const About: React.FC = () => {
           viewport={{ once: true }}
         >
           <span className="section-label">About</span>
-          <h2>Company Overview</h2>
+          <h2>Company</h2>
           <p className="section-desc">
             NetSuiteを中心にERP導入・開発・運用を担う専門チームとして、業種や規模を問わずお客様の成長を支援しています。
           </p>

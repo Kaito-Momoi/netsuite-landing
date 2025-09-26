@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Filter, Clock, Briefcase } from 'lucide-react'
+import { } from 'lucide-react'
 
 type Achievement = {
   id: string
@@ -131,20 +131,7 @@ const caseStudy = {
 }
 
 const Achievements: React.FC = () => {
-  const [selectedIndustry, setSelectedIndustry] = React.useState<string>('ALL')
-  const [selectedArea, setSelectedArea] = React.useState<string>('ALL')
-  const [selectedPeriod, setSelectedPeriod] = React.useState<string>('ALL')
-
-  const filteredAchievements = sortedAchievements.filter((achievement) => {
-    const matchesIndustry =
-      selectedIndustry === 'ALL' || achievement.industry === selectedIndustry
-    const matchesArea =
-      selectedArea === 'ALL' || achievement.areas.includes(selectedArea as Achievement['areas'][number])
-    const matchesPeriod =
-      selectedPeriod === 'ALL' || `${achievement.year}` === selectedPeriod
-
-    return matchesIndustry && matchesArea && matchesPeriod
-  })
+  const filteredAchievements = sortedAchievements
 
   return (
     <section className="achievements" style={{ paddingTop: '120px' }}>
@@ -160,7 +147,7 @@ const Achievements: React.FC = () => {
             NetSuite導入・開発実績
           </h2>
           <p className="section-desc">
-            製造・小売・サービスを中心に、大手企業の基幹刷新とグローバル展開を支援してきた事例です。年/四半期のタイムラインで主担当領域と成果を整理しています。
+            製造・小売・サービスを中心に、大手企業の基幹刷新とグローバル展開を支援してきた事例です。主担当領域と成果を整理しています。
           </p>
         </motion.div>
 
@@ -188,80 +175,6 @@ const Achievements: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="achievement-filters">
-          <div className="filter-group">
-            <div className="filter-label">
-              <Filter size={16} />
-              業種
-            </div>
-            <div className="filter-pills">
-              <button
-                className={selectedIndustry === 'ALL' ? 'active' : ''}
-                onClick={() => setSelectedIndustry('ALL')}
-              >
-                {filterLabels.ALL}
-              </button>
-              {industries.map((industry) => (
-                <button
-                  key={industry}
-                  className={selectedIndustry === industry ? 'active' : ''}
-                  onClick={() => setSelectedIndustry(industry)}
-                >
-                  {industry}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="filter-group">
-            <div className="filter-label">
-              <Briefcase size={16} />
-              領域
-            </div>
-            <div className="filter-pills">
-              <button
-                className={selectedArea === 'ALL' ? 'active' : ''}
-                onClick={() => setSelectedArea('ALL')}
-              >
-                {filterLabels.ALL}
-              </button>
-              {areas.map((areaOption) => (
-                <button
-                  key={areaOption}
-                  className={selectedArea === areaOption ? 'active' : ''}
-                  onClick={() => setSelectedArea(areaOption)}
-                >
-                  {areaOption}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="filter-group">
-            <div className="filter-label">
-              <Clock size={16} />
-              期間
-            </div>
-            <div className="filter-pills">
-              <button
-                className={selectedPeriod === 'ALL' ? 'active' : ''}
-                onClick={() => setSelectedPeriod('ALL')}
-              >
-                {filterLabels.ALL}
-              </button>
-              {periods.map((period) => (
-                <button
-                  key={period}
-                  className={selectedPeriod === period ? 'active' : ''}
-                  onClick={() => setSelectedPeriod(period)}
-                >
-                  {period}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
         <div className="achievement-grid">
           {filteredAchievements.map((achievement, index) => (
             <motion.div
@@ -273,7 +186,6 @@ const Achievements: React.FC = () => {
               transition={{ delay: index * 0.05 }}
             >
               <div className="achievement-meta">
-                <span className="achievement-period">{achievement.year} {achievement.quarter}</span>
                 <span className="achievement-industry">{achievement.industry}</span>
                 <span className="achievement-scale">{achievement.scale}</span>
               </div>
