@@ -101,18 +101,6 @@ const sortedAchievements = [...achievements].sort((a, b) => {
   return quartersOrder[b.quarter] - quartersOrder[a.quarter]
 })
 
-const industries = Array.from(new Set(achievements.map((item) => item.industry)))
-const areaOrder: Array<Achievement['areas'][number]> = ['要件', '設計', '開発', '移行', '保守']
-const areas = Array.from(new Set(achievements.flatMap((item) => item.areas))).sort(
-  (a, b) => areaOrder.indexOf(a) - areaOrder.indexOf(b)
-)
-const periods = Array.from(new Set(achievements.map((item) => `${item.year}`))).sort(
-  (a, b) => Number(b) - Number(a)
-)
-
-const filterLabels = {
-  ALL: 'すべて'
-}
 
 const caseStudy = {
   company: '株式会社グリーンハウス',

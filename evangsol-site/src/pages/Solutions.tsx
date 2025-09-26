@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Server, RefreshCw, Workflow, Globe, Package, BarChart3, Database, FileText } from 'lucide-react'
+import { Server, RefreshCw, Globe, Package, BarChart3, Database, FileText } from 'lucide-react'
 
 const Solutions: React.FC = () => {
   const solutionShowcase = [
