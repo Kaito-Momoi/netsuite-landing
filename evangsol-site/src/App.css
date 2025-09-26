@@ -1463,7 +1463,6 @@ section {
   height: 35px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 /* フッターテキストロゴ用のスタイル（一時的） */
@@ -1799,6 +1798,198 @@ section {
 .hamburger.open span:nth-child(3) {
   bottom: 50%;
   transform: translateY(50%) rotate(-45deg);
+}
+
+/* Solution Enhancements */
+.solution-subtitle {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: -0.5rem 0 1rem 0;
+  opacity: 0.9;
+}
+
+.solution-benefits {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #059669;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.solution-benefits strong {
+  color: #047857;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Strengths Section */
+.strengths {
+  padding: 120px 0;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.03) 0%, rgba(16, 185, 129, 0.03) 100%);
+}
+
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.strength-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e5e7eb;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.strength-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981 0%, #06b6d4 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.strength-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  border-color: #10b981;
+}
+
+.strength-card:hover::before {
+  opacity: 1;
+}
+
+.strength-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.strength-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.strength-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.strength-card p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  flex-grow: 1;
+}
+
+.strength-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.strength-points li {
+  display: flex;
+  align-items: flex-start;
+  color: #4b5563;
+  font-size: 0.8rem;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.strength-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+  font-size: 0.9rem;
+  top: -1px;
+}
+
+/* Large screens */
+@media (max-width: 1280px) {
+  .strengths-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+  .strengths-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .strengths-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .strength-card {
+    padding: 2rem;
+  }
+
+  .strength-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .strength-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .strength-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .strength-card p {
+    font-size: 0.95rem;
+  }
+
+  .strength-points li {
+    font-size: 0.9rem;
+  }
 }
 
 /* レスポンシブ */

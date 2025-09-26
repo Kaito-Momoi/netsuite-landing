@@ -1,23 +1,38 @@
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, Workflow, Target, Layers3 } from 'lucide-react'
+import { ArrowRight, Code, Zap, Trophy, Building2, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-const evangelistPrinciples = [
+const strengths = [
   {
-    icon: <Workflow size={28} />,
-    title: '現場主導の改善を後押しするアジャイル導入',
-    description: '短いイテレーションで優先度を見直し、現場の声を反映した運用プロセスを構築します。'
+    icon: <Code />,
+    title: '高い開発力',
+    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
+    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発']
   },
   {
-    icon: <Target size={28} />,
-    title: '事業ゴールから逆算したKPI設計',
-    description: '経営指標と現場指標をつなぎ、意思決定に直結するダッシュボードと受入基準を設計します。'
+    icon: <Zap />,
+    title: '高速開発・短納期',
+    description: '独自の開発フレームワークとテンプレートで、開発スピードを大幅に短縮',
+    bulletPoints: ['効率的な開発プロセス', '豊富なテンプレート活用', '迅速な納品']
   },
   {
-    icon: <Layers3 size={28} />,
-    title: '変化に強い拡張アーキテクチャの設計',
-    description: 'NetSuiteと周辺システムを連携し、将来の拡張や組織変更にも耐えるデータモデルを提供します。'
+    icon: <Trophy />,
+    title: '日本企業特有の要件に精通',
+    description: '稟議・承認フロー、特殊な帳票、複雑な価格計算などに完全対応',
+    bulletPoints: ['日本の商習慣に精通', '複雑な承認フロー対応', '特殊な帳票作成']
+  },
+  {
+    icon: <Building2 />,
+    title: '全国対応拠点',
+    description: '東京・札幌に活動拠点を構え、近隣企業様との対面でのやり取りが可能',
+    bulletPoints: ['東京・札幌の2拠点体制', '対面サポート可能', '認識齟齬なく円滑な進行']
+  },
+  {
+    icon: <Users />,
+    title: 'グループ総合力',
+    description: 'グループ会社EvangTechとの連携によるワンストップサービス',
+    bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援']
   }
 ]
 
@@ -58,7 +73,7 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="hero-line-1">NetSuiteソリューションの伝道者として</span>
+            <span className="hero-line-1">社会に新しい可能性を広げる提唱者として</span>
             <span className="hero-line-2">
               <span className="gradient-text">グローバル成長</span>を加速するパートナー
             </span>
@@ -70,7 +85,7 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            株式会社EvangSolは、アジャイル導入と拡張アーキテクチャのノウハウを融合し、価値創出までを伴走するNetSuiteパートナーです。
+            株式会社EvangSolは、導入と拡張アーキテクチャの知見で、企業の成長と価値創出を加速するNetSuiteパートナーです。
           </motion.p>
 
           <motion.div
@@ -100,33 +115,41 @@ const HomePage: React.FC = () => {
         </motion.div>
       </section>
 
-      <section className="evangelist">
+      <section className="strengths">
         <div className="container">
           <motion.div
-            className="evangelist-header"
+            className="section-header"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2>Partner</h2>
-            <p>
-              私たちはNetSuiteのパートナーとして、導入後の運用と継続的な価値創出まで伴走します。
+            <h2>
+              <span className="section-label">Strengths</span>
+              EvangSolの強み
+            </h2>
+            <p className="section-desc">
+              技術力と情熱で、NetSuiteの価値を最大限に引き出します
             </p>
           </motion.div>
 
-          <div className="evangelist-grid">
-            {evangelistPrinciples.map((principle, index) => (
+          <div className="strengths-grid">
+            {strengths.map((strength, index) => (
               <motion.div
-                key={principle.title}
-                className="evangelist-card"
+                key={strength.title}
+                className="strength-card"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="evangelist-icon">{principle.icon}</div>
-                <h3>{principle.title}</h3>
-                <p>{principle.description}</p>
+                <div className="strength-icon">{strength.icon}</div>
+                <h3>{strength.title}</h3>
+                <p>{strength.description}</p>
+                <ul className="strength-points">
+                  {strength.bulletPoints.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>

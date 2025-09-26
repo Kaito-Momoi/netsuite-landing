@@ -10,7 +10,7 @@ const Methodology: React.FC = () => {
     },
     {
       title: 'アジャイル導入',
-      detail: '優先順位に沿って短いイテレーションを繰り返し、3〜9か月で価値を段階的に提供。変更要求や現場フィードバックに迅速に対応。'
+      detail: '優先順位に沿って短いサイクルを繰り返し、ソリューションを段階的に提供。変更要求や現場フィードバックに迅速に対応。'
     },
     {
       title: 'ウォーターフォール導入',
@@ -19,7 +19,7 @@ const Methodology: React.FC = () => {
   ]
 
   const deliverables = [
-    '各イテレーションでTo-Be構成図やプロセスフローなどの中間成果物を提示',
+    '各サイクルでTo-Be構成図やプロセスフローなどの中間成果物を提示',
     '実機ベースのハンズオン検証と現場ヒアリングの反映をセットで実施',
     '最終成果物は運用イメージを前提に、移行・教育計画と合わせてリリース'
   ]
@@ -33,9 +33,9 @@ const Methodology: React.FC = () => {
   const comparisonTable = [
     {
       aspect: '導入期間',
-      package: '2〜4か月（標準機能中心）',
-      agile: '3〜9か月（優先度順に段階的リリース）',
-      waterfall: '9か月〜（全体要件を確定後に一括リリース）'
+      package: '短期（標準機能中心）',
+      agile: '中期（優先度順に段階的リリース）',
+      waterfall: '長期（全体要件を確定後に一括リリース）'
     },
     {
       aspect: '柔軟性',
@@ -52,7 +52,7 @@ const Methodology: React.FC = () => {
     {
       aspect: 'リスクコントロール',
       package: '初期コストを抑えつつ段階的に拡張',
-      agile: '毎イテレーションでレビューしリスクを分散',
+      agile: '各サイクルでレビューしリスクを分散',
       waterfall: '終盤での手戻りリスクが高い'
     }
   ]
@@ -68,7 +68,7 @@ const Methodology: React.FC = () => {
         >
           <h2>
             <span className="section-label">Implementation</span>
-            導入方法論（アジャイル中心）
+            導入方法論
           </h2>
           <p className="section-desc">
             EvangSolはアジャイル導入を核に、業務単位で優先度を再評価しながら短いサイクルで開発・レビュー・改善を繰り返します。変更への強さとコスト最適化、現場からのフィードバック循環を重視し、価値を早期に立ち上げます。
@@ -115,7 +115,7 @@ const Methodology: React.FC = () => {
             </p>
             <ul>
               <li>1. ビジョン整理とロードマップ策定</li>
-              <li>2. イテレーション単位の要件・設定・テスト</li>
+              <li>2. サイクル単位の要件・設定・テスト</li>
               <li>3. 定例レビューでのフィードバック反映</li>
               <li>4. リリース後の運用チューニングと定着支援</li>
             </ul>
@@ -140,9 +140,6 @@ const Methodology: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <p className="note">
-              社内資料「アジャイル導入比較まとめ」の要点を抜粋し、意思決定の材料を整理しています。
-            </p>
           </motion.div>
 
           <motion.div

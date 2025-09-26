@@ -1,7 +1,7 @@
 import React from 'react'
 import { Phone, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import EvangSolLogo from '../assets/EvangSol_logo.png'
+import EvangSolLogoWhite from '../EvangSol_logo - White.png'
 
 const Footer: React.FC = () => {
   const partnershipBadges = [
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="footer-brand">
             <Link to="/">
               <div className="footer-logo">
-                <img src={EvangSolLogo} alt="EvangSol" className="footer-logo-img" />
+                <img src={EvangSolLogoWhite} alt="EvangSol" className="footer-logo-img" />
               </div>
             </Link>
             <p>グローバルERPソリューションで企業成長を支援します。</p>
