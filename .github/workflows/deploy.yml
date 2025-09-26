@@ -1,4 +1,4 @@
-name: Deploy React App to GitHub Pages
+name: Deploy EvangSol Site to GitHub Pages
 
 on:
   push:
@@ -30,18 +30,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build EvangSol Site
         run: |
-          echo "Building with PUBLIC_URL=/netsuite-landing"
+          echo "Building EvangSol site for GitHub Pages"
           npm run build
         env:
-          PUBLIC_URL: /netsuite-landing
           CI: false
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./evangsol-site/dist
 
   deploy:
     environment:

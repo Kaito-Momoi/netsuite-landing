@@ -1,67 +1,70 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const About: React.FC = () => {
-  const companyInfo = [
-    { label: '社名', value: '株式会社EvangSol（エバンソル）' },
-    { label: '設立', value: '2019年7月' },
-    { label: '資本金', value: '4,000万円' },
-    { label: '事業内容', value: 'ERP導入支援・アドオン開発・保守サポート' },
-    { label: '代表取締役', value: '小山 敏幸（元株式会社野村総合研究所 常務執行役員）' },
-    { label: '取締役社長', value: '王 大隆（Oracle日本、中国のERP技術職を経て現職）' },
-    { label: '所在地', value: '〒103-0023 東京都中央区日本橋本町4-15-11 市橋ビル6階' }
-  ]
+const companyInfo = [
+  { label: '社名', value: '株式会社EvangSol（エバンソル）' },
+  { label: '設立', value: '2019年7月' },
+  { label: '資本金', value: '4,000万円' },
+  { label: '事業内容', value: 'ERP導入支援・アドオン開発・保守サポート' },
+  { label: '代表取締役', value: '小山 敏幸' },
+  { label: '所在地', value: '〒103-0023 東京都中央区日本橋本町4-15-11 市橋ビル6階' }
+]
 
+const ceoMessage = {
+  heading: 'CEO Message',
+  body: [
+    'EvangSolは、NetSuiteを中心としたクラウドERPでお客様の経営基盤を支える専門チームです。課題が複雑な場合でも地道に向き合い、現場に根ざした改善を重ねて価値をお届けします。',
+    'これからもお客様とともに変化を楽しみ、スピードと品質の両立にこだわった支援を続けていきます。'
+  ],
+  author: '代表取締役 小山 敏幸'
+}
+
+const About: React.FC = () => {
   return (
-    <section className="solutions company-overview" style={{ paddingTop: '120px' }}>
+    <section className="company" style={{ paddingTop: '120px' }}>
       <div className="container">
         <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 50 }}
+          className="simple-about"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2>
-            <span className="section-label">About</span>
-            会社概要
-          </h2>
+          <span className="section-label">About</span>
+          <h2>Company Overview</h2>
+          <p className="section-desc">
+            NetSuiteを中心にERP導入・開発・運用を担う専門チームとして、業種や規模を問わずお客様の成長を支援しています。
+          </p>
         </motion.div>
 
-        <div className="company-info-grid">
-          <motion.div
-            className="info-block"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h3>基本情報</h3>
-            <dl className="info-table">
-              {companyInfo.map((item) => (
-                <React.Fragment key={item.label}>
-                  <dt>{item.label}</dt>
-                  <dd>{item.value}</dd>
-                </React.Fragment>
-              ))}
-            </dl>
-          </motion.div>
+        <motion.div
+          className="basic-info"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3>Basic Info</h3>
+          <dl className="info-table">
+            {companyInfo.map((item) => (
+              <React.Fragment key={item.label}>
+                <dt>{item.label}</dt>
+                <dd>{item.value}</dd>
+              </React.Fragment>
+            ))}
+          </dl>
+        </motion.div>
 
-          <motion.div
-            className="info-block"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3>社名に込めた想い</h3>
-            <p>
-              「EvangSol」は「Solution」のEvangelist（伝道師）を意味し、グローバルなERPソリューションの伝道者としてお客様の企業価値向上に貢献するという決意を表しています。
-            </p>
-            <p>
-              イノベーションとテクノロジーを融合し、ビジネスプロセスの最適化を通じて、より効率的で柔軟性のあるERPソリューションを提供し続けます。
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          className="ceo-message"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3>{ceoMessage.heading}</h3>
+          {ceoMessage.body.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+          <p className="ceo-author">{ceoMessage.author}</p>
+        </motion.div>
       </div>
     </section>
   )

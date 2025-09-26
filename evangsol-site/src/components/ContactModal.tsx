@@ -167,9 +167,24 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     </div>
                   </div>
 
-                  <form onSubmit={handleSubmit}>
+                  <form
+                    onSubmit={handleSubmit}
+                    style={{
+                      display: 'grid',
+                      gap: '1.5rem',
+                      margin: '0 auto',
+                      maxWidth: '720px',
+                      width: '100%'
+                    }}
+                  >
                     <div style={{ display: 'grid', gap: '1.5rem' }}>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                      <div
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                          gap: '1rem'
+                        }}
+                      >
                         <input
                           type="text"
                           name="name"
@@ -207,7 +222,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                         />
                       </div>
 
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                      <div
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                          gap: '1rem'
+                        }}
+                      >
                         <input
                           type="email"
                           name="email"
@@ -265,7 +286,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                         }}
                       />
 
-                      <div style={{ display: 'flex', gap: '1rem' }}>
+                      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                         <motion.button
                           type="submit"
                           whileHover={{ scale: 1.02 }}
