@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Server, RefreshCw } from 'lucide-react'
+import { Server, RefreshCw, Workflow, Globe } from 'lucide-react'
 
 const Solutions: React.FC = () => {
   const solutionShowcase = [
@@ -25,6 +25,28 @@ const Solutions: React.FC = () => {
         '請求書情報と連動した入金データの自動作成・適用'
       ],
       color: '#8b5cf6'
+    },
+    {
+      icon: <Workflow />,
+      title: '返品管理統合ワークフロー',
+      description: '株式会社グリーンハウスで採用した返品承認プロセス統合をテンプレート化し、リードタイム短縮とガバナンス強化を両立。',
+      points: [
+        '申請〜承認をNetSuite内で可視化し、リードタイムを1/10以下へ',
+        '部門横断のチェックポイントを標準化し、属人化を解消',
+        '改善サイクルをアジャイルに回し、継続的な最適化を実現'
+      ],
+      color: '#0ea5e9'
+    },
+    {
+      icon: <Globe />,
+      title: 'OneWorld多拠点展開テンプレート',
+      description: 'イベントサービスや製造業のグローバル展開で培ったOneWorld構築ノウハウを再利用し、多拠点・多通貨運用を短期間で立ち上げ。',
+      points: [
+        '複数拠点・通貨の会計設定とワークフローをプリセット化',
+        '拠点別ダッシュボードで経営と現場のKPIを同時に可視化',
+        '標準テンプレートにより移行・テスト工数を最適化'
+      ],
+      color: '#14b8a6'
     }
   ]
 

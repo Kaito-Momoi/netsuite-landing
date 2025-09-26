@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, MapPin, Mail } from 'lucide-react'
 import ContactModal from '../components/ContactModal'
+import { useAnimationControl } from '../contexts/AnimationContext'
 
 const Contact: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { suppressForInteraction } = useAnimationControl()
 
   return (
     <>
@@ -80,7 +82,10 @@ const Contact: React.FC = () => {
 
             <div className="cta-buttons" style={{ gap: '1.5rem' }}>
               <motion.button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  suppressForInteraction()
+                  setIsModalOpen(true)
+                }}
                 className="btn btn-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -123,7 +128,10 @@ const Contact: React.FC = () => {
 
       <ContactModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          suppressForInteraction()
+          setIsModalOpen(false)
+        }}
       />
     </>
   )

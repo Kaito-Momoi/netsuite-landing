@@ -26,10 +26,11 @@ const Footer: React.FC = () => {
 
           <div className="footer-links">
             <h4>サービス</h4>
-            <Link to="/introduction">会社紹介</Link>
-            <Link to="/achievements">導入実績</Link>
-            <Link to="/solutions">自社ソリューション</Link>
-            <Link to="/about">会社概要</Link>
+            <Link to="/about">About</Link>
+            <Link to="/solutions">Solutions</Link>
+            <Link to="/methodology">Methodology</Link>
+            <Link to="/achievements">Achievements</Link>
+            <Link to="/contact">Contact</Link>
           </div>
 
           <div className="footer-links">

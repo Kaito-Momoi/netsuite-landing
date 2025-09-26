@@ -1,19 +1,20 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
+import { useAnimationControl } from '../contexts/AnimationContext'
 import EvangSolLogo from '../assets/EvangSol_logo.png'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const location = useLocation()
+  const { suppressForInteraction } = useAnimationControl()
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/introduction', label: 'Introduction' },
-    { path: '/strengths', label: 'Strengths' },
-    { path: '/achievements', label: 'Achievements' },
+    { path: '/about', label: 'About' },
     { path: '/solutions', label: 'Solutions' },
-    { path: '/about', label: 'Company Overview' },
+    { path: '/methodology', label: 'Methodology' },
+    { path: '/achievements', label: 'Achievements' },
     { path: '/contact', label: 'Contact' }
   ]
 
@@ -42,6 +43,11 @@ const Header: React.FC = () => {
               <Link
                 to={item.path}
                 className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                onClick={() => {
+                  if (location.pathname === item.path) {
+                    suppressForInteraction()
+                  }
+                }}
               >
                 {item.label}
               </Link>
@@ -51,7 +57,10 @@ const Header: React.FC = () => {
 
         <button
           className="menu-toggle"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => {
+            suppressForInteraction()
+            setIsMenuOpen(!isMenuOpen)
+          }}
         >
           <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
             <span></span>
@@ -73,7 +82,12 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  if (location.pathname === item.path) {
+                    suppressForInteraction()
+                  }
+                  setIsMenuOpen(false)
+                }}
                 className={location.pathname === item.path ? 'active' : ''}
               >
                 {item.label}
