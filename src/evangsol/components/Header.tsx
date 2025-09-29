@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { useAnimationControl } from '../contexts/AnimationContext'
-import EvangSolLogo from '../assets/EvangSol_logo.png'
+// import EvangSolLogo from '../assets/EvangSol_logo.png'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -27,7 +27,8 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src={EvangSolLogo} alt="EvangSol" className="logo-img" />
+            {/* <img src={EvangSolLogo} alt="EvangSol" className="logo-img" /> */}
+            <span className="logo-text">EvangSol</span>
           </motion.div>
         </Link>
 

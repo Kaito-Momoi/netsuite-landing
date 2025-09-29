@@ -122,7 +122,7 @@ const CASE_STUDY = {
     '幅広い製品ラインを展開する電子機器メーカー。SAP ECC 6.0のEOSを機にNetSuiteへ刷新し、基幹業務・顧客管理・ワークフローを一体化。ガバナンス強化と迅速な経営判断を支える成長基盤を整備。',
   location: '〒150-0013 東京都渋谷区恵比寿1-19-15 ウノサワ東急ビル5階',
   employees: '100～249名',
-  partner: '導入パートナー: 株式会社EvangSol（エバンソル）',
+  partner: '導入パートナー: 株式会社EvangSol',
   link: 'https://www.netsuite.co.jp/customer-testimonials/greenhouse-manufacturing.shtml',
   quote: {
     text: '「返品管理プロセスをNetSuiteに統合することで、申請から承認までのリードタイムが従来の1/10以下に短縮され、業務の効率化が実現しました。さらに、営業部門の利益管理や予実管理も追加で統合することで、属人化された業務から脱却し、よりスムーズな作業環境を実現するなど、継続的な改善に取り組んでいきます」',
@@ -446,7 +446,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* 2. EvangSol */}
           <div id="evangsol" className="space-y-20 scroll-mt-20">
               <div className="text-center">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <h2 className="text-5xl font-bold mb-6 pb-2 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   EvangSolの強み
                 </h2>
                 <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-12">
