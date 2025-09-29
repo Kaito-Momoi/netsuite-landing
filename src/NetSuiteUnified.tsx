@@ -249,7 +249,10 @@ const NetSuiteUnified: React.FC = () => {
       />
 
       {/* Hero Section with Enhanced 3D Typography */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center justify-center px-4 z-10 pt-32 pb-16 md:pt-40"
+      >
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
           <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
