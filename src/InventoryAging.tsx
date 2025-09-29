@@ -95,10 +95,10 @@ const ADVANCED_CAPABILITIES = [
 
 // Impact Metrics
 const IMPACT_METRICS = [
-  { value: '70%', label: '廃棄ロス削減', description: '早期対応による削減効果', color: 'from-red-400 to-rose-400' },
-  { value: '40%', label: '在庫削減', description: '適正在庫の維持による削減', color: 'from-rose-400 to-pink-400' },
-  { value: '2倍', label: '回転率向上', description: '滞留在庫の削減による改善', color: 'from-pink-400 to-purple-400' },
-  { value: '月次', label: '棚卸効率化', description: 'データ活用による高速化', color: 'from-purple-400 to-indigo-400' },
+  { value: '大幅な', label: '廃棄ロス削減', description: '早期対応による削減効果', color: 'from-red-400 to-rose-400' },
+  { value: '劇的な', label: '在庫削減', description: '適正在庫の維持による削減', color: 'from-rose-400 to-pink-400' },
+  { value: '飛躍的な', label: '回転率向上', description: '滞留在庫の削減による改善', color: 'from-pink-400 to-purple-400' },
+  { value: '迅速な', label: '棚卸効率化', description: 'データ活用による高速化', color: 'from-purple-400 to-indigo-400' },
 ];
 
 // Case Study

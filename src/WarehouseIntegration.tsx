@@ -97,9 +97,9 @@ const ADVANCED_CAPABILITIES = [
 
 // Impact Metrics
 const IMPACT_METRICS = [
-  { value: '99.9%', label: '在庫精度', description: 'バーコード管理による精度向上', color: 'from-amber-400 to-orange-400' },
-  { value: '60%', label: '作業時間短縮', description: 'ピッキング効率の改善', color: 'from-orange-400 to-red-400' },
-  { value: '80%', label: '誤出荷削減', description: 'スキャンによる検品強化', color: 'from-red-400 to-pink-400' },
+  { value: '極めて高い', label: '在庫精度', description: 'バーコード管理による精度向上', color: 'from-amber-400 to-orange-400' },
+  { value: '大幅な', label: '作業時間短縮', description: 'ピッキング効率の改善', color: 'from-orange-400 to-red-400' },
+  { value: '劇的な', label: '誤出荷削減', description: 'スキャンによる検品強化', color: 'from-red-400 to-pink-400' },
   { value: 'リアルタイム', label: '在庫可視化', description: '即時の在庫情報更新', color: 'from-pink-400 to-purple-400' },
 ];
 

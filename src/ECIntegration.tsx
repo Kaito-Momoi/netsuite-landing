@@ -99,10 +99,10 @@ const CAPABILITIES = [
 
 // Success metrics
 const SUCCESS_METRICS = [
-  { value: '300%', label: '売上成長', sublabel: '導入後1年で達成' },
-  { value: '90%', label: '業務効率化', sublabel: '手作業時間削減' },
-  { value: '0件', label: '売り越し', sublabel: '在庫同期による防止' },
-  { value: '50%', label: '利益率向上', sublabel: '最適化による改善' },
+  { value: '飛躍的な', label: '売上成長', sublabel: '導入後1年で達成' },
+  { value: '劇的な', label: '業務効率化', sublabel: '手作業時間削減' },
+  { value: '完全', label: '売り越し防止', sublabel: '在庫同期による実現' },
+  { value: '大幅な', label: '利益率向上', sublabel: '最適化による改善' },
 ];
 
 // Case study

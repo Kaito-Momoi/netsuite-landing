@@ -88,10 +88,10 @@ const CAPABILITIES = [
 
 // Impact metrics
 const IMPACT_METRICS = [
-  { value: '95%', label: '作業時間削減', sublabel: '月間200時間→10時間' },
-  { value: '99.9%', label: '精度達成', sublabel: 'ヒューマンエラーゼロ' },
-  { value: '60%', label: 'コスト削減', sublabel: '人件費・残業代削減' },
-  { value: '即日', label: '月次決算', sublabel: '締め後即日完了' },
+  { value: '劇的な', label: '作業時間削減', sublabel: '大幅な時間短縮を実現' },
+  { value: '極めて高い', label: '精度達成', sublabel: 'ヒューマンエラーゼロ' },
+  { value: '大幅な', label: 'コスト削減', sublabel: '人件費・残業代削減' },
+  { value: '迅速な', label: '月次決算', sublabel: '締め後即日完了' },
 ];
 
 // Implementation phases

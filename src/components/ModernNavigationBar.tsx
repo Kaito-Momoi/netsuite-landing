@@ -160,7 +160,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-between items-center">
               {/* Logo Section */}
-              <div className="flex items-center gap-6">
+              <div className="flex items-center">
                 <button
                   onClick={() => navigate('/')}
                   className="group flex items-center gap-3 relative"
@@ -187,19 +187,13 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       />
                     </div>
                   </div>
-                  <div className="hidden sm:block relative">
-                    <div className="text-white font-black text-lg tracking-wide relative">
-                      <span className="relative z-10">EvangSol</span>
-                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 animate-gradient-x"></div>
-                    </div>
-                    <div className="text-[10px] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-bold tracking-wider mt-0.5 animate-gradient-x">
-                      ORACLE NetSuite PARTNER
-                    </div>
-                  </div>
                 </button>
+              </div>
 
+              {/* Center/Right Section with Navigation and Contact */}
+              <div className="flex items-center gap-4 ml-auto">
                 {/* Desktop Navigation */}
-                <nav className="hidden lg:flex items-center gap-1 ml-6" role="menubar">
+                <nav className="hidden lg:flex items-center gap-1" role="menubar">
                   {navItems.map((item, index) => (
                     <button
                       key={item.section}
@@ -238,10 +232,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                     </button>
                   ))}
                 </nav>
-              </div>
 
-              {/* Right Section */}
-              <div className="flex items-center gap-4">
                 {/* Futuristic CTA Button */}
                 <button
                   onClick={() => onContactClick ? onContactClick() : navigate('/contact')}

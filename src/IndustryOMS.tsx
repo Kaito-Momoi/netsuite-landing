@@ -138,10 +138,10 @@ const CAPABILITIES = [
 
 // Impact metrics
 const IMPACT_METRICS = [
-  { value: '75%', label: '処理時間削減', sublabel: '受注処理の自動化' },
-  { value: '99.8%', label: '処理精度', sublabel: 'ヒューマンエラー排除' },
-  { value: '3倍', label: '処理能力向上', sublabel: '同一人員での処理量' },
-  { value: '30分→3分', label: '納期回答', sublabel: '即時回答を実現' },
+  { value: '大幅な', label: '処理時間削減', sublabel: '受注処理の自動化' },
+  { value: '極めて高い', label: '処理精度', sublabel: 'ヒューマンエラー排除' },
+  { value: '飛躍的な', label: '処理能力向上', sublabel: '同一人員での処理量' },
+  { value: '迅速な', label: '納期回答', sublabel: '即時回答を実現' },
 ];
 
 // Case study

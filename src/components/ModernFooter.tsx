@@ -173,12 +173,6 @@ const ModernFooter: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
-                      EvangSol
-                    </h3>
-                    <p className="text-xs text-gray-500">Oracle NetSuite Partner</p>
-                  </div>
                 </div>
                 <p className="text-gray-400 mb-6 leading-relaxed">
                   NetSuiteの無限の可能性を、圧倒的な開発力で現実に。
