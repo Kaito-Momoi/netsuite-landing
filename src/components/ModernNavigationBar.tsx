@@ -137,7 +137,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
     return (
       <>
         {/* Futuristic Progress Bar - At Top */}
-        <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-black/20">
+        <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200">
           <div
             className="h-full relative overflow-hidden"
             style={{ width: `${scrollProgress}%` }}
@@ -151,8 +151,8 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         <nav
           className={`fixed w-full z-50 transition-all duration-500 ${
             scrolled
-              ? 'bg-black/95 backdrop-blur-2xl border-b border-white/5 py-2 shadow-2xl shadow-purple-900/20 top-1'
-              : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-md py-4 top-1'
+              ? 'bg-white/95 backdrop-blur-2xl border-b border-gray-200 py-2 shadow-lg top-1'
+              : 'bg-gradient-to-b from-white/80 via-white/40 to-transparent backdrop-blur-md py-4 top-1'
           }`}
           role="navigation"
           aria-label="Main navigation"
@@ -173,15 +173,11 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                         activeGlow ? 'opacity-100 scale-110' : 'opacity-50 scale-100'
                       }`}></div>
                     </div>
-                    <div className="relative bg-black/90 backdrop-blur-xl rounded-xl p-2 border border-transparent overflow-hidden"
-                         style={{
-                           background: 'linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.95) 100%)',
-                           borderImage: 'linear-gradient(135deg, rgba(168,85,247,0.5), rgba(251,146,60,0.5)) 1'
-                         }}>
+                    <div className="relative bg-white/90 backdrop-blur-xl rounded-xl p-2 border border-gray-200 overflow-hidden">
                       {/* Animated scan line */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/10 to-transparent -translate-y-full animate-scan"></div>
                       <img
-                        src={`${process.env.PUBLIC_URL}/EvangSol_logo - White.png`}
+                        src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
                         alt="EvangSol"
                         className="h-10 relative z-10"
                       />
@@ -200,15 +196,15 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       onClick={() => handleNavClick(item)}
                       onMouseEnter={() => setHoveredItem(item.section)}
                       onMouseLeave={() => setHoveredItem(null)}
-                      className={`relative px-4 py-2 rounded-xl transition-all duration-300 group/nav hover:bg-white/5`}
+                      className={`relative px-4 py-2 rounded-xl transition-all duration-300 group/nav hover:bg-gray-100`}
                       role="menuitem"
                     >
                       {/* Futuristic hover effect */}
                       {hoveredItem === item.section && (
                         <>
-                          <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-xl"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl"></div>
                           <div className="absolute inset-0 rounded-xl overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover/nav:translate-x-[200%] transition-transform duration-1000"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200 to-transparent -skew-x-12 translate-x-[-200%] group-hover/nav:translate-x-[200%] transition-transform duration-1000"></div>
                           </div>
                         </>
                       )}
@@ -223,8 +219,8 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
 
                       <span className={`relative flex items-center gap-1.5 text-sm font-medium whitespace-nowrap ${
                         isActive(item)
-                          ? 'text-white'
-                          : 'text-gray-300 hover:text-white'
+                          ? 'text-gray-900'
+                          : 'text-gray-600 hover:text-gray-900'
                       }`}>
                         {item.icon}
                         <span className="text-xs">{item.label}</span>
@@ -261,7 +257,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 {showBackButton && variant === 'page' && location.pathname !== '/' && (
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex items-center px-4 py-2 text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/10"
+                    className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 backdrop-blur-sm border border-gray-300"
                     aria-label="Go back to previous page"
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
@@ -272,7 +268,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 {/* Mobile Menu Toggle */}
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+                  className="lg:hidden p-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
                   aria-label="Open menu"
                 >
                   {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -288,7 +284,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}>
-          <div className="absolute inset-0 bg-black/95 backdrop-blur-xl">
+          <div className="absolute inset-0 bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-xl">
             <div className="pt-24 px-6 pb-6">
               <nav className="space-y-2">
                 {navItems.map((item, index) => (
@@ -300,8 +296,8 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                     }}
                     className={`w-full flex items-center gap-3 px-6 py-4 rounded-xl transition-all ${
                       isActive(item)
-                        ? 'bg-gradient-to-r from-purple-600/20 to-orange-600/20 text-white'
-                        : 'text-gray-300 hover:text-white hover:bg-white/10'
+                        ? 'bg-gradient-to-r from-purple-100 to-orange-100 text-gray-900'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                     }`}
                   >
                     <span className={`p-2 rounded-lg bg-gradient-to-r ${item.gradient}`}>

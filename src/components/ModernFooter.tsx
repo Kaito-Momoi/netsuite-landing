@@ -83,17 +83,17 @@ const ModernFooter: React.FC = () => {
   }, []);
 
   return (
-    <footer className="relative bg-black text-white overflow-hidden">
+    <footer className="relative bg-gray-50 text-gray-900 overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-black"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-transparent to-orange-900/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-gray-100"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-100/30 via-transparent to-orange-100/30"></div>
 
         {/* Animated particles */}
         {particles.map((particle) => (
           <div
             key={particle.id}
-            className="absolute w-1 h-1 bg-white/10 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-gray-400/20 rounded-full animate-float"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -105,15 +105,15 @@ const ModernFooter: React.FC = () => {
       </div>
 
       {/* Newsletter Section */}
-      <div className="relative border-b border-white/10">
+      <div className="relative border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="bg-gradient-to-r from-purple-900/30 to-orange-900/30 backdrop-blur-xl rounded-3xl p-12 border border-white/10">
+          <div className="bg-gradient-to-r from-purple-100 to-orange-100 backdrop-blur-xl rounded-3xl p-12 border border-gray-300">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
                   最新情報をお届け
                 </h3>
-                <p className="text-gray-400">
+                <p className="text-gray-700">
                   NetSuiteの最新アップデートや成功事例をメールでお送りします
                 </p>
               </div>
@@ -124,7 +124,7 @@ const ModernFooter: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="w-full px-6 py-4 bg-white/5 backdrop-blur border border-white/20 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-purple-400 transition-all"
+                    className="w-full px-6 py-4 bg-white backdrop-blur border border-gray-300 rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
                   />
                   {subscribed && (
                     <div className="absolute right-4 top-1/2 -translate-y-1/2">
@@ -164,17 +164,17 @@ const ModernFooter: React.FC = () => {
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-orange-600 rounded-xl blur-lg opacity-50"></div>
-                    <div className="relative bg-black rounded-xl p-3 border border-white/20">
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-orange-400 rounded-xl blur-lg opacity-30"></div>
+                    <div className="relative bg-white rounded-xl p-3 border border-gray-300">
                       <img
-                        src={`${process.env.PUBLIC_URL}/EvangSol_logo - White.png`}
+                        src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
                         alt="EvangSol"
                         className="h-8"
                       />
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-400 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   NetSuiteの無限の可能性を、圧倒的な開発力で現実に。
                   日本企業のDXを成功に導くパートナーです。
                 </p>
@@ -185,16 +185,16 @@ const ModernFooter: React.FC = () => {
               <div className="space-y-3 mt-8">
                 <a
                   href="mailto:info@evangsol.jp"
-                  className="flex items-center gap-3 text-gray-400 hover:text-purple-400 transition-colors group"
+                  className="flex items-center gap-3 text-gray-700 hover:text-purple-600 transition-colors group"
                 >
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   info@evangsol.jp
                 </a>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-gray-700">
                   <Phone className="w-5 h-5" />
                   03-1234-5678
                 </div>
-                <div className="flex items-start gap-3 text-gray-400">
+                <div className="flex items-start gap-3 text-gray-700">
                   <MapPin className="w-5 h-5 mt-1" />
                   <div>
                     <p>東京オフィス・札幌オフィス</p>
@@ -206,7 +206,7 @@ const ModernFooter: React.FC = () => {
 
             {/* Links Sections */}
             <div>
-              <h4 className="font-bold text-white mb-6 flex items-center gap-2">
+              <h4 className="font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <Building2 className="w-4 h-4 text-orange-400" />
                 企業情報
               </h4>
@@ -220,7 +220,7 @@ const ModernFooter: React.FC = () => {
                         rel="noopener noreferrer"
                         onMouseEnter={() => setHoveredLink(link.href!)}
                         onMouseLeave={() => setHoveredLink(null)}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
                       >
                         <span className={`transition-all ${hoveredLink === link.href ? 'text-orange-400' : ''}`}>
                           {link.icon}
@@ -235,7 +235,7 @@ const ModernFooter: React.FC = () => {
                         onClick={() => navigate(link.path!)}
                         onMouseEnter={() => setHoveredLink(link.path!)}
                         onMouseLeave={() => setHoveredLink(null)}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
                       >
                         <span className={`transition-all ${hoveredLink === link.path ? 'text-orange-400' : ''}`}>
                           {link.icon}
@@ -252,7 +252,7 @@ const ModernFooter: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="font-bold text-white mb-6 flex items-center gap-2">
+              <h4 className="font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <Globe className="w-4 h-4 text-cyan-400" />
                 リソース
               </h4>
@@ -266,7 +266,7 @@ const ModernFooter: React.FC = () => {
                         rel="noopener noreferrer"
                         onMouseEnter={() => setHoveredLink(link.href!)}
                         onMouseLeave={() => setHoveredLink(null)}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
                       >
                         <span className={`transition-all ${hoveredLink === link.href ? 'text-cyan-400' : ''}`}>
                           {link.icon}
@@ -281,7 +281,7 @@ const ModernFooter: React.FC = () => {
                         onClick={() => navigate(link.path!)}
                         onMouseEnter={() => setHoveredLink(link.path!)}
                         onMouseLeave={() => setHoveredLink(null)}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
                       >
                         <span className={`transition-all ${hoveredLink === link.path ? 'text-cyan-400' : ''}`}>
                           {link.icon}
@@ -301,12 +301,12 @@ const ModernFooter: React.FC = () => {
       </div>
 
       {/* Bottom Bar - Scroll to Top Only */}
-      <div className="relative border-t border-white/10">
+      <div className="relative border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex justify-end">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-2 bg-gradient-to-r from-purple-600/20 to-orange-600/20 border border-purple-500/30 rounded-full hover:border-purple-400/60 transition-all hover:scale-110 group"
+              className="p-2 bg-gradient-to-r from-purple-100 to-orange-100 border border-purple-400 rounded-full hover:border-purple-500 transition-all hover:scale-110 group"
               aria-label="ページトップへ戻る"
             >
               <svg className="w-5 h-5 text-purple-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">

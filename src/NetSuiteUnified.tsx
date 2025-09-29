@@ -84,18 +84,6 @@ const CORE_FEATURES: Feature[] = [
 // EvangSol Strengths
 const STRENGTHS: Feature[] = [
   {
-    icon: <Code className="w-8 h-8" />,
-    title: '高い開発力',
-    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
-    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
-  },
-  {
-    icon: <Zap className="w-8 h-8" />,
-    title: '高速開発・短納期',
-    description: '独自の開発フレームワークとテンプレートで、開発スピードを大幅に短縮',
-    bulletPoints: ['効率的な開発プロセス', '豊富なテンプレート活用', '迅速な納品'],
-  },
-  {
     icon: <Trophy className="w-8 h-8" />,
     title: '日本企業特有の要件に精通',
     description: '稟議・承認フロー、特殊な帳票、複雑な価格計算などに完全対応',
@@ -112,6 +100,18 @@ const STRENGTHS: Feature[] = [
     title: 'グループ総合力',
     description: 'グループ会社EvangTechとの連携によるワンストップサービス',
     bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援'],
+  },
+  {
+    icon: <Code className="w-8 h-8" />,
+    title: '高い開発力',
+    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
+    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
+  },
+  {
+    icon: <Zap className="w-8 h-8" />,
+    title: '短納期',
+    description: '独自の開発フレームワークとテンプレートで、開発スピードを大幅に短縮',
+    bulletPoints: ['効率的な開発プロセス', '豊富なテンプレート活用', '迅速な納品'],
   },
 ];
 
@@ -147,35 +147,31 @@ const CASE_STUDY = {
   ],
 };
 
-// Process Steps
-const PROCESS_STEPS = [
+// Agile Process Q&A
+const AGILE_QA = [
   {
-    step: '01',
-    title: 'ヒアリング・要件定義',
-    description: '現状の業務プロセスを分析し、最適な導入計画を策定',
-    duration: '1-2ヶ月',
-    icon: <MousePointer className="w-8 h-8" />,
+    question: 'アジャイル開発は「終わりが見えない」と聞きますが？',
+    answer: 'EvangSolのアジャイル導入は、プロダクトビジョンとロードマップを最初に明確化し、MVP（最小実装製品）を定義することで、全体のゴールを可視化します。',
+    icon: <Target className="w-8 h-8" />,
+    details: ['プロダクトビジョンの共有', 'ロードマップの策定', 'MVPの明確な定義'],
   },
   {
-    step: '02',
-    title: 'システム設計・構築',
-    description: 'NetSuiteの設定とカスタマイズ開発を実施',
-    duration: '2-3ヶ月',
-    icon: <Code className="w-8 h-8" />,
+    question: '各フェーズでは何を基準に進捗を管理しますか？',
+    answer: '各スプリント（2週間単位）で具体的なゴールと完了の定義（Definition of Done）を設定し、明確な成果物を提供します。',
+    icon: <CheckCircle className="w-8 h-8" />,
+    details: ['2週間スプリント', '明確な完了基準', 'デモ可能な成果物'],
   },
   {
-    step: '03',
-    title: 'データ移行・テスト',
-    description: '既存システムからのデータ移行と動作検証',
-    duration: '1-2ヶ月',
-    icon: <Database className="w-8 h-8" />,
-  },
-  {
-    step: '04',
-    title: '本稼働・サポート',
-    description: '本番稼働後も継続的な改善サポートを提供',
-    duration: '∞',
+    question: 'どうやって成果を確認していきますか？',
+    answer: '小さなリリースを積み重ね、各スプリントの終わりにデモを実施。ユーザーのフィードバックを即座に反映し、価値を継続的に提供します。',
     icon: <Rocket className="w-8 h-8" />,
+    details: ['スプリントデモ', 'ユーザーフィードバック', '継続的な価値提供'],
+  },
+  {
+    question: '進捗が見えにくくなることはありませんか？',
+    answer: '定期的なふりかえり（レトロスペクティブ）で進捗と達成感を確認。常に「どこへ向かっていて、いまどこにいるのか」を可視化します。',
+    icon: <BarChart3 className="w-8 h-8" />,
+    details: ['進捗の可視化', '定期的なふりかえり', 'ベロシティ計測'],
   },
 ];
 
@@ -229,16 +225,16 @@ const NetSuiteUnified: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       {/* Multi-layered Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-orange-900/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 via-white to-orange-100/30"></div>
 
         {/* Animated mesh gradient */}
-        <div className="absolute inset-0 opacity-30 overflow-hidden">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute inset-0 opacity-10 overflow-hidden">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         </div>
 
         {/* Particle field */}
@@ -254,14 +250,14 @@ const NetSuiteUnified: React.FC = () => {
                 animationDuration: `${3 + Math.random() * 4}s`,
               }}
             >
-              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+              <div className="w-1 h-1 bg-gray-400/20 rounded-full"></div>
             </div>
           ))}
         </div>
 
         {/* Interactive cursor glow */}
         <div
-          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-purple-500/20 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
+          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
           style={{
             left: `${Math.max(0, Math.min(mousePosition.x - 128, window.innerWidth - 256))}px`,
             top: `${mousePosition.y - 128}px`,
@@ -281,7 +277,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* Premium Badge */}
           <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-orange-600/20 backdrop-blur-xl rounded-full border border-purple-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
               日本有数のNetSuite導入パートナー
             </span>
             <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
@@ -298,13 +294,13 @@ const NetSuiteUnified: React.FC = () => {
                 NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-800/30 transition-colors">EvangSol</a>
               </div>
               <span className="relative bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
-                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-300 transition-colors cursor-pointer">EvangSol</a>
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors cursor-pointer">EvangSol</a>
               </span>
             </h1>
           </div>
 
           {/* Subtitle with animation */}
-          <p className={`text-2xl md:text-3xl mb-4 text-gray-300 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-2xl md:text-3xl mb-4 text-gray-800 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             多彩な可能性を、現実のビジネスへ
           </p>
 
@@ -344,7 +340,7 @@ const NetSuiteUnified: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-orange-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-orange-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               今すぐ始める
@@ -353,7 +349,7 @@ const NetSuiteUnified: React.FC = () => {
               href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-700 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-gray-500/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 group border border-gray-600"
+              className="px-8 py-4 bg-gradient-to-r from-gray-200 to-gray-300 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-gray-500/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 group border border-gray-500"
             >
               <Globe className="w-6 h-6 group-hover:rotate-12 transition-transform" />
               EvangSol企業サイトへ
@@ -372,7 +368,7 @@ const NetSuiteUnified: React.FC = () => {
                 <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
                   NetSuiteの実用的な機能
                 </h2>
-                <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-12">
                   世界トップクラスのクラウドERPが提供する、幅広い拡張性
                 </p>
               </div>
@@ -384,13 +380,13 @@ const NetSuiteUnified: React.FC = () => {
                   {CORE_FEATURES.map((feature, index) => (
                     <div
                       key={index}
-                      className="group relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-orange-500/50 transition-all hover:scale-105"
+                      className="group relative bg-white/90 backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-orange-600/50 transition-all hover:scale-105"
                     >
                       <div className="w-16 h-16 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-orange-500/30">
                         <div className="text-orange-400">{feature.icon}</div>
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                      <p className="text-gray-400">{feature.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                      <p className="text-gray-800">{feature.description}</p>
                     </div>
                   ))}
                 </div>
@@ -425,18 +421,18 @@ const NetSuiteUnified: React.FC = () => {
                 ].map((tool, index) => (
                   <div key={index} className="group relative">
                     <div className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`}></div>
-                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-gray-600 transition-all h-full">
+                    <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl p-8 border border-gray-300/50 hover:border-gray-500 transition-all h-full">
                       <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${tool.gradient} mb-6`}>
                         {tool.icon}
                       </div>
                       <h3 className="text-2xl font-bold mb-2">{tool.title}</h3>
-                      <p className="text-gray-400 mb-6">{tool.subtitle}</p>
+                      <p className="text-gray-800 mb-6">{tool.subtitle}</p>
 
                       <ul className="space-y-3">
                         {tool.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                            <span className="text-gray-300">{feature}</span>
+                            <span className="text-gray-800">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -453,7 +449,7 @@ const NetSuiteUnified: React.FC = () => {
                 <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   EvangSolの強み
                 </h2>
-                <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-12">
                   技術力と情熱で、NetSuiteの価値を引き出します
                 </p>
               </div>
@@ -468,15 +464,15 @@ const NetSuiteUnified: React.FC = () => {
                     onMouseLeave={() => setHoveredStrength(null)}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl blur-xl transition-all ${hoveredStrength === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                    <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                    <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-blue-600/50 transition-all hover:scale-105 h-full">
                       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500"></div>
 
                       <div className="w-14 h-14 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-blue-500/30">
                         <div className="text-blue-400">{strength.icon}</div>
                       </div>
 
-                      <h3 className="text-lg font-bold text-white mb-3">{strength.title}</h3>
-                      <p className="text-sm text-gray-400 mb-4 leading-relaxed">
+                      <h3 className="text-lg font-bold text-gray-900 mb-3">{strength.title}</h3>
+                      <p className="text-sm text-gray-800 mb-4 leading-relaxed">
                         {strength.description}
                       </p>
 
@@ -485,7 +481,7 @@ const NetSuiteUnified: React.FC = () => {
                           {strength.bulletPoints.map((point, idx) => (
                             <li key={idx} className="flex items-start">
                               <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
-                              <span className="text-xs text-gray-300">{point}</span>
+                              <span className="text-xs text-gray-800">{point}</span>
                             </li>
                           ))}
                         </ul>
@@ -496,29 +492,29 @@ const NetSuiteUnified: React.FC = () => {
               </div>
 
               {/* Case Study Highlight */}
-              <div className="bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-xl rounded-3xl p-12 border border-orange-500/20">
+              <div className="bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-12 border border-orange-300">
                 <div className="grid lg:grid-cols-[1.6fr,1fr] gap-12 items-start">
                   <div>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-400/30 rounded-full text-sm font-semibold text-orange-200 mb-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 border border-orange-400 rounded-full text-sm font-semibold text-orange-700 mb-6">
                       <Trophy className="w-4 h-4" />
                       導入実績
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-4">{CASE_STUDY.company}</h3>
-                    <p className="text-lg text-orange-200 font-semibold mb-4">{CASE_STUDY.headline}</p>
-                    <p className="text-sm md:text-base text-gray-200 leading-relaxed mb-6">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4">{CASE_STUDY.company}</h3>
+                    <p className="text-lg text-orange-700 font-semibold mb-4">{CASE_STUDY.headline}</p>
+                    <p className="text-sm md:text-base text-gray-800 leading-relaxed mb-6">
                       {CASE_STUDY.summary}
                     </p>
-                    <div className="flex flex-wrap gap-3 text-xs md:text-sm text-gray-200">
-                      <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-orange-400/20 rounded-full">
-                        <Building2 className="w-4 h-4 text-orange-300" />
+                    <div className="flex flex-wrap gap-3 text-xs md:text-sm text-gray-800">
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-orange-300 rounded-full">
+                        <Building2 className="w-4 h-4 text-orange-600" />
                         <span>{CASE_STUDY.location}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-orange-400/20 rounded-full">
-                        <Users className="w-4 h-4 text-orange-300" />
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-orange-300 rounded-full">
+                        <Users className="w-4 h-4 text-orange-600" />
                         <span>{CASE_STUDY.employees}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-gray-900/60 border border-orange-400/20 rounded-full">
-                        <HeartHandshake className="w-4 h-4 text-orange-300" />
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-orange-300 rounded-full">
+                        <HeartHandshake className="w-4 h-4 text-orange-600" />
                         <span>{CASE_STUDY.partner}</span>
                       </div>
                     </div>
@@ -527,192 +523,287 @@ const NetSuiteUnified: React.FC = () => {
                         href={CASE_STUDY.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-full shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105 transition-all"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-gray-900 font-bold rounded-full shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105 transition-all"
                       >
                         実績を見る
                         <ArrowRight className="w-4 h-4" />
                       </a>
                       <button
                         onClick={openContactModal}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900/70 border border-orange-400/30 text-white font-bold rounded-full hover:border-orange-400/60 hover:bg-gray-900/90 transition-all"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-orange-400 text-gray-900 font-bold rounded-full hover:border-orange-400/60 hover:bg-orange-50 transition-all"
                       >
                         <Rocket className="w-4 h-4" />
                         無料相談を依頼
                       </button>
                     </div>
                   </div>
-                  <div className="bg-gray-900/70 border border-orange-400/20 rounded-2xl p-6">
-                    <div className="text-orange-300 mb-4">
+                  <div className="bg-white border border-orange-300 rounded-2xl p-6">
+                    <div className="text-orange-600 mb-4">
                       <Quote className="w-8 h-8" />
                     </div>
-                    <p className="text-sm md:text-base text-gray-100 leading-relaxed italic mb-6">
+                    <p className="text-sm md:text-base text-gray-800 leading-relaxed italic mb-6">
                       {CASE_STUDY.quote.text}
                     </p>
-                    <p className="text-xs md:text-sm text-gray-400">{CASE_STUDY.quote.author}</p>
+                    <p className="text-xs md:text-sm text-gray-800">{CASE_STUDY.quote.author}</p>
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mt-12">
                   {CASE_STUDY.highlights.map((highlight, index) => (
-                    <div key={index} className="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
-                      <div className="text-orange-300 mb-4">{highlight.icon}</div>
-                      <h4 className="text-lg font-bold text-white mb-3">{highlight.title}</h4>
-                      <p className="text-sm text-gray-300 leading-relaxed">{highlight.description}</p>
+                    <div key={index} className="bg-white/90 rounded-xl p-6 border border-gray-300/50">
+                      <div className="text-orange-600 mb-4">{highlight.icon}</div>
+                      <h4 className="text-lg font-bold text-gray-900 mb-3">{highlight.title}</h4>
+                      <p className="text-sm text-gray-800 leading-relaxed">{highlight.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
           </div>
 
-          {/* 3. Perfect Match */}
+          {/* 3. Challenges & Solutions */}
           <div id="matching" className="scroll-mt-20">
-              {/* Perfect Match Section with Animation */}
-              <div className="text-center">
-                <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
-                  理想的なマッチング
+              <div className="text-center mb-16">
+                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+                  課題とソリューション
                 </h2>
-
-                {/* Key Benefits */}
-                <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-                  {[
-                    { label: 'グローバル展開', description: '世界中の企業が信頼', icon: <Globe />, delay: 0, color: 'from-orange-400 to-red-400' },
-                    { label: '豊富な実績', description: '多数の成功事例', icon: <Award />, delay: 0.1, color: 'from-blue-400 to-cyan-400' },
-                    { label: '高い満足度', description: '継続的な改善サポート', icon: <Heart />, delay: 0.2, color: 'from-pink-400 to-rose-400' },
-                    { label: '業務効率化', description: '大幅な生産性向上', icon: <TrendingUp />, delay: 0.3, color: 'from-green-400 to-emerald-400' },
-                  ].map((benefit, index) => (
-                    <div
-                      key={index}
-                      className={`transform transition-all duration-1000 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                      style={{ transitionDelay: `${benefit.delay}s` }}
-                    >
-                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${benefit.color} mb-4`}>
-                        {React.cloneElement(benefit.icon, { className: 'w-10 h-10 text-white' })}
-                      </div>
-                      <div className={`text-2xl font-black bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent mb-2`}>
-                        {benefit.label}
-                      </div>
-                      <div className="text-sm text-gray-400">{benefit.description}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Interactive Comparison Cards */}
-                <div className="grid lg:grid-cols-3 gap-8">
-                  {/* NetSuite Card */}
-                  <div className="group relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-orange-500/30 hover:border-orange-400/60 transition-all hover:scale-105 h-full">
-                      <Cloud className="w-16 h-16 text-orange-400 mb-6" />
-                      <h3 className="text-2xl font-bold text-orange-400 mb-4">NetSuite</h3>
-                      <p className="text-gray-400 mb-6">世界No.1クラウドERP</p>
-                      <ul className="space-y-3 text-left">
-                        {['高いカスタマイズ性', 'グローバル標準機能', '継続的アップデート'].map((item, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-gray-300">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Synergy Card */}
-                  <div className="group relative transform lg:scale-110">
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-600/30 to-orange-600/30 rounded-3xl blur-2xl animate-pulse"></div>
-                    <div className="relative bg-gradient-to-br from-gray-900 via-purple-900/20 to-orange-900/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-transparent bg-clip-padding h-full"
-                         style={{ backgroundImage: 'linear-gradient(to right bottom, rgba(147, 51, 234, 0.3), rgba(251, 146, 60, 0.3)), linear-gradient(to right bottom, #111, #111)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box' }}>
-                      <Zap className="w-16 h-16 text-yellow-400 mb-6 animate-pulse" />
-                      <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent mb-4">
-                        相乗効果
-                      </h3>
-                      <p className="text-gray-300 font-bold mb-6">信頼できる組み合わせ</p>
-                      <ul className="space-y-3 text-left">
-                        {[
-                          { label: '業務効率の大幅向上', icon: <Star /> },
-                          { label: '開発期間の短縮', icon: <Star /> },
-                          { label: '高いROIを実現', icon: <Star /> },
-                        ].map((item, idx) => (
-                          <li key={idx} className="flex items-start">
-                            {React.cloneElement(item.icon, { className: 'w-5 h-5 text-yellow-400 mt-0.5 mr-2 flex-shrink-0 animate-pulse' })}
-                            <span className="font-bold text-white">{item.label}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* EvangSol Card */}
-                  <div className="group relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                    <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all hover:scale-105 h-full">
-                      <Code className="w-16 h-16 text-blue-400 mb-6" />
-                      <h3 className="text-2xl font-bold text-blue-400 mb-4">EvangSol</h3>
-                      <p className="text-gray-400 mb-6">開発特化型パートナー</p>
-                      <ul className="space-y-3 text-left">
-                        {['高い開発力', '日本企業への理解', '迅速な実装'].map((item, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-gray-300">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+                  グリーンハウス様の事例から見る、よくある課題とEvangSolの解決策
+                </p>
               </div>
 
-              {/* Visual Comparison Section */}
-              <div className="relative mt-20">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-orange-900/20 rounded-3xl blur-3xl"></div>
-                <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-3xl p-12 border border-gray-700/50">
-                  <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                    EvangSol × NetSuiteが選ばれる理由
-                  </h3>
-
-                  <div className="grid md:grid-cols-2 gap-12">
-                    <div className="space-y-6">
-                      <h4 className="text-2xl font-bold text-purple-400 flex items-center gap-3">
-                        <Lightbulb className="w-8 h-8" />
-                        高い開発力
-                      </h4>
-                      <p className="text-gray-300 leading-relaxed">
-                        NetSuiteの柔軟なカスタマイズ機能を、EvangSolの技術力でしっかり活用。
-                        SuiteScript、SuiteFlow、SuiteTalkを駆使し、あなたの業務に適合するシステムを構築します。
-                      </p>
-                      <div className="grid grid-cols-3 gap-4">
-                        {[
-                          { label: '豊富な', sublabel: '開発実績' },
-                          { label: '高い', sublabel: '満足度' },
-                          { label: '充実の', sublabel: 'サポート' },
-                        ].map((metric, idx) => (
-                          <div key={idx} className="text-center">
-                            <div className="text-xl font-bold text-orange-400">{metric.label}</div>
-                            <div className="text-sm text-gray-400">{metric.sublabel}</div>
+              {/* Challenges and Solutions */}
+              <div className="space-y-12">
+                {/* Challenge 1: カスタマイズ性の制約 */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-100/30 to-orange-100/30 rounded-3xl blur-xl"></div>
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50">
+                    <div className="grid md:grid-cols-2 gap-10">
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-red-500/20 rounded-xl">
+                            <Settings className="w-8 h-8 text-red-400" />
                           </div>
-                        ))}
+                          <h3 className="text-2xl font-bold text-red-400">課題 1: カスタマイズ性の制約</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          既存ERPでは内製でのカスタマイズ範囲が狭く、ユーザーが求める画面レイアウトの変更や分析切り口の追加に迅速に対応できず、外部ベンダー依存でコストや時間が増大。ERPの出力データをExcelに再入力して加工する非効率な作業が常態化。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>外部ベンダー依存でコスト増大</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>Excelへの二度手間作業</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>変更対応の遅延</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-green-500/20 rounded-xl">
+                            <CheckCircle className="w-8 h-8 text-green-400" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-green-400">EvangSolのソリューション</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          NetSuiteのセルフカスタマイズ機能を活用できるように設定し、SuiteSuccessのテンプレートを用いて300以上の標準レポートやダッシュボードを提供。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>外部ベンダー依存の削減</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>Excel作業の完全排除</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>柔軟な内製改修が可能</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
+                  </div>
+                </div>
 
-                    <div className="space-y-6">
-                      <h4 className="text-2xl font-bold text-orange-400 flex items-center gap-3">
-                        <Target className="w-8 h-8" />
-                        日本市場への最適化
-                      </h4>
-                      <p className="text-gray-300 leading-relaxed">
-                        日本独自の商習慣、複雑な承認フロー、特殊な帳票要件。
-                        これらすべてをNetSuiteで実現できるのは、日本企業を深く理解したEvangSolだからこそ。
-                      </p>
-                      <div className="grid grid-cols-3 gap-4">
-                        {[
-                          { label: '全国対応', sublabel: '東京・札幌' },
-                          { label: '豊富な', sublabel: '経験' },
-                          { label: '高い', sublabel: '成長性' },
-                        ].map((metric, idx) => (
-                          <div key={idx} className="text-center">
-                            <div className="text-xl font-bold text-purple-400">{metric.label}</div>
-                            <div className="text-sm text-gray-400">{metric.sublabel}</div>
+                {/* Challenge 2: 業務フローの分断 */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-100/30 to-orange-100/30 rounded-3xl blur-xl"></div>
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50">
+                    <div className="grid md:grid-cols-2 gap-10">
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-red-500/20 rounded-xl">
+                            <GitBranch className="w-8 h-8 text-red-400" />
                           </div>
-                        ))}
+                          <h3 className="text-2xl font-bold text-red-400">課題 2: 業務フローの分断</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          受発注・在庫・請求はERP上で管理していたものの、申請・承認業務は別システムで行われており、業務全体が一気通貫で処理できない状態。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>システム間の連携不足</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>承認プロセスの遅延</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>属人化した業務</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-green-500/20 rounded-xl">
+                            <CheckCircle className="w-8 h-8 text-green-400" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-green-400">EvangSolのソリューション</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          NetSuiteの承認ワークフロー機能を導入し、返品管理フローを統合。申請から承認までのリードタイムが従来の1/10以下に短縮。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>リードタイム1/10以下</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>属人化の解消</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>スムーズな業務運営</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Challenge 3: ガバナンスの不足 */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-100/30 to-orange-100/30 rounded-3xl blur-xl"></div>
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50">
+                    <div className="grid md:grid-cols-2 gap-10">
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-red-500/20 rounded-xl">
+                            <Shield className="w-8 h-8 text-red-400" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-red-400">課題 3: ガバナンスの不足</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          全社共通のCRMやSFA基盤がなく、顧客情報が部門ごとに分散して管理され、内部統制が不十分。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>顧客情報の分散管理</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>内部統制の不備</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>監査対応の困難</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-green-500/20 rounded-xl">
+                            <CheckCircle className="w-8 h-8 text-green-400" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-green-400">EvangSolのソリューション</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          ERP領域を整備する初期フェーズを実行後、CRM/SFA統合を組み込む計画を提示。NetSuiteのアクセス制御や監査証跡機能を活用。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>段階的な統合実装</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>内部統制の強化</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>顧客情報の一元管理</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Challenge 4: 定型レポート依存 */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-100/30 to-orange-100/30 rounded-3xl blur-xl"></div>
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50">
+                    <div className="grid md:grid-cols-2 gap-10">
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-red-500/20 rounded-xl">
+                            <BarChart3 className="w-8 h-8 text-red-400" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-red-400">課題 4: 定型レポート依存とExcel加工</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          属人的なExcel業務が多く、迅速な経営判断を阻害。データの一貫性や正確性にも課題。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>属人的なデータ加工</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>意思決定の遅延</span>
+                          </li>
+                          <li className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>データの不整合</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-green-500/20 rounded-xl">
+                            <CheckCircle className="w-8 h-8 text-green-400" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-green-400">EvangSolのソリューション</h3>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed">
+                          NetSuiteの標準BIツール、ダッシュボード、ロール別レポート配布機能を設定。監査証跡の自動記録を導入。
+                        </p>
+                        <ul className="space-y-2 text-gray-800">
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>Excel業務の大幅削減</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>リアルタイム意思決定</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>データの一貫性確保</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -728,7 +819,7 @@ const NetSuiteUnified: React.FC = () => {
                     オリジナルソリューション
                   </span>
                 </h2>
-                <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-12">
                   日本企業の課題を解決する、EvangSol独自開発のNetSuite拡張機能
                 </p>
               </div>
@@ -738,15 +829,15 @@ const NetSuiteUnified: React.FC = () => {
                   <div
                     key={index}
                     onClick={() => navigate(solution.path)}
-                    className="group cursor-pointer relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-green-500/50 transition-all hover:scale-105"
+                    className="group cursor-pointer relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-green-600/50 transition-all hover:scale-105"
                   >
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500"></div>
 
                     <div className="text-green-400 mb-4 group-hover:text-emerald-400 transition-colors">
                       {solution.icon}
                     </div>
-                    <h4 className="font-bold text-lg mb-2 text-white">{solution.title}</h4>
-                    <p className="text-gray-400 text-sm mb-4">{solution.description}</p>
+                    <h4 className="font-bold text-lg mb-2 text-gray-900">{solution.title}</h4>
+                    <p className="text-gray-800 text-sm mb-4">{solution.description}</p>
                     <div className="flex items-center text-green-400 text-sm font-semibold">
                       詳細を見る
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
@@ -757,35 +848,187 @@ const NetSuiteUnified: React.FC = () => {
 
           </div>
 
-          {/* 5. Process Timeline */}
+          {/* 5. Implementation Methodology */}
           <div className="space-y-20">
-            <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
-            導入プロセス
-          </h2>
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+                導入方法論
+              </h2>
+              <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
+                EvangSolはアジャイル導入を核に、業務単位で優先度を再評価しながら短いサイクルで開発・レビュー・改善を繰り返します。
+                変更への強さとコスト最適化、現場からのフィードバック循環を重視し、価値を早期に立ち上げます。
+              </p>
+            </div>
 
-          <div className="relative overflow-visible px-4">
-            {/* Connection Line */}
-            <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hidden lg:block"></div>
+            {/* Comparison Table */}
+            <div className="overflow-x-auto mb-12">
+              <table className="w-full bg-white/95 rounded-2xl overflow-hidden shadow-lg">
+                <thead>
+                  <tr className="bg-gradient-to-r from-purple-500 to-orange-500 text-gray-900">
+                    <th className="px-6 py-4 text-left font-bold">観点</th>
+                    <th className="px-6 py-4 text-left">パッケージ導入</th>
+                    <th className="px-6 py-4 text-left bg-purple-600/20">アジャイル導入</th>
+                    <th className="px-6 py-4 text-left">ウォーターフォール導入</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-6 py-4 font-bold text-gray-900">導入期間</td>
+                    <td className="px-6 py-4 text-gray-800">短期（標準機能中心）</td>
+                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">中期（優先度順に段階的リリース）</td>
+                    <td className="px-6 py-4 text-gray-800">長期（全体要件を確定後に一括リリース）</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-bold text-gray-900">柔軟性</td>
+                    <td className="px-6 py-4 text-gray-800">導入後に追加開発で対応</td>
+                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">サイクルごとに変更・改善を取り込みやすい</td>
+                    <td className="px-6 py-4 text-gray-800">要件変更に弱く、再計画の負荷が大きい</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-bold text-gray-900">主な価値</td>
+                    <td className="px-6 py-4 text-gray-800">短期で標準運用を開始</td>
+                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">早期に価値を検証しながら最適化を継続</td>
+                    <td className="px-6 py-4 text-gray-800">理想像に合わせた統合を実現</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-bold text-gray-900">リスクコントロール</td>
+                    <td className="px-6 py-4 text-gray-800">初期コストを抑えつつ段階的に拡張</td>
+                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">各サイクルでレビューしリスクを分散</td>
+                    <td className="px-6 py-4 text-gray-800">終盤での手戻りリスクが高い</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <div className="grid lg:grid-cols-4 gap-8 relative">
-              {PROCESS_STEPS.map((process, index) => (
-                <div key={index} className="relative group">
-                  <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all hover:scale-105">
-                    <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-12 h-12 bg-gradient-to-r from-purple-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                      {process.step}
-                    </div>
-                    <div className="text-purple-400 mb-4">{process.icon}</div>
-                    <h3 className="text-xl font-bold mb-2">{process.title}</h3>
-                    <p className="text-gray-400 mb-4">{process.description}</p>
-                    <div className="inline-flex items-center px-3 py-1 bg-purple-900/50 rounded-full">
-                      <Clock className="w-4 h-4 mr-2 text-purple-400" />
-                      <span className="text-sm text-purple-300">{process.duration}</span>
+            {/* Agile Process Flow */}
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-white/95 rounded-2xl p-8 border border-gray-300/50">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-xl">
+                    <Layers className="w-8 h-8 text-indigo-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">アジャイル導入の流れ</h3>
+                </div>
+                <p className="text-gray-800 mb-6">
+                  施策ごとに優先度を設定し、要件定義→設定→レビュー→改善のループを構築。
+                  短期間で成果物を可視化し、投資対効果を検証しながら範囲を拡張します。
+                </p>
+                <ol className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">1</span>
+                    <span className="text-gray-800">ビジョン整理とロードマップ策定</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">2</span>
+                    <span className="text-gray-800">サイクル単位の要件・設定・テスト</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">3</span>
+                    <span className="text-gray-800">定例レビューでのフィードバック反映</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">4</span>
+                    <span className="text-gray-800">リリース後の運用チューニングと定着支援</span>
+                  </li>
+                </ol>
+              </div>
+
+              <div className="bg-white/95 rounded-2xl p-8 border border-gray-300/50">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-xl">
+                    <Target className="w-8 h-8 text-amber-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">適する案件タイプ</h3>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                    <span className="text-gray-800">要件が進行中に磨き込まれる基幹刷新・段階的なモダナイゼーション</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                    <span className="text-gray-800">部門毎に優先度が異なるグローバル展開・国内外拠点の同期化</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                    <span className="text-gray-800">短期間で価値仮説を検証しながら、財務・販売・在庫領域を統合したい案件</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-2xl p-8 mb-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">なぜアジャイル開発への不安が生まれるのか？</h3>
+              <p className="text-gray-800 text-lg">
+                「終わりが見えない」アジャイル開発への不安を、EvangSolが以下の方法で解決します
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {AGILE_QA.map((qa, index) => (
+                <div key={index} className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-orange-100/30 rounded-3xl blur-xl"></div>
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50 hover:border-purple-600/50 transition-all">
+                    <div className="grid md:grid-cols-[auto,1fr] gap-8">
+                      <div className="flex items-start">
+                        <div className="p-4 bg-gradient-to-r from-purple-500/20 to-orange-500/20 rounded-2xl">
+                          <div className="text-purple-400">{qa.icon}</div>
+                        </div>
+                      </div>
+                      <div className="space-y-6">
+                        <h3 className="text-2xl font-bold text-purple-400">
+                          Q: {qa.question}
+                        </h3>
+                        <p className="text-lg text-gray-800 leading-relaxed">
+                          A: {qa.answer}
+                        </p>
+                        <div className="grid grid-cols-3 gap-4 pt-4">
+                          {qa.details.map((detail, idx) => (
+                            <div key={idx} className="flex items-center gap-2">
+                              <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                              <span className="text-sm text-gray-800">{detail}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+
+            {/* Agile Benefits Summary */}
+            <div className="relative mt-16">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-300/50">
+                <h3 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+                  EvangSolのアジャイル導入の特徴
+                </h3>
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div className="text-center">
+                    <div className="inline-flex p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl mb-4">
+                      <Target className="w-10 h-10 text-purple-400" />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">明確なゴール設定</h4>
+                    <p className="text-gray-800">プロダクトビジョンとロードマップで全体像を可視化</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="inline-flex p-4 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-2xl mb-4">
+                      <Rocket className="w-10 h-10 text-pink-400" />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">継続的な価値提供</h4>
+                    <p className="text-gray-800">2週間ごとに動く成果物を提供し、早期に価値を実現</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="inline-flex p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl mb-4">
+                      <BarChart3 className="w-10 h-10 text-orange-400" />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">進捗の可視化</h4>
+                    <p className="text-gray-800">常に現在地とゴールまでの距離を明確に共有</p>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
         </div>
       </section>
@@ -796,14 +1039,14 @@ const NetSuiteUnified: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
             未来のビジネスを、今始めよう
           </h2>
-          <p className="text-xl text-gray-300 mb-12">
+          <p className="text-xl text-gray-800 mb-12">
             NetSuite × EvangSolで、競争力を高める経営基盤を構築
           </p>
 
           <div className="flex justify-center">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-purple-500 to-orange-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-purple-500 to-orange-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               今すぐ無料相談
@@ -817,9 +1060,9 @@ const NetSuiteUnified: React.FC = () => {
               { label: 'ISO27001認証', icon: <Shield className="w-6 h-6" /> },
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 backdrop-blur rounded-full border border-gray-700">
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur rounded-full border border-gray-400">
                 <div className="text-yellow-400">{badge.icon}</div>
-                <span className="text-sm text-gray-300">{badge.label}</span>
+                <span className="text-sm text-gray-800">{badge.label}</span>
               </div>
             ))}
           </div>

@@ -226,10 +226,10 @@ const IndustryOMS: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/90 via-black to-blue-950/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/90 via-white to-blue-50/90"></div>
 
         {/* Animated gradient orbs */}
         <div className="absolute inset-0">
@@ -265,12 +265,12 @@ const IndustryOMS: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 backdrop-blur-xl rounded-full border border-indigo-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Package className="w-5 h-5 text-yellow-400 animate-pulse" />
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 backdrop-blur-xl rounded-full border border-indigo-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Package className="w-5 h-5 text-yellow-600 animate-pulse" />
             <span className="text-sm font-semibold bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
               業界別受注管理ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-yellow-600 animate-pulse" />
           </div>
 
           {/* Main Title with 3D effect */}
@@ -283,7 +283,7 @@ const IndustryOMS: React.FC = () => {
                 業界特化OMS
               </span>
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-300">
+            <p className="text-2xl md:text-3xl text-gray-700">
               あなたの業界に、完璧な受注管理を
             </p>
           </div>
@@ -314,7 +314,7 @@ const IndustryOMS: React.FC = () => {
           {/* Play/Pause control */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-white/10 backdrop-blur rounded-full hover:bg-white/20 transition-all"
+            className="mb-12 p-3 bg-gray-100 backdrop-blur rounded-full hover:bg-gray-200 transition-all"
             aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
           >
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -324,14 +324,14 @@ const IndustryOMS: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-blue-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               業界別デモを見る
             </button>
             <button
               onClick={() => navigate('/netsuite/solutions')}
-              className="px-8 py-4 bg-gray-900/70 border border-indigo-500/30 text-white font-bold text-lg rounded-full hover:bg-gray-900/90 hover:border-indigo-400/60 transition-all duration-300"
+              className="px-8 py-4 bg-gray-50 border border-indigo-400 text-gray-900 font-bold text-lg rounded-full hover:bg-white hover:border-indigo-400/60 transition-all duration-300"
             >
               ソリューション一覧へ
             </button>
@@ -346,7 +346,7 @@ const IndustryOMS: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
               3つのコア機能
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               業界の常識を変える、次世代受注管理システム
             </p>
           </div>
@@ -355,18 +355,18 @@ const IndustryOMS: React.FC = () => {
             {CORE_FEATURES.map((feature, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-indigo-500/50 transition-all hover:scale-105 h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-600/20 to-blue-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-indigo-500/30">
-                    <div className="text-indigo-400">{feature.icon}</div>
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border border-gray-300/50 hover:border-indigo-500/50 transition-all hover:scale-105 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-600/20 to-blue-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-indigo-400">
+                    <div className="text-indigo-600">{feature.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-                  <p className="text-gray-400 mb-6">{feature.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 mb-6">{feature.description}</p>
                   {feature.bulletPoints && (
                     <ul className="space-y-3">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                          <span className="text-gray-300">{point}</span>
+                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                          <span className="text-gray-700">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -385,7 +385,7 @@ const IndustryOMS: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
               業界別ソリューション
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-600">
               各業界の特性に完全対応
             </p>
           </div>
@@ -399,16 +399,16 @@ const IndustryOMS: React.FC = () => {
                 onMouseLeave={() => setHoveredIndustry(null)}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${industry.color} rounded-3xl blur-xl transition-all ${hoveredIndustry === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-700/50 hover:border-gray-600 transition-all h-full">
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-6 border border-gray-300/50 hover:border-gray-400 transition-all h-full">
                   <div className={`w-16 h-16 bg-gradient-to-r ${industry.color} rounded-2xl flex items-center justify-center mb-4`}>
-                    <div className="text-white">{industry.icon}</div>
+                    <div className="text-gray-900">{industry.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{industry.name}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{industry.name}</h3>
                   <div className="space-y-3">
                     {industry.features.map((feature, idx) => (
                       <div key={idx}>
-                        <div className="font-semibold text-white mb-1">{feature.title}</div>
-                        <div className="text-xs text-gray-400">{feature.desc}</div>
+                        <div className="font-semibold text-gray-900 mb-1">{feature.title}</div>
+                        <div className="text-xs text-gray-600">{feature.desc}</div>
                       </div>
                     ))}
                   </div>
@@ -426,7 +426,7 @@ const IndustryOMS: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
               高度な機能群
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-600">
               受注管理のあらゆる課題を解決
             </p>
           </div>
@@ -434,14 +434,14 @@ const IndustryOMS: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {CAPABILITIES.map((capability, index) => (
               <div key={index} className="group relative">
-                <div className="relative bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-500/50 transition-all">
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-cyan-500/50 transition-all">
                   <div className="flex items-start">
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-600/20 to-teal-600/20 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border border-cyan-500/30">
-                      <div className="text-cyan-400">{capability.icon}</div>
+                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border border-cyan-400">
+                      <div className="text-cyan-600">{capability.icon}</div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-white mb-2">{capability.title}</h3>
-                      <p className="text-sm text-gray-400">{capability.description}</p>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
+                      <p className="text-sm text-gray-600">{capability.description}</p>
                     </div>
                   </div>
                 </div>
@@ -464,8 +464,8 @@ const IndustryOMS: React.FC = () => {
                   <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent mb-2">
                     {metric.value}
                   </div>
-                  <div className="text-lg font-bold text-white mb-1">{metric.label}</div>
-                  <div className="text-sm text-gray-400">{metric.sublabel}</div>
+                  <div className="text-lg font-bold text-gray-900 mb-1">{metric.label}</div>
+                  <div className="text-sm text-gray-600">{metric.sublabel}</div>
                 </div>
               ))}
             </div>
@@ -476,39 +476,39 @@ const IndustryOMS: React.FC = () => {
       {/* Case Study */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-12 border border-gray-700">
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-12 border border-gray-300">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-400/30 rounded-full mb-6">
-                <Award className="w-5 h-5 text-green-400" />
-                <span className="text-sm font-semibold text-green-400">導入成功事例</span>
+                <Award className="w-5 h-5 text-green-600" />
+                <span className="text-sm font-semibold text-green-600">導入成功事例</span>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-2">{CASE_STUDY.company}</h2>
-              <p className="text-gray-400">{CASE_STUDY.industry}</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">{CASE_STUDY.company}</h2>
+              <p className="text-gray-600">{CASE_STUDY.industry}</p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 mb-12">
               <div>
-                <h3 className="text-xl font-bold text-indigo-400 mb-4">課題</h3>
-                <p className="text-gray-300 mb-6">{CASE_STUDY.challenge}</p>
-                <h3 className="text-xl font-bold text-green-400 mb-4">ソリューション</h3>
-                <p className="text-gray-300">{CASE_STUDY.solution}</p>
+                <h3 className="text-xl font-bold text-indigo-600 mb-4">課題</h3>
+                <p className="text-gray-700 mb-6">{CASE_STUDY.challenge}</p>
+                <h3 className="text-xl font-bold text-green-600 mb-4">ソリューション</h3>
+                <p className="text-gray-700">{CASE_STUDY.solution}</p>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-orange-400 mb-6">導入結果</h3>
+                <h3 className="text-xl font-bold text-orange-600 mb-6">導入結果</h3>
                 <div className="space-y-4">
                   {CASE_STUDY.results.map((result, index) => (
-                    <div key={index} className="grid grid-cols-3 gap-4 p-3 bg-gray-800/50 rounded-lg">
-                      <div className="text-sm text-gray-400">{result.metric}</div>
-                      <div className="text-sm text-gray-500 line-through">{result.before}</div>
-                      <div className="text-sm font-bold text-green-400">{result.after}</div>
+                    <div key={index} className="grid grid-cols-3 gap-4 p-3 bg-gray-50/50 rounded-lg">
+                      <div className="text-sm text-gray-600">{result.metric}</div>
+                      <div className="text-sm text-gray-700 line-through">{result.before}</div>
+                      <div className="text-sm font-bold text-green-600">{result.after}</div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700">
-              <p className="text-gray-300 italic">&ldquo;{CASE_STUDY.quote}&rdquo;</p>
+            <div className="bg-gray-50/50 rounded-2xl p-6 border border-gray-300">
+              <p className="text-gray-700 italic">&ldquo;{CASE_STUDY.quote}&rdquo;</p>
             </div>
           </div>
         </div>
@@ -521,7 +521,7 @@ const IndustryOMS: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               導入ロードマップ
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-600">
               最短2ヶ月で本番稼働を実現
             </p>
           </div>
@@ -533,19 +533,19 @@ const IndustryOMS: React.FC = () => {
             <div className="grid lg:grid-cols-4 gap-8">
               {PHASES.map((phase, index) => (
                 <div key={index} className="relative">
-                  <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all hover:scale-105">
-                    <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-purple-500/50 transition-all hover:scale-105">
+                    <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">
                       {index + 1}
                     </div>
-                    <div className="text-purple-400 mb-4">{phase.icon}</div>
+                    <div className="text-purple-600 mb-4">{phase.icon}</div>
                     <div className="text-sm font-bold text-purple-300 mb-2">{phase.phase}</div>
-                    <h3 className="text-lg font-bold text-white mb-2">{phase.title}</h3>
-                    <div className="text-sm text-orange-400 font-semibold mb-4">{phase.duration}</div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{phase.title}</h3>
+                    <div className="text-sm text-orange-600 font-semibold mb-4">{phase.duration}</div>
                     <ul className="space-y-2">
                       {phase.activities.map((activity, idx) => (
                         <li key={idx} className="flex items-start">
-                          <ChevronRight className="w-4 h-4 text-gray-500 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-xs text-gray-400">{activity}</span>
+                          <ChevronRight className="w-4 h-4 text-gray-700 mt-0.5 mr-2 flex-shrink-0" />
+                          <span className="text-xs text-gray-600">{activity}</span>
                         </li>
                       ))}
                     </ul>
@@ -565,20 +565,20 @@ const IndustryOMS: React.FC = () => {
             <br />
             完璧な受注管理を実現
           </h2>
-          <p className="text-xl text-gray-300 mb-12">
+          <p className="text-xl text-gray-700 mb-12">
             業界のベストプラクティスを、今すぐ導入しませんか？
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-indigo-500 to-blue-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               業界別デモを予約
             </button>
             <button
               onClick={() => navigate('/contact')}
-              className="px-10 py-5 bg-gray-900/70 border border-indigo-500/30 text-white font-bold text-lg rounded-full hover:bg-gray-900/90 hover:border-indigo-400/60 transition-all duration-300"
+              className="px-10 py-5 bg-gray-50 border border-indigo-400 text-gray-900 font-bold text-lg rounded-full hover:bg-white hover:border-indigo-400/60 transition-all duration-300"
             >
               詳細資料をダウンロード
             </button>
@@ -591,9 +591,9 @@ const IndustryOMS: React.FC = () => {
               { label: '導入企業200社以上', icon: <Award className="w-5 h-5" /> },
               { label: '99.8%の処理精度', icon: <Shield className="w-5 h-5" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 backdrop-blur rounded-full border border-gray-700">
-                <div className="text-yellow-400">{badge.icon}</div>
-                <span className="text-sm text-gray-300">{badge.label}</span>
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50 backdrop-blur rounded-full border border-gray-300">
+                <div className="text-yellow-600">{badge.icon}</div>
+                <span className="text-sm text-gray-700">{badge.label}</span>
               </div>
             ))}
           </div>
