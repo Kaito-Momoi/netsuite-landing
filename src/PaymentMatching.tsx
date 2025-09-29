@@ -3,12 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle,
   Clock,
-  Target,
   Database,
   Shield,
   Zap,
   BarChart3,
-  Settings,
   ArrowRight,
   TrendingUp,
   Award,
@@ -21,7 +19,6 @@ import {
   Brain,
   Play,
   Pause,
-  ChevronRight,
   Layers,
   Building,
 } from 'lucide-react';
@@ -94,51 +91,8 @@ const IMPACT_METRICS = [
   { value: '迅速な', label: '月次決算', sublabel: '締め後即日完了' },
 ];
 
-// Implementation phases
-const PHASES = [
-  {
-    phase: 'Phase 1',
-    title: '現状分析・要件定義',
-    duration: '2週間',
-    activities: ['業務フロー分析', 'マッチングルール定義', 'システム要件確認'],
-    icon: <Target className="w-8 h-8" />,
-  },
-  {
-    phase: 'Phase 2',
-    title: 'システム構築',
-    duration: '3-4週間',
-    activities: ['NetSuite設定', 'API連携構築', 'マッチングロジック実装'],
-    icon: <Settings className="w-8 h-8" />,
-  },
-  {
-    phase: 'Phase 3',
-    title: 'テスト・調整',
-    duration: '2週間',
-    activities: ['並行稼働テスト', 'マッチング精度調整', '例外処理確認'],
-    icon: <FileSearch className="w-8 h-8" />,
-  },
-  {
-    phase: 'Phase 4',
-    title: '本番稼働・最適化',
-    duration: '継続',
-    activities: ['本番運用開始', 'AI学習による精度向上', '継続的改善'],
-    icon: <Rocket className="w-8 h-8" />,
-  },
-];
 
 // Success case study
-const CASE_STUDY = {
-  company: '大手製造業 A社',
-  challenge: '月間5,000件の入金処理に10名体制で対応。月次決算に5営業日を要していた',
-  solution: 'AI自動マッチングと例外処理ワークフローを導入',
-  results: [
-    { metric: '処理時間', before: '200時間/月', after: '8時間/月', improvement: '96%削減' },
-    { metric: '人員', before: '10名', after: '1名', improvement: '90%削減' },
-    { metric: '月次決算', before: '5営業日', after: '即日', improvement: '5日短縮' },
-    { metric: 'エラー率', before: '2.5%', after: '0.01%', improvement: '99.6%改善' },
-  ],
-  quote: '導入後、経理部門は単純作業から解放され、より戦略的な業務に注力できるようになりました。月次決算の早期化により、経営判断も迅速化しています。',
-};
 
 const PaymentMatching: React.FC = () => {
   const navigate = useNavigate();
@@ -178,7 +132,7 @@ const PaymentMatching: React.FC = () => {
     <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/90 via-white to-cyan-950/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50"></div>
 
         {/* Animated gradient orbs */}
         <div className="absolute inset-0">
@@ -212,11 +166,11 @@ const PaymentMatching: React.FC = () => {
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
           <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <DollarSign className="w-5 h-5 text-yellow-600 animate-pulse" />
+            <DollarSign className="w-5 h-5 text-cyan-600 animate-pulse" />
             <span className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               財務プロセス自動化ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-yellow-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
           </div>
 
           {/* Main Title with 3D effect */}
@@ -366,7 +320,7 @@ const PaymentMatching: React.FC = () => {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-br from-blue-50 to-cyan-50 backdrop-blur-xl rounded-3xl p-12 border border-blue-500/20">
-            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
               導入効果
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -384,88 +338,7 @@ const PaymentMatching: React.FC = () => {
         </div>
       </section>
 
-      {/* Case Study */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-12 border border-gray-300">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-400/30 rounded-full mb-6">
-                <Award className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-semibold text-green-600">導入成功事例</span>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{CASE_STUDY.company}</h2>
-            </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 mb-12">
-              <div>
-                <h3 className="text-xl font-bold text-blue-600 mb-4">課題</h3>
-                <p className="text-gray-700 mb-6">{CASE_STUDY.challenge}</p>
-                <h3 className="text-xl font-bold text-green-600 mb-4">ソリューション</h3>
-                <p className="text-gray-700">{CASE_STUDY.solution}</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-orange-600 mb-6">導入結果</h3>
-                <div className="space-y-4">
-                  {CASE_STUDY.results.map((result, index) => (
-                    <div key={index} className="grid grid-cols-3 gap-4 p-3 bg-gray-50/50 rounded-lg">
-                      <div className="text-sm text-gray-600">{result.metric}</div>
-                      <div className="text-sm text-gray-700 line-through">{result.before}</div>
-                      <div className="text-sm font-bold text-green-600">{result.after}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50/50 rounded-2xl p-6 border border-gray-300">
-              <p className="text-gray-700 italic">&ldquo;{CASE_STUDY.quote}&rdquo;</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Timeline */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              導入ロードマップ
-            </h2>
-            <p className="text-xl text-gray-600">
-              最短6週間で本番稼働を実現
-            </p>
-          </div>
-
-          <div className="relative">
-            {/* Connection line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hidden lg:block"></div>
-
-            <div className="grid lg:grid-cols-4 gap-8">
-              {PHASES.map((phase, index) => (
-                <div key={index} className="relative">
-                  <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-purple-500/50 transition-all hover:scale-105">
-                    <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">
-                      {index + 1}
-                    </div>
-                    <div className="text-purple-600 mb-4">{phase.icon}</div>
-                    <div className="text-sm font-bold text-purple-300 mb-2">{phase.phase}</div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{phase.title}</h3>
-                    <div className="text-sm text-orange-600 font-semibold mb-4">{phase.duration}</div>
-                    <ul className="space-y-2">
-                      {phase.activities.map((activity, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <ChevronRight className="w-4 h-4 text-gray-700 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-xs text-gray-600">{activity}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="relative z-10 py-20 px-4">
@@ -502,7 +375,7 @@ const PaymentMatching: React.FC = () => {
               { label: '24時間サポート', icon: <Shield className="w-5 h-5" /> },
             ].map((badge, idx) => (
               <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50 backdrop-blur rounded-full border border-gray-300">
-                <div className="text-yellow-600">{badge.icon}</div>
+                <div className="text-cyan-600">{badge.icon}</div>
                 <span className="text-sm text-gray-700">{badge.label}</span>
               </div>
             ))}

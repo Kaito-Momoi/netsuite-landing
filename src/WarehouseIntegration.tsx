@@ -17,18 +17,16 @@ import {
   Clock,
   Shield,
   Rocket,
-  Target,
   Lightbulb,
   Award,
   HeartHandshake,
-  MousePointer,
   Play,
   Pause,
-  Code,
-  Settings,
   BarChart3,
   Truck,
   Star,
+  Target,
+  Settings,
   Quote,
   Wifi,
   Activity,
@@ -97,81 +95,13 @@ const ADVANCED_CAPABILITIES = [
 
 // Impact Metrics
 const IMPACT_METRICS = [
-  { value: '極めて高い', label: '在庫精度', description: 'バーコード管理による精度向上', color: 'from-amber-400 to-orange-400' },
-  { value: '大幅な', label: '作業時間短縮', description: 'ピッキング効率の改善', color: 'from-orange-400 to-red-400' },
-  { value: '劇的な', label: '誤出荷削減', description: 'スキャンによる検品強化', color: 'from-red-400 to-pink-400' },
-  { value: 'リアルタイム', label: '在庫可視化', description: '即時の在庫情報更新', color: 'from-pink-400 to-purple-400' },
+  { value: '極めて高い', label: '在庫精度', description: 'バーコード管理による精度向上', color: 'from-teal-400 to-cyan-400' },
+  { value: '大幅な', label: '作業時間短縮', description: 'ピッキング効率の改善', color: 'from-cyan-400 to-blue-400' },
+  { value: '劇的な', label: '誤出荷削減', description: 'スキャンによる検品強化', color: 'from-blue-400 to-indigo-400' },
+  { value: 'リアルタイム', label: '在庫可視化', description: '即時の在庫情報更新', color: 'from-indigo-400 to-blue-400' },
 ];
 
-// Case Study
-const CASE_STUDY = {
-  company: '株式会社ロジスティクスプロ',
-  industry: '3PL物流業',
-  headline: '倉庫作業のデジタル化で作業効率60%向上と誤出荷98%削減を実現',
-  summary: '複数の顧客商品を扱う3PL事業において、従来の紙ベース作業からNetSuite連携のデジタル倉庫システムに移行。ハンディターミナルとリアルタイム同期により、作業の正確性と効率性を飛躍的に向上。',
-  location: '〒135-0061 東京都江東区豊洲3-3-3',
-  employees: '200～499名',
-  results: {
-    before: {
-      title: '導入前の課題',
-      metrics: [
-        { label: 'ピッキング時間', value: '20分/オーダー', color: 'text-red-600' },
-        { label: '誤出荷率', value: '2.5%', color: 'text-red-600' },
-        { label: '在庫精度', value: '92%', color: 'text-red-600' },
-        { label: '棚卸し作業', value: '3日間', color: 'text-red-600' },
-      ],
-    },
-    after: {
-      title: '導入後の成果',
-      metrics: [
-        { label: 'ピッキング時間', value: '8分/オーダー', color: 'text-amber-400' },
-        { label: '誤出荷率', value: '0.05%', color: 'text-amber-400' },
-        { label: '在庫精度', value: '99.9%', color: 'text-amber-400' },
-        { label: '棚卸し作業', value: '4時間', color: 'text-amber-400' },
-      ],
-    },
-  },
-  quote: {
-    text: '「NetSuiteとの連携により、倉庫作業が劇的に変わりました。ピッキング時間が60%短縮され、誤出荷もほぼゼロになったことで、顧客満足度が大幅に向上し、新規顧客の獲得にもつながっています。デジタル化の効果を実感しています。」',
-    author: '株式会社ロジスティクスプロ オペレーション部長 佐藤 美咲 氏',
-  },
-};
 
-// Implementation Roadmap
-const IMPLEMENTATION_PHASES = [
-  {
-    phase: 'Phase 1',
-    title: '業務分析・要件定義',
-    duration: '2-3週間',
-    description: '現在の倉庫オペレーションを詳細に分析し、最適化ポイントを特定',
-    icon: <MousePointer className="w-8 h-8" />,
-    deliverables: ['現状業務フロー分析', 'WMS・機器の調査', '要件定義書作成'],
-  },
-  {
-    phase: 'Phase 2',
-    title: 'システム設計・開発',
-    duration: '4-6週間',
-    description: 'NetSuiteとWMSの連携システムを設計・開発',
-    icon: <Code className="w-8 h-8" />,
-    deliverables: ['システム設計書', 'API連携開発', 'UI/UX設計'],
-  },
-  {
-    phase: 'Phase 3',
-    title: '機器導入・連携テスト',
-    duration: '3-4週間',
-    description: 'ハンディターミナルなどの機器導入と連携テストを実施',
-    icon: <Database className="w-8 h-8" />,
-    deliverables: ['機器設定・テスト', 'データ連携確認', '動作検証'],
-  },
-  {
-    phase: 'Phase 4',
-    title: '本稼働・運用開始',
-    duration: '継続的',
-    description: '本番運用開始後の継続的な改善とサポートを提供',
-    icon: <Rocket className="w-8 h-8" />,
-    deliverables: ['スタッフトレーニング', '本稼働開始', '継続的改善サポート'],
-  },
-];
 
 const WarehouseIntegration: React.FC = () => {
   const navigate = useNavigate();
@@ -225,13 +155,13 @@ const WarehouseIntegration: React.FC = () => {
     <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       {/* Multi-layered Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 via-white to-orange-900/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-white to-cyan-900/20"></div>
 
         {/* Animated mesh gradient */}
         <div className="absolute inset-0 opacity-30 overflow-hidden">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 left-0 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         </div>
 
         {/* Particle field */}
@@ -254,7 +184,7 @@ const WarehouseIntegration: React.FC = () => {
 
         {/* Interactive cursor glow */}
         <div
-          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-amber-500/20 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
+          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-teal-500/20 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
           style={{
             left: `${Math.max(0, Math.min(mousePosition.x - 128, window.innerWidth - 256))}px`,
             top: `${mousePosition.y - 128}px`,
@@ -272,25 +202,25 @@ const WarehouseIntegration: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600/20 to-orange-600/20 backdrop-blur-xl rounded-full border border-amber-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Warehouse className="w-5 h-5 text-amber-400 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-teal-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Warehouse className="w-5 h-5 text-teal-600 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
               物流・倉庫特化 統合ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-yellow-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
           </div>
 
           {/* 3D Title */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black">
               {/* 3D Shadow layers */}
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-amber-900/20 blur-sm transform translate-x-4 translate-y-4">
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-teal-900/20 blur-sm transform translate-x-4 translate-y-4">
                 倉庫統合の革新
               </div>
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-orange-900/20 blur-sm transform -translate-x-2 translate-y-2">
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-900/20 blur-sm transform -translate-x-2 translate-y-2">
                 倉庫統合の革新
               </div>
-              <span className="relative bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 bg-clip-text text-transparent animate-gradient">
+              <span className="relative bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
                 倉庫統合の革新
               </span>
             </h1>
@@ -305,9 +235,9 @@ const WarehouseIntegration: React.FC = () => {
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: 'スキャンシステム', icon: <Scan />, gradient: 'from-amber-400 to-orange-400' },
-                { text: 'リアルタイム同期', icon: <Database />, gradient: 'from-orange-400 to-red-400' },
-                { text: 'ロケーション管理', icon: <MapPin />, gradient: 'from-red-400 to-pink-400' },
+                { text: 'スキャンシステム', icon: <Scan />, gradient: 'from-teal-400 to-cyan-400' },
+                { text: 'リアルタイム同期', icon: <Database />, gradient: 'from-cyan-400 to-blue-400' },
+                { text: 'ロケーション管理', icon: <MapPin />, gradient: 'from-blue-400 to-indigo-400' },
               ].map((item, index) => (
                 <div
                   key={index}
@@ -337,7 +267,7 @@ const WarehouseIntegration: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-teal-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               無料診断を開始
@@ -353,7 +283,7 @@ const WarehouseIntegration: React.FC = () => {
           {/* Core Features Section */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 革新的な倉庫統合機能
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
@@ -364,12 +294,12 @@ const WarehouseIntegration: React.FC = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {CORE_FEATURES.map((feature, index) => (
                 <div key={index} className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-amber-600/20 to-orange-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-amber-500/50 transition-all hover:scale-105 h-full">
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-600/20 to-cyan-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-teal-500/50 transition-all hover:scale-105 h-full">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500"></div>
 
-                    <div className="w-16 h-16 bg-gradient-to-br from-amber-600/20 to-orange-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-amber-500/30">
-                      <div className="text-amber-400">{feature.icon}</div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-teal-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-teal-500/30">
+                      <div className="text-teal-600">{feature.icon}</div>
                     </div>
 
                     <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
@@ -378,7 +308,7 @@ const WarehouseIntegration: React.FC = () => {
                     <ul className="space-y-2">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 mr-2 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-teal-600 mt-0.5 mr-2 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{point}</span>
                         </li>
                       ))}
@@ -392,7 +322,7 @@ const WarehouseIntegration: React.FC = () => {
           {/* Advanced Capabilities Grid */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 高度な機能群
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -408,11 +338,11 @@ const WarehouseIntegration: React.FC = () => {
                   onMouseEnter={() => setHoveredCapability(index)}
                   onMouseLeave={() => setHoveredCapability(null)}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-r from-amber-600/10 to-orange-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border border-gray-300/50 hover:border-amber-500/50 transition-all hover:scale-105 h-full">
+                  <div className={`absolute inset-0 bg-gradient-to-r from-teal-600/10 to-cyan-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
+                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border border-gray-300/50 hover:border-teal-500/50 transition-all hover:scale-105 h-full">
                     <div className="flex items-start">
-                      <div className="bg-gradient-to-br from-amber-100/10 to-orange-100/10 p-3 rounded-lg mr-4 border border-amber-500/20">
-                        <div className="text-amber-400">{capability.icon}</div>
+                      <div className="bg-gradient-to-br from-teal-100/10 to-cyan-100/10 p-3 rounded-lg mr-4 border border-teal-500/20">
+                        <div className="text-teal-600">{capability.icon}</div>
                       </div>
                       <div>
                         <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
@@ -428,7 +358,7 @@ const WarehouseIntegration: React.FC = () => {
           {/* Impact Metrics Section */}
           <div ref={statsRef} className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 導入効果
               </h2>
             </div>
@@ -455,140 +385,7 @@ const WarehouseIntegration: React.FC = () => {
             </div>
           </div>
 
-          {/* Case Study Section */}
-          <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 backdrop-blur-xl rounded-3xl p-12 border border-amber-500/20">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-400/30 rounded-full text-sm font-semibold text-amber-200 mb-6">
-                <Trophy className="w-4 h-4" />
-                導入事例
-              </div>
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
-                成功事例
-              </h2>
-            </div>
 
-            <div className="grid lg:grid-cols-[1fr,1.2fr] gap-12 items-start mb-12">
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">{CASE_STUDY.company}</h3>
-                <p className="text-sm text-amber-200 mb-2">{CASE_STUDY.industry}</p>
-                <p className="text-lg text-amber-200 font-semibold mb-6">{CASE_STUDY.headline}</p>
-                <p className="text-gray-200 leading-relaxed mb-6">{CASE_STUDY.summary}</p>
-
-                <div className="flex flex-wrap gap-3 text-sm text-gray-200 mb-8">
-                  <div className="flex items-center gap-2 px-3 py-2 bg-white border border-amber-400/20 rounded-full">
-                    <Building2 className="w-4 h-4 text-amber-300" />
-                    <span>{CASE_STUDY.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-2 bg-white border border-amber-400/20 rounded-full">
-                    <Warehouse className="w-4 h-4 text-amber-300" />
-                    <span>{CASE_STUDY.employees}</span>
-                  </div>
-                </div>
-
-                <button
-                  onClick={openContactModal}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-bold rounded-full shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/50 hover:scale-105 transition-all"
-                >
-                  <Rocket className="w-4 h-4" />
-                  同様の成果を実現する
-                </button>
-              </div>
-
-              <div className="bg-gray-50 border border-amber-400/20 rounded-2xl p-6">
-                <div className="text-amber-300 mb-4">
-                  <Quote className="w-8 h-8" />
-                </div>
-                <p className="text-gray-100 leading-relaxed italic mb-6">
-                  {CASE_STUDY.quote.text}
-                </p>
-                <p className="text-sm text-gray-600">{CASE_STUDY.quote.author}</p>
-              </div>
-            </div>
-
-            {/* Before/After Comparison */}
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6">
-                <h4 className="text-xl font-bold text-red-300 mb-6 flex items-center gap-3">
-                  <Zap className="w-6 h-6" />
-                  {CASE_STUDY.results.before.title}
-                </h4>
-                <div className="space-y-4">
-                  {CASE_STUDY.results.before.metrics.map((metric, idx) => (
-                    <div key={idx} className="flex justify-between items-center">
-                      <span className="text-gray-700">{metric.label}</span>
-                      <span className={`font-bold ${metric.color}`}>{metric.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-amber-900/20 border border-amber-500/30 rounded-xl p-6">
-                <h4 className="text-xl font-bold text-amber-300 mb-6 flex items-center gap-3">
-                  <Trophy className="w-6 h-6" />
-                  {CASE_STUDY.results.after.title}
-                </h4>
-                <div className="space-y-4">
-                  {CASE_STUDY.results.after.metrics.map((metric, idx) => (
-                    <div key={idx} className="flex justify-between items-center">
-                      <span className="text-gray-700">{metric.label}</span>
-                      <span className={`font-bold ${metric.color}`}>{metric.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Implementation Roadmap */}
-          <div className="space-y-20">
-            <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
-                導入ロードマップ
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                確実な成功を保証する段階的アプローチ
-              </p>
-            </div>
-
-            <div className="relative">
-              {/* Connection Line */}
-              <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 hidden lg:block"></div>
-
-              <div className="grid lg:grid-cols-4 gap-8 relative">
-                {IMPLEMENTATION_PHASES.map((phase, index) => (
-                  <div key={index} className="relative group">
-                    <div className="bg-white backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-amber-500/50 transition-all hover:scale-105 h-full">
-                      <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-sm">
-                        {index + 1}
-                      </div>
-
-                      <div className="text-amber-400 mb-4">{phase.icon}</div>
-                      <div className="text-amber-400 text-sm font-bold mb-2">{phase.phase}</div>
-                      <h3 className="text-xl font-bold mb-2 text-gray-900">{phase.title}</h3>
-                      <p className="text-gray-600 mb-4">{phase.description}</p>
-
-                      <div className="inline-flex items-center px-3 py-1 bg-amber-900/50 rounded-full mb-4">
-                        <Clock className="w-4 h-4 mr-2 text-amber-400" />
-                        <span className="text-sm text-amber-300">{phase.duration}</span>
-                      </div>
-
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-gray-700">主要成果物:</h4>
-                        <ul className="space-y-1">
-                          {phase.deliverables.map((deliverable, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <CheckCircle className="w-3 h-3 text-amber-400 mt-1 mr-2 flex-shrink-0" />
-                              <span className="text-xs text-gray-600">{deliverable}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
 
         </div>
       </section>
@@ -596,7 +393,7 @@ const WarehouseIntegration: React.FC = () => {
       {/* Final CTA */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 bg-clip-text text-transparent animate-gradient">
+          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
             倉庫の未来を、今始めよう
           </h2>
           <p className="text-xl text-gray-700 mb-12">
@@ -606,7 +403,7 @@ const WarehouseIntegration: React.FC = () => {
           <div className="flex justify-center mb-16">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-teal-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               無料相談を開始する
@@ -621,7 +418,7 @@ const WarehouseIntegration: React.FC = () => {
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
               <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50/50 backdrop-blur rounded-full border border-gray-300">
-                <div className="text-amber-400">{badge.icon}</div>
+                <div className="text-teal-600">{badge.icon}</div>
                 <span className="text-sm text-gray-700">{badge.label}</span>
               </div>
             ))}

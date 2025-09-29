@@ -228,41 +228,18 @@ const NetSuiteUnified: React.FC = () => {
     <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       {/* Multi-layered Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 via-white to-orange-100/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-white to-cyan-100/30"></div>
 
         {/* Animated mesh gradient */}
         <div className="absolute inset-0 opacity-10 overflow-hidden">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
 
-        {/* Particle field */}
-        <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-              }}
-            >
-              <div className="w-1 h-1 bg-gray-400/20 rounded-full"></div>
-            </div>
-          ))}
-        </div>
+        {/* Particle field - removed */}
 
-        {/* Interactive cursor glow */}
-        <div
-          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
-          style={{
-            left: `${Math.max(0, Math.min(mousePosition.x - 128, window.innerWidth - 256))}px`,
-            top: `${mousePosition.y - 128}px`,
-          }}
-        />
+        {/* Interactive cursor glow - removed */}
       </div>
 
       <ModernNavigationBar
@@ -275,26 +252,26 @@ const NetSuiteUnified: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-orange-600/20 backdrop-blur-xl rounded-full border border-purple-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Sparkles className="w-5 h-5 text-cyan-400" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
               日本有数のNetSuite導入パートナー
             </span>
-            <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-cyan-400" />
           </div>
 
           {/* 3D Title */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black">
               {/* 3D Shadow layers */}
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-purple-900/20 blur-sm transform translate-x-4 translate-y-4">
-                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-purple-800/30 transition-colors">EvangSol</a>
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-blue-900/20 blur-sm transform translate-x-4 translate-y-4">
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-blue-800/30 transition-colors">EvangSol</a>
               </div>
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-orange-900/20 blur-sm transform -translate-x-2 translate-y-2">
-                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-800/30 transition-colors">EvangSol</a>
+              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-900/20 blur-sm transform -translate-x-2 translate-y-2">
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-800/30 transition-colors">EvangSol</a>
               </div>
-              <span className="relative bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
-                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors cursor-pointer">EvangSol</a>
+              <span className="relative bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-600 transition-colors cursor-pointer">EvangSol</a>
               </span>
             </h1>
           </div>
@@ -308,7 +285,7 @@ const NetSuiteUnified: React.FC = () => {
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: '柔軟なカスタマイズ', icon: <Code />, gradient: 'from-purple-400 to-pink-400' },
+                { text: '柔軟なカスタマイズ', icon: <Code />, gradient: 'from-blue-400 to-teal-400' },
                 { text: '完全クラウド対応', icon: <Cloud />, gradient: 'from-blue-400 to-cyan-400' },
                 { text: 'AI機能搭載', icon: <Cpu />, gradient: 'from-green-400 to-emerald-400' },
               ].map((item, index) => (
@@ -340,7 +317,7 @@ const NetSuiteUnified: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-orange-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               今すぐ始める
@@ -365,7 +342,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* 1. NetSuite */}
           <div id="netsuite" className="space-y-20 scroll-mt-20">
               <div className="text-center">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
                   NetSuiteの実用的な機能
                 </h2>
                 <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-12">
@@ -380,10 +357,10 @@ const NetSuiteUnified: React.FC = () => {
                   {CORE_FEATURES.map((feature, index) => (
                     <div
                       key={index}
-                      className="group relative bg-white/90 backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-orange-600/50 transition-all hover:scale-105"
+                      className="group relative bg-white/90 backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-cyan-600/50 transition-all hover:scale-105"
                     >
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-orange-500/30">
-                        <div className="text-orange-400">{feature.icon}</div>
+                      <div className="w-16 h-16 bg-gradient-to-br from-cyan-600/20 to-teal-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-cyan-500/30">
+                        <div className="text-cyan-400">{feature.icon}</div>
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                       <p className="text-gray-800">{feature.description}</p>
@@ -402,7 +379,7 @@ const NetSuiteUnified: React.FC = () => {
                     title: 'SuiteScript',
                     subtitle: 'JavaScriptベース開発',
                     features: ['完全なカスタムロジック', 'イベントドリブン処理', 'API統合'],
-                    gradient: 'from-violet-500 to-purple-500',
+                    gradient: 'from-indigo-500 to-blue-500',
                   },
                   {
                     icon: <Workflow className="w-12 h-12" />,
@@ -492,29 +469,29 @@ const NetSuiteUnified: React.FC = () => {
               </div>
 
               {/* Case Study Highlight */}
-              <div className="bg-gradient-to-br from-orange-50 to-red-50 backdrop-blur-xl rounded-3xl p-12 border border-orange-300">
+              <div className="bg-gradient-to-br from-cyan-50 to-teal-50 backdrop-blur-xl rounded-3xl p-12 border border-cyan-300">
                 <div className="grid lg:grid-cols-[1.6fr,1fr] gap-12 items-start">
                   <div>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 border border-orange-400 rounded-full text-sm font-semibold text-orange-700 mb-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-100 border border-cyan-400 rounded-full text-sm font-semibold text-cyan-700 mb-6">
                       <Trophy className="w-4 h-4" />
                       導入実績
                     </div>
                     <h3 className="text-3xl font-bold text-gray-900 mb-4">{CASE_STUDY.company}</h3>
-                    <p className="text-lg text-orange-700 font-semibold mb-4">{CASE_STUDY.headline}</p>
+                    <p className="text-lg text-cyan-700 font-semibold mb-4">{CASE_STUDY.headline}</p>
                     <p className="text-sm md:text-base text-gray-800 leading-relaxed mb-6">
                       {CASE_STUDY.summary}
                     </p>
                     <div className="flex flex-wrap gap-3 text-xs md:text-sm text-gray-800">
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-orange-300 rounded-full">
-                        <Building2 className="w-4 h-4 text-orange-600" />
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-cyan-300 rounded-full">
+                        <Building2 className="w-4 h-4 text-cyan-600" />
                         <span>{CASE_STUDY.location}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-orange-300 rounded-full">
-                        <Users className="w-4 h-4 text-orange-600" />
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-cyan-300 rounded-full">
+                        <Users className="w-4 h-4 text-cyan-600" />
                         <span>{CASE_STUDY.employees}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-orange-300 rounded-full">
-                        <HeartHandshake className="w-4 h-4 text-orange-600" />
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white/90 border border-cyan-300 rounded-full">
+                        <HeartHandshake className="w-4 h-4 text-cyan-600" />
                         <span>{CASE_STUDY.partner}</span>
                       </div>
                     </div>
@@ -530,15 +507,15 @@ const NetSuiteUnified: React.FC = () => {
                       </a>
                       <button
                         onClick={openContactModal}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-orange-400 text-gray-900 font-bold rounded-full hover:border-orange-400/60 hover:bg-orange-50 transition-all"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-cyan-400 text-gray-900 font-bold rounded-full hover:border-cyan-400/60 hover:bg-orange-50 transition-all"
                       >
                         <Rocket className="w-4 h-4" />
                         無料相談を依頼
                       </button>
                     </div>
                   </div>
-                  <div className="bg-white border border-orange-300 rounded-2xl p-6">
-                    <div className="text-orange-600 mb-4">
+                  <div className="bg-white border border-cyan-300 rounded-2xl p-6">
+                    <div className="text-cyan-600 mb-4">
                       <Quote className="w-8 h-8" />
                     </div>
                     <p className="text-sm md:text-base text-gray-800 leading-relaxed italic mb-6">
@@ -551,7 +528,7 @@ const NetSuiteUnified: React.FC = () => {
                 <div className="grid md:grid-cols-3 gap-6 mt-12">
                   {CASE_STUDY.highlights.map((highlight, index) => (
                     <div key={index} className="bg-white/90 rounded-xl p-6 border border-gray-300/50">
-                      <div className="text-orange-600 mb-4">{highlight.icon}</div>
+                      <div className="text-cyan-600 mb-4">{highlight.icon}</div>
                       <h4 className="text-lg font-bold text-gray-900 mb-3">{highlight.title}</h4>
                       <p className="text-sm text-gray-800 leading-relaxed">{highlight.description}</p>
                     </div>
@@ -563,7 +540,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* 3. Challenges & Solutions */}
           <div id="matching" className="scroll-mt-20">
               <div className="text-center mb-16">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   課題とソリューション
                 </h2>
                 <p className="text-xl text-gray-800 max-w-3xl mx-auto">
@@ -851,7 +828,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* 5. Implementation Methodology */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                 導入方法論
               </h2>
               <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
@@ -864,10 +841,10 @@ const NetSuiteUnified: React.FC = () => {
             <div className="overflow-x-auto mb-12">
               <table className="w-full bg-white/95 rounded-2xl overflow-hidden shadow-lg">
                 <thead>
-                  <tr className="bg-gradient-to-r from-purple-500 to-orange-500 text-gray-900">
+                  <tr className="bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900">
                     <th className="px-6 py-4 text-left font-bold">観点</th>
                     <th className="px-6 py-4 text-left">パッケージ導入</th>
-                    <th className="px-6 py-4 text-left bg-purple-600/20">アジャイル導入</th>
+                    <th className="px-6 py-4 text-left bg-blue-600/20">アジャイル導入</th>
                     <th className="px-6 py-4 text-left">ウォーターフォール導入</th>
                   </tr>
                 </thead>
@@ -875,25 +852,25 @@ const NetSuiteUnified: React.FC = () => {
                   <tr>
                     <td className="px-6 py-4 font-bold text-gray-900">導入期間</td>
                     <td className="px-6 py-4 text-gray-800">短期（標準機能中心）</td>
-                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">中期（優先度順に段階的リリース）</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">中期（優先度順に段階的リリース）</td>
                     <td className="px-6 py-4 text-gray-800">長期（全体要件を確定後に一括リリース）</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-bold text-gray-900">柔軟性</td>
                     <td className="px-6 py-4 text-gray-800">導入後に追加開発で対応</td>
-                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">サイクルごとに変更・改善を取り込みやすい</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">サイクルごとに変更・改善を取り込みやすい</td>
                     <td className="px-6 py-4 text-gray-800">要件変更に弱く、再計画の負荷が大きい</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-bold text-gray-900">主な価値</td>
                     <td className="px-6 py-4 text-gray-800">短期で標準運用を開始</td>
-                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">早期に価値を検証しながら最適化を継続</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">早期に価値を検証しながら最適化を継続</td>
                     <td className="px-6 py-4 text-gray-800">理想像に合わせた統合を実現</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-bold text-gray-900">リスクコントロール</td>
                     <td className="px-6 py-4 text-gray-800">初期コストを抑えつつ段階的に拡張</td>
-                    <td className="px-6 py-4 bg-purple-50 text-gray-900 font-semibold">各サイクルでレビューしリスクを分散</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">各サイクルでレビューしリスクを分散</td>
                     <td className="px-6 py-4 text-gray-800">終盤での手戻りリスクが高い</td>
                   </tr>
                 </tbody>
@@ -1001,7 +978,7 @@ const NetSuiteUnified: React.FC = () => {
             <div className="relative mt-16">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-3xl blur-3xl"></div>
               <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-300/50">
-                <h3 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   EvangSolのアジャイル導入の特徴
                 </h3>
                 <div className="grid md:grid-cols-3 gap-8">
@@ -1021,7 +998,7 @@ const NetSuiteUnified: React.FC = () => {
                   </div>
                   <div className="text-center">
                     <div className="inline-flex p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl mb-4">
-                      <BarChart3 className="w-10 h-10 text-orange-400" />
+                      <BarChart3 className="w-10 h-10 text-cyan-400" />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-3">進捗の可視化</h4>
                     <p className="text-gray-800">常に現在地とゴールまでの距離を明確に共有</p>
@@ -1036,7 +1013,7 @@ const NetSuiteUnified: React.FC = () => {
       {/* Final CTA with Animation */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
+          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
             未来のビジネスを、今始めよう
           </h2>
           <p className="text-xl text-gray-800 mb-12">
@@ -1046,7 +1023,7 @@ const NetSuiteUnified: React.FC = () => {
           <div className="flex justify-center">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-purple-500 to-orange-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               今すぐ無料相談
@@ -1061,7 +1038,7 @@ const NetSuiteUnified: React.FC = () => {
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
               <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur rounded-full border border-gray-400">
-                <div className="text-yellow-400">{badge.icon}</div>
+                <div className="text-cyan-400">{badge.icon}</div>
                 <span className="text-sm text-gray-800">{badge.label}</span>
               </div>
             ))}

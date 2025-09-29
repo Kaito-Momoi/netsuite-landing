@@ -26,7 +26,6 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
     const [scrollProgress, setScrollProgress] = useState(0);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-    const [activeGlow, setActiveGlow] = useState(false);
     const [activeSection, setActiveSection] = useState<string>('/');
 
     useEffect(() => {
@@ -67,17 +66,11 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         setActiveSection(currentSection);
       };
 
-      // Trigger active glow animation
-      const glowInterval = setInterval(() => {
-        setActiveGlow(prev => !prev);
-      }, 3000);
-
       window.addEventListener('scroll', handleScroll);
       handleScroll();
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
-        clearInterval(glowInterval);
       };
     }, []);
 
@@ -85,13 +78,13 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
       {
         label: 'Home',
         icon: <Home className="w-3 h-3" />,
-        gradient: 'from-purple-500 to-pink-500',
+        gradient: 'from-blue-500 to-teal-500',
         section: 'home'
       },
       {
         label: 'NetSuite',
         icon: <Cloud className="w-3 h-3" />,
-        gradient: 'from-orange-500 to-red-500',
+        gradient: 'from-cyan-500 to-teal-500',
         section: 'netsuite'
       },
       {
@@ -101,9 +94,9 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         section: 'evangsol'
       },
       {
-        label: 'Matching',
+        label: 'Q&A',
         icon: <Zap className="w-3 h-3" />,
-        gradient: 'from-purple-500 to-orange-500',
+        gradient: 'from-blue-500 to-cyan-500',
         section: 'matching'
       },
       {
@@ -142,7 +135,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
             className="h-full relative overflow-hidden"
             style={{ width: `${scrollProgress}%` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 animate-gradient-x"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 animate-gradient-x"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
           </div>
         </div>
@@ -166,23 +159,11 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   className="group flex items-center gap-3 relative"
                   aria-label="Return to home page"
                 >
-                  <div className="relative">
-                    {/* Hexagon frame with animated border */}
-                    <div className="absolute -inset-2">
-                      <div className={`absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 rounded-xl blur-lg transition-all duration-1000 ${
-                        activeGlow ? 'opacity-100 scale-110' : 'opacity-50 scale-100'
-                      }`}></div>
-                    </div>
-                    <div className="relative bg-white/90 backdrop-blur-xl rounded-xl p-2 border border-gray-200 overflow-hidden">
-                      {/* Animated scan line */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/10 to-transparent -translate-y-full animate-scan"></div>
-                      <img
-                        src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
-                        alt="EvangSol"
-                        className="h-10 relative z-10"
-                      />
-                    </div>
-                  </div>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                    alt="EvangSol"
+                    className="h-10"
+                  />
                 </button>
               </div>
 
@@ -236,7 +217,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   role="menuitem"
                 >
                   {/* Animated background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 animate-gradient-x"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 animate-gradient-x"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
 
                   {/* Button content */}
@@ -296,7 +277,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                     }}
                     className={`w-full flex items-center gap-3 px-6 py-4 rounded-xl transition-all ${
                       isActive(item)
-                        ? 'bg-gradient-to-r from-purple-100 to-orange-100 text-gray-900'
+                        ? 'bg-gradient-to-r from-blue-100 to-cyan-100 text-gray-900'
                         : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                     }`}
                   >

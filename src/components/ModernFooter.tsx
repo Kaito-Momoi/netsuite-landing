@@ -87,7 +87,7 @@ const ModernFooter: React.FC = () => {
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-gray-100"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-100/30 via-transparent to-orange-100/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-blue-100/30 via-transparent to-cyan-100/30"></div>
 
         {/* Animated particles */}
         {particles.map((particle) => (
@@ -107,10 +107,10 @@ const ModernFooter: React.FC = () => {
       {/* Newsletter Section */}
       <div className="relative border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="bg-gradient-to-r from-purple-100 to-orange-100 backdrop-blur-xl rounded-3xl p-12 border border-gray-300">
+          <div className="bg-gradient-to-r from-blue-100 to-cyan-100 backdrop-blur-xl rounded-3xl p-12 border border-gray-300">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   最新情報をお届け
                 </h3>
                 <p className="text-gray-700">
@@ -124,7 +124,7 @@ const ModernFooter: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="w-full px-6 py-4 bg-white backdrop-blur border border-gray-300 rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
+                    className="w-full px-6 py-4 bg-white backdrop-blur border border-gray-300 rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-all"
                   />
                   {subscribed && (
                     <div className="absolute right-4 top-1/2 -translate-y-1/2">
@@ -134,7 +134,7 @@ const ModernFooter: React.FC = () => {
                 </div>
                 <button
                   type="submit"
-                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-orange-600 text-white font-bold rounded-full hover:shadow-xl hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300 flex items-center gap-2 group"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-full hover:shadow-xl hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300 flex items-center gap-2 group"
                 >
                   {subscribed ? (
                     <>
@@ -164,7 +164,7 @@ const ModernFooter: React.FC = () => {
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-orange-400 rounded-xl blur-lg opacity-30"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-xl blur-lg opacity-30"></div>
                     <div className="relative bg-white rounded-xl p-3 border border-gray-300">
                       <img
                         src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
@@ -185,7 +185,7 @@ const ModernFooter: React.FC = () => {
               <div className="space-y-3 mt-8">
                 <a
                   href="mailto:info@evangsol.jp"
-                  className="flex items-center gap-3 text-gray-700 hover:text-purple-600 transition-colors group"
+                  className="flex items-center gap-3 text-gray-700 hover:text-blue-600 transition-colors group"
                 >
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   info@evangsol.jp
@@ -207,7 +207,7 @@ const ModernFooter: React.FC = () => {
             {/* Links Sections */}
             <div>
               <h4 className="font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-orange-400" />
+                <Building2 className="w-4 h-4 text-cyan-400" />
                 企業情報
               </h4>
               <ul className="space-y-3">
@@ -222,7 +222,7 @@ const ModernFooter: React.FC = () => {
                         onMouseLeave={() => setHoveredLink(null)}
                         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
                       >
-                        <span className={`transition-all ${hoveredLink === link.href ? 'text-orange-400' : ''}`}>
+                        <span className={`transition-all ${hoveredLink === link.href ? 'text-cyan-400' : ''}`}>
                           {link.icon}
                         </span>
                         {link.label}
@@ -237,7 +237,7 @@ const ModernFooter: React.FC = () => {
                         onMouseLeave={() => setHoveredLink(null)}
                         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
                       >
-                        <span className={`transition-all ${hoveredLink === link.path ? 'text-orange-400' : ''}`}>
+                        <span className={`transition-all ${hoveredLink === link.path ? 'text-cyan-400' : ''}`}>
                           {link.icon}
                         </span>
                         {link.label}
@@ -306,10 +306,10 @@ const ModernFooter: React.FC = () => {
           <div className="flex justify-end">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-2 bg-gradient-to-r from-purple-100 to-orange-100 border border-purple-400 rounded-full hover:border-purple-500 transition-all hover:scale-110 group"
+              className="p-2 bg-gradient-to-r from-blue-100 to-cyan-100 border border-purple-400 rounded-full hover:border-purple-500 transition-all hover:scale-110 group"
               aria-label="ページトップへ戻る"
             >
-              <svg className="w-5 h-5 text-purple-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-purple-400 group-hover:text-cyan-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
               </svg>
             </button>
