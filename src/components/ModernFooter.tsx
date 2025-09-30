@@ -5,24 +5,13 @@ import {
   Phone,
   MapPin,
   Globe,
-  Twitter,
-  Linkedin,
-  Github,
   ArrowUpRight,
-  Sparkles,
-  Heart,
   Zap,
   Shield,
-  Award,
   ChevronRight,
   Send,
   CheckCircle,
-  ExternalLink,
-  Building2,
-  Clock,
-  Users,
-  Code,
-  Rocket
+  Building2
 } from 'lucide-react';
 
 const ModernFooter: React.FC = () => {
@@ -31,7 +20,6 @@ const ModernFooter: React.FC = () => {
   const [subscribed, setSubscribed] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
-  const currentYear = new Date().getFullYear();
 
   const footerLinks: {
     products: Array<{ label: string; path: string; icon: React.ReactElement }>;
@@ -45,7 +33,7 @@ const ModernFooter: React.FC = () => {
       { label: '業界別OMS', path: '/solutions/industry-oms', icon: <Shield className="w-3 h-3" /> },
     ],
     company: [
-      { label: 'EvangSolについて', href: 'https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html', external: true, icon: <Building2 className="w-3 h-3" /> },
+      { label: 'EvangSolについて', href: 'https://www.evangsol.co.jp/', external: true, icon: <Building2 className="w-3 h-3" /> },
     ],
     resources: [
       { label: 'セキュリティ', path: '/security-privacy', icon: <Shield className="w-3 h-3" /> },
@@ -318,12 +306,5 @@ const ModernFooter: React.FC = () => {
     </footer>
   );
 };
-
-// Helper component for Trophy icon (if not available in lucide-react)
-const Trophy: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15l-2 5l9-11h-5l2-5l-9 11z" />
-  </svg>
-);
 
 export default ModernFooter;
