@@ -32,8 +32,8 @@ import { Feature } from './types';
 const MAIN_FEATURES: Feature[] = [
   {
     icon: <Brain className="w-10 h-10" />,
-    title: 'AI自動マッチング',
-    description: '機械学習により、複雑な入金パターンも高精度で自動消込。学習により精度が向上',
+    title: 'スマート自動マッチング',
+    description: 'ルールベースエンジンにより、複雑な入金パターンも高精度で自動消込。継続的な最適化で精度が向上',
     bulletPoints: ['99.5%の高精度マッチング', '複雑なパターン認識', '継続的な学習・改善'],
   },
   {
@@ -182,7 +182,7 @@ const PaymentMatching: React.FC = () => {
               </span>
             </h1>
             <p className="text-2xl md:text-3xl text-slate-800">
-              AIが変える、経理業務の未来
+              自動化が変える、経理業務の未来
             </p>
           </div>
 
@@ -218,18 +218,6 @@ const PaymentMatching: React.FC = () => {
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
-          {/* CTA Buttons */}
-          <div className="flex justify-center">
-            <button
-              onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
-              お問い合わせ
-            </button>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-          </div>
         </div>
       </section>
 

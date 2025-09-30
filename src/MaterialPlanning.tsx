@@ -47,8 +47,8 @@ const CORE_FEATURES = [
   {
     icon: <Calculator className="w-8 h-8" />,
     title: '最適発注量算出',
-    description: 'リードタイムと需要予測を考慮した最適発注量をAIが自動算出',
-    bulletPoints: ['AI予測アルゴリズム', '動的発注量調整', 'コスト最適化'],
+    description: 'リードタイムと需要予測を考慮した最適発注量を自動算出',
+    bulletPoints: ['高度な予測アルゴリズム', '動的発注量調整', 'コスト最適化'],
   },
   {
     icon: <AlertTriangle className="w-8 h-8" />,
@@ -227,7 +227,7 @@ const MaterialPlanning: React.FC = () => {
 
           {/* Subtitle with animation */}
           <p className={`text-2xl md:text-3xl mb-4 text-slate-800 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            AI予測で実現する最適調達
+            データ分析で実現する最適調達
           </p>
 
           {/* Animated feature rotator */}
@@ -262,16 +262,6 @@ const MaterialPlanning: React.FC = () => {
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
-          {/* Call to Action */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <button
-              onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料診断を開始
-            </button>
-          </div>
         </div>
       </section>
 
@@ -396,7 +386,7 @@ const MaterialPlanning: React.FC = () => {
             資材計画の未来を、今始めよう
           </h2>
           <p className="text-xl text-slate-900 font-bold mb-12">
-            AI予測と最適化で、製造業の競争力を飛躍的に向上
+            高度な予測と最適化で、製造業の競争力を飛躍的に向上
           </p>
 
           <div className="flex justify-center mb-16">
@@ -413,7 +403,7 @@ const MaterialPlanning: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-8">
             {[
               { label: '製造業特化', icon: <Factory className="w-6 h-6" /> },
-              { label: 'AI予測技術', icon: <Lightbulb className="w-6 h-6" /> },
+              { label: '高度予測技術', icon: <Lightbulb className="w-6 h-6" /> },
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
               <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">

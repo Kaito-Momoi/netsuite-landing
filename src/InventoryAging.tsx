@@ -294,16 +294,6 @@ const InventoryAging: React.FC = () => {
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
-          {/* Call to Action */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <button
-              onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料診断を開始
-            </button>
-          </div>
         </div>
       </section>
 

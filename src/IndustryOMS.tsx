@@ -130,7 +130,7 @@ const CAPABILITIES = [
   {
     icon: <TrendingUp className="w-8 h-8" />,
     title: '需要予測',
-    description: 'AIによる受注予測',
+    description: 'データ分析による受注予測',
   },
 ];
 
@@ -244,7 +244,7 @@ const IndustryOMS: React.FC = () => {
               {[
                 { text: '業界別テンプレート', icon: <Layers className="w-8 h-8" />, gradient: 'from-indigo-400 to-blue-400' },
                 { text: '全チャネル統合', icon: <Globe className="w-8 h-8" />, gradient: 'from-blue-600 to-indigo-600' },
-                { text: 'AI自動処理', icon: <Cpu className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
+                { text: 'スマート自動処理', icon: <Cpu className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
               ].map((item, index) => (
                 <div
                   key={index}
@@ -270,18 +270,6 @@ const IndustryOMS: React.FC = () => {
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
-          {/* CTA Buttons */}
-          <div className="flex justify-center">
-            <button
-              onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
-              お問い合わせ
-            </button>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-          </div>
         </div>
       </section>
 

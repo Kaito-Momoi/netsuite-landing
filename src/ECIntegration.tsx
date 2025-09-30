@@ -86,7 +86,7 @@ const CAPABILITIES = [
   {
     icon: <Package className="w-8 h-8" />,
     title: '在庫最適化',
-    description: 'AIによる需要予測と自動在庫配分',
+    description: 'データ分析による需要予測と自動在庫配分',
   },
   {
     icon: <TrendingUp className="w-8 h-8" />,
@@ -234,18 +234,6 @@ const ECIntegration: React.FC = () => {
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
-          {/* CTA Buttons */}
-          <div className="flex justify-center">
-            <button
-              onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
-              お問い合わせ
-            </button>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-          </div>
         </div>
       </section>
 
