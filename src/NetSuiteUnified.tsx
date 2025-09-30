@@ -318,18 +318,11 @@ const NetSuiteUnified: React.FC = () => {
 
           {/* Call to Action */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <button
-              onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              今すぐ始める
-            </button>
             <a
-              href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html"
+              href="https://www.evangsol.co.jp/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-gradient-to-r from-gray-200 to-gray-300 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-gray-500/30 hover:scale-105 transition-all duration-300 flex items-center gap-3 group border border-gray-500"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Globe className="w-6 h-6 group-hover:rotate-12 transition-transform" />
               EvangSol企業サイトへ
