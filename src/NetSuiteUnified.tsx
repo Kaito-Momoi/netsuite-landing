@@ -566,6 +566,10 @@ const NetSuiteUnified: React.FC = () => {
                             <span>変更対応の遅延</span>
                           </li>
                         </ul>
+                        <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-900 leading-relaxed">
+                          <span className="block font-semibold text-red-700 mb-2">事例</span>
+                          年商300億円規模の消費財メーカーでは商品改定のたびに「新レイアウトの受注画面をすぐ反映してほしい」と営業部門から要望が寄せられるものの、外部ベンダーに依頼して実装完了まで3週間。その間はExcelでの仮運用が続き、生産計画部門が最新版の受注データを把握できず欠品が発生していました。
+                        </div>
                       </div>
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
@@ -625,6 +629,10 @@ const NetSuiteUnified: React.FC = () => {
                             <span>属人化した業務</span>
                           </li>
                         </ul>
+                        <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-900 leading-relaxed">
+                          <span className="block font-semibold text-red-700 mb-2">事例</span>
+                          直販と代理店を併用する産業機器商社では、返品や値引き申請がグループウェア経由の紙PDFで回覧され、承認完了まで平均5営業日。ERPに反映する担当者が出社していないと処理が止まり、月末は未処理案件が積み上がり顧客対応が遅延していました。
+                        </div>
                       </div>
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
@@ -684,6 +692,10 @@ const NetSuiteUnified: React.FC = () => {
                             <span>監査対応の困難</span>
                           </li>
                         </ul>
+                        <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-900 leading-relaxed">
+                          <span className="block font-semibold text-red-700 mb-2">事例</span>
+                          複数事業部を抱えるITサービス企業では、営業部門がSFA、サポート部門が別CRM、経営企画はExcelで顧客管理を実施。どの部署がどの権限で情報にアクセスしているかを把握できず、J-SOX監査で「アクセスログを統合的に追跡できない」と指摘を受けました。
+                        </div>
                       </div>
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
@@ -743,6 +755,10 @@ const NetSuiteUnified: React.FC = () => {
                             <span>データの不整合</span>
                           </li>
                         </ul>
+                        <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-900 leading-relaxed">
+                          <span className="block font-semibold text-red-700 mb-2">事例</span>
+                          全国展開するアパレル小売では、本部経理が毎月の売上報告を作成する際、店舗別・カテゴリ別の集計を担当者がExcelで加工。担当者が異動した月はマクロが動かず締め後3日間決算資料が用意できず、経営会議が延期されるトラブルが発生しました。
+                        </div>
                       </div>
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
