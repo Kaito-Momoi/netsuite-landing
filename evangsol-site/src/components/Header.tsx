@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { useAnimationControl } from '../contexts/AnimationContext'
-import EvangSolLogo from '../assets/EvangSol_logo.png'
+import EvangSolLogo from '../EvangSol_logo.png'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
