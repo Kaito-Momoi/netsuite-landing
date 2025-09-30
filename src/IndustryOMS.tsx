@@ -46,8 +46,8 @@ const CORE_FEATURES: Feature[] = [
   },
   {
     icon: <Cpu className="w-10 h-10" />,
-    title: 'AI受注処理',
-    description: 'AIが受注パターンを学習し、処理を自動化・最適化',
+    title: '受注処理',
+    description: '受注パターンを学習し、処理を自動化・最適化',
     bulletPoints: ['パターン認識', '自動振り分け', '異常検知'],
   },
 ];
@@ -388,14 +388,14 @@ const IndustryOMS: React.FC = () => {
       {/* Impact Metrics */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-indigo-900/30 to-blue-900/30 backdrop-blur-xl rounded-3xl p-12 border-2 border-indigo-500/20">
+          <div className="bg-white rounded-3xl p-12 border-4 border-indigo-600">
             <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
               導入効果
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {IMPACT_METRICS.map((metric, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent mb-2">
                     {metric.value}
                   </div>
                   <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
@@ -428,20 +428,6 @@ const IndustryOMS: React.FC = () => {
               <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
               お問い合わせ
             </button>
-          </div>
-
-          {/* Trust indicators */}
-          <div className="mt-16 flex flex-wrap justify-center gap-8">
-            {[
-              { label: '4業界対応済み', icon: <Building2 className="w-5 h-5" /> },
-              { label: '導入企業200社以上', icon: <Award className="w-5 h-5" /> },
-              { label: '99.8%の処理精度', icon: <Shield className="w-5 h-5" /> },
-            ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
-                <div className="text-blue-600">{badge.icon}</div>
-                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>

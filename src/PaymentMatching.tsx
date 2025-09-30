@@ -342,20 +342,6 @@ const PaymentMatching: React.FC = () => {
               お問い合わせ
             </button>
           </div>
-
-          {/* Trust indicators */}
-          <div className="mt-16 flex flex-wrap justify-center gap-8">
-            {[
-              { label: '導入企業500社以上', icon: <Building className="w-5 h-5" /> },
-              { label: '満足度98%', icon: <Award className="w-5 h-5" /> },
-              { label: '24時間サポート', icon: <Shield className="w-5 h-5" /> },
-            ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
-                <div className="text-blue-600">{badge.icon}</div>
-                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -244,13 +244,6 @@ const InventoryAging: React.FC = () => {
           {/* 3D Title */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black">
-              {/* 3D Shadow layers */}
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-blue-900/20 blur-sm transform translate-x-4 translate-y-4">
-                在庫分析の革新
-              </div>
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-900/20 blur-sm transform -translate-x-2 translate-y-2">
-                在庫分析の革新
-              </div>
               <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
                 在庫分析の革新
               </span>
@@ -454,7 +447,7 @@ const InventoryAging: React.FC = () => {
             エージング分析で、在庫効率と収益性を飛躍的に向上
           </p>
 
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center">
             <button
               onClick={openContactModal}
               className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
@@ -462,20 +455,6 @@ const InventoryAging: React.FC = () => {
               <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
               お問い合わせ
             </button>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-8">
-            {[
-              { label: '在庫最適化特化', icon: <Package className="w-6 h-6" /> },
-              { label: 'データ分析技術', icon: <Lightbulb className="w-6 h-6" /> },
-              { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
-            ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
-                <div className="text-blue-600">{badge.icon}</div>
-                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>

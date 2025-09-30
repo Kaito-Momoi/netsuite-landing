@@ -212,13 +212,6 @@ const MaterialPlanning: React.FC = () => {
           {/* 3D Title */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black">
-              {/* 3D Shadow layers */}
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-green-900/20 blur-sm transform translate-x-4 translate-y-4">
-                資材計画の革新
-              </div>
-              <div className="absolute inset-0 text-6xl md:text-8xl font-black text-emerald-900/20 blur-sm transform -translate-x-2 translate-y-2">
-                資材計画の革新
-              </div>
               <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent animate-gradient">
                 資材計画の革新
               </span>
@@ -276,7 +269,7 @@ const MaterialPlanning: React.FC = () => {
                 革新的な資材計画機能
               </h2>
               <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto mb-12">
-                製造業の複雑な資材管理をAIとデータ分析で最適化
+                製造業の複雑な資材管理をデータ分析で最適化
               </p>
             </div>
 
@@ -389,7 +382,7 @@ const MaterialPlanning: React.FC = () => {
             高度な予測と最適化で、製造業の競争力を飛躍的に向上
           </p>
 
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center">
             <button
               onClick={openContactModal}
               className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
@@ -397,20 +390,6 @@ const MaterialPlanning: React.FC = () => {
               <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
               お問い合わせ
             </button>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-8">
-            {[
-              { label: '製造業特化', icon: <Factory className="w-6 h-6" /> },
-              { label: '高度予測技術', icon: <Lightbulb className="w-6 h-6" /> },
-              { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
-            ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
-                <div className="text-emerald-600">{badge.icon}</div>
-                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
