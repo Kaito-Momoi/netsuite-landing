@@ -22,6 +22,7 @@ import {
   Building,
   GitMerge,
   Activity,
+  Mail,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
@@ -52,12 +53,12 @@ const CORE_FEATURES: Feature[] = [
 
 // Platform integrations with enhanced details
 const PLATFORMS = [
-  { name: 'Amazon', color: 'from-cyan-500 to-teal-500', features: ['FBA連携', 'セラーセントラル統合', 'Prime対応'] },
+  { name: 'Amazon', color: 'from-blue-500 to-indigo-500', features: ['FBA連携', 'セラーセントラル統合', 'Prime対応'] },
   { name: '楽天市場', color: 'from-blue-500 to-indigo-500', features: ['RMS完全対応', 'ポイント管理', 'イベント連携'] },
   { name: 'Yahoo!', color: 'from-indigo-500 to-blue-500', features: ['ストアAPI連携', 'PayPay対応', 'キャンペーン管理'] },
-  { name: 'Shopify', color: 'from-green-500 to-teal-500', features: ['Admin API', 'Plus対応', 'アプリ連携'] },
-  { name: 'BASE', color: 'from-blue-500 to-cyan-500', features: ['API完全対応', '決済連携', '配送管理'] },
-  { name: 'STORES', color: 'from-gray-400 to-gray-100', features: ['API連携', '在庫同期', '受注管理'] },
+  { name: 'Shopify', color: 'from-green-500 to-indigo-500', features: ['Admin API', 'Plus対応', 'アプリ連携'] },
+  { name: 'BASE', color: 'from-blue-600 to-indigo-600', features: ['API完全対応', '決済連携', '配送管理'] },
+  { name: 'STORES', color: 'from-gray-400 to-slate-100', features: ['API連携', '在庫同期', '受注管理'] },
 ];
 
 // Detailed capabilities
@@ -139,7 +140,7 @@ const ECIntegration: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white to-cyan-50/90"></div>
@@ -181,25 +182,22 @@ const ECIntegration: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-100 to-cyan-100 backdrop-blur-xl rounded-full border border-blue-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <ShoppingCart className="w-5 h-5 text-cyan-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-100 to-cyan-100 backdrop-blur-xl rounded-full border-2 border-blue-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <ShoppingCart className="w-5 h-5 text-blue-600 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               オムニチャネルECソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
           </div>
 
           {/* Main Title with 3D effect */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
-              <div className="absolute inset-0 text-5xl md:text-7xl font-black text-blue-900/30 blur-sm transform translate-x-2 translate-y-2">
-                ECデータ連携基盤
-              </div>
-              <span className="relative bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 ECデータ連携基盤
               </span>
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-700">
+            <p className="text-2xl md:text-3xl text-slate-800">
               全ECチャネルを一つに統合
             </p>
           </div>
@@ -208,7 +206,7 @@ const ECIntegration: React.FC = () => {
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: '6大ECモール対応', icon: <Globe className="w-8 h-8" />, gradient: 'from-blue-400 to-cyan-400' },
+                { text: '6大ECモール対応', icon: <Globe className="w-8 h-8" />, gradient: 'from-blue-600 to-indigo-600' },
                 { text: 'リアルタイム在庫同期', icon: <Zap className="w-8 h-8" />, gradient: 'from-teal-400 to-cyan-400' },
                 { text: 'AI需要予測', icon: <Cpu className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
               ].map((item, index) => (
@@ -217,9 +215,9 @@ const ECIntegration: React.FC = () => {
                   className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    <div className="text-black">{item.icon}</div>
+                    <div className="text-white">{item.icon}</div>
                   </div>
-                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                     {item.text}
                   </span>
                 </div>
@@ -230,27 +228,23 @@ const ECIntegration: React.FC = () => {
           {/* Play/Pause control */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-100 backdrop-blur rounded-full hover:bg-gray-200 transition-all"
+            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
             aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
           >
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex justify-center">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              導入相談する
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
-            <button
-              onClick={() => navigate('/netsuite/solutions')}
-              className="px-8 py-4 bg-gray-50 border border-blue-400 text-gray-900 font-bold text-lg rounded-full hover:bg-white hover:border-blue-500 transition-all duration-300"
-            >
-              ソリューション一覧へ
-            </button>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
           </div>
         </div>
       </section>
@@ -259,10 +253,10 @@ const ECIntegration: React.FC = () => {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               3つの革新的機能
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto">
               EC事業を次のステージへ導く最先端テクノロジー
             </p>
           </div>
@@ -271,18 +265,18 @@ const ECIntegration: React.FC = () => {
             {CORE_FEATURES.map((feature, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border border-gray-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-blue-400">
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-blue-400">
                     <div className="text-blue-600">{feature.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 mb-6">{feature.description}</p>
+                  <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
+                  <p className="text-slate-800 mb-6">{feature.description}</p>
                   {feature.bulletPoints && (
                     <ul className="space-y-3">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-                          <span className="text-gray-700">{point}</span>
+                          <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" />
+                          <span className="text-slate-800">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -298,10 +292,10 @@ const ECIntegration: React.FC = () => {
       <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-transparent via-cyan-50 to-transparent">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
               対応ECプラットフォーム
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-slate-900 font-bold">
               主要ECモールを完全サポート
             </p>
           </div>
@@ -315,15 +309,15 @@ const ECIntegration: React.FC = () => {
                 onMouseLeave={() => setHoveredPlatform(null)}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} rounded-2xl blur-xl transition-all ${hoveredPlatform === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-gray-400 transition-all">
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-gray-400 transition-all">
                   <h3 className={`text-2xl font-bold mb-4 bg-gradient-to-r ${platform.color} bg-clip-text text-transparent`}>
                     {platform.name}
                   </h3>
                   <ul className="space-y-2">
                     {platform.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <ArrowUpRight className="w-4 h-4 text-gray-600 mt-0.5 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                        <ArrowUpRight className="w-4 h-4 text-slate-800 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-slate-900 font-medium">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -338,10 +332,10 @@ const ECIntegration: React.FC = () => {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
               充実の機能群
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-slate-900 font-bold">
               ECビジネスの成長を加速
             </p>
           </div>
@@ -349,14 +343,14 @@ const ECIntegration: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {CAPABILITIES.map((capability, index) => (
               <div key={index} className="group relative">
-                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-cyan-500/50 transition-all">
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-cyan-500/50 transition-all">
                   <div className="flex items-start">
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border border-cyan-500/30">
-                      <div className="text-cyan-600">{capability.icon}</div>
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border-2 border-cyan-500/30">
+                      <div className="text-blue-600">{capability.icon}</div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
-                      <p className="text-sm text-gray-600">{capability.description}</p>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">{capability.title}</h3>
+                      <p className="text-sm text-slate-900 font-medium">{capability.description}</p>
                     </div>
                   </div>
                 </div>
@@ -369,18 +363,18 @@ const ECIntegration: React.FC = () => {
       {/* Success Metrics */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-cyan-50 to-teal-50 backdrop-blur-xl rounded-3xl p-12 border border-cyan-500/20">
-            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 backdrop-blur-xl rounded-3xl p-12 border-2 border-cyan-500/20">
+            <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
               導入成果
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {SUCCESS_METRICS.map((metric, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
                     {metric.value}
                   </div>
-                  <div className="text-lg font-bold text-gray-900 mb-1">{metric.label}</div>
-                  <div className="text-sm text-gray-600">{metric.sublabel}</div>
+                  <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
+                  <div className="text-sm text-slate-900 font-medium">{metric.sublabel}</div>
                 </div>
               ))}
             </div>
@@ -398,22 +392,16 @@ const ECIntegration: React.FC = () => {
             <br />
             今すぐ加速させませんか？
           </h2>
-          <p className="text-xl text-gray-700 mb-12">
+          <p className="text-xl text-slate-900 font-bold mb-12">
             複雑なEC運営をシンプルに、そして強力に
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex justify-center">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料相談を予約
-            </button>
-            <button
-              onClick={() => navigate('/contact')}
-              className="px-10 py-5 bg-gray-50 border border-blue-400 text-gray-900 font-bold text-lg rounded-full hover:bg-white hover:border-purple-500 transition-all duration-300"
-            >
-              詳細資料をダウンロード
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
           </div>
 
@@ -424,9 +412,9 @@ const ECIntegration: React.FC = () => {
               { label: '売上平均3倍成長', icon: <TrendingUp className="w-5 h-5" /> },
               { label: '24/7サポート体制', icon: <Shield className="w-5 h-5" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50 backdrop-blur rounded-full border border-gray-300">
-                <div className="text-cyan-600">{badge.icon}</div>
-                <span className="text-sm text-gray-700">{badge.label}</span>
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
+                <div className="text-blue-600">{badge.icon}</div>
+                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
               </div>
             ))}
           </div>

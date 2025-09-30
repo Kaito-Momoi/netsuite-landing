@@ -130,12 +130,12 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
     return (
       <>
         {/* Futuristic Progress Bar - At Top */}
-        <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200">
+        <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-slate-200">
           <div
             className="h-full relative overflow-hidden"
             style={{ width: `${scrollProgress}%` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 animate-gradient-x"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 animate-gradient-x"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
           </div>
         </div>
@@ -144,8 +144,8 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         <nav
           className={`fixed w-full z-50 transition-all duration-500 ${
             scrolled
-              ? 'bg-white/95 backdrop-blur-2xl border-b border-gray-200 py-2 shadow-lg top-1'
-              : 'bg-gradient-to-b from-white/80 via-white/40 to-transparent backdrop-blur-md py-4 top-1'
+              ? 'bg-slate-50/95 backdrop-blur-2xl border-b-2 border-slate-300 py-2 shadow-lg top-1'
+              : 'bg-gradient-to-b from-slate-50/90 via-slate-50/50 to-transparent backdrop-blur-md py-4 top-1'
           }`}
           role="navigation"
           aria-label="Main navigation"
@@ -177,15 +177,15 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       onClick={() => handleNavClick(item)}
                       onMouseEnter={() => setHoveredItem(item.section)}
                       onMouseLeave={() => setHoveredItem(null)}
-                      className={`relative px-4 py-2 rounded-xl transition-all duration-300 group/nav hover:bg-gray-100`}
+                      className={`relative px-4 py-2 rounded-xl transition-all duration-300 group/nav hover:bg-slate-100`}
                       role="menuitem"
                     >
                       {/* Futuristic hover effect */}
                       {hoveredItem === item.section && (
                         <>
-                          <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-slate-100 to-slate-200 rounded-xl"></div>
                           <div className="absolute inset-0 rounded-xl overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200 to-transparent -skew-x-12 translate-x-[-200%] group-hover/nav:translate-x-[200%] transition-transform duration-1000"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-200 to-transparent -skew-x-12 translate-x-[-200%] group-hover/nav:translate-x-[200%] transition-transform duration-1000"></div>
                           </div>
                         </>
                       )}
@@ -198,10 +198,10 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                         </>
                       )}
 
-                      <span className={`relative flex items-center gap-1.5 text-sm font-medium whitespace-nowrap ${
+                      <span className={`relative flex items-center gap-1.5 text-sm font-bold whitespace-nowrap ${
                         isActive(item)
-                          ? 'text-gray-900'
-                          : 'text-gray-600 hover:text-gray-900'
+                          ? 'text-slate-900'
+                          : 'text-slate-600 hover:text-slate-900'
                       }`}>
                         {item.icon}
                         <span className="text-xs">{item.label}</span>
@@ -217,7 +217,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   role="menuitem"
                 >
                   {/* Animated background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 animate-gradient-x"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 animate-gradient-x"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
 
                   {/* Button content */}
@@ -238,7 +238,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 {showBackButton && variant === 'page' && location.pathname !== '/' && (
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 backdrop-blur-sm border border-gray-300"
+                    className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all duration-300 backdrop-blur-sm border-2 border-slate-300"
                     aria-label="Go back to previous page"
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
@@ -249,7 +249,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 {/* Mobile Menu Toggle */}
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="lg:hidden p-2 text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="lg:hidden p-2 text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
                   aria-label="Open menu"
                 >
                   {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -265,7 +265,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}>
-          <div className="absolute inset-0 bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-xl">
+          <div className="absolute inset-0 bg-slate-50/95 backdrop-blur-xl border-t-2 border-slate-300 shadow-xl">
             <div className="pt-24 px-6 pb-6">
               <nav className="space-y-2">
                 {navItems.map((item, index) => (
@@ -277,14 +277,14 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                     }}
                     className={`w-full flex items-center gap-3 px-6 py-4 rounded-xl transition-all ${
                       isActive(item)
-                        ? 'bg-gradient-to-r from-blue-100 to-cyan-100 text-gray-900'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                        ? 'bg-gradient-to-r from-blue-100 to-indigo-100 text-slate-900'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                     }`}
                   >
                     <span className={`p-2 rounded-lg bg-gradient-to-r ${item.gradient}`}>
                       {item.icon}
                     </span>
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-bold">{item.label}</span>
                   </button>
                 ))}
 
@@ -298,7 +298,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                     }
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-600 to-orange-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"
                 >
                   <Mail className="w-5 h-5" />
                   Contact Us

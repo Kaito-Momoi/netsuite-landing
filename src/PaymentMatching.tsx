@@ -21,6 +21,7 @@ import {
   Pause,
   Layers,
   Building,
+  Mail,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
@@ -129,7 +130,7 @@ const PaymentMatching: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50"></div>
@@ -165,25 +166,22 @@ const PaymentMatching: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <DollarSign className="w-5 h-5 text-cyan-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border-2 border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <DollarSign className="w-5 h-5 text-blue-600 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               財務プロセス自動化ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
           </div>
 
           {/* Main Title with 3D effect */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
-              <div className="absolute inset-0 text-5xl md:text-7xl font-black text-blue-900/30 blur-sm transform translate-x-2 translate-y-2">
-                入金消込ソリューション
-              </div>
-              <span className="relative bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
                 入金消込ソリューション
               </span>
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-700">
+            <p className="text-2xl md:text-3xl text-slate-800">
               AIが変える、経理業務の未来
             </p>
           </div>
@@ -192,7 +190,7 @@ const PaymentMatching: React.FC = () => {
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: '99.9%の自動化率', icon: <Cpu className="w-8 h-8" />, gradient: 'from-blue-400 to-cyan-400' },
+                { text: '99.9%の自動化率', icon: <Cpu className="w-8 h-8" />, gradient: 'from-blue-600 to-indigo-600' },
                 { text: '処理時間95%削減', icon: <Clock className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
                 { text: 'リアルタイム処理', icon: <Zap className="w-8 h-8" />, gradient: 'from-teal-400 to-green-400' },
               ].map((item, index) => (
@@ -201,9 +199,9 @@ const PaymentMatching: React.FC = () => {
                   className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    <div className="text-black">{item.icon}</div>
+                    <div className="text-white">{item.icon}</div>
                   </div>
-                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                     {item.text}
                   </span>
                 </div>
@@ -214,27 +212,23 @@ const PaymentMatching: React.FC = () => {
           {/* Play/Pause control */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-100 backdrop-blur rounded-full hover:bg-gray-200 transition-all"
+            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
             aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
           >
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex justify-center">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              デモを見る
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
-            <button
-              onClick={() => navigate('/netsuite/solutions')}
-              className="px-8 py-4 bg-gray-50 border border-blue-500/30 text-gray-900 font-bold text-lg rounded-full hover:bg-white hover:border-blue-400/60 transition-all duration-300"
-            >
-              ソリューション一覧へ
-            </button>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
           </div>
         </div>
       </section>
@@ -243,10 +237,10 @@ const PaymentMatching: React.FC = () => {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               革新的な3つのコア機能
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto">
               最先端テクノロジーで入金消込業務を完全自動化
             </p>
           </div>
@@ -255,18 +249,18 @@ const PaymentMatching: React.FC = () => {
             {MAIN_FEATURES.map((feature, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border border-gray-300/50 hover:border-blue-400 transition-all hover:scale-105 h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-blue-500/30">
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-blue-400 transition-all hover:scale-105 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-blue-500/30">
                     <div className="text-blue-600">{feature.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 mb-6">{feature.description}</p>
+                  <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
+                  <p className="text-slate-800 mb-6">{feature.description}</p>
                   {feature.bulletPoints && (
                     <ul className="space-y-3">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-                          <span className="text-gray-700">{point}</span>
+                          <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" />
+                          <span className="text-slate-800">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -282,10 +276,10 @@ const PaymentMatching: React.FC = () => {
       <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
               包括的な機能群
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-slate-900 font-bold">
               入金消込のあらゆる課題を解決
             </p>
           </div>
@@ -299,14 +293,14 @@ const PaymentMatching: React.FC = () => {
                 onMouseLeave={() => setHoveredCapability(null)}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-teal-600/10 rounded-2xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-0'}`}></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-gray-300/50 hover:border-cyan-500/50 transition-all">
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-cyan-500/50 transition-all">
                   <div className="flex items-start">
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border border-cyan-400">
-                      <div className="text-cyan-600">{capability.icon}</div>
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border-2 border-cyan-400">
+                      <div className="text-blue-600">{capability.icon}</div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
-                      <p className="text-sm text-gray-600">{capability.description}</p>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">{capability.title}</h3>
+                      <p className="text-sm text-slate-900 font-medium">{capability.description}</p>
                     </div>
                   </div>
                 </div>
@@ -319,18 +313,18 @@ const PaymentMatching: React.FC = () => {
       {/* Impact Metrics */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 backdrop-blur-xl rounded-3xl p-12 border border-blue-500/20">
-            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 backdrop-blur-xl rounded-3xl p-12 border-2 border-blue-500/20">
+            <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
               導入効果
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {IMPACT_METRICS.map((metric, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
                     {metric.value}
                   </div>
-                  <div className="text-lg font-bold text-gray-900 mb-1">{metric.label}</div>
-                  <div className="text-sm text-gray-600">{metric.sublabel}</div>
+                  <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
+                  <div className="text-sm text-slate-900 font-medium">{metric.sublabel}</div>
                 </div>
               ))}
             </div>
@@ -348,22 +342,16 @@ const PaymentMatching: React.FC = () => {
             <br />
             経理部門を戦略的組織へ
           </h2>
-          <p className="text-xl text-gray-700 mb-12">
+          <p className="text-xl text-slate-900 font-bold mb-12">
             今すぐ始めれば、来月には効果を実感できます
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex justify-center">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料デモを予約
-            </button>
-            <button
-              onClick={() => navigate('/contact')}
-              className="px-10 py-5 bg-gray-50 border border-blue-500/30 text-gray-900 font-bold text-lg rounded-full hover:bg-white hover:border-blue-400/60 transition-all duration-300"
-            >
-              資料請求
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
           </div>
 
@@ -374,9 +362,9 @@ const PaymentMatching: React.FC = () => {
               { label: '満足度98%', icon: <Award className="w-5 h-5" /> },
               { label: '24時間サポート', icon: <Shield className="w-5 h-5" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50 backdrop-blur rounded-full border border-gray-300">
-                <div className="text-cyan-600">{badge.icon}</div>
-                <span className="text-sm text-gray-700">{badge.label}</span>
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
+                <div className="text-blue-600">{badge.icon}</div>
+                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
               </div>
             ))}
           </div>

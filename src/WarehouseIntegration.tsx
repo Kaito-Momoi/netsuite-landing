@@ -32,6 +32,7 @@ import {
   Activity,
   Layers,
   Radio,
+  Mail,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
@@ -152,7 +153,7 @@ const WarehouseIntegration: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       {/* Multi-layered Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-white to-cyan-900/20"></div>
@@ -177,7 +178,7 @@ const WarehouseIntegration: React.FC = () => {
                 animationDuration: `${3 + Math.random() * 4}s`,
               }}
             >
-              <div className="w-1 h-1 bg-gray-200 rounded-full"></div>
+              <div className="w-1 h-1 bg-slate-200 rounded-full"></div>
             </div>
           ))}
         </div>
@@ -202,12 +203,12 @@ const WarehouseIntegration: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-teal-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Warehouse className="w-5 h-5 text-teal-600 animate-pulse" />
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border-2 border-teal-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Warehouse className="w-5 h-5 text-indigo-600 animate-pulse" />
             <span className="text-sm font-semibold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
               物流・倉庫特化 統合ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
           </div>
 
           {/* 3D Title */}
@@ -220,14 +221,14 @@ const WarehouseIntegration: React.FC = () => {
               <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-900/20 blur-sm transform -translate-x-2 translate-y-2">
                 倉庫統合の革新
               </div>
-              <span className="relative bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
                 倉庫統合の革新
               </span>
             </h1>
           </div>
 
           {/* Subtitle with animation */}
-          <p className={`text-2xl md:text-3xl mb-4 text-gray-700 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-2xl md:text-3xl mb-4 text-slate-800 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             デジタル化で実現する物流最適化
           </p>
 
@@ -244,9 +245,9 @@ const WarehouseIntegration: React.FC = () => {
                   className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-black' })}
+                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-white' })}
                   </div>
-                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                     {item.text}
                   </span>
                 </div>
@@ -257,7 +258,7 @@ const WarehouseIntegration: React.FC = () => {
           {/* Play/Pause control */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-100 backdrop-blur rounded-full hover:bg-gray-200 transition-all"
+            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
             aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
           >
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -267,7 +268,7 @@ const WarehouseIntegration: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-teal-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               無料診断を開始
@@ -283,10 +284,10 @@ const WarehouseIntegration: React.FC = () => {
           {/* Core Features Section */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+              <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 革新的な倉庫統合機能
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto mb-12">
                 物流・倉庫業務をデジタル技術で革新し、効率性と精度を飛躍的に向上
               </p>
             </div>
@@ -295,21 +296,21 @@ const WarehouseIntegration: React.FC = () => {
               {CORE_FEATURES.map((feature, index) => (
                 <div key={index} className="group relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-teal-600/20 to-cyan-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-teal-500/50 transition-all hover:scale-105 h-full">
+                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300/50 hover:border-teal-500/50 transition-all hover:scale-105 h-full">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500"></div>
 
-                    <div className="w-16 h-16 bg-gradient-to-br from-teal-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-teal-500/30">
-                      <div className="text-teal-600">{feature.icon}</div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-teal-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-teal-500/30">
+                      <div className="text-indigo-600">{feature.icon}</div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl font-black text-slate-950 mb-4">{feature.title}</h3>
+                    <p className="text-slate-800 mb-6 leading-relaxed font-medium">{feature.description}</p>
 
                     <ul className="space-y-2">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-teal-600 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{point}</span>
+                          <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5 mr-2 flex-shrink-0" />
+                          <span className="text-sm text-slate-900 font-medium">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -322,10 +323,10 @@ const WarehouseIntegration: React.FC = () => {
           {/* Advanced Capabilities Grid */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 高度な機能群
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto">
                 倉庫業務を革新する包括的ソリューション
               </p>
             </div>
@@ -339,14 +340,14 @@ const WarehouseIntegration: React.FC = () => {
                   onMouseLeave={() => setHoveredCapability(null)}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-r from-teal-600/10 to-cyan-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border border-gray-300/50 hover:border-teal-500/50 transition-all hover:scale-105 h-full">
+                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border-2 border-slate-300/50 hover:border-teal-500/50 transition-all hover:scale-105 h-full">
                     <div className="flex items-start">
-                      <div className="bg-gradient-to-br from-teal-100/10 to-cyan-100/10 p-3 rounded-lg mr-4 border border-teal-500/20">
-                        <div className="text-teal-600">{capability.icon}</div>
+                      <div className="bg-gradient-to-br from-teal-100/10 to-cyan-100/10 p-3 rounded-lg mr-4 border-2 border-teal-500/20">
+                        <div className="text-indigo-600">{capability.icon}</div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">{capability.description}</p>
+                        <h3 className="text-lg font-bold text-slate-900 mb-2">{capability.title}</h3>
+                        <p className="text-sm text-slate-900 font-medium leading-relaxed font-medium">{capability.description}</p>
                       </div>
                     </div>
                   </div>
@@ -358,7 +359,7 @@ const WarehouseIntegration: React.FC = () => {
           {/* Impact Metrics Section */}
           <div ref={statsRef} className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-12 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 導入効果
               </h2>
             </div>
@@ -372,13 +373,13 @@ const WarehouseIntegration: React.FC = () => {
                 >
                   <div className="text-center">
                     <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${metric.color} mb-4`}>
-                      <TrendingUp className="w-10 h-10 text-black" />
+                      <TrendingUp className="w-10 h-10 text-white" />
                     </div>
                     <div className={`text-3xl font-black bg-gradient-to-r ${metric.color} bg-clip-text text-transparent mb-2`}>
                       {metric.value}
                     </div>
-                    <div className="text-lg font-bold text-gray-900 mb-1">{metric.label}</div>
-                    <div className="text-sm text-gray-600">{metric.description}</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
+                    <div className="text-sm text-slate-900 font-medium">{metric.description}</div>
                   </div>
                 </div>
               ))}
@@ -396,17 +397,17 @@ const WarehouseIntegration: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
             倉庫の未来を、今始めよう
           </h2>
-          <p className="text-xl text-gray-700 mb-12">
+          <p className="text-xl text-slate-900 font-bold mb-12">
             デジタル統合で、物流業務の効率性と精度を飛躍的に向上
           </p>
 
           <div className="flex justify-center mb-16">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-teal-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料相談を開始する
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
           </div>
 
@@ -417,9 +418,9 @@ const WarehouseIntegration: React.FC = () => {
               { label: 'デジタル技術', icon: <Lightbulb className="w-6 h-6" /> },
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50/50 backdrop-blur rounded-full border border-gray-300">
-                <div className="text-teal-600">{badge.icon}</div>
-                <span className="text-sm text-gray-700">{badge.label}</span>
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
+                <div className="text-indigo-600">{badge.icon}</div>
+                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
               </div>
             ))}
           </div>

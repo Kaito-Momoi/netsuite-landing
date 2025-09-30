@@ -30,6 +30,7 @@ import {
   TrendingDown,
   Eye,
   Layers,
+  Mail,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
@@ -105,7 +106,7 @@ const AGING_CATEGORIES = [
   {
     period: '0-30日',
     description: '適正在庫',
-    color: 'from-green-400 to-emerald-400',
+    color: 'from-emerald-600 to-teal-600',
     action: '通常管理',
     bgColor: 'bg-green-500/20 border-green-400'
   },
@@ -182,7 +183,7 @@ const InventoryAging: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       {/* Multi-layered Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-white to-cyan-900/20"></div>
@@ -207,7 +208,7 @@ const InventoryAging: React.FC = () => {
                 animationDuration: `${3 + Math.random() * 4}s`,
               }}
             >
-              <div className="w-1 h-1 bg-gray-200 rounded-full"></div>
+              <div className="w-1 h-1 bg-slate-200 rounded-full"></div>
             </div>
           ))}
         </div>
@@ -232,12 +233,12 @@ const InventoryAging: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border-2 border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Package className="w-5 h-5 text-blue-600 animate-pulse" />
             <span className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
               在庫最適化 特化ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
           </div>
 
           {/* 3D Title */}
@@ -250,14 +251,14 @@ const InventoryAging: React.FC = () => {
               <div className="absolute inset-0 text-6xl md:text-8xl font-black text-cyan-900/20 blur-sm transform -translate-x-2 translate-y-2">
                 在庫分析の革新
               </div>
-              <span className="relative bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
                 在庫分析の革新
               </span>
             </h1>
           </div>
 
           {/* Subtitle with animation */}
-          <p className={`text-2xl md:text-3xl mb-4 text-gray-700 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-2xl md:text-3xl mb-4 text-slate-800 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             エージング分析で実現する在庫最適化
           </p>
 
@@ -274,9 +275,9 @@ const InventoryAging: React.FC = () => {
                   className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-black' })}
+                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-white' })}
                   </div>
-                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                     {item.text}
                   </span>
                 </div>
@@ -287,7 +288,7 @@ const InventoryAging: React.FC = () => {
           {/* Play/Pause control */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-100 backdrop-blur rounded-full hover:bg-gray-200 transition-all"
+            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
             aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
           >
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -297,7 +298,7 @@ const InventoryAging: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               無料診断を開始
@@ -313,10 +314,10 @@ const InventoryAging: React.FC = () => {
           {/* Core Features Section */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
                 革新的な在庫エージング機能
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto mb-12">
                 在庫の滞留状況をデータドリブンで分析し、戦略的な在庫最適化を実現
               </p>
             </div>
@@ -325,21 +326,21 @@ const InventoryAging: React.FC = () => {
               {CORE_FEATURES.map((feature, index) => (
                 <div key={index} className="group relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-teal-500 to-cyan-500"></div>
 
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-blue-500/30">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-blue-500/30">
                       <div className="text-blue-600">{feature.icon}</div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl font-black text-slate-950 mb-4">{feature.title}</h3>
+                    <p className="text-slate-800 mb-6 leading-relaxed font-medium">{feature.description}</p>
 
                     <ul className="space-y-2">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
                           <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{point}</span>
+                          <span className="text-sm text-slate-900 font-medium">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -352,10 +353,10 @@ const InventoryAging: React.FC = () => {
           {/* Aging Categories Section */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-6 bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
                 エージング分類と対応策
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto mb-12">
                 在庫滞留期間に応じた段階的アプローチで効果的な在庫管理を実現
               </p>
             </div>
@@ -367,13 +368,13 @@ const InventoryAging: React.FC = () => {
                   <div className={`relative ${category.bgColor} backdrop-blur-xl rounded-xl p-6 border hover:scale-105 transition-all h-full`}>
                     <div className={`w-full h-2 rounded-full mb-4 bg-gradient-to-r ${category.color}`}></div>
 
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">{category.period}</h3>
+                    <h3 className="text-xl font-bold mb-3 text-slate-900">{category.period}</h3>
                     <div className="space-y-2 mb-4">
-                      <p className="text-sm text-gray-700">状態: <span className="font-semibold">{category.description}</span></p>
-                      <p className="text-sm text-gray-700">対応: <span className="font-semibold">{category.action}</span></p>
+                      <p className="text-sm text-slate-900 font-medium">状態: <span className="font-semibold">{category.description}</span></p>
+                      <p className="text-sm text-slate-900 font-medium">対応: <span className="font-semibold">{category.action}</span></p>
                     </div>
 
-                    <div className={`inline-flex px-3 py-1 rounded-full bg-gradient-to-r ${category.color} text-black text-xs font-bold`}>
+                    <div className={`inline-flex px-3 py-1 rounded-full bg-gradient-to-r ${category.color} text-white text-xs font-bold`}>
                       {category.description}
                     </div>
                   </div>
@@ -385,10 +386,10 @@ const InventoryAging: React.FC = () => {
           {/* Advanced Capabilities Grid */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 高度な機能群
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto">
                 在庫管理を革新する包括的ソリューション
               </p>
             </div>
@@ -402,14 +403,14 @@ const InventoryAging: React.FC = () => {
                   onMouseLeave={() => setHoveredCapability(null)}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border border-gray-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border-2 border-slate-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
                     <div className="flex items-start">
-                      <div className="bg-gradient-to-br from-red-100/10 to-rose-100/10 p-3 rounded-lg mr-4 border border-red-500/20">
+                      <div className="bg-gradient-to-br from-red-100/10 to-rose-100/10 p-3 rounded-lg mr-4 border-2 border-red-500/20">
                         <div className="text-blue-600">{capability.icon}</div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">{capability.description}</p>
+                        <h3 className="text-lg font-bold text-slate-900 mb-2">{capability.title}</h3>
+                        <p className="text-sm text-slate-900 font-medium leading-relaxed font-medium">{capability.description}</p>
                       </div>
                     </div>
                   </div>
@@ -421,7 +422,7 @@ const InventoryAging: React.FC = () => {
           {/* Impact Metrics Section */}
           <div ref={statsRef} className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-12 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
                 導入効果
               </h2>
             </div>
@@ -435,13 +436,13 @@ const InventoryAging: React.FC = () => {
                 >
                   <div className="text-center">
                     <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${metric.color} mb-4`}>
-                      <TrendingDown className="w-10 h-10 text-black" />
+                      <TrendingDown className="w-10 h-10 text-white" />
                     </div>
                     <div className={`text-3xl font-black bg-gradient-to-r ${metric.color} bg-clip-text text-transparent mb-2`}>
                       {metric.value}
                     </div>
-                    <div className="text-lg font-bold text-gray-900 mb-1">{metric.label}</div>
-                    <div className="text-sm text-gray-600">{metric.description}</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
+                    <div className="text-sm text-slate-900 font-medium">{metric.description}</div>
                   </div>
                 </div>
               ))}
@@ -459,17 +460,17 @@ const InventoryAging: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
             在庫最適化の未来を、今始めよう
           </h2>
-          <p className="text-xl text-gray-700 mb-12">
+          <p className="text-xl text-slate-900 font-bold mb-12">
             エージング分析で、在庫効率と収益性を飛躍的に向上
           </p>
 
           <div className="flex justify-center mb-16">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料相談を開始する
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
           </div>
 
@@ -480,9 +481,9 @@ const InventoryAging: React.FC = () => {
               { label: 'データ分析技術', icon: <Lightbulb className="w-6 h-6" /> },
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50/50 backdrop-blur rounded-full border border-gray-300">
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
                 <div className="text-blue-600">{badge.icon}</div>
-                <span className="text-sm text-gray-700">{badge.label}</span>
+                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
               </div>
             ))}
           </div>

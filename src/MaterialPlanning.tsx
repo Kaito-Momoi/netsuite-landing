@@ -30,6 +30,7 @@ import {
   Target,
   Settings,
   Quote,
+  Mail,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
@@ -93,7 +94,7 @@ const ADVANCED_CAPABILITIES = [
 
 // Impact Metrics
 const IMPACT_METRICS = [
-  { value: '大幅な', label: '調達コスト削減', description: '最適発注による削減効果', color: 'from-green-400 to-emerald-400' },
+  { value: '大幅な', label: '調達コスト削減', description: '最適発注による削減効果', color: 'from-emerald-600 to-teal-600' },
   { value: '劇的な', label: '在庫削減', description: '適正在庫の維持による削減', color: 'from-emerald-400 to-teal-400' },
   { value: '非常に高い', label: '欠品防止率', description: '事前アラートによる防止', color: 'from-teal-400 to-cyan-400' },
   { value: '飛躍的な', label: '計画精度向上', description: 'データドリブンな計画立案', color: 'from-cyan-400 to-blue-400' },
@@ -150,7 +151,7 @@ const MaterialPlanning: React.FC = () => {
   const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       {/* Multi-layered Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 via-white to-emerald-900/20"></div>
@@ -175,7 +176,7 @@ const MaterialPlanning: React.FC = () => {
                 animationDuration: `${3 + Math.random() * 4}s`,
               }}
             >
-              <div className="w-1 h-1 bg-gray-200 rounded-full"></div>
+              <div className="w-1 h-1 bg-slate-200 rounded-full"></div>
             </div>
           ))}
         </div>
@@ -200,12 +201,12 @@ const MaterialPlanning: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-xl rounded-full border border-green-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Factory className="w-5 h-5 text-green-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-xl rounded-full border-2 border-green-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Factory className="w-5 h-5 text-emerald-600 animate-pulse" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
               製造業特化 資材計画ソリューション
             </span>
-            <Sparkles className="w-5 h-5 text-cyan-600 animate-pulse" />
+            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
           </div>
 
           {/* 3D Title */}
@@ -218,14 +219,14 @@ const MaterialPlanning: React.FC = () => {
               <div className="absolute inset-0 text-6xl md:text-8xl font-black text-emerald-900/20 blur-sm transform -translate-x-2 translate-y-2">
                 資材計画の革新
               </div>
-              <span className="relative bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent animate-gradient">
+              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent animate-gradient">
                 資材計画の革新
               </span>
             </h1>
           </div>
 
           {/* Subtitle with animation */}
-          <p className={`text-2xl md:text-3xl mb-4 text-gray-700 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-2xl md:text-3xl mb-4 text-slate-800 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             AI予測で実現する最適調達
           </p>
 
@@ -233,7 +234,7 @@ const MaterialPlanning: React.FC = () => {
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: 'リアルタイム可視化', icon: <Eye />, gradient: 'from-green-400 to-emerald-400' },
+                { text: 'リアルタイム可視化', icon: <Eye />, gradient: 'from-emerald-600 to-teal-600' },
                 { text: '最適発注量算出', icon: <Calculator />, gradient: 'from-emerald-400 to-teal-400' },
                 { text: '予防的アラート', icon: <AlertTriangle />, gradient: 'from-teal-400 to-cyan-400' },
               ].map((item, index) => (
@@ -242,9 +243,9 @@ const MaterialPlanning: React.FC = () => {
                   className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-black' })}
+                    {React.cloneElement(item.icon, { className: 'w-8 h-8 text-white' })}
                   </div>
-                  <span className={`text-3xl font-bold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                     {item.text}
                   </span>
                 </div>
@@ -255,7 +256,7 @@ const MaterialPlanning: React.FC = () => {
           {/* Play/Pause control */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-100 backdrop-blur rounded-full hover:bg-gray-200 transition-all"
+            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
             aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
           >
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -265,7 +266,7 @@ const MaterialPlanning: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={openContactModal}
-              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-green-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-lg rounded-full hover: hover: hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
               無料診断を開始
@@ -281,10 +282,10 @@ const MaterialPlanning: React.FC = () => {
           {/* Core Features Section */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+              <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 革新的な資材計画機能
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto mb-12">
                 製造業の複雑な資材管理をAIとデータ分析で最適化
               </p>
             </div>
@@ -293,21 +294,21 @@ const MaterialPlanning: React.FC = () => {
               {CORE_FEATURES.map((feature, index) => (
                 <div key={index} className="group relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-emerald-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border border-gray-300/50 hover:border-green-500/50 transition-all hover:scale-105 h-full">
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500"></div>
+                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300/50 hover:border-green-500/50 transition-all hover:scale-105 h-full">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-indigo-500"></div>
 
-                    <div className="w-16 h-16 bg-gradient-to-br from-green-600/20 to-emerald-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-green-400">
-                      <div className="text-green-600">{feature.icon}</div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-600/20 to-emerald-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-green-400">
+                      <div className="text-emerald-600">{feature.icon}</div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl font-black text-slate-950 mb-4">{feature.title}</h3>
+                    <p className="text-slate-800 mb-6 leading-relaxed font-medium">{feature.description}</p>
 
                     <ul className="space-y-2">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{point}</span>
+                          <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 mr-2 flex-shrink-0" />
+                          <span className="text-sm text-slate-900 font-medium">{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -320,10 +321,10 @@ const MaterialPlanning: React.FC = () => {
           {/* Advanced Capabilities Grid */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-6 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
                 高度な機能群
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto">
                 資材管理を革新する包括的ソリューション
               </p>
             </div>
@@ -337,14 +338,14 @@ const MaterialPlanning: React.FC = () => {
                   onMouseLeave={() => setHoveredCapability(null)}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border border-gray-300/50 hover:border-green-500/50 transition-all hover:scale-105 h-full">
+                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border-2 border-slate-300/50 hover:border-green-500/50 transition-all hover:scale-105 h-full">
                     <div className="flex items-start">
-                      <div className="bg-gradient-to-br from-green-100/10 to-emerald-100/10 p-3 rounded-lg mr-4 border border-green-500/20">
-                        <div className="text-green-600">{capability.icon}</div>
+                      <div className="bg-gradient-to-br from-green-100/10 to-emerald-100/10 p-3 rounded-lg mr-4 border-2 border-green-500/20">
+                        <div className="text-emerald-600">{capability.icon}</div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">{capability.title}</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">{capability.description}</p>
+                        <h3 className="text-lg font-bold text-slate-900 mb-2">{capability.title}</h3>
+                        <p className="text-sm text-slate-900 font-medium leading-relaxed font-medium">{capability.description}</p>
                       </div>
                     </div>
                   </div>
@@ -356,7 +357,7 @@ const MaterialPlanning: React.FC = () => {
           {/* Impact Metrics Section */}
           <div ref={statsRef} className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-black mb-12 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 導入効果
               </h2>
             </div>
@@ -370,13 +371,13 @@ const MaterialPlanning: React.FC = () => {
                 >
                   <div className="text-center">
                     <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${metric.color} mb-4`}>
-                      <TrendingUp className="w-10 h-10 text-black" />
+                      <TrendingUp className="w-10 h-10 text-white" />
                     </div>
                     <div className={`text-3xl font-black bg-gradient-to-r ${metric.color} bg-clip-text text-transparent mb-2`}>
                       {metric.value}
                     </div>
-                    <div className="text-lg font-bold text-gray-900 mb-1">{metric.label}</div>
-                    <div className="text-sm text-gray-600">{metric.description}</div>
+                    <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
+                    <div className="text-sm text-slate-900 font-medium">{metric.description}</div>
                   </div>
                 </div>
               ))}
@@ -394,17 +395,17 @@ const MaterialPlanning: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent animate-gradient">
             資材計画の未来を、今始めよう
           </h2>
-          <p className="text-xl text-gray-700 mb-12">
+          <p className="text-xl text-slate-900 font-bold mb-12">
             AI予測と最適化で、製造業の競争力を飛躍的に向上
           </p>
 
           <div className="flex justify-center mb-16">
             <button
               onClick={openContactModal}
-              className="px-10 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-gray-900 font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-green-500/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
-              無料相談を開始する
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              お問い合わせ
             </button>
           </div>
 
@@ -415,9 +416,9 @@ const MaterialPlanning: React.FC = () => {
               { label: 'AI予測技術', icon: <Lightbulb className="w-6 h-6" /> },
               { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-gray-50/50 backdrop-blur rounded-full border border-gray-300">
-                <div className="text-green-600">{badge.icon}</div>
-                <span className="text-sm text-gray-700">{badge.label}</span>
+              <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300">
+                <div className="text-emerald-600">{badge.icon}</div>
+                <span className="text-sm text-slate-900 font-medium">{badge.label}</span>
               </div>
             ))}
           </div>
