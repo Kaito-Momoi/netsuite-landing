@@ -157,9 +157,9 @@ const AGILE_QA = [
   },
   {
     question: '各フェーズでは何を基準に進捗を管理しますか？',
-    answer: '各スプリント（2週間単位）で具体的なゴールと完了の定義（Definition of Done）を設定し、明確な成果物を提供します。',
+    answer: '各スプリントで具体的なゴールと完了の定義を設定し、明確な成果物を提供します。',
     icon: <CheckCircle className="w-8 h-8" />,
-    details: ['2週間スプリント', '明確な完了基準', 'デモ可能な成果物'],
+    details: ['スプリント', '明確な完了基準', 'デモ可能な成果物'],
   },
   {
     question: 'どうやって成果を確認していきますか？',
@@ -547,7 +547,7 @@ const NetSuiteUnified: React.FC = () => {
                   課題とソリューション
                 </h2>
                 <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-                  グリーンハウス様の事例から見る、よくある課題とEvangSolの解決策
+                  ERP導入でよくある課題とEvangSolの解決策
                 </p>
               </div>
 
@@ -870,12 +870,6 @@ const NetSuiteUnified: React.FC = () => {
                     <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">早期に価値を検証しながら最適化を継続</td>
                     <td className="px-6 py-4 text-gray-800">理想像に合わせた統合を実現</td>
                   </tr>
-                  <tr>
-                    <td className="px-6 py-4 font-bold text-gray-900">リスクコントロール</td>
-                    <td className="px-6 py-4 text-gray-800">初期コストを抑えつつ段階的に拡張</td>
-                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">各サイクルでレビューしリスクを分散</td>
-                    <td className="px-6 py-4 text-gray-800">終盤での手戻りリスクが高い</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -938,7 +932,7 @@ const NetSuiteUnified: React.FC = () => {
             </div>
 
             <div className="bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-2xl p-8 mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">なぜアジャイル開発への不安が生まれるのか？</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">アジャイル開発でよくある課題</h3>
               <p className="text-gray-800 text-lg">
                 「終わりが見えない」アジャイル開発への不安を、EvangSolが以下の方法で解決します
               </p>
@@ -981,7 +975,7 @@ const NetSuiteUnified: React.FC = () => {
             <div className="relative mt-16">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-3xl blur-3xl"></div>
               <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-300/50">
-                <h3 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold text-center mb-12 pb-2 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   EvangSolのアジャイル導入の特徴
                 </h3>
                 <div className="grid md:grid-cols-3 gap-8">
@@ -997,7 +991,7 @@ const NetSuiteUnified: React.FC = () => {
                       <Rocket className="w-10 h-10 text-pink-400" />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-3">継続的な価値提供</h4>
-                    <p className="text-gray-800">2週間ごとに動く成果物を提供し、早期に価値を実現</p>
+                    <p className="text-gray-800">スプリントごとに動く成果物を提供し、早期に価値を実現</p>
                   </div>
                   <div className="text-center">
                     <div className="inline-flex p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl mb-4">
