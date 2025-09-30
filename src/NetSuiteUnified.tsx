@@ -266,7 +266,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* 3D Title */}
           <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent pb-6">
-              NetSuite × <a href="https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-blue-800 transition-colors cursor-pointer">EvangSol</a>
+              NetSuite × EvangSol
             </h1>
           </div>
 
