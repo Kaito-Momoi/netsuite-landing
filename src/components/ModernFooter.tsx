@@ -46,15 +46,10 @@ const ModernFooter: React.FC = () => {
     ],
     company: [
       { label: 'EvangSolについて', href: 'https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/index.html', external: true, icon: <Building2 className="w-3 h-3" /> },
-      { label: '導入事例', path: '/case-studies', icon: <Award className="w-3 h-3" /> },
-      { label: 'サービス', path: '/services', icon: <Rocket className="w-3 h-3" /> },
-      { label: 'お問い合わせ', path: '/contact', icon: <Mail className="w-3 h-3" /> },
     ],
     resources: [
       { label: 'セキュリティ', path: '/security-privacy', icon: <Shield className="w-3 h-3" /> },
       { label: '利用規約', path: '/terms', icon: <Globe className="w-3 h-3" /> },
-      { label: 'パートナー', href: 'https://www.netsuite.co.jp', external: true, icon: <Users className="w-3 h-3" /> },
-      { label: 'Oracle', href: 'https://www.oracle.com', external: true, icon: <ExternalLink className="w-3 h-3" /> },
     ],
   };
 
@@ -192,7 +187,11 @@ const ModernFooter: React.FC = () => {
                 </a>
                 <div className="flex items-center gap-3 text-slate-700 font-medium">
                   <Phone className="w-5 h-5" />
-                  03-1234-5678
+                  <span>電話: 03-6231-1328</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-700 font-medium">
+                  <Phone className="w-5 h-5" />
+                  <span>FAX: 03-6231-1348</span>
                 </div>
                 <div className="flex items-start gap-3 text-slate-700 font-medium">
                   <MapPin className="w-5 h-5 mt-1" />
