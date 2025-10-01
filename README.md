@@ -30,7 +30,7 @@ npm start  # http://localhost:3000
 - [在庫エージング](https://kaito-momoi.github.io/netsuite-landing/#/solutions/inventory-aging)
 
 ### EvangSolコーポレートサイト
-**メインサイト**: https://kaito-momoi.github.io/netsuite-landing/evangsol-site-deploy/
+**メインサイト**: https://kaito-momoi.github.io
 
 ## 📂 プロジェクト構造
 
