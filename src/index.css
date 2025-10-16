@@ -71,6 +71,25 @@
     @apply leading-relaxed;
   }
 
+  /* iframe対応のレスポンシブ設定 */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* コンテナの最大幅を制限 */
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 画像とメディア要素のレスポンシブ対応 */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
   /* Ensure interactive elements are easily distinguishable */
   button:not(:disabled),
   a,
@@ -82,6 +101,85 @@
 
   button:disabled {
     @apply opacity-60 cursor-not-allowed;
+  }
+}
+
+/* Mobile specific styles for iframe embedding */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* すべてのセクションとコンテナを100%幅に */
+  section,
+  div[class*="container"],
+  div[class*="section"],
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* フレックスボックスの調整 */
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+  /* グリッドの調整 */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* テキストサイズの調整 */
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 2.25rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  /* ボタンのサイズ調整 */
+  button {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* カードやモーダルの調整 */
+  .modal,
+  .card {
+    width: calc(100% - 2rem) !important;
+    margin: 0 1rem !important;
+  }
+}
+
+/* Very small devices (iPhone SE, etc.) */
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 14px !important;
+  }
+
+  section,
+  div[class*="container"] {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
   }
 }
 

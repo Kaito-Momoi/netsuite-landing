@@ -25,11 +25,31 @@
     "start": "react-scripts start",
     "build": "cd evangsol-site && npm install && npm run build",
     "build:original": "react-scripts build",
+    "postbuild:original": "react-snap",
+    "build:static": "react-scripts build && react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write ."
+  },
+  "reactSnap": {
+    "inlineCss": true,
+    "source": "build",
+    "minifyHtml": {
+      "collapseWhitespace": true,
+      "removeComments": true
+    },
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu"
+    ],
+    "puppeteerExecutablePath": "/usr/bin/chromium",
+    "puppeteerIgnoreHTTPSErrors": true,
+    "skipThirdPartyRequests": true,
+    "publicPath": "/netsuite-landing/"
   },
   "eslintConfig": {
     "extends": [
@@ -51,8 +71,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "playwright": "^1.56.0",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
+    "puppeteer-core": "^24.24.1",
+    "react-snap": "^1.23.0",
     "tailwindcss": "^3.4.17"
   },
   "packageManager": "npm@11.4.2"
