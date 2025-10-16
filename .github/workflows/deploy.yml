@@ -33,9 +33,11 @@ jobs:
       - name: Build NetSuite Landing Site
         run: |
           echo "Building NetSuite landing site for GitHub Pages"
-          npm run build:original
+          # Use react-scripts build directly without react-snap post-processing
+          npx react-scripts build
         env:
           CI: false
+          PUBLIC_URL: /netsuite-landing
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
