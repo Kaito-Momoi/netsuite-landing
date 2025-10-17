@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Mail,
-  Phone,
   MapPin,
   Globe,
   ArrowUpRight,
@@ -173,14 +172,6 @@ const ModernFooter: React.FC = () => {
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   info@evangsol.jp
                 </a>
-                <div className="flex items-center gap-3 text-slate-700 font-medium">
-                  <Phone className="w-5 h-5" />
-                  <span>電話: 03-6231-1328</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-700 font-medium">
-                  <Phone className="w-5 h-5" />
-                  <span>FAX: 03-6231-1348</span>
-                </div>
                 <div className="flex items-start gap-3 text-slate-700 font-medium">
                   <MapPin className="w-5 h-5 mt-1" />
                   <div>
