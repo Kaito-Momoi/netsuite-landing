@@ -9,7 +9,6 @@ import {
   Send,
   CheckCircle,
   Loader,
-  Sparkles,
   Globe,
   Calendar,
   Clock,
@@ -273,10 +272,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 営業時間: 平日 9:00-18:00
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                03-1234-5678
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
