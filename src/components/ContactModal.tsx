@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   X,
   Mail,
@@ -12,6 +13,7 @@ import {
   Globe,
   Calendar,
   Clock,
+  AlertCircle,
 } from 'lucide-react';
 
 interface ContactModalProps {
@@ -30,6 +32,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     if (isOpen) {
@@ -43,36 +47,128 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
+  // バリデーション関数
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      errors.name = 'お名前を入力してください';
+    }
+
+    if (!formData.company.trim()) {
+      errors.company = '会社名を入力してください';
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'メールアドレスを入力してください';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = '有効なメールアドレスを入力してください';
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = 'お問い合わせ内容を入力してください';
+    }
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+
+    // バリデーション
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // EmailJS設定確認
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      if (!serviceId || !templateId || !publicKey ||
+          serviceId === 'your_service_id' ||
+          templateId === 'your_template_id' ||
+          publicKey === 'your_public_key') {
+        // EmailJSが設定されていない場合は、デモモードで動作
+        console.warn('EmailJS is not configured. Running in demo mode.');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log('Form data (demo mode):', formData);
+      } else {
+        // EmailJS初期化
+        emailjs.init(publicKey);
 
-    // Reset after success
-    setTimeout(() => {
-      setIsSuccess(false);
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        message: '',
-        type: 'consultation',
-      });
-      onClose();
-    }, 3000);
+        // お問い合わせタイプの日本語変換
+        const typeLabels: Record<string, string> = {
+          consultation: '導入相談',
+          demo: 'デモ依頼',
+          support: 'サポート',
+        };
+
+        // EmailJSでメール送信
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: formData.name,
+            from_company: formData.company,
+            from_email: formData.email,
+            from_phone: formData.phone || '未入力',
+            message: formData.message,
+            contact_type: typeLabels[formData.type] || formData.type,
+            to_email: process.env.REACT_APP_CONTACT_EMAIL || 'info@evangsol.jp',
+          }
+        );
+      }
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      // Reset after success
+      setTimeout(() => {
+        setIsSuccess(false);
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          message: '',
+          type: 'consultation',
+        });
+        setValidationErrors({});
+        onClose();
+      }, 3000);
+    } catch (err) {
+      console.error('Failed to send email:', err);
+      setIsSubmitting(false);
+      setError('送信に失敗しました。しばらくしてから再度お試しください。');
+
+      // エラー表示を5秒後に消す
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+
+    // 入力時にエラーをクリア
+    if (validationErrors[name]) {
+      setValidationErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   if (!isOpen) return null;
@@ -138,6 +234,16 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             ))}
           </div>
 
+          {/* Error Alert */}
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-300 rounded-xl flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <p className="text-sm text-red-800">{error}</p>
+              </div>
+            </div>
+          )}
+
           {/* Form */}
           {!isSuccess ? (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -154,10 +260,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-50 transition-all duration-300"
+                      className={`w-full pl-11 pr-4 py-3 bg-white border rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none transition-all duration-300 ${
+                        validationErrors.name
+                          ? 'border-red-500 focus:border-red-500'
+                          : 'border-gray-300 focus:border-blue-500 focus:bg-gray-50'
+                      }`}
                       placeholder="山田 太郎"
                     />
                   </div>
+                  {validationErrors.name && (
+                    <p className="mt-1 text-xs text-red-600">{validationErrors.name}</p>
+                  )}
                 </div>
 
                 <div>
@@ -172,10 +285,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                       value={formData.company}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-50 transition-all duration-300"
+                      className={`w-full pl-11 pr-4 py-3 bg-white border rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none transition-all duration-300 ${
+                        validationErrors.company
+                          ? 'border-red-500 focus:border-red-500'
+                          : 'border-gray-300 focus:border-blue-500 focus:bg-gray-50'
+                      }`}
                       placeholder="株式会社サンプル"
                     />
                   </div>
+                  {validationErrors.company && (
+                    <p className="mt-1 text-xs text-red-600">{validationErrors.company}</p>
+                  )}
                 </div>
               </div>
 
@@ -192,10 +312,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-50 transition-all duration-300"
+                      className={`w-full pl-11 pr-4 py-3 bg-white border rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none transition-all duration-300 ${
+                        validationErrors.email
+                          ? 'border-red-500 focus:border-red-500'
+                          : 'border-gray-300 focus:border-blue-500 focus:bg-gray-50'
+                      }`}
                       placeholder="sample@example.com"
                     />
                   </div>
+                  {validationErrors.email && (
+                    <p className="mt-1 text-xs text-red-600">{validationErrors.email}</p>
+                  )}
                 </div>
 
                 <div>
@@ -228,10 +355,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="w-full pl-11 pr-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-50 transition-all duration-300 resize-none"
+                    className={`w-full pl-11 pr-4 py-3 bg-white border rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none transition-all duration-300 resize-none ${
+                      validationErrors.message
+                        ? 'border-red-500 focus:border-red-500'
+                        : 'border-gray-300 focus:border-blue-500 focus:bg-gray-50'
+                    }`}
                     placeholder="NetSuite導入について相談したい内容をご記入ください"
                   />
                 </div>
+                {validationErrors.message && (
+                  <p className="mt-1 text-xs text-red-600">{validationErrors.message}</p>
+                )}
               </div>
 
               {/* Submit button */}

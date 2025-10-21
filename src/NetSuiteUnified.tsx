@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Globe,
@@ -20,30 +20,24 @@ import {
   Shield,
   Rocket,
   Target,
-  Database,
-  Lightbulb,
   Award,
   HeartHandshake,
-  Infinity,
-  MousePointer,
   PenTool,
   Workflow,
   Network,
   ChevronRight,
   Quote,
   Star,
-  Heart,
   Play,
   Pause,
   Cpu,
   GitBranch,
   Layers,
   Settings,
-  Box,
+  ExternalLink,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
-import ContactModal from './components/ContactModal';
 import { SOLUTIONS } from './constants/features';
 import { Feature } from './types';
 
@@ -177,39 +171,13 @@ const AGILE_QA = [
 
 const NetSuiteUnified: React.FC = () => {
   const navigate = useNavigate();
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredStrength, setHoveredStrength] = useState<number | null>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [statsVisible, setStatsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Check if stats section is visible
-      if (statsRef.current) {
-        const rect = statsRef.current.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          setStatsVisible(true);
-        }
-      }
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
     setIsVisible(true);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
 
   useEffect(() => {
@@ -220,9 +188,6 @@ const NetSuiteUnified: React.FC = () => {
       return () => clearInterval(interval);
     }
   }, [isPlaying]);
-
-  const openContactModal = useCallback(() => setIsContactModalOpen(true), []);
-  const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
@@ -245,7 +210,7 @@ const NetSuiteUnified: React.FC = () => {
       <ModernNavigationBar
         showBackButton={false}
         variant="page"
-        onContactClick={openContactModal}
+        onContactClick={() => window.open('https://www.evangsol.co.jp/support', '_blank')}
       />
 
       {/* Hero Section with Enhanced 3D Typography */}
@@ -310,7 +275,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* Call to Action */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <a
-              href="https://www.evangsol.co.jp/"
+              href="https://www.evangsol.co.jp/about"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
@@ -330,7 +295,7 @@ const NetSuiteUnified: React.FC = () => {
           <div id="netsuite" className="space-y-20 scroll-mt-20">
               <div className="text-center">
                 <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  NetSuiteの実用的な機能
+                  NetSuiteの機能
                 </h2>
                 <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto mb-12">
                   世界トップクラスのクラウドERPが提供する、幅広い拡張性
@@ -492,13 +457,15 @@ const NetSuiteUnified: React.FC = () => {
                         実績を見る
                         <ArrowRight className="w-4 h-4" />
                       </a>
-                      <button
-                        onClick={openContactModal}
+                      <a
+                        href="https://www.evangsol.co.jp/support"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-blue-600 text-slate-900 font-bold rounded-full hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all"
                       >
                         <Rocket className="w-4 h-4" />
                         無料相談を依頼
-                      </button>
+                      </a>
                     </div>
                   </div>
                   <div className="bg-white border-2 border-slate-300 rounded-2xl p-6 shadow-lg">
@@ -528,7 +495,7 @@ const NetSuiteUnified: React.FC = () => {
           <div id="matching" className="scroll-mt-20">
               <div className="text-center mb-16">
                 <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  課題とソリューション
+                  よくある質問（FAQ）
                 </h2>
                 <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto">
                   ERP導入でよくある課題とEvangSolの解決策
@@ -796,7 +763,7 @@ const NetSuiteUnified: React.FC = () => {
               <div className="text-center">
                 <h2 className="text-5xl font-bold mb-6">
                   <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                    オリジナルソリューション
+                    ソリューション
                   </span>
                 </h2>
                 <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto mb-12">
@@ -1018,13 +985,15 @@ const NetSuiteUnified: React.FC = () => {
           </p>
 
           <div className="flex justify-center">
-            <button
-              onClick={openContactModal}
+            <a
+              href="https://www.evangsol.co.jp/support"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
-              <Rocket className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+              <ExternalLink className="w-6 h-6 group-hover:rotate-12 transition-transform" />
               今すぐ無料相談
-            </button>
+            </a>
           </div>
 
           {/* Trust Badges */}
@@ -1044,9 +1013,6 @@ const NetSuiteUnified: React.FC = () => {
       </section>
 
       <ModernFooter />
-
-      {/* Contact Modal */}
-      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
   );
 };

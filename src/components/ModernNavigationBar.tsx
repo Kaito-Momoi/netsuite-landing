@@ -4,17 +4,14 @@ import {
   ArrowLeft,
   Menu,
   X,
-  Globe,
   Rocket,
   Sparkles,
   ChevronRight,
   Home,
   Mail,
-  Code,
   Cloud,
   Zap,
-  Hexagon,
-  Activity
+  Building
 } from 'lucide-react';
 import { NavigationProps } from '../types';
 
@@ -76,34 +73,42 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
 
     const navItems = [
       {
-        label: 'Home',
+        label: 'ホーム',
         icon: <Home className="w-3 h-3" />,
         gradient: 'from-blue-500 to-teal-500',
         section: 'home'
       },
       {
-        label: 'NetSuite',
+        label: 'NetSuiteの機能',
         icon: <Cloud className="w-3 h-3" />,
         gradient: 'from-cyan-500 to-teal-500',
         section: 'netsuite'
       },
       {
-        label: 'EvangSol',
+        label: 'EvangSolの強み',
         icon: <Rocket className="w-3 h-3" />,
         gradient: 'from-blue-500 to-cyan-500',
         section: 'evangsol'
       },
       {
-        label: 'Q&A',
+        label: 'よくある質問',
         icon: <Zap className="w-3 h-3" />,
         gradient: 'from-blue-500 to-cyan-500',
         section: 'matching'
       },
       {
-        label: 'Solutions',
+        label: 'ソリューション',
         icon: <Sparkles className="w-3 h-3" />,
         gradient: 'from-green-500 to-emerald-500',
         section: 'solutions'
+      },
+      {
+        label: '会社概要',
+        icon: <Building className="w-3 h-3" />,
+        gradient: 'from-indigo-500 to-purple-500',
+        section: 'about',
+        isExternal: true,
+        url: 'https://www.evangsol.co.jp/about'
       },
     ];
 
@@ -113,7 +118,10 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
     };
 
     const handleNavClick = (item: any) => {
-      if (item.section === 'home') {
+      if (item.isExternal && item.url) {
+        // Open external URL in new tab
+        window.open(item.url, '_blank', 'noopener,noreferrer');
+      } else if (item.section === 'home') {
         // Scroll to top for home
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
@@ -226,7 +234,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                       <div className="absolute inset-0 bg-white/50 blur-md group-hover:animate-ping"></div>
                     </div>
-                    <span>Contact Us</span>
+                    <span>お問い合わせ</span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
 
@@ -242,7 +250,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                     aria-label="Go back to previous page"
                   >
                     <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
-                    <span className="hidden sm:inline">Back</span>
+                    <span className="hidden sm:inline">戻る</span>
                   </button>
                 )}
 
@@ -301,7 +309,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"
                 >
                   <Mail className="w-5 h-5" />
-                  Contact Us
+                  お問い合わせ
                 </button>
               </nav>
             </div>
