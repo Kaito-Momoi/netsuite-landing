@@ -260,7 +260,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   className="lg:hidden p-2 text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
                   aria-label="Open menu"
                 >
-                  {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  <Menu className="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -268,13 +268,39 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         </nav>
 
         {/* Mobile Menu */}
-        <div className={`fixed inset-x-0 top-0 z-40 lg:hidden transition-all duration-500 ${
+        <div className={`fixed inset-0 z-[100] lg:hidden transition-all duration-500 ${
           mobileMenuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}>
-          <div className="absolute inset-0 bg-slate-50/95 backdrop-blur-xl border-t-2 border-slate-300 shadow-xl">
-            <div className="pt-24 px-6 pb-6">
+          {/* Backdrop overlay */}
+          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileMenuOpen(false)}></div>
+          {/* Menu content */}
+          <div className="absolute inset-x-0 top-0 bg-white shadow-2xl">
+            {/* Header with Logo and Close Button */}
+            <div className="flex items-center px-6 py-4 border-b border-slate-200">
+              {/* EvangSol Logo - left side */}
+              <div className="flex-1">
+                <img
+                  src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                  alt="EvangSol"
+                  className="h-10"
+                />
+              </div>
+              {/* Empty space in center */}
+              <div className="flex-1"></div>
+              {/* Close Button - right side matching hamburger position */}
+              <div className="flex justify-end">
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+            <div className="px-6 pb-6 pt-4">
               <nav className="space-y-2">
                 {navItems.map((item, index) => (
                   <button

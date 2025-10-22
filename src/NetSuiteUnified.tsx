@@ -264,13 +264,25 @@ const NetSuiteUnified: React.FC = () => {
           </div>
 
           {/* Play/Pause control */}
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-slate-900/10 backdrop-blur rounded-full hover:bg-slate-900/20 border border-slate-300 transition-all"
-            aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
-          >
-            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-          </button>
+          <div className="flex justify-center mb-12">
+            <button
+              onClick={() => setIsPlaying(!isPlaying)}
+              className="bg-slate-900/10 backdrop-blur rounded-full hover:bg-slate-900/20 border border-slate-300 transition-all flex items-center justify-center"
+              style={{
+                width: '48px',
+                height: '48px',
+                minWidth: '48px',
+                minHeight: '48px',
+                maxWidth: '48px',
+                maxHeight: '48px',
+                padding: '0',
+                flexShrink: 0
+              }}
+              aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
+            >
+              {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+            </button>
+          </div>
 
           {/* Call to Action */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
