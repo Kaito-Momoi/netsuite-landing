@@ -28,7 +28,7 @@ const ModernFooter: React.FC = () => {
       { label: '業界別OMS', path: '/solutions/industry-oms', icon: <Shield className="w-3 h-3" /> },
     ],
     company: [
-      { label: 'EvangSolについて', href: 'https://www.evangsol.co.jp/', external: true, icon: <Building2 className="w-3 h-3" /> },
+      { label: 'EvangSolについて', href: 'https://www.evangsol.co.jp/about', external: true, icon: <Building2 className="w-3 h-3" /> },
     ],
     resources: [
       { label: 'セキュリティ', path: '/security-privacy', icon: <Shield className="w-3 h-3" /> },
