@@ -177,46 +177,48 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
 
               {/* Center/Right Section with Navigation and Contact */}
               <div className="flex items-center gap-4 ml-auto">
-                {/* Desktop Navigation */}
-                <nav className="hidden lg:flex items-center gap-1" role="menubar">
-                  {navItems.map((item, index) => (
-                    <button
-                      key={item.section}
-                      onClick={() => handleNavClick(item)}
-                      onMouseEnter={() => setHoveredItem(item.section)}
-                      onMouseLeave={() => setHoveredItem(null)}
-                      className={`relative px-4 py-2 rounded-xl transition-all duration-300 group/nav hover:bg-slate-100`}
-                      role="menuitem"
-                    >
-                      {/* Futuristic hover effect */}
-                      {hoveredItem === item.section && (
-                        <>
-                          <div className="absolute inset-0 bg-gradient-to-r from-slate-100 to-slate-200 rounded-xl"></div>
-                          <div className="absolute inset-0 rounded-xl overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-200 to-transparent -skew-x-12 translate-x-[-200%] group-hover/nav:translate-x-[200%] transition-transform duration-1000"></div>
-                          </div>
-                        </>
-                      )}
+                {/* Desktop Navigation - Only show for landing and main pages */}
+                {variant !== 'solution' && (
+                  <nav className="hidden lg:flex items-center gap-1" role="menubar">
+                    {navItems.map((item) => (
+                      <button
+                        key={item.section}
+                        onClick={() => handleNavClick(item)}
+                        onMouseEnter={() => setHoveredItem(item.section)}
+                        onMouseLeave={() => setHoveredItem(null)}
+                        className={`relative px-4 py-2 rounded-xl transition-all duration-300 group/nav hover:bg-slate-100`}
+                        role="menuitem"
+                      >
+                        {/* Futuristic hover effect */}
+                        {hoveredItem === item.section && (
+                          <>
+                            <div className="absolute inset-0 bg-gradient-to-r from-slate-100 to-slate-200 rounded-xl"></div>
+                            <div className="absolute inset-0 rounded-xl overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-200 to-transparent -skew-x-12 translate-x-[-200%] group-hover/nav:translate-x-[200%] transition-transform duration-1000"></div>
+                            </div>
+                          </>
+                        )}
 
-                      {/* Active indicator with glow */}
-                      {isActive(item) && (
-                        <>
-                          <div className={`absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r ${item.gradient}`}></div>
-                          <div className={`absolute inset-x-0 -bottom-1 h-4 bg-gradient-to-r ${item.gradient} blur-xl opacity-50`}></div>
-                        </>
-                      )}
+                        {/* Active indicator with glow */}
+                        {isActive(item) && (
+                          <>
+                            <div className={`absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r ${item.gradient}`}></div>
+                            <div className={`absolute inset-x-0 -bottom-1 h-4 bg-gradient-to-r ${item.gradient} blur-xl opacity-50`}></div>
+                          </>
+                        )}
 
-                      <span className={`relative flex items-center gap-1.5 text-sm font-bold whitespace-nowrap ${
-                        isActive(item)
-                          ? 'text-slate-900'
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}>
-                        {item.icon}
-                        <span className="text-xs">{item.label}</span>
-                      </span>
-                    </button>
-                  ))}
-                </nav>
+                        <span className={`relative flex items-center gap-1.5 text-sm font-bold whitespace-nowrap ${
+                          isActive(item)
+                            ? 'text-slate-900'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}>
+                          {item.icon}
+                          <span className="text-xs">{item.label}</span>
+                        </span>
+                      </button>
+                    ))}
+                  </nav>
+                )}
 
                 {/* Futuristic CTA Button */}
                 <button
@@ -302,7 +304,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
             </div>
             <div className="px-6 pb-6 pt-4">
               <nav className="space-y-2">
-                {navItems.map((item, index) => (
+                {variant !== 'solution' && navItems.map((item) => (
                   <button
                     key={item.section}
                     onClick={() => {

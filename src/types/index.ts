@@ -25,7 +25,7 @@ export interface Benefit {
 
 export interface NavigationProps {
   showBackButton?: boolean;
-  variant?: 'home' | 'page';
+  variant?: 'home' | 'page' | 'solution';
   onContactClick?: () => void;
 }
 

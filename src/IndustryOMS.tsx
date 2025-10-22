@@ -210,7 +210,7 @@ const IndustryOMS: React.FC = () => {
 
       <ModernNavigationBar
         showBackButton={true}
-        variant="page"
+        variant="solution"
         onContactClick={openContactModal}
       />
 
