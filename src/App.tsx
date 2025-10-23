@@ -11,7 +11,6 @@ const WarehouseIntegration = lazy(() => import('./WarehouseIntegration'));
 const TermsOfUse = lazy(() => import('./TermsOfUse'));
 const SecurityPrivacy = lazy(() => import('./SecurityPrivacy'));
 const NetSuiteUnified = lazy(() => import('./NetSuiteUnified'));
-const EvangsolApp = lazy(() => import('./evangsol/EvangsolApp'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -35,7 +34,6 @@ function App() {
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/security-privacy" element={<SecurityPrivacy />} />
           <Route path="/netsuite-unified" element={<NetSuiteUnified />} />
-          <Route path="/evangsol/*" element={<EvangsolApp />} />
         </Routes>
       </Suspense>
     </Router>
