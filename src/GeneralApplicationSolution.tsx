@@ -25,6 +25,12 @@ import { Feature } from './types';
 // Main features with enhanced descriptions
 const MAIN_FEATURES: Feature[] = [
   {
+    icon: <Link className="w-10 h-10" />,
+    title: '業務自動化サポート',
+    description: '紙の申請書は不要。NetSuite内で申請から承認、データ反映まで全て完結。承認証跡はNetSuiteで記録、閲覧可能',
+    bulletPoints: ['ペーパーレス化によるコスト削減', '承認後の自動処理',  '承認証跡の保護'],
+  },
+  {
     icon: <Brain className="w-10 h-10" />,
     title: '統合申請プラットフォーム',
     description: '一つの画面から様々な申請が可能。申請対象を自由に選択でき、業務に応じた最適な申請フローを実現',
@@ -35,12 +41,6 @@ const MAIN_FEATURES: Feature[] = [
     title: '柔軟な承認ワークフロー',
     description: '承認経路はカスタムレコードで設定・管理。NetSuite標準の承認WFをGUIで設定する必要なし',
     bulletPoints: ['動的な承認ルート', '条件分岐対応', '代理承認機能'],
-  },
-  {
-    icon: <Link className="w-10 h-10" />,
-    title: '業務自動化サポート',
-    description: '紙の申請書は不要。NetSuite内で申請から承認、データ反映まで全て完結',
-    bulletPoints: ['承認後の自動処理', '紙と比較して工数削減', 'ヒューマンエラー防止'],
   },
 ];
 
