@@ -14,7 +14,7 @@ import {
   Layers,
   Globe,
   Cpu,
-  Sparkles,
+  
   Award,
   Rocket,
   TrendingUp,
@@ -212,17 +212,8 @@ const IndustryOMS: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
-          {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 backdrop-blur-xl rounded-full border-2 border-indigo-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Package className="w-5 h-5 text-blue-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
-              業界別受注管理ソリューション
-            </span>
-            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
-          </div>
-
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 業界特化OMS

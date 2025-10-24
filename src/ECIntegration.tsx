@@ -8,7 +8,7 @@ import {
   Database,
   ShoppingCart,
   TrendingUp,
-  Sparkles,
+  
   Award,
   ArrowUpRight,
   Layers,
@@ -176,17 +176,8 @@ const ECIntegration: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
-          {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-100 to-cyan-100 backdrop-blur-xl rounded-full border-2 border-blue-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <ShoppingCart className="w-5 h-5 text-blue-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              オムニチャネルECソリューション
-            </span>
-            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
-          </div>
-
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 ECデータ連携基盤

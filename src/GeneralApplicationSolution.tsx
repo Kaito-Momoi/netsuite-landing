@@ -4,8 +4,6 @@ import {
   Clock,
   Database,
   Shield,
-  Sparkles,
-  FileText,
   GitBranch,
   Settings,
   Link,
@@ -41,8 +39,8 @@ const MAIN_FEATURES: Feature[] = [
   {
     icon: <Link className="w-10 h-10" />,
     title: '業務自動化サポート',
-    description: '承認済み申請をNetSuiteに自動で反映。繰り返し作業を削減し、ミスを防止',
-    bulletPoints: ['承認後の自動処理', '繰り返し作業の削減', 'ヒューマンエラー防止'],
+    description: '紙の申請書は不要。NetSuite内で申請から承認、データ反映まで全て完結',
+    bulletPoints: ['承認後の自動処理', '紙と比較して工数削減', 'ヒューマンエラー防止'],
   },
 ];
 
@@ -154,17 +152,8 @@ const GeneralApplicationSolution: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
-          {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 backdrop-blur-xl rounded-full border-2 border-purple-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <FileText className="w-5 h-5 text-purple-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              業務プロセス自動化ソリューション
-            </span>
-            <Sparkles className="w-5 h-5 text-purple-600 animate-pulse" />
-          </div>
-
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent">
                 汎用申請ソリューション

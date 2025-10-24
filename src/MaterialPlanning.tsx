@@ -10,7 +10,7 @@ import {
   TrendingUp,
   CheckCircle,
   ArrowRight,
-  Sparkles,
+  
   Trophy,
   Building2,
   Zap,
@@ -195,17 +195,8 @@ const MaterialPlanning: React.FC = () => {
       {/* Hero Section with Enhanced 3D Typography */}
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
-          {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-xl rounded-full border-2 border-green-400 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Factory className="w-5 h-5 text-emerald-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-              製造業特化 資材計画ソリューション
-            </span>
-            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
-          </div>
-
           {/* 3D Title */}
-          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black">
               <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent animate-gradient">
                 資材計画の革新

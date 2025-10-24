@@ -10,7 +10,7 @@ import {
   ArrowRight,
   TrendingUp,
   Award,
-  Sparkles,
+  
   DollarSign,
   FileSearch,
   GitBranch,
@@ -160,17 +160,8 @@ const PaymentMatching: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
-          {/* Premium Badge */}
-          <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-xl rounded-full border-2 border-blue-500/30 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <DollarSign className="w-5 h-5 text-blue-600 animate-pulse" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              財務プロセス自動化ソリューション
-            </span>
-            <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
-          </div>
-
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
                 入金消込ソリューション
