@@ -15,7 +15,6 @@ import {
   Brain,
   Mail,
   Users,
-  Calendar,
   DollarSign,
   ShoppingCart,
   FilePlus,
@@ -41,9 +40,9 @@ const MAIN_FEATURES: Feature[] = [
   },
   {
     icon: <Link className="w-10 h-10" />,
-    title: 'NetSuite完全連携',
-    description: 'NetSuiteの標準マスタやトランザクションデータを自動登録。シームレスな連携を実現',
-    bulletPoints: ['リアルタイムデータ同期', '自動データ生成', 'API完全対応'],
+    title: '業務自動化サポート',
+    description: '承認済み申請をNetSuiteに自動で反映。繰り返し作業を削減し、ミスを防止',
+    bulletPoints: ['承認後の自動処理', '繰り返し作業の削減', 'ヒューマンエラー防止'],
   },
 ];
 
@@ -67,12 +66,12 @@ const CAPABILITIES = [
   {
     icon: <Shield className="w-8 h-8" />,
     title: 'セキュリティ機能',
-    description: 'ロールベースのアクセス制御と完全な監査証跡で内部統制を強化',
+    description: 'ロールベースの承認制御と完全な監査証跡で内部統制を強化',
   },
   {
     icon: <Database className="w-8 h-8" />,
     title: 'データ一元管理',
-    description: 'NetSuiteの各種データと完全連携し、データ整合性を100%保証',
+    description: 'NetSuiteの各種データと完全連携し、データ整合性を確保',
   },
   {
     icon: <TrendingUp className="w-8 h-8" />,
@@ -85,9 +84,7 @@ const CAPABILITIES = [
 const USE_CASES = [
   { icon: <DollarSign className="w-6 h-6" />, title: '経費精算申請', description: '出張費、交際費、備品購入など' },
   { icon: <ShoppingCart className="w-6 h-6" />, title: '購買申請', description: '物品購入、サービス調達など' },
-  { icon: <Calendar className="w-6 h-6" />, title: '休暇申請', description: '有給休暇、特別休暇など' },
   { icon: <Users className="w-6 h-6" />, title: 'マスタ登録申請', description: '顧客マスタ、仕入先マスタなど' },
-  { icon: <DollarSign className="w-6 h-6" />, title: '予算申請', description: '部門予算、プロジェクト予算など' },
   { icon: <FilePlus className="w-6 h-6" />, title: 'カスタム申請', description: '業務特有の申請フォーム' },
 ];
 
@@ -182,9 +179,9 @@ const GeneralApplicationSolution: React.FC = () => {
           <div className="relative h-20 mb-12">
             <div className="absolute inset-0 flex items-center justify-center">
               {[
-                { text: '申請処理時間50%削減', icon: <Clock className="w-8 h-8" />, gradient: 'from-purple-600 to-indigo-600' },
-                { text: '設定作業時間70%削減', icon: <Settings className="w-8 h-8" />, gradient: 'from-indigo-400 to-blue-400' },
-                { text: 'データ整合性100%保証', icon: <Shield className="w-8 h-8" />, gradient: 'from-blue-400 to-cyan-400' },
+                { text: '迅速な申請・承認フロー', icon: <Clock className="w-8 h-8" />, gradient: 'from-purple-600 to-indigo-600' },
+                { text: 'シンプルな導入・運用', icon: <Settings className="w-8 h-8" />, gradient: 'from-indigo-400 to-blue-400' },
+                { text: '安全・確実なデータ連携', icon: <Shield className="w-8 h-8" />, gradient: 'from-blue-400 to-cyan-400' },
               ].map((item, index) => (
                 <div
                   key={index}
@@ -220,14 +217,14 @@ const GeneralApplicationSolution: React.FC = () => {
             {MAIN_FEATURES.map((feature, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-purple-400 transition-all hover:scale-105 h-full">
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-purple-400 transition-all hover:scale-105 h-full flex flex-col">
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-600/20 to-indigo-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-purple-500/30">
                     <div className="text-purple-600">{feature.icon}</div>
                   </div>
                   <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
-                  <p className="text-slate-800 mb-6">{feature.description}</p>
+                  <p className="text-slate-800 mb-6 flex-grow">{feature.description}</p>
                   {feature.bulletPoints && (
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 mt-auto">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
                           <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" />
@@ -293,18 +290,16 @@ const GeneralApplicationSolution: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {USE_CASES.map((useCase, index) => (
               <div key={index} className="group">
-                <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-purple-500/50 transition-all hover:scale-105">
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-purple-500/50 transition-all hover:scale-105 h-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border-2 border-purple-300">
                       <div className="text-purple-600">{useCase.icon}</div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 mb-2">{useCase.title}</h3>
-                      <p className="text-sm text-slate-700">{useCase.description}</p>
-                    </div>
+                    <h3 className="font-bold text-slate-900 mb-2 text-lg">{useCase.title}</h3>
+                    <p className="text-sm text-slate-700">{useCase.description}</p>
                   </div>
                 </div>
               </div>
