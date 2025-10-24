@@ -1,0 +1,297 @@
+title: "NetSuite 汎用申請ソリューション"
+slug: "general-application"
+description: "一つの画面から様々な申請を簡単に行える、NetSuite向け統合申請管理システム"
+icon: "file-text"
+color: "from-purple-600 to-indigo-600"
+
+hero:
+  title: "NetSuite 汎用申請ソリューション"
+  subtitle: "あらゆる申請業務を一元化し、効率的なワークフローを実現"
+  description: "一つの画面から様々な申請をすることができる統合申請管理システム。承認経路の柔軟な設定と、NetSuite標準機能との完全連携により、申請業務の大幅な効率化を実現します。"
+  image: "/images/solutions/general-application-hero.svg"
+  cta_text: "資料ダウンロード"
+  cta_link: "#contact"
+
+features:
+  - title: "統合申請プラットフォーム"
+    description: "一つの画面から様々な申請が可能。申請対象を自由に選択でき、業務に応じた最適な申請フローを実現"
+    icon: "layers"
+    
+  - title: "柔軟な承認ワークフロー"
+    description: "承認経路はカスタムレコードで設定・管理。NetSuite標準の承認WFをGUIで設定する必要がなく、運用変更にも素早く対応"
+    icon: "git-branch"
+    
+  - title: "申請タイプの自由選択"
+    description: "ヘッダのみの簡易申請から、明細部を使用した詳細な申請まで、申請内容に応じて柔軟に選択可能"
+    icon: "settings"
+    
+  - title: "NetSuite完全連携"
+    description: "NetSuiteの標準マスタやトランザクションデータを自動登録。汎用申請専用のカスタムレコードのみでの管理も選択可能"
+    icon: "link"
+    
+  - title: "カスタマイズ対応"
+    description: "申請に必要なヘッダ情報や明細情報の項目は追加・変更などのカスタマイズが可能。業務要件に合わせた最適化を実現"
+    icon: "sliders"
+    
+  - title: "保存タイミング制御"
+    description: "申請データの保存時に、他のマスタやトランザクションデータとの区別した管理が可能"
+    icon: "save"
+
+benefits:
+  title: "導入効果"
+  subtitle: "汎用申請ソリューションがもたらす価値"
+  items:
+    - title: "申請業務の効率化"
+      description: "複数の申請画面を一元化することで、ユーザーの操作性が向上し、申請にかかる時間を大幅に削減"
+      icon: "trending-up"
+      metrics:
+        - label: "申請処理時間"
+        - value: "50%削減"
+        
+    - title: "承認フローの最適化"
+      description: "GUIでの複雑な設定が不要になり、承認ルートの設定・変更が簡単に。運用変更への対応スピードが向上"
+      icon: "zap"
+      metrics:
+        - label: "設定作業時間"
+        - value: "70%削減"
+        
+    - title: "データ管理の一元化"
+      description: "NetSuiteの各種データと完全連携し、データの整合性を保ちながら効率的な情報管理を実現"
+      icon: "database"
+      metrics:
+        - label: "データ整合性"
+        - value: "100%保証"
+
+use_cases:
+  title: "活用シーン"
+  subtitle: "様々な申請業務に対応"
+  cases:
+    - title: "経費精算申請"
+      description: "出張費、交際費、備品購入など、各種経費精算を一つの画面から申請"
+      icon: "credit-card"
+      
+    - title: "購買申請"
+      description: "物品購入、サービス調達などの購買申請を効率的に処理"
+      icon: "shopping-cart"
+      
+    - title: "休暇申請"
+      description: "有給休暇、特別休暇など、各種休暇申請をシステム化"
+      icon: "calendar"
+      
+    - title: "マスタ登録申請"
+      description: "顧客マスタ、仕入先マスタなど、各種マスタデータの登録・変更申請"
+      icon: "users"
+      
+    - title: "予算申請"
+      description: "部門予算、プロジェクト予算などの申請と承認プロセスを管理"
+      icon: "dollar-sign"
+      
+    - title: "その他カスタム申請"
+      description: "業務特有の申請フォームを自由に作成・運用"
+      icon: "file-plus"
+
+technical_features:
+  title: "技術仕様"
+  subtitle: "高度な機能と拡張性"
+  features:
+    - category: "ワークフロー機能"
+      items:
+        - "カスタムレコードベースの承認経路管理"
+        - "条件分岐による動的な承認ルート設定"
+        - "代理承認・一括承認機能"
+        - "承認履歴の完全トレーサビリティ"
+        
+    - category: "データ連携"
+      items:
+        - "NetSuite標準レコードとのリアルタイム連携"
+        - "マスタ・トランザクションデータの自動生成"
+        - "外部システムとのAPI連携対応"
+        - "CSVインポート/エクスポート機能"
+        
+    - category: "UI/UX機能"
+      items:
+        - "レスポンシブデザイン対応"
+        - "ドラッグ&ドロップでの明細追加"
+        - "リアルタイムバリデーション"
+        - "多言語対応（日本語・英語）"
+        
+    - category: "セキュリティ"
+      items:
+        - "ロールベースのアクセス制御"
+        - "フィールドレベルの権限設定"
+        - "監査証跡の自動記録"
+        - "データ暗号化"
+
+implementation:
+  title: "導入プロセス"
+  subtitle: "スムーズな導入を実現"
+  steps:
+    - number: "01"
+      title: "要件定義"
+      description: "現状の申請業務を分析し、最適なソリューション設計を実施"
+      duration: "1-2週間"
+      
+    - number: "02"
+      title: "環境構築"
+      description: "NetSuite環境への汎用申請ソリューションの実装とカスタマイズ"
+      duration: "2-3週間"
+      
+    - number: "03"
+      title: "データ移行"
+      description: "既存の申請データやマスタデータの移行作業"
+      duration: "1週間"
+      
+    - number: "04"
+      title: "テスト・検証"
+      description: "ユーザー受入テストと承認フローの動作確認"
+      duration: "1-2週間"
+      
+    - number: "05"
+      title: "教育・トレーニング"
+      description: "エンドユーザーと管理者向けのトレーニング実施"
+      duration: "3-5日"
+      
+    - number: "06"
+      title: "本番稼働・サポート"
+      description: "段階的な本番移行と稼働後のサポート体制確立"
+      duration: "継続的"
+
+architecture:
+  title: "システム構成"
+  subtitle: "拡張性の高いアーキテクチャ"
+  components:
+    - name: "プレゼンテーション層"
+      description: "SuiteScript 2.0による直感的なUI"
+      technologies: ["HTML5", "CSS3", "JavaScript", "SuiteScript 2.0"]
+      
+    - name: "ビジネスロジック層"
+      description: "ワークフローエンジンと承認ロジック"
+      technologies: ["SuiteScript", "Workflow", "Custom Records"]
+      
+    - name: "データ層"
+      description: "カスタムレコードとNetSuite標準テーブル"
+      technologies: ["Custom Records", "Standard Records", "Saved Searches"]
+      
+    - name: "統合層"
+      description: "外部システムとの連携インターフェース"
+      technologies: ["RESTlet", "SOAP Web Services", "CSV Import/Export"]
+
+customization:
+  title: "カスタマイズオプション"
+  subtitle: "お客様の要件に合わせた拡張"
+  options:
+    - title: "申請フォームカスタマイズ"
+      items:
+        - "カスタムフィールドの追加"
+        - "条件付き表示/非表示制御"
+        - "動的なデフォルト値設定"
+        - "カスタムバリデーション"
+        
+    - title: "承認フロー拡張"
+      items:
+        - "多段階承認の設定"
+        - "並列承認・会議体承認"
+        - "条件分岐ルールの追加"
+        - "エスカレーション機能"
+        
+    - title: "通知・レポート機能"
+      items:
+        - "メール通知のカスタマイズ"
+        - "Slackなど外部ツール連携"
+        - "カスタムレポート作成"
+        - "ダッシュボード構築"
+
+pricing:
+  title: "価格プラン"
+  subtitle: "企業規模に応じた柔軟な価格体系"
+  plans:
+    - name: "スタンダード"
+      description: "基本的な申請機能"
+      features:
+        - "5種類までの申請タイプ"
+        - "単純承認フロー"
+        - "基本的なカスタマイズ"
+        - "標準サポート"
+      price: "お問い合わせ"
+      
+    - name: "プロフェッショナル"
+      description: "高度な承認機能"
+      features:
+        - "無制限の申請タイプ"
+        - "複雑な承認フロー対応"
+        - "高度なカスタマイズ"
+        - "優先サポート"
+      price: "お問い合わせ"
+      recommended: true
+      
+    - name: "エンタープライズ"
+      description: "大規模組織向け"
+      features:
+        - "全機能利用可能"
+        - "専用カスタマイズ開発"
+        - "パフォーマンス最適化"
+        - "24/7サポート"
+      price: "お問い合わせ"
+
+support:
+  title: "サポート体制"
+  subtitle: "導入後も安心のサポート"
+  services:
+    - title: "導入支援"
+      description: "専門コンサルタントによる導入プロジェクト管理"
+      icon: "users"
+      
+    - title: "トレーニング"
+      description: "管理者・エンドユーザー向けの各種トレーニング"
+      icon: "book-open"
+      
+    - title: "技術サポート"
+      description: "メール・電話による技術的な問い合わせ対応"
+      icon: "headphones"
+      
+    - title: "保守・運用"
+      description: "システムの安定稼働と継続的な改善提案"
+      icon: "shield"
+
+faq:
+  title: "よくある質問"
+  items:
+    - question: "既存のNetSuite環境に導入できますか？"
+      answer: "はい、既存のNetSuite環境にアドオンとして導入可能です。現在お使いの機能に影響を与えることなく、汎用申請機能を追加できます。"
+      
+    - question: "申請フォームのカスタマイズは自社でもできますか？"
+      answer: "基本的な項目追加や変更は管理画面から可能です。複雑なカスタマイズについては、弊社のサポートチームがお手伝いいたします。"
+      
+    - question: "承認者が不在の場合はどうなりますか？"
+      answer: "代理承認機能により、事前に設定された代理者が承認を行えます。また、エスカレーション機能で一定期間後に上位承認者に自動的にエスカレートすることも可能です。"
+      
+    - question: "モバイルデバイスからも利用できますか？"
+      answer: "はい、レスポンシブデザインに対応しているため、スマートフォンやタブレットからも快適に利用できます。"
+      
+    - question: "導入期間はどのくらいかかりますか？"
+      answer: "標準的な導入の場合、要件定義から本番稼働まで約6-8週間程度です。カスタマイズの範囲により期間は変動します。"
+      
+    - question: "既存の申請データは移行できますか？"
+      answer: "はい、CSVインポート機能やデータ移行ツールを使用して、既存システムからデータを移行できます。"
+
+cta:
+  title: "汎用申請ソリューションで業務効率を最大化"
+  description: "NetSuiteの申請業務を一元化し、承認プロセスを効率化しませんか？まずは詳細資料をご覧ください。"
+  button_text: "資料請求・お問い合わせ"
+  button_link: "#contact"
+  
+meta:
+  keywords:
+    - "NetSuite"
+    - "申請管理"
+    - "ワークフロー"
+    - "承認フロー"
+    - "汎用申請"
+    - "業務効率化"
+    - "カスタムレコード"
+    - "SuiteScript"
+    - "ERP"
+    - "クラウドERP"
+  
+  og_image: "/images/solutions/general-application-og.png"
+  og_description: "NetSuite汎用申請ソリューション - 一つの画面から様々な申請を簡単に行える統合申請管理システム"

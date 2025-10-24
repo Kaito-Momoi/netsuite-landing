@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle,
@@ -17,15 +17,13 @@ import {
   Cpu,
   Rocket,
   Brain,
-  Play,
-  Pause,
   Layers,
   Building,
   Mail,
+  ExternalLink,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
-import ContactModal from './components/ContactModal';
 import { Feature } from './types';
 
 // Main features with enhanced descriptions
@@ -97,10 +95,8 @@ const IMPACT_METRICS = [
 
 const PaymentMatching: React.FC = () => {
   const navigate = useNavigate();
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -118,16 +114,15 @@ const PaymentMatching: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setActiveFeature((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isPlaying]);
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
-  const openContactModal = useCallback(() => setIsContactModalOpen(true), []);
-  const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
+  const handleContact = () => {
+    window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
@@ -159,7 +154,7 @@ const PaymentMatching: React.FC = () => {
       <ModernNavigationBar
         showBackButton={true}
         variant="solution"
-        onContactClick={openContactModal}
+        onContactClick={handleContact}
       />
 
       {/* Hero Section */}
@@ -209,14 +204,6 @@ const PaymentMatching: React.FC = () => {
             </div>
           </div>
 
-          {/* Play/Pause control */}
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
-            aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
-          >
-            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-          </button>
 
         </div>
       </section>
@@ -335,19 +322,18 @@ const PaymentMatching: React.FC = () => {
           </p>
           <div className="flex justify-center">
             <button
-              onClick={openContactModal}
+              onClick={handleContact}
               className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
               <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
               お問い合わせ
+              <ExternalLink className="w-5 h-5" />
             </button>
           </div>
         </div>
       </section>
 
       <ModernFooter />
-
-      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
   );
 };

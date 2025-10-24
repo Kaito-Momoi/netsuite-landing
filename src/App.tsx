@@ -8,6 +8,7 @@ const ECIntegration = lazy(() => import('./ECIntegration'));
 const IndustryOMS = lazy(() => import('./IndustryOMS'));
 const MaterialPlanning = lazy(() => import('./MaterialPlanning'));
 const WarehouseIntegration = lazy(() => import('./WarehouseIntegration'));
+const GeneralApplicationSolution = lazy(() => import('./GeneralApplicationSolution'));
 const TermsOfUse = lazy(() => import('./TermsOfUse'));
 const SecurityPrivacy = lazy(() => import('./SecurityPrivacy'));
 const NetSuiteUnified = lazy(() => import('./NetSuiteUnified'));
@@ -31,6 +32,7 @@ function App() {
           <Route path="/solutions/material-planning" element={<MaterialPlanning />} />
           <Route path="/solutions/warehouse-integration" element={<WarehouseIntegration />} />
           <Route path="/solutions/inventory-aging" element={<InventoryAging />} />
+          <Route path="/solutions/general-application" element={<GeneralApplicationSolution />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/security-privacy" element={<SecurityPrivacy />} />
           <Route path="/netsuite-unified" element={<NetSuiteUnified />} />

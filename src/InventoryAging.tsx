@@ -19,8 +19,6 @@ import {
   Lightbulb,
   Award,
   HeartHandshake,
-  Play,
-  Pause,
   Star,
   Target,
   Settings,
@@ -31,10 +29,11 @@ import {
   Eye,
   Layers,
   Mail,
+  ExternalLink,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
-import ContactModal from './components/ContactModal';
+
 
 // Core Features for Inventory Aging
 const CORE_FEATURES = [
@@ -136,10 +135,9 @@ const AGING_CATEGORIES = [
 
 const InventoryAging: React.FC = () => {
   const navigate = useNavigate();
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
   const statsRef = useRef<HTMLDivElement>(null);
@@ -171,16 +169,13 @@ const InventoryAging: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setActiveFeature((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isPlaying]);
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
-  const openContactModal = useCallback(() => setIsContactModalOpen(true), []);
-  const closeContactModal = useCallback(() => setIsContactModalOpen(false), []);
+  const handleContact = () => { window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer'); };
 
   return (
     <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
@@ -226,7 +221,7 @@ const InventoryAging: React.FC = () => {
       <ModernNavigationBar
         showBackButton={true}
         variant="solution"
-        onContactClick={openContactModal}
+        onContactClick={handleContact}
       />
 
       {/* Hero Section with Enhanced 3D Typography */}
@@ -278,14 +273,6 @@ const InventoryAging: React.FC = () => {
             </div>
           </div>
 
-          {/* Play/Pause control */}
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
-            aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
-          >
-            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-          </button>
 
         </div>
       </section>
@@ -449,10 +436,11 @@ const InventoryAging: React.FC = () => {
 
           <div className="flex justify-center">
             <button
-              onClick={openContactModal}
+              onClick={handleContact}
               className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
             >
               <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <ExternalLink className="w-5 h-5" />
               お問い合わせ
             </button>
           </div>
@@ -462,7 +450,6 @@ const InventoryAging: React.FC = () => {
       <ModernFooter />
 
       {/* Contact Modal */}
-      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
   );
 };

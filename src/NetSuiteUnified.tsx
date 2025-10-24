@@ -28,8 +28,6 @@ import {
   ChevronRight,
   Quote,
   Star,
-  Play,
-  Pause,
   Cpu,
   GitBranch,
   Layers,
@@ -173,7 +171,6 @@ const NetSuiteUnified: React.FC = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [hoveredStrength, setHoveredStrength] = useState<number | null>(null);
 
   useEffect(() => {
@@ -181,13 +178,11 @@ const NetSuiteUnified: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setActiveFeature((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isPlaying]);
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
@@ -263,39 +258,6 @@ const NetSuiteUnified: React.FC = () => {
             </div>
           </div>
 
-          {/* Play/Pause control */}
-          <div className="flex justify-center mb-12">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="bg-slate-900/10 backdrop-blur rounded-full hover:bg-slate-900/20 border border-slate-300 transition-all flex items-center justify-center"
-              style={{
-                width: '48px',
-                height: '48px',
-                minWidth: '48px',
-                minHeight: '48px',
-                maxWidth: '48px',
-                maxHeight: '48px',
-                padding: '0',
-                flexShrink: 0
-              }}
-              aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
-            >
-              {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Call to Action */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <a
-              href="https://www.evangsol.co.jp/about"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
-            >
-              <Globe className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-              EvangSol企業サイトへ
-            </a>
-          </div>
 
         </div>
       </section>
