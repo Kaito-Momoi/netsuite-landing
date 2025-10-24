@@ -13,16 +13,12 @@ import {
   Save,
   TrendingUp,
   Brain,
-  Play,
-  Pause,
   Mail,
   Users,
   Calendar,
   DollarSign,
   ShoppingCart,
   FilePlus,
-  ChevronDown,
-  ChevronUp,
   ExternalLink,
 } from 'lucide-react';
 import ModernNavigationBar from './components/ModernNavigationBar';
@@ -85,14 +81,6 @@ const CAPABILITIES = [
   },
 ];
 
-// Impact metrics
-const IMPACT_METRICS = [
-  { value: '50%', label: '申請処理時間', sublabel: '大幅な時間短縮を実現' },
-  { value: '70%', label: '設定作業時間', sublabel: 'GUI設定不要で削減' },
-  { value: '100%', label: 'データ整合性', sublabel: 'エラーゼロを保証' },
-  { value: '24/365', label: '稼働率', sublabel: '安定した運用を実現' },
-];
-
 // Use cases
 const USE_CASES = [
   { icon: <DollarSign className="w-6 h-6" />, title: '経費精算申請', description: '出張費、交際費、備品購入など' },
@@ -103,51 +91,11 @@ const USE_CASES = [
   { icon: <FilePlus className="w-6 h-6" />, title: 'カスタム申請', description: '業務特有の申請フォーム' },
 ];
 
-// Implementation steps
-const IMPLEMENTATION_STEPS = [
-  { number: '01', title: '要件定義', description: '現状分析と最適設計', duration: '1-2週間' },
-  { number: '02', title: '環境構築', description: 'ソリューション実装', duration: '2-3週間' },
-  { number: '03', title: 'データ移行', description: '既存データの移行', duration: '1週間' },
-  { number: '04', title: 'テスト検証', description: '動作確認とUAT', duration: '1-2週間' },
-  { number: '05', title: 'トレーニング', description: 'ユーザー教育実施', duration: '3-5日' },
-  { number: '06', title: '本番稼働', description: '段階的な移行と支援', duration: '継続的' },
-];
-
-// FAQs
-const FAQS = [
-  {
-    question: '既存のNetSuite環境に導入できますか？',
-    answer: 'はい、既存のNetSuite環境にアドオンとして導入可能です。現在お使いの機能に影響を与えることなく、汎用申請機能を追加できます。',
-  },
-  {
-    question: '申請フォームのカスタマイズは自社でもできますか？',
-    answer: '基本的な項目追加や変更は管理画面から可能です。複雑なカスタマイズについては、弊社のサポートチームがお手伝いいたします。',
-  },
-  {
-    question: '承認者が不在の場合はどうなりますか？',
-    answer: '代理承認機能により、事前に設定された代理者が承認を行えます。また、エスカレーション機能で一定期間後に上位承認者に自動的にエスカレートすることも可能です。',
-  },
-  {
-    question: 'モバイルデバイスからも利用できますか？',
-    answer: 'はい、レスポンシブデザインに対応しているため、スマートフォンやタブレットからも快適に利用できます。',
-  },
-  {
-    question: '導入期間はどのくらいかかりますか？',
-    answer: '標準的な導入の場合、要件定義から本番稼働まで約6-8週間程度です。カスタマイズの範囲により期間は変動します。',
-  },
-  {
-    question: '既存の申請データは移行できますか？',
-    answer: 'はい、CSVインポート機能やデータ移行ツールを使用して、既存システムからデータを移行できます。',
-  },
-];
-
 const GeneralApplicationSolution: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -163,13 +111,11 @@ const GeneralApplicationSolution: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setActiveFeature((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isPlaying]);
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleContact = () => {
     window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer');
@@ -255,14 +201,6 @@ const GeneralApplicationSolution: React.FC = () => {
             </div>
           </div>
 
-          {/* Play/Pause control */}
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="mb-12 p-3 bg-gray-50 backdrop-blur rounded-full hover:bg-slate-200 transition-all"
-            aria-label={isPlaying ? 'Pause animation' : 'Play animation'}
-          >
-            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-          </button>
         </div>
       </section>
 
@@ -375,92 +313,6 @@ const GeneralApplicationSolution: React.FC = () => {
         </div>
       </section>
 
-      {/* Impact Metrics */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-purple-50 to-indigo-50 backdrop-blur-xl rounded-3xl p-12 border-2 border-purple-500/20">
-            <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
-              導入効果
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {IMPACT_METRICS.map((metric, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-                    {metric.value}
-                  </div>
-                  <div className="text-lg font-bold text-slate-900 mb-1">{metric.label}</div>
-                  <div className="text-sm text-slate-900 font-medium">{metric.sublabel}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Process */}
-      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
-              導入プロセス
-            </h2>
-            <p className="text-xl text-slate-900 font-bold">
-              スムーズな導入を実現
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {IMPLEMENTATION_STEPS.map((step, index) => (
-              <div key={index} className="group">
-                <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-purple-500/50 transition-all hover:scale-105">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">
-                      {step.number}
-                    </div>
-                    <h3 className="ml-4 font-bold text-lg text-slate-900">{step.title}</h3>
-                  </div>
-                  <p className="text-slate-700 mb-3">{step.description}</p>
-                  <div className="flex items-center text-sm text-purple-600 font-semibold">
-                    <Clock className="w-4 h-4 mr-2" />
-                    期間: {step.duration}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black text-center mb-12 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-            よくある質問
-          </h2>
-          <div className="space-y-4">
-            {FAQS.map((faq, index) => (
-              <div key={index} className="bg-white backdrop-blur-xl rounded-2xl border-2 border-slate-300/50 overflow-hidden">
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                >
-                  <span className="font-bold text-slate-900">{faq.question}</span>
-                  {openFaq === index ? (
-                    <ChevronUp className="w-5 h-5 text-purple-600" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-purple-600" />
-                  )}
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-5">
-                    <p className="text-slate-700">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="relative z-10 py-20 px-4">
