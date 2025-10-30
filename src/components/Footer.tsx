@@ -2,7 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Clock } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  hideContactButton?: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ hideContactButton = false }) => {
   const navigate = useNavigate();
 
   return (
@@ -83,13 +87,15 @@ const Footer: React.FC = () => {
                 <Clock className="w-5 h-5 mr-3 text-blue-600" aria-hidden="true" />
                 <span className="font-medium">平日 9:00-18:00</span>
               </p>
-              <button
-                onClick={() => navigate('/contact')}
-                className="mt-6 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-base"
-                aria-label="お問い合わせフォームを開く"
-              >
-                お問い合わせフォームへ
-              </button>
+              {!hideContactButton && (
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="mt-6 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-base"
+                  aria-label="お問い合わせフォームを開く"
+                >
+                  お問い合わせフォームへ
+                </button>
+              )}
             </div>
           </div>
         </div>

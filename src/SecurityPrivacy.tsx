@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './components/Footer';
 import { Shield, Lock, FileText, Users, Mail, Phone } from 'lucide-react';
 
 const SecurityPrivacy: React.FC = () => {
@@ -342,9 +341,20 @@ const SecurityPrivacy: React.FC = () => {
             <strong className="font-semibold">次回見直し予定：</strong> 2025年12月
           </p>
         </div>
-      </div>
 
-      <Footer />
+        {/* お問い合わせボタン */}
+        <div className="mt-8 text-center">
+          <a
+            href="https://www.evangsol.co.jp/support"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+          >
+            <Mail className="w-5 h-5 mr-2" />
+            お問い合わせはこちら
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
