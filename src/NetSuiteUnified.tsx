@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Globe,
@@ -10,7 +10,6 @@ import {
   CheckCircle,
   ArrowRight,
   Calculator,
-  ShoppingCart,
   Code,
   Sparkles,
   Trophy,
@@ -21,10 +20,7 @@ import {
   Rocket,
   Target,
   Award,
-  HeartHandshake,
-  PenTool,
   Workflow,
-  Network,
   ChevronRight,
   Quote,
   Star,
@@ -39,7 +35,7 @@ import ModernFooter from './components/ModernFooter';
 import { SOLUTIONS } from './constants/features';
 import { Feature } from './types';
 
-// NetSuite Core Features
+// NetSuite Core Features - 主要4モジュールに絞る
 const CORE_FEATURES: Feature[] = [
   {
     icon: <Calculator className="w-8 h-8" />,
@@ -48,28 +44,18 @@ const CORE_FEATURES: Feature[] = [
   },
   {
     icon: <Package className="w-8 h-8" />,
-    title: '在庫管理',
-    description: '複数拠点の在庫をリアルタイムで把握し、適正在庫を維持',
-  },
-  {
-    icon: <ShoppingCart className="w-8 h-8" />,
-    title: '受注管理',
-    description: '受注から出荷まで一元管理し、顧客満足度を向上',
+    title: '在庫・受発注管理',
+    description: '複数拠点の在庫をリアルタイムで把握し、受注から出荷まで一元管理',
   },
   {
     icon: <Users className="w-8 h-8" />,
-    title: 'CRM',
-    description: '顧客情報を一元化し、営業活動を効率化',
-  },
-  {
-    icon: <Globe className="w-8 h-8" />,
-    title: 'Eコマース',
-    description: 'B2B/B2C両方に対応したオムニチャネル展開',
+    title: 'CRM・営業管理',
+    description: '顧客情報を一元化し、営業活動を効率化。Eコマースとも連携',
   },
   {
     icon: <BarChart3 className="w-8 h-8" />,
     title: 'BI・分析',
-    description: '経営ダッシュボードでKPIをリアルタイムに可視化',
+    description: '経営ダッシュボードでKPIをリアルタイムに可視化し、迅速な意思決定を支援',
   },
 ];
 
@@ -77,6 +63,30 @@ const CORE_FEATURES: Feature[] = [
 const STRENGTHS: Feature[] = [
   {
     icon: <Trophy className="w-8 h-8" />,
+    title: '製造業特化の豊富な実績',
+    description: '電子機器、消費財、産業機器など製造業への導入実績多数。業界特有の複雑な要件に対応',
+    bulletPoints: ['製造業導入実績多数', '複雑な生産管理フロー', 'BOM・原価管理に精通'],
+  },
+  {
+    icon: <GitBranch className="w-8 h-8" />,
+    title: 'SAP・OBIC等からのリプレイス実績',
+    description: 'レガシーERPからの移行を多数支援。データ移行からトレーニングまで一貫サポート',
+    bulletPoints: ['SAP ECC/OBICからの移行', 'データ移行の高い成功率', '段階的な移行計画'],
+  },
+  {
+    icon: <Globe className="w-8 h-8" />,
+    title: 'OneWorld対応・海外拠点連携',
+    description: 'NetSuite OneWorldを活用した多国籍企業の統合基盤構築。海外子会社とのシームレス連携',
+    bulletPoints: ['グローバル展開企業向け', '多通貨・多言語対応', 'リアルタイム連結'],
+  },
+  {
+    icon: <Code className="w-8 h-8" />,
+    title: '高い開発力',
+    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
+    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
+  },
+  {
+    icon: <Award className="w-8 h-8" />,
     title: '日本企業特有の要件に精通',
     description: '稟議・承認フロー、特殊な帳票、複雑な価格計算などに完全対応',
     bulletPoints: ['日本の商習慣に精通', '複雑な承認フロー対応', '特殊な帳票作成'],
@@ -92,12 +102,6 @@ const STRENGTHS: Feature[] = [
     title: 'グループ総合力',
     description: 'グループ会社EvangTechとの連携によるワンストップサービス',
     bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援'],
-  },
-  {
-    icon: <Code className="w-8 h-8" />,
-    title: '高い開発力',
-    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
-    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
   },
   {
     icon: <Zap className="w-8 h-8" />,
@@ -171,7 +175,6 @@ const NetSuiteUnified: React.FC = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [hoveredStrength, setHoveredStrength] = useState<number | null>(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -258,6 +261,16 @@ const NetSuiteUnified: React.FC = () => {
             </div>
           </div>
 
+          {/* Solution Provider Logo */}
+          <div className={`mt-20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="flex justify-center items-center">
+              <img
+                src={`${process.env.PUBLIC_URL}/logo-oracle-netsuite-solution-provider.png`}
+                alt="Oracle NetSuite Solution Provider"
+                className="h-24 w-auto"
+              />
+            </div>
+          </div>
 
         </div>
       </section>
@@ -265,88 +278,7 @@ const NetSuiteUnified: React.FC = () => {
       {/* Main Content - All Sections in Scroll Flow */}
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-7xl mx-auto space-y-32">
-          {/* 1. NetSuite */}
-          <div id="netsuite" className="space-y-20 scroll-mt-20">
-              <div className="text-center">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  NetSuiteの機能
-                </h2>
-                <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto mb-12">
-                  世界トップクラスのクラウドERPが提供する、幅広い拡張性
-                </p>
-              </div>
-
-              {/* Core Modules Grid */}
-              <div>
-                <h3 className="text-3xl font-bold text-center mb-12">モジュール一覧</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {CORE_FEATURES.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="group relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300 hover:border-blue-600 shadow-lg hover:shadow-xl transition-all hover:scale-105"
-                    >
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                        <div className="text-white">{feature.icon}</div>
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                      <p className="text-slate-700">{feature.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Customization Tools with Enhanced Design */}
-              <div>
-                <h3 className="text-3xl font-bold text-center mb-12">NetSuiteのカスタマイズ性</h3>
-                <div className="grid lg:grid-cols-3 gap-8 mb-16">
-                {[
-                  {
-                    icon: <PenTool className="w-12 h-12" />,
-                    title: 'SuiteScript',
-                    subtitle: 'JavaScriptベース開発',
-                    features: ['完全なカスタムロジック', 'イベントドリブン処理', 'API統合'],
-                    gradient: 'from-indigo-500 to-blue-500',
-                  },
-                  {
-                    icon: <Workflow className="w-12 h-12" />,
-                    title: 'SuiteFlow',
-                    subtitle: 'ビジュアルワークフロー',
-                    features: ['ドラッグ&ドロップ設計', '複雑な承認フロー', '自動化処理'],
-                    gradient: 'from-blue-500 to-cyan-500',
-                  },
-                  {
-                    icon: <Network className="w-12 h-12" />,
-                    title: 'SuiteTalk',
-                    subtitle: 'Web Services API',
-                    features: ['SOAP/REST対応', 'リアルタイム連携', 'バッチ処理'],
-                    gradient: 'from-emerald-500 to-teal-500',
-                  },
-                ].map((tool, index) => (
-                  <div key={index} className="group relative">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} rounded-3xl blur-xl opacity-10 group-hover:opacity-20 transition-opacity`}></div>
-                    <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300 hover:border-blue-600 shadow-lg hover:shadow-xl transition-all h-full">
-                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${tool.gradient} mb-6`}>
-                        {tool.icon}
-                      </div>
-                      <h3 className="text-2xl font-bold mb-2">{tool.title}</h3>
-                      <p className="text-gray-800 mb-6">{tool.subtitle}</p>
-
-                      <ul className="space-y-3">
-                        {tool.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
-                            <span className="text-slate-700 font-medium">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-                </div>
-              </div>
-          </div>
-
-          {/* 2. EvangSol */}
+          {/* 1. EvangSol - 最優先で表示 */}
           <div id="evangsol" className="space-y-20 scroll-mt-20">
               <div className="text-center">
                 <h2 className="text-5xl font-bold mb-6 pb-2 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -358,33 +290,29 @@ const NetSuiteUnified: React.FC = () => {
               </div>
 
               {/* Strengths Grid with Interactive Cards */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {STRENGTHS.map((strength, index) => (
                   <div
                     key={index}
-                    className="group relative"
-                    onMouseEnter={() => setHoveredStrength(index)}
-                    onMouseLeave={() => setHoveredStrength(null)}
+                    className="relative"
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-2xl blur-xl transition-all ${hoveredStrength === index ? 'opacity-30' : 'opacity-10'}`}></div>
-                    <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 hover:border-blue-600 shadow-lg hover:shadow-xl transition-all hover:scale-105 h-full">
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"></div>
-
-                      <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-2xl blur-xl opacity-10"></div>
+                    <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300 shadow-lg h-full">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
                         <div className="text-white">{strength.icon}</div>
                       </div>
 
-                      <h3 className="text-lg font-bold text-slate-900 mb-3">{strength.title}</h3>
-                      <p className="text-sm text-slate-700 mb-4 leading-relaxed">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">{strength.title}</h3>
+                      <p className="text-base text-slate-700 mb-5 leading-relaxed">
                         {strength.description}
                       </p>
 
                       {strength.bulletPoints && (
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                           {strength.bulletPoints.map((point, idx) => (
                             <li key={idx} className="flex items-start">
-                              <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" />
-                              <span className="text-xs text-slate-700 font-medium">{point}</span>
+                              <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-2 flex-shrink-0" />
+                              <span className="text-sm text-slate-700 font-medium">{point}</span>
                             </li>
                           ))}
                         </ul>
@@ -416,21 +344,8 @@ const NetSuiteUnified: React.FC = () => {
                         <Users className="w-4 h-4 text-blue-600" />
                         <span>{CASE_STUDY.employees}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
-                        <HeartHandshake className="w-4 h-4 text-blue-600" />
-                        <span>{CASE_STUDY.partner}</span>
-                      </div>
                     </div>
                     <div className="mt-8 flex flex-wrap gap-4">
-                      <a
-                        href={CASE_STUDY.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-gray-900 font-bold rounded-full shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105 transition-all"
-                      >
-                        実績を見る
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
                       <a
                         href="https://www.evangsol.co.jp/support"
                         target="_blank"
@@ -461,6 +376,90 @@ const NetSuiteUnified: React.FC = () => {
                       <p className="text-sm text-slate-700 leading-relaxed">{highlight.description}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+          </div>
+
+          {/* 2. NetSuite - コンパクトに表示 */}
+          <div id="netsuite" className="space-y-20 scroll-mt-20">
+              <div className="text-center">
+                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  NetSuiteについて
+                </h2>
+                <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto mb-12">
+                  世界トップクラスのクラウドERPが提供する、幅広い拡張性
+                </p>
+              </div>
+
+              {/* Core Modules Grid - 4つに絞ったコンパクト表示 */}
+              <div>
+                <h3 className="text-3xl font-bold text-center mb-12">主要モジュール</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {CORE_FEATURES.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg"
+                    >
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                        <div className="text-white">{feature.icon}</div>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
+                      <p className="text-sm text-slate-700">{feature.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Customization Tools - EvangSolの技術力アピール */}
+              <div>
+                <h3 className="text-3xl font-bold text-center mb-6">EvangSolが活用するNetSuiteのカスタマイズ機能</h3>
+                <p className="text-center text-slate-700 mb-12 max-w-3xl mx-auto">
+                  EvangSolの高い技術力により、NetSuiteの強力なカスタマイズ機能を最大限活用します
+                </p>
+                <div className="grid lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    icon: <Code className="w-10 h-10" />,
+                    title: 'SuiteScript',
+                    subtitle: 'JavaScriptベース開発',
+                    features: ['完全なカスタムロジック', 'イベントドリブン処理', 'API統合'],
+                    gradient: 'from-indigo-500 to-blue-500',
+                  },
+                  {
+                    icon: <Workflow className="w-10 h-10" />,
+                    title: 'SuiteFlow',
+                    subtitle: 'ビジュアルワークフロー',
+                    features: ['ドラッグ&ドロップ設計', '複雑な承認フロー', '自動化処理'],
+                    gradient: 'from-blue-500 to-cyan-500',
+                  },
+                  {
+                    icon: <Globe className="w-10 h-10" />,
+                    title: 'SuiteTalk & OneWorld',
+                    subtitle: 'API連携・グローバル対応',
+                    features: ['SOAP/REST対応', 'リアルタイム連携', '多国籍企業対応'],
+                    gradient: 'from-emerald-500 to-teal-500',
+                  },
+                ].map((tool, index) => (
+                  <div key={index} className="relative">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} rounded-2xl blur-xl opacity-10`}></div>
+                    <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg h-full">
+                      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${tool.gradient} mb-4`}>
+                        {tool.icon}
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{tool.title}</h3>
+                      <p className="text-gray-700 text-sm mb-4">{tool.subtitle}</p>
+
+                      <ul className="space-y-2">
+                        {tool.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" />
+                            <span className="text-slate-700 text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
                 </div>
               </div>
           </div>
@@ -752,8 +751,6 @@ const NetSuiteUnified: React.FC = () => {
                     onClick={() => navigate(solution.path)}
                     className="group cursor-pointer relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 hover:border-emerald-600 shadow-lg hover:shadow-xl transition-all hover:scale-105"
                   >
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600"></div>
-
                     <div className="text-emerald-600 mb-4 group-hover:text-teal-600 transition-colors">
                       {solution.icon}
                     </div>
@@ -883,7 +880,7 @@ const NetSuiteUnified: React.FC = () => {
               {AGILE_QA.map((qa, index) => (
                 <div key={index} className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-orange-100/30 rounded-3xl blur-xl"></div>
-                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50 hover:border-purple-600/50 transition-all">
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-10 border border-gray-300/50">
                     <div className="grid md:grid-cols-[auto,1fr] gap-8">
                       <div className="flex items-start">
                         <div className="p-4 bg-gradient-to-r from-purple-500/20 to-orange-500/20 rounded-2xl">
@@ -975,7 +972,6 @@ const NetSuiteUnified: React.FC = () => {
             {[
               { label: 'Oracle認定パートナー', icon: <Award className="w-6 h-6" /> },
               { label: 'ISO27001認証', icon: <Shield className="w-6 h-6" /> },
-              { label: '24/7サポート', icon: <HeartHandshake className="w-6 h-6" /> },
             ].map((badge, idx) => (
               <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white backdrop-blur rounded-full border-2 border-slate-300 shadow-md">
                 <div className="text-blue-600">{badge.icon}</div>

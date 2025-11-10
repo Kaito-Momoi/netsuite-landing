@@ -19,7 +19,6 @@ const ModernFooter: React.FC = () => {
   const footerLinks: {
     products: Array<{ label: string; path: string; icon: React.ReactElement }>;
     company: Array<{ label: string; path?: string; href?: string; external?: boolean; icon: React.ReactElement }>;
-    resources: Array<{ label: string; path?: string; href?: string; external?: boolean; icon: React.ReactElement }>;
   } = {
     products: [
       { label: 'NetSuite ERP', path: '/what-is-netsuite', icon: <Globe className="w-3 h-3" /> },
@@ -29,10 +28,6 @@ const ModernFooter: React.FC = () => {
     ],
     company: [
       { label: 'EvangSolについて', href: 'https://www.evangsol.co.jp/about', external: true, icon: <Building2 className="w-3 h-3" /> },
-    ],
-    resources: [
-      { label: 'セキュリティ', path: '/security-privacy', icon: <Shield className="w-3 h-3" /> },
-      { label: '利用規約', path: '/terms', icon: <Globe className="w-3 h-3" /> },
     ],
   };
 
@@ -75,21 +70,16 @@ const ModernFooter: React.FC = () => {
       {/* Main Footer Content */}
       <div className="relative">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid lg:grid-cols-4 gap-12">
+          <div className="grid lg:grid-cols-3 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <div className="mb-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl blur-lg opacity-30"></div>
-                    <div className="relative bg-white rounded-xl p-3 border-2 border-slate-300 shadow-md">
-                      <img
-                        src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
-                        alt="EvangSol"
-                        className="h-8"
-                      />
-                    </div>
-                  </div>
+                <div className="mb-6">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                    alt="EvangSol"
+                    className="h-12 w-auto"
+                  />
                 </div>
                 <p className="text-slate-700 mb-6 leading-relaxed font-medium">
                   NetSuiteの無限の可能性を、圧倒的な開発力で現実に。
@@ -163,69 +153,6 @@ const ModernFooter: React.FC = () => {
                 ))}
               </ul>
             </div>
-
-            <div>
-              <h4 className="font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Globe className="w-4 h-4 text-blue-600" />
-                リソース
-              </h4>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.path || link.href}>
-                    {link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onMouseEnter={() => setHoveredLink(link.href!)}
-                        onMouseLeave={() => setHoveredLink(null)}
-                        className="flex items-center gap-2 text-slate-600 hover:text-slate-900 font-medium transition-colors group"
-                      >
-                        <span className={`transition-all ${hoveredLink === link.href ? 'text-blue-600' : ''}`}>
-                          {link.icon}
-                        </span>
-                        {link.label}
-                        <ArrowUpRight className={`w-3 h-3 transition-all ${
-                          hoveredLink === link.href ? 'translate-x-1 -translate-y-1 opacity-100' : 'opacity-0'
-                        }`} />
-                      </a>
-                    ) : (
-                      <button
-                        onClick={() => navigate(link.path!)}
-                        onMouseEnter={() => setHoveredLink(link.path!)}
-                        onMouseLeave={() => setHoveredLink(null)}
-                        className="flex items-center gap-2 text-slate-600 hover:text-slate-900 font-medium transition-colors group"
-                      >
-                        <span className={`transition-all ${hoveredLink === link.path ? 'text-blue-600' : ''}`}>
-                          {link.icon}
-                        </span>
-                        {link.label}
-                        <ChevronRight className={`w-3 h-3 transition-all ${
-                          hoveredLink === link.path ? 'translate-x-1 opacity-100' : 'opacity-0'
-                        }`} />
-                      </button>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar - Scroll to Top Only */}
-      <div className="relative border-t-2 border-slate-300">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex justify-end">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-2 bg-gradient-to-r from-blue-100 to-indigo-100 border-2 border-blue-600 rounded-full hover:border-indigo-600 shadow-md hover:shadow-lg transition-all hover:scale-110 group"
-              aria-label="ページトップへ戻る"
-            >
-              <svg className="w-5 h-5 text-blue-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
