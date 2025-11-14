@@ -35,27 +35,67 @@ import ModernFooter from './components/ModernFooter';
 import { SOLUTIONS } from './constants/features';
 import { Feature } from './types';
 
-// NetSuite Core Features - 主要4モジュールに絞る
+// NetSuite Core Features - 主要モジュール
 const CORE_FEATURES: Feature[] = [
   {
-    icon: <Calculator className="w-8 h-8" />,
-    title: '財務会計',
-    description: 'リアルタイムの財務レポートと多通貨対応で、グローバルビジネスを支援',
+    icon: <Users className="w-8 h-8" />,
+    title: 'CRM / SFA',
+    description: '見込み客から商談、受注まで営業活動を一元管理し、ERPと完全連動する顧客管理システム',
+  },
+  {
+    icon: <TrendingUp className="w-8 h-8" />,
+    title: '販売・債権管理',
+    description: '受注から出荷、請求、入金まで販売プロセス全体を管理し、売上・在庫・原価を常に一致させる',
   },
   {
     icon: <Package className="w-8 h-8" />,
-    title: '在庫・受発注管理',
-    description: '複数拠点の在庫をリアルタイムで把握し、受注から出荷まで一元管理',
+    title: '購買・債務管理',
+    description: '発注から入荷、支払までの購買プロセスを自動化し、内部統制を強化',
   },
   {
-    icon: <Users className="w-8 h-8" />,
-    title: 'CRM・営業管理',
-    description: '顧客情報を一元化し、営業活動を効率化。Eコマースとも連携',
+    icon: <CheckCircle className="w-8 h-8" />,
+    title: 'プロジェクト管理',
+    description: '工事・開発などのプロジェクトの工数・経費・仕入をリアルタイムで集計し、進捗と収支を可視化',
+  },
+  {
+    icon: <Package className="w-8 h-8" />,
+    title: '在庫管理',
+    description: '複数倉庫や多拠点の在庫を高精度で管理し、需要計画や生産計画と連動',
+  },
+  {
+    icon: <Settings className="w-8 h-8" />,
+    title: '生産管理',
+    description: '多様な製造方式に対応し、生産計画から製造工程、原価管理まで一元管理',
+  },
+  {
+    icon: <TrendingUp className="w-8 h-8" />,
+    title: 'MRP（需要管理）',
+    description: '需要予測に基づいて部材手配や生産計画を自動計算し、在庫過多・欠品を防止',
+  },
+  {
+    icon: <Calculator className="w-8 h-8" />,
+    title: '財務会計',
+    description: '業務取引から仕訳の大部分を自動生成し、早期決算と経理業務の省力化を実現',
+  },
+  {
+    icon: <Globe className="w-8 h-8" />,
+    title: '複数会社管理',
+    description: 'グローバル展開企業向けに多通貨・複数会社・連結決算を標準機能で対応',
+  },
+  {
+    icon: <Workflow className="w-8 h-8" />,
+    title: 'ワークフロー',
+    description: '承認ルートや業務フローをプログラミング不要で設定し、業務を自動化',
+  },
+  {
+    icon: <Calculator className="w-8 h-8" />,
+    title: '従業員経費管理',
+    description: 'モバイルでの経費申請から承認、精算まで一元管理し、プロジェクト原価や会計と自動連携',
   },
   {
     icon: <BarChart3 className="w-8 h-8" />,
     title: 'BI・分析',
-    description: '経営ダッシュボードでKPIをリアルタイムに可視化し、迅速な意思決定を支援',
+    description: '営業・在庫・経理データをリアルタイムに可視化し、経営ダッシュボードで迅速な意思決定を支援',
   },
 ];
 
@@ -64,50 +104,50 @@ const STRENGTHS: Feature[] = [
   {
     icon: <Trophy className="w-8 h-8" />,
     title: '製造業特化の豊富な実績',
-    description: '電子機器、消費財、産業機器など製造業への導入実績多数。業界特有の複雑な要件に対応',
+    description: '電子機器、消費財、産業機器など製造業への導入実績多数。業界特有の複雑な生産管理・BOM・原価計算要件に対応',
     bulletPoints: ['製造業導入実績多数', '複雑な生産管理フロー', 'BOM・原価管理に精通'],
   },
   {
     icon: <GitBranch className="w-8 h-8" />,
     title: 'SAP・OBIC等からのリプレイス実績',
-    description: 'レガシーERPからの移行を多数支援。データ移行からトレーニングまで一貫サポート',
-    bulletPoints: ['SAP ECC/OBICからの移行', 'データ移行の高い成功率', '段階的な移行計画'],
+    description: 'SAP ECC、OBIC7など大規模レガシーERPからの移行を多数支援。データ移行からユーザートレーニングまで一貫サポート',
+    bulletPoints: ['SAP・OBIC移行実績', 'データ移行の高い成功率', '段階的な移行計画'],
   },
   {
     icon: <Globe className="w-8 h-8" />,
     title: 'OneWorld対応・海外拠点連携',
-    description: 'NetSuite OneWorldを活用した多国籍企業の統合基盤構築。海外子会社とのシームレス連携',
+    description: 'NetSuite OneWorldで多国籍企業の統合基盤を構築。海外子会社とリアルタイム連携し、グローバル経営を支援',
     bulletPoints: ['グローバル展開企業向け', '多通貨・多言語対応', 'リアルタイム連結'],
-  },
-  {
-    icon: <Code className="w-8 h-8" />,
-    title: '高い開発力',
-    description: 'SuiteScriptエキスパートが多数在籍。複雑な業務ロジックも堅実にシステム化',
-    bulletPoints: ['高度なカスタマイズ開発', '複雑な業務フローの実装', '独自機能の開発'],
   },
   {
     icon: <Award className="w-8 h-8" />,
     title: '日本企業特有の要件に精通',
-    description: '稟議・承認フロー、特殊な帳票、複雑な価格計算などに完全対応',
-    bulletPoints: ['日本の商習慣に精通', '複雑な承認フロー対応', '特殊な帳票作成'],
+    description: '海外製パッケージを、日本の商習慣に完全適合。稟議・承認フロー、特殊な帳票、複雑な価格計算など日本特有の要件を実現',
+    bulletPoints: ['日本の商習慣を熟知', '稟議・承認フロー構築', '特殊帳票・計算ロジック'],
   },
   {
     icon: <Building2 className="w-8 h-8" />,
     title: '全国対応拠点',
-    description: '東京・札幌に活動拠点を構え、近隣企業様との対面でのやり取りが可能',
-    bulletPoints: ['東京・札幌の2拠点体制', '対面サポート可能', '認識齟齬なく円滑な進行'],
+    description: '東京・札幌の2拠点体制で全国の企業様をサポート。対面での要件定義・打ち合わせにより、認識齟齬なく円滑にプロジェクトを推進',
+    bulletPoints: ['東京・札幌の2拠点', '対面での要件定義', '全国対応可能'],
   },
   {
     icon: <Users className="w-8 h-8" />,
     title: 'グループ総合力',
-    description: 'グループ会社EvangTechとの連携によるワンストップサービス',
-    bulletPoints: ['システム開発からERP導入まで', 'ワンストップ対応', '総合的なIT支援'],
+    description: 'グループ会社EvangTechとの連携により、Webシステム開発からERP導入まで対応。システム全体をワンストップで支援',
+    bulletPoints: ['Web開発〜ERP導入', 'ワンストップ対応', 'グループ総合力活用'],
+  },
+  {
+    icon: <Code className="w-8 h-8" />,
+    title: '高い開発力',
+    description: 'SuiteScriptエキスパートが多数在籍し、高度なカスタマイズを実現。複雑な業務ロジックも堅実にシステム化',
+    bulletPoints: ['SuiteScript開発力', '複雑な業務フロー実装', '独自機能の開発'],
   },
   {
     icon: <Zap className="w-8 h-8" />,
     title: '短納期',
-    description: '独自の開発フレームワークとテンプレートで、開発スピードを大幅に短縮',
-    bulletPoints: ['効率的な開発プロセス', '豊富なテンプレート活用', '迅速な納品'],
+    description: '独自開発のフレームワークとテンプレートを活用し、開発スピードを大幅短縮。スピーディな価値提供を実現',
+    bulletPoints: ['独自フレームワーク', '豊富なテンプレート', '迅速な価値提供'],
   },
 ];
 
@@ -391,22 +431,18 @@ const NetSuiteUnified: React.FC = () => {
                 </p>
               </div>
 
-              {/* Core Modules Grid - 4つに絞ったコンパクト表示 */}
+              {/* Core Modules - NetSuite主要モジュール図 */}
               <div>
-                <h3 className="text-3xl font-bold text-center mb-12">主要モジュール</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {CORE_FEATURES.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg"
-                    >
-                      <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                        <div className="text-white">{feature.icon}</div>
-                      </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
-                      <p className="text-sm text-slate-700">{feature.description}</p>
-                    </div>
-                  ))}
+                <h3 className="text-3xl font-bold text-center mb-6">主要モジュール</h3>
+                <p className="text-center text-slate-700 mb-12 text-sm md:text-base leading-relaxed max-w-3xl mx-auto px-4">
+                  NetSuiteは、CRM・販売・購買・在庫・製造・財務など、企業経営に必要な機能を統合的に提供するクラウドERPです
+                </p>
+                <div className="flex justify-center">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/ns_module.png`}
+                    alt="NetSuite主要モジュール"
+                    className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl h-auto"
+                  />
                 </div>
               </div>
 
