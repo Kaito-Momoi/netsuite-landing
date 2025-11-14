@@ -431,18 +431,33 @@ const NetSuiteUnified: React.FC = () => {
                 </p>
               </div>
 
-              {/* Core Modules - NetSuite主要モジュール図 */}
+              {/* Core Modules - NetSuite主要モジュール */}
               <div>
                 <h3 className="text-3xl font-bold text-center mb-6">主要モジュール</h3>
                 <p className="text-center text-slate-700 mb-12 text-sm md:text-base leading-relaxed max-w-3xl mx-auto px-4">
-                  NetSuiteは、CRM・販売・購買・在庫・製造・財務など、企業経営に必要な機能を統合的に提供するクラウドERPです
+                  NetSuiteは、CRM・販売・購買・在庫・製造・財務など、<br className="hidden md:block" />企業経営に必要な機能を統合的に提供するクラウドERPです
                 </p>
-                <div className="flex justify-center">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/ns_module.png`}
-                    alt="NetSuite主要モジュール"
-                    className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl h-auto"
-                  />
+
+                {/* Core Features Grid - Banner Style */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {CORE_FEATURES.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="relative bg-gradient-to-br from-white to-blue-50 rounded-xl p-5 border-2 border-slate-300 shadow-md"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center text-white shadow-md">
+                          {feature.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-bold text-base text-slate-900 mb-1.5">{feature.title}</h4>
+                          <p className="text-xs text-slate-700 leading-relaxed line-clamp-3">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
