@@ -162,17 +162,19 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
             <div className="flex justify-between items-center">
               {/* Logo Section */}
               <div className="flex items-center">
-                <button
-                  onClick={() => navigate('/')}
+                <a
+                  href="https://www.evangsol.co.jp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex items-center gap-3 relative"
-                  aria-label="Return to home page"
+                  aria-label="Visit EvangSol corporate website"
                 >
                   <img
                     src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
                     alt="EvangSol"
                     className="h-10"
                   />
-                </button>
+                </a>
               </div>
 
               {/* Center/Right Section with Navigation and Contact */}

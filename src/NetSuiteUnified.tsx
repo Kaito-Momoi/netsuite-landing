@@ -128,8 +128,8 @@ const STRENGTHS: Feature[] = [
   {
     icon: <Building2 className="w-8 h-8" />,
     title: '全国対応拠点',
-    description: '東京・札幌の2拠点体制で全国の企業様をサポート。対面での要件定義・打ち合わせにより、認識齟齬なく円滑にプロジェクトを推進',
-    bulletPoints: ['東京・札幌の2拠点', '対面での要件定義', '全国対応可能'],
+    description: '東京・札幌の2拠点体制。オンライン中心の柔軟な対応で全国の企業様をサポート。Web会議やチャットツールを活用し、迅速かつ効率的にプロジェクトを推進',
+    bulletPoints: ['東京・札幌の2拠点', 'オンライン中心の対応', '全国対応可能'],
   },
   {
     icon: <Users className="w-8 h-8" />,
@@ -162,7 +162,7 @@ const CASE_STUDY = {
   link: 'https://www.netsuite.co.jp/customer-testimonials/greenhouse-manufacturing.shtml',
   quote: {
     text: '「返品管理プロセスをNetSuiteに統合することで、申請から承認までのリードタイムが従来の1/10以下に短縮され、業務の効率化が実現しました。さらに、営業部門の利益管理や予実管理も追加で統合することで、属人化された業務から脱却し、よりスムーズな作業環境を実現するなど、継続的な改善に取り組んでいきます」',
-    author: '株式会社グリーンハウス 取締役 兼 マーケティング担当執行役員 奥寺 貴哉 氏',
+    author: '株式会社グリーンハウス ご担当者様',
   },
   highlights: [
     {
@@ -522,7 +522,7 @@ const NetSuiteUnified: React.FC = () => {
                   よくある質問（FAQ）
                 </h2>
                 <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto">
-                  ERP導入でよくある課題とEvangSolの解決策
+                  既存ERPでよくある課題とEvangSolの解決策
                 </p>
               </div>
 
@@ -570,9 +570,13 @@ const NetSuiteUnified: React.FC = () => {
                           <h3 className="text-2xl font-bold text-green-600">EvangSolのソリューション</h3>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
-                          NetSuiteのセルフカスタマイズ機能を活用できるように設定し、SuiteSuccessのテンプレートを用いて300以上の標準レポートやダッシュボードを提供。
+                          NetSuiteのカスタムフォーム機能により、画面レイアウトや項目を柔軟に変更可能。セルフカスタマイズ機能を活用できるように設定し、SuiteSuccessのテンプレートを用いて300以上の標準レポートやダッシュボードを提供。
                         </p>
                         <ul className="space-y-2 text-slate-700">
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>カスタムフォームで迅速な画面変更</span>
+                          </li>
                           <li className="flex items-start">
                             <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
                             <span>外部ベンダー依存の削減</span>
@@ -633,12 +637,16 @@ const NetSuiteUnified: React.FC = () => {
                           <h3 className="text-2xl font-bold text-green-600">EvangSolのソリューション</h3>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
-                          NetSuiteの承認ワークフロー機能を導入し、返品管理フローを統合。申請から承認までのリードタイムが従来の1/10以下に短縮。
+                          NetSuiteの承認ワークフロー機能（SuiteFlow）を導入し、返品管理フローをデータベースと連携して統合。申請データが即座にERP内のデータベースに記録され、承認完了と同時に在庫・売上データへ自動反映。グループウェア経由の紙PDFで平均5営業日かかっていた承認プロセスを、半日以内に大幅短縮。
                         </p>
                         <ul className="space-y-2 text-slate-700">
                           <li className="flex items-start">
                             <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
-                            <span>リードタイム1/10以下</span>
+                            <span>ワークフローとデータベースの完全連携</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>承認プロセスの大幅短縮</span>
                           </li>
                           <li className="flex items-start">
                             <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
@@ -759,9 +767,17 @@ const NetSuiteUnified: React.FC = () => {
                           <h3 className="text-2xl font-bold text-green-600">EvangSolのソリューション</h3>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
-                          NetSuiteの標準BIツール、ダッシュボード、ロール別レポート配布機能を設定。監査証跡の自動記録を導入。
+                          NetSuiteの標準BIツールと300以上の標準レポートを活用し、ユーザー自身でカスタマイズ可能なダッシュボードを構築。ロール別レポート配布機能で権限に応じた情報提供を実現し、監査証跡の自動記録を導入。
                         </p>
                         <ul className="space-y-2 text-slate-700">
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>300以上の標準レポート提供</span>
+                          </li>
+                          <li className="flex items-start">
+                            <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
+                            <span>カスタマイズ可能なダッシュボード</span>
+                          </li>
                           <li className="flex items-start">
                             <Star className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
                             <span>Excel業務の大幅削減</span>
@@ -921,7 +937,7 @@ const NetSuiteUnified: React.FC = () => {
             </div>
 
             <div className="bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-2xl p-8 mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">アジャイル開発でよくある課題</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">アジャイル開発でよくある質問</h3>
               <p className="text-gray-800 text-lg">
                 「終わりが見えない」アジャイル開発への不安を、EvangSolが以下の方法で解決します
               </p>

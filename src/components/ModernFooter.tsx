@@ -28,6 +28,7 @@ const ModernFooter: React.FC = () => {
     ],
     company: [
       { label: 'EvangSolについて', href: 'https://www.evangsol.co.jp/about', external: true, icon: <Building2 className="w-3 h-3" /> },
+      { label: 'お問い合わせ', href: 'https://www.evangsol.co.jp/support', external: true, icon: <Mail className="w-3 h-3" /> },
     ],
   };
 
