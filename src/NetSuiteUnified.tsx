@@ -162,7 +162,7 @@ const CASE_STUDY = {
   link: 'https://www.netsuite.co.jp/customer-testimonials/greenhouse-manufacturing.shtml',
   quote: {
     text: '「返品管理プロセスをNetSuiteに統合することで、申請から承認までのリードタイムが従来の1/10以下に短縮され、業務の効率化が実現しました。さらに、営業部門の利益管理や予実管理も追加で統合することで、属人化された業務から脱却し、よりスムーズな作業環境を実現するなど、継続的な改善に取り組んでいきます」',
-    author: '株式会社グリーンハウス ご担当者様',
+    author: '株式会社グリーンハウス\n取締役 兼マーケティング担当執行役員 様より',
   },
   highlights: [
     {
@@ -384,17 +384,6 @@ const NetSuiteUnified: React.FC = () => {
                         <Users className="w-4 h-4 text-blue-600" />
                         <span>{CASE_STUDY.employees}</span>
                       </div>
-                    </div>
-                    <div className="mt-8 flex flex-wrap gap-4">
-                      <a
-                        href="https://www.evangsol.co.jp/support"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-blue-600 text-slate-900 font-bold rounded-full hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all"
-                      >
-                        <Rocket className="w-4 h-4" />
-                        無料相談を依頼
-                      </a>
                     </div>
                   </div>
                   <div className="bg-white border-2 border-slate-300 rounded-2xl p-6 shadow-lg">
