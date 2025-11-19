@@ -393,7 +393,7 @@ const NetSuiteUnified: React.FC = () => {
                     <p className="text-sm md:text-base text-gray-800 leading-relaxed italic mb-6">
                       {CASE_STUDY.quote.text}
                     </p>
-                    <p className="text-xs md:text-sm text-gray-800">{CASE_STUDY.quote.author}</p>
+                    <p className="text-xs md:text-sm text-gray-800 whitespace-pre-line">{CASE_STUDY.quote.author}</p>
                   </div>
                 </div>
 
