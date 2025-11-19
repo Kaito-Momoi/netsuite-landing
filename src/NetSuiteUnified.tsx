@@ -370,7 +370,7 @@ const NetSuiteUnified: React.FC = () => {
                       <Trophy className="w-4 h-4" />
                       導入実績
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">{CASE_STUDY.company}</h3>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2">{CASE_STUDY.company}</h3>
                     <p className="text-lg text-blue-700 font-bold mb-4">{CASE_STUDY.headline}</p>
                     <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-6">
                       {CASE_STUDY.summary}
