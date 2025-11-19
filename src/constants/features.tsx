@@ -6,7 +6,7 @@ export const SOLUTION_FEATURES: Feature[] = [
   {
     icon: <RefreshCw className="w-8 h-8" />,
     title: '入金消込ソリューション',
-    description: '銀行口座やアカウントアグリゲーションサービス（Moneylook）の入金データを自動取得し、売掛金との突合を効率化',
+    description: '銀行口座やアカウントアグリゲーションサービスの入金データを自動取得し、売掛金との突合を効率化',
   },
   {
     icon: <Globe className="w-8 h-8" />,
@@ -40,7 +40,7 @@ export const SOLUTIONS: Solution[] = [
   {
     icon: <RefreshCw className="w-8 h-8" />,
     title: '入金消込ソリューション',
-    description: '銀行口座やアカウントアグリゲーションサービス（Moneylook）の入金データを自動取得し、売掛金との突合を効率化',
+    description: '銀行口座やアカウントアグリゲーションサービスの入金データを自動取得し、売掛金との突合を効率化',
     path: '/solutions/payment-matching',
   },
   {
