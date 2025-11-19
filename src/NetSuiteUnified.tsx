@@ -792,7 +792,7 @@ const NetSuiteUnified: React.FC = () => {
               <div className="text-center">
                 <h2 className="text-5xl font-bold mb-6">
                   <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                    ソリューション
+                    独自開発アドオン
                   </span>
                 </h2>
                 <p className="text-xl text-slate-700 font-medium max-w-3xl mx-auto mb-12">
