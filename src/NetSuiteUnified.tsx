@@ -241,7 +241,7 @@ const NetSuiteUnified: React.FC = () => {
   }, []);
 
   // Memoize featured solutions to prevent recalculation on every render
-  const featuredSolutions = useMemo(() => SOLUTIONS.slice(0, 6), []);
+  const featuredSolutions = useMemo(() => SOLUTIONS, []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">

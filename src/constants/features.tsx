@@ -1,4 +1,4 @@
-import { RefreshCw, Globe, Package, BarChart3, Database, FileText } from 'lucide-react';
+import { RefreshCw, Globe, Package, BarChart3, Database, FileText, FilePlus } from 'lucide-react';
 import { Feature, Solution } from '../types';
 
 // Legacy export (kept for compatibility if referenced elsewhere)
@@ -12,6 +12,11 @@ export const SOLUTION_FEATURES: Feature[] = [
     icon: <Globe className="w-8 h-8" />,
     title: 'ECデータ連携基盤',
     description: '各種ECサイトやモール、アカウントアグリゲーションサービスとNetSuiteをシームレスに連携',
+  },
+  {
+    icon: <FilePlus className="w-8 h-8" />,
+    title: '汎用申請ソリューション',
+    description: 'NetSuite内で申請から承認、データ反映まで全て完結。柔軟な承認ワークフローで業務効率を向上',
   },
   {
     icon: <Package className="w-8 h-8" />,
@@ -35,7 +40,7 @@ export const SOLUTION_FEATURES: Feature[] = [
   },
 ];
 
-// Canonical solutions list with routes
+// Canonical solutions list with routes - Featured 3 solutions
 export const SOLUTIONS: Solution[] = [
   {
     icon: <RefreshCw className="w-8 h-8" />,
@@ -49,6 +54,17 @@ export const SOLUTIONS: Solution[] = [
     description: '各種ECサイトやモール、アカウントアグリゲーションサービスとNetSuiteをシームレスに連携',
     path: '/solutions/ec-integration',
   },
+  {
+    icon: <FilePlus className="w-8 h-8" />,
+    title: '汎用申請ソリューション',
+    description: 'NetSuite内で申請から承認、データ反映まで全て完結。柔軟な承認ワークフローで業務効率を向上',
+    path: '/solutions/general-application',
+  },
+];
+
+// All solutions (for future reference)
+export const ALL_SOLUTIONS: Solution[] = [
+  ...SOLUTIONS,
   {
     icon: <Package className="w-8 h-8" />,
     title: '業界特化OMS',
