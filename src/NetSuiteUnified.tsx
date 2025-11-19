@@ -836,6 +836,12 @@ const NetSuiteUnified: React.FC = () => {
                 ))}
               </div>
 
+              <div className="text-center mt-8">
+                <p className="text-slate-600 text-lg font-medium italic">
+                  Coming Soon...
+                </p>
+              </div>
+
           </div>
 
           {/* 5. Implementation Methodology */}
