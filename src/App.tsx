@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const InventoryAging = lazy(() => import('./InventoryAging'));
 const PaymentMatching = lazy(() => import('./PaymentMatching'));
@@ -21,24 +22,26 @@ const LoadingSpinner = () => (
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Suspense fallback={<LoadingSpinner />}>
-        <Routes>
-          <Route path="/" element={<NetSuiteUnified />} />
-          <Route path="/solutions/payment-matching" element={<PaymentMatching />} />
-          <Route path="/solutions/ec-integration" element={<ECIntegration />} />
-          <Route path="/solutions/industry-oms" element={<IndustryOMS />} />
-          <Route path="/solutions/material-planning" element={<MaterialPlanning />} />
-          <Route path="/solutions/warehouse-integration" element={<WarehouseIntegration />} />
-          <Route path="/solutions/inventory-aging" element={<InventoryAging />} />
-          <Route path="/solutions/general-application" element={<GeneralApplicationSolution />} />
-          <Route path="/terms" element={<TermsOfUse />} />
-          <Route path="/security-privacy" element={<SecurityPrivacy />} />
-          <Route path="/netsuite-unified" element={<NetSuiteUnified />} />
-        </Routes>
-      </Suspense>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <ScrollToTop />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<NetSuiteUnified />} />
+            <Route path="/solutions/payment-matching" element={<PaymentMatching />} />
+            <Route path="/solutions/ec-integration" element={<ECIntegration />} />
+            <Route path="/solutions/industry-oms" element={<IndustryOMS />} />
+            <Route path="/solutions/material-planning" element={<MaterialPlanning />} />
+            <Route path="/solutions/warehouse-integration" element={<WarehouseIntegration />} />
+            <Route path="/solutions/inventory-aging" element={<InventoryAging />} />
+            <Route path="/solutions/general-application" element={<GeneralApplicationSolution />} />
+            <Route path="/terms" element={<TermsOfUse />} />
+            <Route path="/security-privacy" element={<SecurityPrivacy />} />
+            <Route path="/netsuite-unified" element={<NetSuiteUnified />} />
+          </Routes>
+        </Suspense>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
