@@ -950,14 +950,6 @@ const NetSuiteUnified: React.FC = () => {
                         <p className="text-lg text-gray-800 leading-relaxed">
                           A: {qa.answer}
                         </p>
-                        <div className="grid grid-cols-3 gap-4 pt-4">
-                          {qa.details.map((detail, idx) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                              <span className="text-sm text-gray-800">{detail}</span>
-                            </div>
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </div>
