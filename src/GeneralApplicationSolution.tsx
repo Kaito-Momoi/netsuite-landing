@@ -89,7 +89,6 @@ const USE_CASES = [
 const GeneralApplicationSolution: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -204,10 +203,10 @@ const GeneralApplicationSolution: React.FC = () => {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {MAIN_FEATURES.map((feature, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-purple-400 transition-all hover:scale-105 h-full flex flex-col">
-                  <div className="w-20 h-20 bg-gradient-to-br from-purple-600/20 to-indigo-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-purple-500/30">
+              <div key={index} className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-3xl blur-xl"></div>
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 h-full flex flex-col">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-600/20 to-indigo-600/20 rounded-2xl flex items-center justify-center mb-6 border-2 border-purple-500/30">
                     <div className="text-purple-600">{feature.icon}</div>
                   </div>
                   <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
@@ -245,14 +244,12 @@ const GeneralApplicationSolution: React.FC = () => {
             {CAPABILITIES.map((capability, index) => (
               <div
                 key={index}
-                className="group relative"
-                onMouseEnter={() => setHoveredCapability(index)}
-                onMouseLeave={() => setHoveredCapability(null)}
+                className="relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-blue-600/10 rounded-2xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-0'}`}></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-indigo-500/50 transition-all">
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-blue-600/10 rounded-2xl blur-xl opacity-0"></div>
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50">
                   <div className="flex items-start">
-                    <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border-2 border-indigo-400">
+                    <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 border-2 border-indigo-400">
                       <div className="text-purple-600">{capability.icon}</div>
                     </div>
                     <div>
@@ -281,10 +278,10 @@ const GeneralApplicationSolution: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {USE_CASES.map((useCase, index) => (
-              <div key={index} className="group">
-                <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-purple-500/50 transition-all hover:scale-105 h-full">
+              <div key={index}>
+                <div className="bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 h-full">
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border-2 border-purple-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center mb-4 border-2 border-purple-300">
                       <div className="text-purple-600">{useCase.icon}</div>
                     </div>
                     <h3 className="font-bold text-slate-900 mb-2 text-lg">{useCase.title}</h3>
