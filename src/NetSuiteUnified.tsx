@@ -187,21 +187,21 @@ const CASE_STUDY = {
 const AGILE_QA = [
   {
     question: 'アジャイル導入は「終わりが見えない」と聞きますが？',
-    answer: 'EvangSolのアジャイル導入は、プロダクトビジョンとロードマップを最初に明確化し、MVP（最小実装製品）を定義することで、全体のゴールを可視化します。',
+    answer: 'EvangSolのアジャイル導入は、実現したい業務の姿と導入スケジュールを最初に明確化し、まず稼働させる業務範囲を定義することで、全体のゴールを可視化します。',
     icon: <Target className="w-8 h-8" />,
-    details: ['プロダクトビジョンの共有', 'ロードマップの策定', 'MVPの明確な定義'],
+    details: ['実現したい業務の姿の共有', '導入スケジュールの策定', 'まず稼働させる業務範囲の明確な定義'],
   },
   {
     question: '各フェーズでは何を基準に進捗を管理しますか？',
-    answer: '各スプリントで具体的なゴールと完了の定義を設定し、明確な成果物を提供します。',
+    answer: '各短期開発サイクルで具体的なゴールと完了の定義を設定し、明確な成果物を提供します。',
     icon: <CheckCircle className="w-8 h-8" />,
-    details: ['スプリント', '明確な完了基準', 'デモ可能な成果物'],
+    details: ['短期開発サイクル', '明確な完了基準', 'デモ可能な成果物'],
   },
   {
     question: 'どうやって成果を確認していきますか？',
-    answer: '小さなリリースを積み重ね、各スプリントの終わりにデモを実施。ユーザーのフィードバックを即座に反映し、価値を継続的に提供します。',
+    answer: '小さなリリースを積み重ね、各短期開発サイクルの終わりにデモを実施。ユーザーのフィードバックを即座に反映し、価値を継続的に提供します。',
     icon: <Rocket className="w-8 h-8" />,
-    details: ['スプリントデモ', 'ユーザーフィードバック', '継続的な価値提供'],
+    details: ['短期開発サイクルごとのデモ', 'ユーザーフィードバック', '継続的な価値提供'],
   },
   {
     question: '進捗が見えにくくなることはありませんか？',
@@ -856,7 +856,7 @@ const NetSuiteUnified: React.FC = () => {
                   <tr>
                     <td className="px-6 py-4 font-bold text-gray-900">柔軟性</td>
                     <td className="px-6 py-4 text-gray-800">導入後に追加開発で対応</td>
-                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">スプリントごとに変更・改善を取り込みやすい</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">短期開発サイクルごとに変更・改善を取り込みやすい</td>
                     <td className="px-6 py-4 text-gray-800">要件変更に弱く、再計画の負荷が大きい</td>
                   </tr>
                   <tr>
@@ -885,11 +885,11 @@ const NetSuiteUnified: React.FC = () => {
                 <ol className="space-y-3">
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">1</span>
-                    <span className="text-gray-800">ビジョン整理とロードマップ策定</span>
+                    <span className="text-gray-800">実現したい業務の姿の整理と導入スケジュール策定</span>
                   </li>
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">2</span>
-                    <span className="text-gray-800">スプリント単位の要件・設定・テスト</span>
+                    <span className="text-gray-800">短期開発サイクル単位の要件・設定・テスト</span>
                   </li>
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">3</span>
