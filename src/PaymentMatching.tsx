@@ -132,8 +132,8 @@ const PaymentMatching: React.FC = () => {
 
         {/* Animated gradient orbs */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
         </div>
 
         {/* Grid pattern overlay */}
@@ -141,14 +141,14 @@ const PaymentMatching: React.FC = () => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`
         }}></div>
 
-        {/* Interactive glow */}
-        <div
-          className="pointer-events-none fixed w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full blur-3xl transition-all duration-300"
+        {/* Interactive glow - Disabled for static design */}
+        {/* <div
+          className="pointer-events-none fixed w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full blur-3xl"
           style={{
             left: `${mousePosition.x - 192}px`,
             top: `${mousePosition.y - 192}px`,
           }}
-        />
+        /> */}
       </div>
 
       <ModernNavigationBar
@@ -161,7 +161,7 @@ const PaymentMatching: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="relative mb-8 opacity-100 translate-y-0">
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
                 入金消込ソリューション
@@ -172,26 +172,17 @@ const PaymentMatching: React.FC = () => {
             </p>
           </div>
 
-          {/* Animated Feature Carousel */}
+          {/* Feature Display - Static */}
           <div className="relative h-20 mb-12">
-            <div className="absolute inset-0 flex items-center justify-center">
-              {[
-                { text: '99.9%の自動化率', icon: <Cpu className="w-8 h-8" />, gradient: 'from-blue-600 to-indigo-600' },
-                { text: '処理時間95%削減', icon: <Clock className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
-                { text: 'リアルタイム処理', icon: <Zap className="w-8 h-8" />, gradient: 'from-teal-400 to-green-400' },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-                >
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    <div className="text-white">{item.icon}</div>
-                  </div>
-                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
-                    {item.text}
-                  </span>
+            <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600">
+                  <div className="text-white"><Cpu className="w-8 h-8" /></div>
                 </div>
-              ))}
+                <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  99.9%の自動化率
+                </span>
+              </div>
             </div>
           </div>
 
@@ -214,9 +205,9 @@ const PaymentMatching: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {MAIN_FEATURES.map((feature, index) => (
               <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-blue-400 transition-all hover:scale-105 h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-blue-500/30">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl"></div>
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 border-2 border-blue-500/30">
                     <div className="text-blue-600">{feature.icon}</div>
                   </div>
                   <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
@@ -258,10 +249,10 @@ const PaymentMatching: React.FC = () => {
                 onMouseEnter={() => setHoveredCapability(index)}
                 onMouseLeave={() => setHoveredCapability(null)}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-teal-600/10 rounded-2xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-0'}`}></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-cyan-500/50 transition-all">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-teal-600/10 rounded-2xl blur-xl opacity-0"></div>
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50">
                   <div className="flex items-start">
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border-2 border-cyan-400">
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 border-2 border-cyan-400">
                       <div className="text-blue-600">{capability.icon}</div>
                     </div>
                     <div>
@@ -314,9 +305,9 @@ const PaymentMatching: React.FC = () => {
           <div className="flex justify-center">
             <button
               onClick={handleContact}
-              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full flex items-center gap-3 group"
             >
-              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <Mail className="w-6 h-6" />
               お問い合わせ
               <ExternalLink className="w-5 h-5" />
             </button>

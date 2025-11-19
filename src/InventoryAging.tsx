@@ -186,8 +186,8 @@ const InventoryAging: React.FC = () => {
         {/* Animated mesh gradient */}
         <div className="absolute inset-0 opacity-30 overflow-hidden">
           <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 right-0 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
         </div>
 
         {/* Particle field */}
@@ -195,7 +195,7 @@ const InventoryAging: React.FC = () => {
           {[...Array(50)].map((_, i) => (
             <div
               key={i}
-              className="absolute animate-pulse"
+              className="absolute"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -210,7 +210,7 @@ const InventoryAging: React.FC = () => {
 
         {/* Interactive cursor glow */}
         <div
-          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-blue-500/20 to-transparent rounded-full blur-3xl transition-all duration-200 z-0"
+          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-blue-500/20 to-transparent rounded-full blur-3xl z-0"
           style={{
             left: `${Math.max(0, Math.min(mousePosition.x - 128, window.innerWidth - 256))}px`,
             top: `${mousePosition.y - 128}px`,
@@ -228,7 +228,7 @@ const InventoryAging: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* 3D Title */}
-          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-8xl font-black">
               <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
                 在庫分析の革新
@@ -237,7 +237,7 @@ const InventoryAging: React.FC = () => {
           </div>
 
           {/* Subtitle with animation */}
-          <p className={`text-2xl md:text-3xl mb-4 text-slate-800 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-2xl md:text-3xl mb-4 text-slate-800 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             エージング分析で実現する在庫最適化
           </p>
 
@@ -251,7 +251,7 @@ const InventoryAging: React.FC = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                  className={`absolute flex items-center gap-4 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
                     {React.cloneElement(item.icon, { className: 'w-8 h-8 text-white' })}
@@ -286,11 +286,11 @@ const InventoryAging: React.FC = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {CORE_FEATURES.map((feature, index) => (
                 <div key={index} className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl blur-xl opacity-20 group-hover:opacity-30"></div>
+                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-8 border-2 border-slate-300/50 h-full">
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-teal-500 to-cyan-500"></div>
 
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-blue-500/30">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 border-2 border-blue-500/30">
                       <div className="text-blue-600">{feature.icon}</div>
                     </div>
 
@@ -325,8 +325,8 @@ const InventoryAging: React.FC = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {AGING_CATEGORIES.map((category, index) => (
                 <div key={index} className="group relative">
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`}></div>
-                  <div className={`relative ${category.bgColor} backdrop-blur-xl rounded-xl p-6 border hover:scale-105 transition-all h-full`}>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-xl blur-xl opacity-20 group-hover:opacity-30`}></div>
+                  <div className={`relative ${category.bgColor} backdrop-blur-xl rounded-xl p-6 border h-full`}>
                     <div className={`w-full h-2 rounded-full mb-4 bg-gradient-to-r ${category.color}`}></div>
 
                     <h3 className="text-xl font-bold mb-3 text-slate-900">{category.period}</h3>
@@ -363,8 +363,8 @@ const InventoryAging: React.FC = () => {
                   onMouseEnter={() => setHoveredCapability(index)}
                   onMouseLeave={() => setHoveredCapability(null)}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 rounded-xl blur-xl transition-all ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border-2 border-slate-300/50 hover:border-blue-500/50 transition-all hover:scale-105 h-full">
+                  <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 rounded-xl blur-xl ${hoveredCapability === index ? 'opacity-40' : 'opacity-20'}`}></div>
+                  <div className="relative bg-white backdrop-blur-xl rounded-xl p-6 border-2 border-slate-300/50 h-full">
                     <div className="flex items-start">
                       <div className="bg-gradient-to-br from-red-100/10 to-rose-100/10 p-3 rounded-lg mr-4 border-2 border-red-500/20">
                         <div className="text-blue-600">{capability.icon}</div>
@@ -392,7 +392,7 @@ const InventoryAging: React.FC = () => {
               {IMPACT_METRICS.map((metric, index) => (
                 <div
                   key={index}
-                  className={`transform transition-all duration-1000 ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  className={`transform ${statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
                   <div className="text-center">
@@ -428,9 +428,9 @@ const InventoryAging: React.FC = () => {
           <div className="flex justify-center">
             <button
               onClick={handleContact}
-              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full flex items-center justify-center gap-3 group"
             >
-              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <Mail className="w-6 h-6" />
               <ExternalLink className="w-5 h-5" />
               お問い合わせ
             </button>

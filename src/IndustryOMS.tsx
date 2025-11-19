@@ -181,8 +181,8 @@ const IndustryOMS: React.FC = () => {
 
         {/* Animated gradient orbs */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
         </div>
 
         {/* Circuit pattern */}
@@ -193,14 +193,14 @@ const IndustryOMS: React.FC = () => {
           }}></div>
         </div>
 
-        {/* Interactive glow */}
-        <div
-          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-indigo-500/20 to-transparent rounded-full blur-3xl transition-all duration-300"
+        {/* Interactive glow - Disabled for static design */}
+        {/* <div
+          className="pointer-events-none fixed w-64 h-64 bg-gradient-radial from-indigo-500/20 to-transparent rounded-full blur-3xl"
           style={{
             left: `${mousePosition.x - 128}px`,
             top: `${mousePosition.y - 128}px`,
           }}
-        />
+        /> */}
       </div>
 
       <ModernNavigationBar
@@ -213,7 +213,7 @@ const IndustryOMS: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 業界特化OMS
@@ -234,7 +234,7 @@ const IndustryOMS: React.FC = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                  className={`absolute flex items-center gap-4 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
                     <div className="text-white">{item.icon}</div>
@@ -266,9 +266,9 @@ const IndustryOMS: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {CORE_FEATURES.map((feature, index) => (
               <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 hover:border-indigo-500/50 transition-all hover:scale-105 h-full">
-                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-600/20 to-blue-600/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border-2 border-indigo-400">
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 rounded-3xl blur-xl"></div>
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-600/20 to-blue-600/20 rounded-2xl flex items-center justify-center mb-6 border-2 border-indigo-400">
                     <div className="text-indigo-600">{feature.icon}</div>
                   </div>
                   <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
@@ -310,8 +310,8 @@ const IndustryOMS: React.FC = () => {
                 onMouseEnter={() => setHoveredIndustry(index)}
                 onMouseLeave={() => setHoveredIndustry(null)}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${industry.color} rounded-3xl blur-xl transition-all ${hoveredIndustry === index ? 'opacity-40' : 'opacity-20'}`}></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-6 border-2 border-slate-300/50 hover:border-gray-400 transition-all h-full">
+                <div className={`absolute inset-0 bg-gradient-to-r ${industry.color} rounded-3xl blur-xl ${hoveredIndustry === index ? 'opacity-40' : 'opacity-20'}`}></div>
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-6 border-2 border-slate-300/50 h-full">
                   <div className={`w-16 h-16 bg-gradient-to-r ${industry.color} rounded-2xl flex items-center justify-center mb-4`}>
                     <div className="text-slate-900">{industry.icon}</div>
                   </div>
@@ -346,9 +346,9 @@ const IndustryOMS: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {CAPABILITIES.map((capability, index) => (
               <div key={index} className="group relative">
-                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 hover:border-cyan-500/50 transition-all">
+                <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50">
                   <div className="flex items-start">
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border-2 border-cyan-400">
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4 border-2 border-cyan-400">
                       <div className="text-blue-600">{capability.icon}</div>
                     </div>
                     <div>
@@ -401,9 +401,9 @@ const IndustryOMS: React.FC = () => {
           <div className="flex justify-center">
             <button
               onClick={handleContact}
-              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full flex items-center gap-3 group"
             >
-              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <Mail className="w-6 h-6" />
               <ExternalLink className="w-5 h-5" />
               お問い合わせ
             </button>
