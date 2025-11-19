@@ -21,8 +21,9 @@ describe('ModernNavigationBar', () => {
     renderWithRouter(<ModernNavigationBar />);
 
     expect(screen.getByText('ホーム')).toBeInTheDocument();
-    expect(screen.getByText('NetSuiteの機能')).toBeInTheDocument();
     expect(screen.getByText('EvangSolの強み')).toBeInTheDocument();
+    expect(screen.getByText('NetSuiteについて')).toBeInTheDocument();
+    expect(screen.getByText('独自開発アドオン')).toBeInTheDocument();
   });
 
   it('renders contact button', () => {

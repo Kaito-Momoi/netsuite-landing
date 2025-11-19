@@ -5,8 +5,8 @@ test.describe('Navigation Functionality', () => {
     await page.goto('/');
   });
 
-  test('should navigate to NetSuite features section', async ({ page }) => {
-    await page.getByText('NetSuiteの機能').click();
+  test('should navigate to NetSuite about section', async ({ page }) => {
+    await page.getByText('NetSuiteについて').click();
 
     // Wait for scroll
     await page.waitForTimeout(500);
@@ -25,7 +25,7 @@ test.describe('Navigation Functionality', () => {
     await expect(section).toBeInViewport();
   });
 
-  test('should navigate to agile process section', async ({ page }) => {
+  test('should navigate to FAQ section', async ({ page }) => {
     await page.getByText('よくある質問').click();
 
     await page.waitForTimeout(500);
@@ -35,7 +35,7 @@ test.describe('Navigation Functionality', () => {
   });
 
   test('should navigate to solutions section', async ({ page }) => {
-    await page.getByText('ソリューション').click();
+    await page.getByText('独自開発アドオン').click();
 
     await page.waitForTimeout(500);
 
@@ -70,7 +70,7 @@ test.describe('Navigation Functionality', () => {
 
     // Check that solutions nav item is active (this would need specific class checking)
     // For now, just verify navigation items are still visible
-    await expect(page.getByText('ソリューション')).toBeVisible();
+    await expect(page.getByText('独自開発アドオン')).toBeVisible();
   });
 
   test('should open mobile menu on small screens', async ({ page }) => {

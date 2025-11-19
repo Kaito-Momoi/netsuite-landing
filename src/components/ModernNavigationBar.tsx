@@ -80,16 +80,16 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         section: 'home'
       },
       {
-        label: 'NetSuiteの機能',
-        icon: <Cloud className="w-3 h-3" />,
-        gradient: 'from-cyan-500 to-teal-500',
-        section: 'netsuite'
-      },
-      {
         label: 'EvangSolの強み',
         icon: <Rocket className="w-3 h-3" />,
         gradient: 'from-blue-500 to-cyan-500',
         section: 'evangsol'
+      },
+      {
+        label: 'NetSuiteについて',
+        icon: <Cloud className="w-3 h-3" />,
+        gradient: 'from-cyan-500 to-teal-500',
+        section: 'netsuite'
       },
       {
         label: 'よくある質問',
@@ -98,7 +98,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         section: 'matching'
       },
       {
-        label: 'ソリューション',
+        label: '独自開発アドオン',
         icon: <Sparkles className="w-3 h-3" />,
         gradient: 'from-green-500 to-emerald-500',
         section: 'solutions'

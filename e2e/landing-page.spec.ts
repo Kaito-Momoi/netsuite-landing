@@ -18,9 +18,10 @@ test.describe('NetSuite Landing Page', () => {
   test('should have working navigation links', async ({ page }) => {
     // Check navigation items
     await expect(page.getByText('ホーム')).toBeVisible();
-    await expect(page.getByText('NetSuiteの機能')).toBeVisible();
     await expect(page.getByText('EvangSolの強み')).toBeVisible();
+    await expect(page.getByText('NetSuiteについて')).toBeVisible();
     await expect(page.getByText('よくある質問')).toBeVisible();
+    await expect(page.getByText('独自開発アドオン')).toBeVisible();
   });
 
   test('should display contact button', async ({ page }) => {
@@ -57,9 +58,8 @@ test.describe('NetSuite Landing Page', () => {
     await expect(page.getByText('株式会社グリーンハウス')).toBeVisible();
   });
 
-  test('should display agile process section', async ({ page }) => {
-    await expect(page.getByText('柔軟で確実な')).toBeVisible();
-    await expect(page.getByText('アジャイル導入プロセス')).toBeVisible();
+  test('should display FAQ section', async ({ page }) => {
+    await expect(page.getByText('よくある質問（FAQ）')).toBeVisible();
   });
 
   test('should display solutions section with cards', async ({ page }) => {
