@@ -186,26 +186,26 @@ const CASE_STUDY = {
 // Agile Process Q&A
 const AGILE_QA = [
   {
-    question: 'アジャイル導入は「終わりが見えない」と聞きますが？',
-    answer: 'EvangSolのアジャイル導入は、プロダクトビジョンとロードマップを最初に明確化し、MVP（最小実装製品）を定義することで、全体のゴールを可視化します。',
+    question: '「いつ終わるの？」が見えなくて不安です',
+    answer: '最初にゴールと全体の計画を決めるので、「どこまで作るか」が明確です。途中で優先度を見直すことはあっても、目指すゴールは変わりません。',
     icon: <Target className="w-8 h-8" />,
     details: ['プロダクトビジョンの共有', 'ロードマップの策定', 'MVPの明確な定義'],
   },
   {
-    question: '各フェーズでは何を基準に進捗を管理しますか？',
-    answer: '各スプリントで具体的なゴールと完了の定義を設定し、明確な成果物を提供します。',
+    question: '進み具合はどうやって確認できますか？',
+    answer: '短い期間（2〜4週間）ごとに「ここまで完成」という目標を決めて、実際に動くものを見せます。だから進捗が目に見えます。',
     icon: <CheckCircle className="w-8 h-8" />,
     details: ['スプリント', '明確な完了基準', 'デモ可能な成果物'],
   },
   {
-    question: 'どうやって成果を確認していきますか？',
-    answer: '小さなリリースを積み重ね、各スプリントの終わりにデモを実施。ユーザーのフィードバックを即座に反映し、価値を継続的に提供します。',
+    question: '本当に使えるものができるか心配です',
+    answer: '作るたびに実際に使ってもらい、「ここは良い」「ここは直したい」という声をすぐに取り入れます。だから使いやすいシステムになります。',
     icon: <Rocket className="w-8 h-8" />,
     details: ['スプリントデモ', 'ユーザーフィードバック', '継続的な価値提供'],
   },
   {
-    question: '進捗が見えにくくなることはありませんか？',
-    answer: '定期的なふりかえり（レトロスペクティブ）で進捗と達成感を確認。常に「どこへ向かっていて、いまどこにいるのか」を可視化します。',
+    question: '費用や期間が膨らみませんか？',
+    answer: '定期的に「今どこまで進んだか」「予定通りか」を確認します。もし予算や期間が厳しければ、優先度の低い機能を後回しにして調整できます。',
     icon: <BarChart3 className="w-8 h-8" />,
     details: ['進捗の可視化', '定期的なふりかえり', 'ベロシティ計測'],
   },
@@ -829,8 +829,9 @@ const NetSuiteUnified: React.FC = () => {
                 導入方法論
               </h2>
               <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
-                EvangSolはアジャイル導入を核に、業務単位で優先度を再評価しながら短いサイクルで開発・レビュー・改善を繰り返します。
-                変更への強さとコスト最適化、現場からのフィードバック循環を重視し、価値を早期に立ち上げます。
+                EvangSolの導入は「小さく始めて、確実に広げる」スタイル。<br />
+                優先度の高い業務から順番に作り、実際に使いながら改善を重ねます。<br />
+                現場の声を取り入れながら進めるので、無駄なく・早く・確実に成果が出ます。
               </p>
             </div>
 
@@ -839,30 +840,30 @@ const NetSuiteUnified: React.FC = () => {
               <table className="w-full bg-white/95 rounded-2xl overflow-hidden shadow-lg">
                 <thead>
                   <tr className="bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900">
-                    <th className="px-6 py-4 text-left font-bold">観点</th>
-                    <th className="px-6 py-4 text-left">パッケージ導入</th>
-                    <th className="px-6 py-4 text-left bg-blue-600/20">アジャイル導入</th>
-                    <th className="px-6 py-4 text-left">ウォーターフォール導入</th>
+                    <th className="px-6 py-4 text-left font-bold">-</th>
+                    <th className="px-6 py-4 text-left">パッケージそのまま導入</th>
+                    <th className="px-6 py-4 text-left bg-blue-600/20">段階的カスタマイズ導入</th>
+                    <th className="px-6 py-4 text-left">全部作ってから導入</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   <tr>
                     <td className="px-6 py-4 font-bold text-gray-900">導入期間</td>
-                    <td className="px-6 py-4 text-gray-800">短期（標準機能中心）</td>
-                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">中期（優先度順に段階的リリース）</td>
-                    <td className="px-6 py-4 text-gray-800">長期（全体要件を確定後に一括リリース）</td>
+                    <td className="px-6 py-4 text-gray-800">短期（基本機能のみ）</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">中期（大事なものから順番に）</td>
+                    <td className="px-6 py-4 text-gray-800">長期（全部決めてから）</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-bold text-gray-900">柔軟性</td>
-                    <td className="px-6 py-4 text-gray-800">導入後に追加開発で対応</td>
-                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">サイクルごとに変更・改善を取り込みやすい</td>
-                    <td className="px-6 py-4 text-gray-800">要件変更に弱く、再計画の負荷が大きい</td>
+                    <td className="px-6 py-4 font-bold text-gray-900">使いながら直せるか</td>
+                    <td className="px-6 py-4 text-gray-800">後から追加開発が必要</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">使いながら改善できる</td>
+                    <td className="px-6 py-4 text-gray-800">変更が難しい</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-bold text-gray-900">主な価値</td>
-                    <td className="px-6 py-4 text-gray-800">短期で標準運用を開始</td>
-                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">早期に価値を検証しながら最適化を継続</td>
-                    <td className="px-6 py-4 text-gray-800">理想像に合わせた統合を実現</td>
+                    <td className="px-6 py-4 font-bold text-gray-900">メリット</td>
+                    <td className="px-6 py-4 text-gray-800">すぐ始められる</td>
+                    <td className="px-6 py-4 bg-blue-50 text-gray-900 font-semibold">早く効果を確認しながら育てる</td>
+                    <td className="px-6 py-4 text-gray-800">理想の形を最初から作れる</td>
                   </tr>
                 </tbody>
               </table>
@@ -875,28 +876,28 @@ const NetSuiteUnified: React.FC = () => {
                   <div className="p-3 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-xl">
                     <Layers className="w-8 h-8 text-indigo-500" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900">アジャイル導入の流れ</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">EvangSolの導入の進め方</h3>
                 </div>
                 <p className="text-gray-800 mb-6">
-                  施策ごとに優先度を設定し、要件定義→設定→レビュー→改善のループを構築。
-                  短期間で成果物を可視化し、投資対効果を検証しながら範囲を拡張します。
+                  大事な業務から順番に作って、実際に使いながら改善していきます。<br />
+                  小さな成果を積み重ねるので、途中で効果を確認できます。
                 </p>
                 <ol className="space-y-3">
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">1</span>
-                    <span className="text-gray-800">ビジョン整理とロードマップ策定</span>
+                    <span className="text-gray-800">ゴールと計画を決める</span>
                   </li>
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">2</span>
-                    <span className="text-gray-800">サイクル単位の要件・設定・テスト</span>
+                    <span className="text-gray-800">短い期間で作って、動かして、確認する</span>
                   </li>
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">3</span>
-                    <span className="text-gray-800">定例レビューでのフィードバック反映</span>
+                    <span className="text-gray-800">現場の声を聞いて、すぐに直す</span>
                   </li>
                   <li className="flex items-start">
                     <span className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold mr-3">4</span>
-                    <span className="text-gray-800">リリース後の運用チューニングと定着支援</span>
+                    <span className="text-gray-800">使いながら調整して、定着させる</span>
                   </li>
                 </ol>
               </div>
@@ -906,29 +907,29 @@ const NetSuiteUnified: React.FC = () => {
                   <div className="p-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-xl">
                     <Target className="w-8 h-8 text-amber-500" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900">適する案件タイプ</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">こんな方におすすめ</h3>
                 </div>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                    <span className="text-gray-800">要件が進行中に磨き込まれる基幹刷新・段階的なモダナイゼーション</span>
+                    <span className="text-gray-800">使いながら、やりたいことを固めていきたい</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                    <span className="text-gray-800">部門毎に優先度が異なるグローバル展開・国内外拠点の同期化</span>
+                    <span className="text-gray-800">部署ごとに優先度が違うので、大事なところから始めたい</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                    <span className="text-gray-800">短期間で価値仮説を検証しながら、財務・販売・在庫領域を統合したい案件</span>
+                    <span className="text-gray-800">早く効果を確かめながら、会計・販売・在庫をつなげたい</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-2xl p-8 mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">アジャイル導入でよくある質問</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">よくある心配ごと</h3>
               <p className="text-gray-800 text-lg">
-                「終わりが見えない」アジャイル導入への不安を、EvangSolが以下の方法で解決します
+                「いつまで続くの？」「費用が膨らまない？」という不安を、EvangSolは以下の方法で解決します
               </p>
             </div>
 
@@ -962,29 +963,29 @@ const NetSuiteUnified: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-3xl blur-3xl"></div>
               <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-300/50">
                 <h3 className="text-3xl font-bold text-center mb-12 pb-2 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                  EvangSolのアジャイル導入の特徴
+                  EvangSolの導入が選ばれる理由
                 </h3>
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="text-center">
                     <div className="inline-flex p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl mb-4">
                       <Target className="w-10 h-10 text-purple-400" />
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-3">明確なゴール設定</h4>
-                    <p className="text-gray-800">プロダクトビジョンとロードマップで全体像を可視化</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">ゴールが明確</h4>
+                    <p className="text-gray-800">最初に全体像と計画を決めるから、迷わない</p>
                   </div>
                   <div className="text-center">
                     <div className="inline-flex p-4 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-2xl mb-4">
                       <Rocket className="w-10 h-10 text-pink-400" />
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-3">継続的な価値提供</h4>
-                    <p className="text-gray-800">スプリントごとに動く成果物を提供し、早期に価値を実現</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">早く効果が出る</h4>
+                    <p className="text-gray-800">短い期間で作って使うから、すぐに価値を実感できる</p>
                   </div>
                   <div className="text-center">
                     <div className="inline-flex p-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl mb-4">
                       <BarChart3 className="w-10 h-10 text-cyan-400" />
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-3">進捗の可視化</h4>
-                    <p className="text-gray-800">常に現在地とゴールまでの距離を明確に共有</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">進み具合が見える</h4>
+                    <p className="text-gray-800">いつでも「今どこまで進んだか」が分かる</p>
                   </div>
                 </div>
               </div>
