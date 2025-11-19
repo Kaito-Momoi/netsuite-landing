@@ -186,7 +186,7 @@ const CASE_STUDY = {
 // Agile Process Q&A
 const AGILE_QA = [
   {
-    question: 'アジャイル開発は「終わりが見えない」と聞きますが？',
+    question: 'アジャイル導入は「終わりが見えない」と聞きますが？',
     answer: 'EvangSolのアジャイル導入は、プロダクトビジョンとロードマップを最初に明確化し、MVP（最小実装製品）を定義することで、全体のゴールを可視化します。',
     icon: <Target className="w-8 h-8" />,
     details: ['プロダクトビジョンの共有', 'ロードマップの策定', 'MVPの明確な定義'],
@@ -825,7 +825,7 @@ const NetSuiteUnified: React.FC = () => {
           {/* 5. Implementation Methodology */}
           <div className="space-y-20">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                 導入方法論
               </h2>
               <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
@@ -926,9 +926,9 @@ const NetSuiteUnified: React.FC = () => {
             </div>
 
             <div className="bg-gradient-to-r from-purple-100/40 to-orange-100/40 rounded-2xl p-8 mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">アジャイル開発でよくある質問</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">アジャイル導入でよくある質問</h3>
               <p className="text-gray-800 text-lg">
-                「終わりが見えない」アジャイル開発への不安を、EvangSolが以下の方法で解決します
+                「終わりが見えない」アジャイル導入への不安を、EvangSolが以下の方法で解決します
               </p>
             </div>
 
