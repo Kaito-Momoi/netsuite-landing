@@ -31,20 +31,20 @@ const MAIN_FEATURES: Feature[] = [
   {
     icon: <Brain className="w-10 h-10" />,
     title: 'スマート自動マッチング',
-    description: 'ルールベースエンジンにより、複雑な入金パターンも高精度で自動消込。継続的な最適化で精度が向上',
-    bulletPoints: ['99.5%の高精度マッチング', '複雑なパターン認識', '継続的な学習・改善'],
+    description: 'ルールベースエンジンにより、複雑な入金パターンも高精度で自動突合。継続的な最適化で精度が向上',
+    bulletPoints: ['債権データと高精度のマッチング', '消費税や手数料誤差の認識', '顧客に紐づく仕訳も連携'],
   },
   {
     icon: <Zap className="w-10 h-10" />,
-    title: 'リアルタイム処理',
-    description: '銀行APIと直接連携し、入金発生と同時に自動処理を開始。処理遅延ゼロを実現',
-    bulletPoints: ['即時データ取得', '24/365稼働', '処理遅延ゼロ'],
+    title: '定期バッチ処理',
+    description: 'アカウントアグリゲーションサービスと直接連携し、定時刻や定期的に入金データの自動処理を開始',
+    bulletPoints: ['定期的なデータ取得', '24/365稼働', 'データ取得～消込まで自動化'],
   },
   {
     icon: <BarChart3 className="w-10 h-10" />,
-    title: '高度な可視化',
-    description: 'リアルタイムダッシュボードで、消込状況・キャッシュフローを即座に把握',
-    bulletPoints: ['リアルタイム更新', '多角的分析', 'アラート機能'],
+    title: '多様な運用に対応',
+    description: '各企業の多様な会計処理に柔軟に対応し、経理業務をソリューションに集約',
+    bulletPoints: ['全国銀行協会フォーマット(全銀データ)対応', '入金データに対する個別仕訳作成', '入金状況チェック一時保存機能'],
   },
 ];
 
@@ -53,32 +53,32 @@ const CAPABILITIES = [
   {
     icon: <Database className="w-8 h-8" />,
     title: 'マルチバンク対応',
-    description: '国内外の主要銀行フォーマットに完全対応。API連携で自動取込',
-  },
-  {
-    icon: <FileSearch className="w-8 h-8" />,
-    title: '高度なパターン認識',
-    description: '請求書番号・金額・顧客名・入金日など複数条件での自動マッチング',
-  },
-  {
-    icon: <Shield className="w-8 h-8" />,
-    title: '内部統制機能',
-    description: '承認ワークフロー・監査ログ・権限管理で内部統制を強化',
-  },
-  {
-    icon: <GitBranch className="w-8 h-8" />,
-    title: 'ワークフロー自動化',
-    description: '例外処理も含めた消込プロセス全体を自動化',
+    description: '全国銀行協会フォーマット(全銀データ)に完全対応。地方銀行フォーマットにも対応可能',
   },
   {
     icon: <Cpu className="w-8 h-8" />,
-    title: 'API連携',
-    description: '他システムとのシームレスな連携でエンドツーエンド自動化',
+    title: '各種サービスと自動連携',
+    description: 'アカウントアグリゲーションサービスとAPI連携し、自動で入金から消込までを実現',
+  },
+  {
+    icon: <FileSearch className="w-8 h-8" />,
+    title: 'バーチャル口座対応',
+    description: '不特定多数の顧客や複数口座を割り当てる取引先向けのバーチャル口座(仮想口座)にも対応',
   },
   {
     icon: <TrendingUp className="w-8 h-8" />,
-    title: '予測分析',
-    description: '入金予測・キャッシュフロー予測で経営判断を支援',
+    title: '過入金時の柔軟な対応',
+    description: '企業の要件に応じて過入金の取り扱いに対応(前受金、未割当て入金データ等)',
+  },
+  {
+    icon: <GitBranch className="w-8 h-8" />,
+    title: '複数担当者による作業を想定',
+    description: '複数人で経理処理を行う際も作業範囲の割り当てや重複作業時の動作などを想定した設計',
+  },
+  {
+    icon: <Shield className="w-8 h-8" />,
+    title: '多様な企業形態に対応',
+    description: '自社口座や連結会社毎の入金管理することや、取引先(親子顧客)の債権集約も設定可能',
   },
 ];
 
@@ -180,7 +180,7 @@ const PaymentMatching: React.FC = () => {
                   <div className="text-white"><Cpu className="w-8 h-8" /></div>
                 </div>
                 <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  99.9%の自動化率
+                  高度な自動化を実現
                 </span>
               </div>
             </div>
