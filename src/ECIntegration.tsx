@@ -108,29 +108,12 @@ const ECIntegration: React.FC = () => {
   const navigate = useNavigate();
   
   const [isVisible, setIsVisible] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [hoveredPlatform, setHoveredPlatform] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
     setIsVisible(true);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % 3);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // Removed automatic feature cycling animation
 
   const handleContact = () => { window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer'); };
 
@@ -188,26 +171,17 @@ const ECIntegration: React.FC = () => {
             </p>
           </div>
 
-          {/* Animated Feature Carousel */}
+          {/* Feature Display - Fixed */}
           <div className="relative h-20 mb-12">
-            <div className="absolute inset-0 flex items-center justify-center">
-              {[
-                { text: '6大ECモール対応', icon: <Globe className="w-8 h-8" />, gradient: 'from-blue-600 to-indigo-600' },
-                { text: 'リアルタイム在庫同期', icon: <Zap className="w-8 h-8" />, gradient: 'from-teal-400 to-cyan-400' },
-                { text: 'AI需要予測', icon: <Cpu className="w-8 h-8" />, gradient: 'from-cyan-400 to-teal-400' },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className={`absolute flex items-center gap-4 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-                >
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
-                    <div className="text-white">{item.icon}</div>
-                  </div>
-                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
-                    {item.text}
-                  </span>
+            <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600">
+                  <div className="text-white"><Globe className="w-8 h-8" /></div>
                 </div>
-              ))}
+                <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  6大ECモール対応
+                </span>
+              </div>
             </div>
           </div>
 
@@ -271,10 +245,8 @@ const ECIntegration: React.FC = () => {
               <div
                 key={index}
                 className="group relative"
-                onMouseEnter={() => setHoveredPlatform(index)}
-                onMouseLeave={() => setHoveredPlatform(null)}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} rounded-2xl blur-xl ${hoveredPlatform === index ? 'opacity-40' : 'opacity-20'}`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r ${platform.color} rounded-2xl blur-xl opacity-20`}></div>
                 <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50">
                   <h3 className={`text-2xl font-bold mb-4 bg-gradient-to-r ${platform.color} bg-clip-text text-transparent`}>
                     {platform.name}
