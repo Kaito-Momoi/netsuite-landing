@@ -106,14 +106,20 @@ const SUCCESS_METRICS = [
 
 const ECIntegration: React.FC = () => {
   const navigate = useNavigate();
-  
+
   const [isVisible, setIsVisible] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  // Removed automatic feature cycling animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleContact = () => { window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer'); };
 
@@ -160,7 +166,7 @@ const ECIntegration: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 z-10">
         <div className="text-center max-w-6xl mx-auto">
           {/* Main Title with 3D effect */}
-          <div className={`relative mb-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`relative mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-black mb-6">
               <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 ECデータ連携基盤
@@ -171,17 +177,26 @@ const ECIntegration: React.FC = () => {
             </p>
           </div>
 
-          {/* Feature Display - Fixed */}
+          {/* Animated Feature Carousel */}
           <div className="relative h-20 mb-12">
-            <div className="flex items-center justify-center gap-3">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600">
-                  <div className="text-white"><Globe className="w-8 h-8" /></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              {[
+                { text: '6大ECモール対応', icon: <Globe className="w-8 h-8" />, gradient: 'from-blue-600 to-indigo-600' },
+                { text: 'リアルタイム連携', icon: <Zap className="w-8 h-8" />, gradient: 'from-indigo-600 to-teal-600' },
+                { text: '完全自動同期', icon: <Cpu className="w-8 h-8" />, gradient: 'from-teal-600 to-cyan-600' },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className={`absolute flex items-center gap-4 transition-all duration-1000 ${activeFeature === index ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                >
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient}`}>
+                    <div className="text-white">{item.icon}</div>
+                  </div>
+                  <span className={`text-3xl font-black bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                    {item.text}
+                  </span>
                 </div>
-                <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  6大ECモール対応
-                </span>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -337,11 +352,11 @@ const ECIntegration: React.FC = () => {
           <div className="flex justify-center">
             <button
               onClick={handleContact}
-              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full flex items-center gap-3 group"
+              className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 group"
             >
-              <Mail className="w-6 h-6" />
-              <ExternalLink className="w-5 h-5" />
+              <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
               お問い合わせ
+              <ExternalLink className="w-5 h-5" />
             </button>
           </div>
         </div>
