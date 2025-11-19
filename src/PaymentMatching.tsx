@@ -97,20 +97,9 @@ const PaymentMatching: React.FC = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
     setIsVisible(true);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
 
   useEffect(() => {
@@ -204,16 +193,16 @@ const PaymentMatching: React.FC = () => {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {MAIN_FEATURES.map((feature, index) => (
-              <div key={index} className="group relative">
+              <div key={index} className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-xl"></div>
-                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 h-full">
+                <div className="relative bg-white backdrop-blur-xl rounded-3xl p-8 border-2 border-slate-300/50 h-full flex flex-col">
                   <div className="w-20 h-20 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mb-6 border-2 border-blue-500/30">
                     <div className="text-blue-600">{feature.icon}</div>
                   </div>
                   <h3 className="text-2xl font-black text-slate-950 mb-4">{feature.title}</h3>
-                  <p className="text-slate-800 mb-6">{feature.description}</p>
+                  <p className="text-slate-800 mb-6 flex-grow">{feature.description}</p>
                   {feature.bulletPoints && (
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 mt-auto">
                       {feature.bulletPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start">
                           <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" />
@@ -245,9 +234,7 @@ const PaymentMatching: React.FC = () => {
             {CAPABILITIES.map((capability, index) => (
               <div
                 key={index}
-                className="group relative"
-                onMouseEnter={() => setHoveredCapability(index)}
-                onMouseLeave={() => setHoveredCapability(null)}
+                className="relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-teal-600/10 rounded-2xl blur-xl opacity-0"></div>
                 <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50">
