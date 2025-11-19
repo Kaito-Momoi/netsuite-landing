@@ -821,16 +821,16 @@ const NetSuiteUnified: React.FC = () => {
                   <div
                     key={solution.path}
                     onClick={() => navigate(solution.path)}
-                    className="cursor-pointer relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg"
+                    className="group cursor-pointer relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 hover:border-emerald-600 shadow-lg hover:shadow-xl transition-all hover:scale-105"
                   >
-                    <div className="text-emerald-600 mb-4">
+                    <div className="text-emerald-600 mb-4 group-hover:text-teal-600 transition-colors">
                       {solution.icon}
                     </div>
                     <h4 className="font-bold text-lg mb-2 text-slate-900">{solution.title}</h4>
                     <p className="text-slate-700 text-sm mb-4">{solution.description}</p>
                     <div className="flex items-center text-emerald-600 text-sm font-bold">
                       詳細を見る
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                     </div>
                   </div>
                 ))}
