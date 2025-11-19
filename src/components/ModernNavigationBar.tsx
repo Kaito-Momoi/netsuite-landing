@@ -13,7 +13,8 @@ import {
   Zap,
   Building
 } from 'lucide-react';
-import { NavigationProps } from '../types';
+import { NavigationProps, NavItem } from '../types';
+import { LAYOUT } from '../constants/layout';
 
 const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
   ({ showBackButton = true, variant = 'page', onContactClick }) => {
@@ -71,7 +72,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
       };
     }, []);
 
-    const navItems = [
+    const navItems: NavItem[] = [
       {
         label: 'ホーム',
         icon: <Home className="w-3 h-3" />,
@@ -112,26 +113,34 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
       },
     ];
 
-    const isActive = (item: any) => {
+    const isActive = (item: NavItem): boolean => {
       // Check if the current section matches
       return activeSection === item.section;
     };
 
-    const handleNavClick = (item: any) => {
-      if (item.isExternal && item.url) {
-        // Open external URL in new tab
-        window.open(item.url, '_blank', 'noopener,noreferrer');
-      } else if (item.section === 'home') {
-        // Scroll to top for home
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        // Scroll to specific section
-        const element = document.getElementById(item.section);
-        if (element) {
-          const yOffset = -80; // Offset for fixed header
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const handleNavClick = (item: NavItem): void => {
+      try {
+        if (item.isExternal && item.url) {
+          // Open external URL in new tab
+          const newWindow = window.open(item.url, '_blank', 'noopener,noreferrer');
+          if (!newWindow) {
+            console.error(`Failed to open external link: ${item.url}. Please check popup blocker settings.`);
+          }
+        } else if (item.section === 'home') {
+          // Scroll to top for home
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // Scroll to specific section
+          const element = document.getElementById(item.section);
+          if (!element) {
+            console.warn(`Section "${item.section}" not found in the document.`);
+            return;
+          }
+          const y = element.getBoundingClientRect().top + window.pageYOffset + LAYOUT.SECTION_OFFSET;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
+      } catch (error) {
+        console.error('Navigation error occurred:', error);
       }
     };
 

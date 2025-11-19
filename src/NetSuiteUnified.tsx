@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Globe,
@@ -34,6 +34,7 @@ import ModernNavigationBar from './components/ModernNavigationBar';
 import ModernFooter from './components/ModernFooter';
 import { SOLUTIONS } from './constants/features';
 import { Feature } from './types';
+import { LAYOUT } from './constants/layout';
 
 // NetSuite Core Features - 主要モジュール
 const CORE_FEATURES: Feature[] = [
@@ -223,9 +224,24 @@ const NetSuiteUnified: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveFeature((prev) => (prev + 1) % 3);
-    }, 3000);
+    }, LAYOUT.CAROUSEL_INTERVAL);
     return () => clearInterval(interval);
   }, []);
+
+  // Memoize contact click handler to prevent unnecessary re-renders
+  const handleContactClick = useCallback(() => {
+    try {
+      const newWindow = window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer');
+      if (!newWindow) {
+        console.error('Failed to open contact page. Please check popup blocker settings.');
+      }
+    } catch (error) {
+      console.error('Error opening contact page:', error);
+    }
+  }, []);
+
+  // Memoize featured solutions to prevent recalculation on every render
+  const featuredSolutions = useMemo(() => SOLUTIONS.slice(0, 6), []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
@@ -248,7 +264,7 @@ const NetSuiteUnified: React.FC = () => {
       <ModernNavigationBar
         showBackButton={false}
         variant="page"
-        onContactClick={() => window.open('https://www.evangsol.co.jp/support', '_blank')}
+        onContactClick={handleContactClick}
       />
 
       {/* Hero Section with Enhanced 3D Typography */}
@@ -801,9 +817,9 @@ const NetSuiteUnified: React.FC = () => {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {SOLUTIONS.map((solution, index) => (
+                {featuredSolutions.map((solution) => (
                   <div
-                    key={index}
+                    key={solution.path}
                     onClick={() => navigate(solution.path)}
                     className="group cursor-pointer relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 hover:border-emerald-600 shadow-lg hover:shadow-xl transition-all hover:scale-105"
                   >

@@ -11,7 +11,7 @@ import {
   Building2
 } from 'lucide-react';
 
-const ModernFooter: React.FC = () => {
+const ModernFooter: React.FC = React.memo(() => {
   const navigate = useNavigate();
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
@@ -159,6 +159,8 @@ const ModernFooter: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
+
+ModernFooter.displayName = 'ModernFooter';
 
 export default ModernFooter;

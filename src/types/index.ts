@@ -1,31 +1,78 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 
+/**
+ * Represents a feature or capability with icon, title, and description
+ */
 export interface Feature {
+  /** Icon component to display */
   icon: ReactNode;
+  /** Feature title */
   title: string;
+  /** Detailed description of the feature */
   description: string;
+  /** Optional bullet points for additional details */
   bulletPoints?: string[];
 }
 
+/**
+ * Solution extends Feature with navigation path
+ */
 export interface Solution extends Feature {
+  /** Route path for navigation */
   path: string;
 }
 
+/**
+ * Case study information for customer testimonials
+ */
 export interface CaseStudy {
+  /** Industry sector */
   industry: string;
+  /** Challenge faced by the customer */
   challenge: string;
+  /** Result or outcome achieved */
   result: string;
 }
 
+/**
+ * Benefit metric with value and label
+ */
 export interface Benefit {
+  /** Numerical or text value */
   value: string;
+  /** Label describing the benefit */
   label: string;
+  /** Optional detailed description */
   description?: string;
 }
 
+/**
+ * Navigation item for header navigation
+ */
+export interface NavItem {
+  /** Display label */
+  label: string;
+  /** Icon component */
+  icon: ReactElement;
+  /** Gradient CSS class */
+  gradient: string;
+  /** Section ID to scroll to */
+  section: string;
+  /** Whether this is an external link */
+  isExternal?: boolean;
+  /** External URL (if isExternal is true) */
+  url?: string;
+}
+
+/**
+ * Props for navigation components
+ */
 export interface NavigationProps {
+  /** Show back button in navigation */
   showBackButton?: boolean;
+  /** Navigation variant style */
   variant?: 'home' | 'page' | 'solution';
+  /** Callback when contact button is clicked */
   onContactClick?: () => void;
 }
 
