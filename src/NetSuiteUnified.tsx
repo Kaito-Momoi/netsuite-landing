@@ -206,7 +206,7 @@ const AGILE_QA = [
   },
   {
     question: '進捗が見えにくくなることはありませんか？',
-    answer: '定期的なふりかえりで進捗と達成感を確認。常に「どこへ向かっていて、いまどこにいるのか」を可視化します。',
+    answer: '大規模システム導入では、プロジェクトの全体像が見えなくなってしまいます。定期的なふりかえりで全体進捗と達成感を確認。常に「どこへ向かっていて、いまどこにいるのか」を可視化します。',
     icon: <BarChart3 className="w-8 h-8" />,
     details: ['進捗の可視化', '定期的なふりかえり', 'ベロシティ計測'],
   },
@@ -575,7 +575,7 @@ const NetSuiteUnified: React.FC = () => {
                           <h3 className="text-2xl font-bold text-green-600">EvangSolのソリューション</h3>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
-                          NetSuiteのカスタムフォーム機能により、画面レイアウトや項目を柔軟に変更可能。セルフカスタマイズ機能を活用できるように設定し、SuiteSuccessのテンプレートを用いて300以上の標準レポートやダッシュボードを提供。
+                          NetSuiteのカスタムフォーム機能により、画面レイアウトや項目を柔軟に変更。セルフカスタマイズ機能を活用できるように設定し、SuiteSuccessのテンプレートを用いて300以上の標準レポートやダッシュボードを提供。
                         </p>
                         <ul className="space-y-2 text-slate-700">
                           <li className="flex items-start">
@@ -772,7 +772,7 @@ const NetSuiteUnified: React.FC = () => {
                           <h3 className="text-2xl font-bold text-green-600">EvangSolのソリューション</h3>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
-                          NetSuiteの標準BIツールと300以上の標準レポートを活用し、ユーザー自身でカスタマイズ可能なダッシュボードを構築。ロール別レポート配布機能で権限に応じた情報提供を実現し、監査証跡の自動記録を導入。
+                          NetSuiteの標準BIツールと300以上の標準レポートを活用し、ユーザー自身でもカスタマイズ可能なダッシュボードを用意。ロール別レポート配布機能で権限に応じた情報提供を実現し、監査証跡の自動記録を提案。
                         </p>
                         <ul className="space-y-2 text-slate-700">
                           <li className="flex items-start">
@@ -928,7 +928,7 @@ const NetSuiteUnified: React.FC = () => {
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                    <span className="text-gray-800">要件が進行中に磨き込まれる基幹刷新・段階的なモダナイゼーション</span>
+                    <span className="text-gray-800">要件が進行中に磨き込まれる基幹刷新・段階的な最新化</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
@@ -987,7 +987,7 @@ const NetSuiteUnified: React.FC = () => {
                       <Target className="w-10 h-10 text-purple-400" />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-3">明確なゴール設定</h4>
-                    <p className="text-gray-800">プロダクトビジョンとロードマップで全体像を可視化</p>
+                    <p className="text-gray-800">実現したい業務の姿と導入スケジュールで全体像を可視化</p>
                   </div>
                   <div className="text-center">
                     <div className="inline-flex p-4 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-2xl mb-4">
