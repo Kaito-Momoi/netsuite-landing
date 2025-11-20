@@ -52,12 +52,12 @@ const CORE_FEATURES: Feature[] = [
 
 // Platform integrations with enhanced details
 const PLATFORMS = [
-  { name: 'Amazon', color: 'from-blue-500 to-indigo-500', features: ['FBA連携', 'セラーセントラル統合', 'Prime対応'] },
-  { name: '楽天市場', color: 'from-blue-500 to-indigo-500', features: ['RMS完全対応', 'ポイント管理', 'イベント連携'] },
-  { name: 'Yahoo!', color: 'from-indigo-500 to-blue-500', features: ['ストアAPI連携', 'PayPay対応', 'キャンペーン管理'] },
-  { name: 'Shopify', color: 'from-green-500 to-indigo-500', features: ['Admin API', 'Plus対応', 'アプリ連携'] },
+  { name: 'Amazon', color: 'from-blue-600 to-indigo-600', features: ['FBA連携', 'セラーセントラル統合', 'Prime対応'] },
+  { name: '楽天市場', color: 'from-blue-600 to-indigo-600', features: ['RMS完全対応', 'ポイント管理', 'イベント連携'] },
+  { name: 'Yahoo!', color: 'from-blue-600 to-indigo-600', features: ['ストアAPI連携', 'PayPay対応', 'キャンペーン管理'] },
+  { name: 'Shopify', color: 'from-blue-600 to-indigo-600', features: ['Admin API', 'Plus対応', 'アプリ連携'] },
   { name: 'BASE', color: 'from-blue-600 to-indigo-600', features: ['API完全対応', '決済連携', '配送管理'] },
-  { name: 'STORES', color: 'from-gray-400 to-slate-100', features: ['API連携', '在庫同期', '受注管理'] },
+  { name: 'STORES', color: 'from-blue-600 to-indigo-600', features: ['API連携', '在庫同期', '受注管理'] },
 ];
 
 // Detailed capabilities
