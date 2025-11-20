@@ -40,7 +40,7 @@ export const SOLUTION_FEATURES: Feature[] = [
   },
 ];
 
-// Canonical solutions list with routes - Featured 3 solutions
+// Canonical solutions list with routes - Featured 6 solutions
 export const SOLUTIONS: Solution[] = [
   {
     icon: <RefreshCw className="w-8 h-8" />,
@@ -59,6 +59,27 @@ export const SOLUTIONS: Solution[] = [
     title: '汎用申請ソリューション',
     description: 'NetSuite内で申請から承認、データ反映まで全て完結。柔軟な承認ワークフローで業務効率を向上',
     path: '/solutions/general-application',
+  },
+  {
+    icon: <FileText className="w-8 h-8" />,
+    title: '在庫年齢表',
+    description: '在庫品目ごとの滞留期間を分析し、滞留在庫のリスクを可視化',
+    path: '/solutions/inventory-aging',
+    comingSoon: true,
+  },
+  {
+    icon: <BarChart3 className="w-8 h-8" />,
+    title: '資材計画の見える化',
+    description: '需要予測や生産計画と連動し、資材の発注・在庫状況をリアルタイムに可視化',
+    path: '/solutions/material-planning',
+    comingSoon: true,
+  },
+  {
+    icon: <Database className="w-8 h-8" />,
+    title: 'ハンディ連携／WMS連携',
+    description: '倉庫内の入出庫、棚卸、ピッキング作業をハンディ端末やWMSと連動',
+    path: '/solutions/warehouse-integration',
+    comingSoon: true,
   },
 ];
 

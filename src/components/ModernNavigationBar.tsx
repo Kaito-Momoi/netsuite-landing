@@ -234,7 +234,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                 {/* Futuristic CTA Button */}
                 <button
                   onClick={() => onContactClick ? onContactClick() : navigate('/contact')}
-                  className="hidden sm:flex items-center gap-2 px-6 py-3 relative overflow-hidden rounded-full font-bold transition-all duration-500 group"
+                  className="flex items-center gap-2 px-3 lg:px-6 py-3 relative overflow-hidden rounded-full font-bold transition-all duration-500 group"
                   role="menuitem"
                 >
                   {/* Animated background */}
@@ -247,8 +247,8 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                       <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                       <div className="absolute inset-0 bg-white/50 blur-md group-hover:animate-ping"></div>
                     </div>
-                    <span>お問い合わせ</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span className="hidden lg:inline">お問い合わせ</span>
+                    <ChevronRight className="hidden lg:block w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
 
                   {/* Edge glow */}

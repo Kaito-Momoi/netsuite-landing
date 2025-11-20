@@ -20,6 +20,8 @@ export interface Feature {
 export interface Solution extends Feature {
   /** Route path for navigation */
   path: string;
+  /** Whether this solution is coming soon (disables link) */
+  comingSoon?: boolean;
 }
 
 /**

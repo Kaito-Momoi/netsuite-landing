@@ -317,6 +317,73 @@ const WarehouseIntegration: React.FC = () => {
             </div>
           </div>
 
+          {/* Custom Add-on Solutions */}
+          <div className="space-y-20">
+            <div className="text-center">
+              <h2 className="text-4xl font-black mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                独自開発アドオン
+              </h2>
+              <p className="text-xl text-slate-900 font-bold max-w-3xl mx-auto">
+                倉庫管理の課題を解決する専門ソリューション
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: <Scan className="w-6 h-6" />,
+                  title: 'スキャンシステム最適化',
+                  description: 'ハンディターミナルとバーコードスキャンによる高精度な入出荷管理',
+                  gradient: 'from-teal-400 to-cyan-400',
+                },
+                {
+                  icon: <Database className="w-6 h-6" />,
+                  title: 'リアルタイム在庫同期',
+                  description: 'WMSとNetSuiteの即時同期による在庫精度の向上',
+                  gradient: 'from-cyan-400 to-blue-400',
+                },
+                {
+                  icon: <MapPin className="w-6 h-6" />,
+                  title: 'ロケーション管理高度化',
+                  description: '倉庫内の詳細な棚番地管理とピッキング効率化',
+                  gradient: 'from-blue-400 to-indigo-400',
+                },
+                {
+                  icon: <BarChart3 className="w-6 h-6" />,
+                  title: 'Inventory Aging',
+                  description: '在庫の滞留期間分析による適切な在庫管理と処分判断の支援',
+                  gradient: 'from-indigo-400 to-purple-400',
+                },
+                {
+                  icon: <Layers className="w-6 h-6" />,
+                  title: 'Material Planning',
+                  description: '需要予測に基づく資材所要量計画の自動化と最適化',
+                  gradient: 'from-purple-400 to-pink-400',
+                },
+                {
+                  icon: <Settings className="w-6 h-6" />,
+                  title: 'WMS連携強化',
+                  description: '主要WMSベンダーとの高度な連携による業務効率の最大化',
+                  gradient: 'from-pink-400 to-rose-400',
+                },
+              ].map((addon, index) => (
+                <div key={index} className="group relative">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${addon.gradient} rounded-2xl blur-xl opacity-20`}></div>
+                  <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300/50 h-full flex flex-col">
+                    <div className={`w-14 h-14 bg-gradient-to-br ${addon.gradient} rounded-xl flex items-center justify-center mb-4`}>
+                      <div className="text-white">{addon.icon}</div>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">{addon.title}</h3>
+                    <p className="text-sm text-slate-900 font-medium mb-4 flex-grow">{addon.description}</p>
+                    <div className="text-sm text-slate-600 font-medium italic">
+                      Coming soon...
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Impact Metrics Section */}
           <div ref={statsRef} className="space-y-20">
             <div className="text-center">

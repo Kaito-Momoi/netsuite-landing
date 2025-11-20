@@ -820,26 +820,34 @@ const NetSuiteUnified: React.FC = () => {
                 {featuredSolutions.map((solution) => (
                   <div
                     key={solution.path}
-                    onClick={() => navigate(solution.path)}
-                    className="group cursor-pointer relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 hover:border-emerald-600 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                    onClick={() => !solution.comingSoon && navigate(solution.path)}
+                    className={`group relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg transition-all ${
+                      solution.comingSoon
+                        ? 'cursor-default opacity-90'
+                        : 'cursor-pointer hover:border-emerald-600 hover:shadow-xl hover:scale-105'
+                    }`}
                   >
-                    <div className="text-emerald-600 mb-4 group-hover:text-teal-600 transition-colors">
+                    <div className={`mb-4 transition-colors ${
+                      solution.comingSoon
+                        ? 'text-slate-400'
+                        : 'text-emerald-600 group-hover:text-teal-600'
+                    }`}>
                       {solution.icon}
                     </div>
                     <h4 className="font-bold text-lg mb-2 text-slate-900">{solution.title}</h4>
                     <p className="text-slate-700 text-sm mb-4">{solution.description}</p>
-                    <div className="flex items-center text-emerald-600 text-sm font-bold">
-                      詳細を見る
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
-                    </div>
+                    {solution.comingSoon ? (
+                      <div className="text-slate-500 text-sm font-medium italic">
+                        Coming soon...
+                      </div>
+                    ) : (
+                      <div className="flex items-center text-emerald-600 text-sm font-bold">
+                        詳細を見る
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+                      </div>
+                    )}
                   </div>
                 ))}
-              </div>
-
-              <div className="text-center mt-8">
-                <p className="text-slate-600 text-lg font-medium italic">
-                  Coming Soon...
-                </p>
               </div>
 
           </div>
