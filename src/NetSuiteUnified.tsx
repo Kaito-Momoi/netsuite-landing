@@ -321,7 +321,7 @@ const NetSuiteUnified: React.FC = () => {
           <div className={`mt-20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="flex justify-center items-center">
               <img
-                src={`${process.env.PUBLIC_URL}/logo-oracle-netsuite-solution-provider.png`}
+                src={`${process.env.PUBLIC_URL}/NS24_Partner-Lockups_Solution-Provider_Black.png`}
                 alt="Oracle NetSuite Solution Provider"
                 className="h-24 w-auto"
               />

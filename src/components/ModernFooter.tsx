@@ -52,7 +52,7 @@ const ModernFooter: React.FC = React.memo(() => {
                     className="h-12 w-auto"
                   />
                   <img
-                    src={`${process.env.PUBLIC_URL}/logo-oracle-netsuite-solution-provider.png`}
+                    src={`${process.env.PUBLIC_URL}/NS24_Partner-Lockups_Solution-Provider_Black.png`}
                     alt="Oracle NetSuite Solution Provider"
                     className="h-10 w-auto"
                   />
