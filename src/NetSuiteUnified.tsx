@@ -400,17 +400,16 @@ const NetSuiteUnified: React.FC = () => {
                         <Users className="w-4 h-4 text-blue-600" />
                         <span>{CASE_STUDY.employees}</span>
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
-                        <GitBranch className="w-4 h-4 text-blue-600" />
-                        <span>SAP・OBIC等からのリプレイス実績</span>
+                    </div>
+                    <div className="flex gap-3 mt-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg" title="SAP・OBIC等からのリプレイス実績">
+                        <GitBranch className="w-6 h-6 text-white" />
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
-                        <Award className="w-4 h-4 text-blue-600" />
-                        <span>日本企業特有の要件に精通</span>
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg" title="日本企業特有の要件に精通">
+                        <Award className="w-6 h-6 text-white" />
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
-                        <Code className="w-4 h-4 text-blue-600" />
-                        <span>高い開発力</span>
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg" title="高い開発力">
+                        <Code className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
