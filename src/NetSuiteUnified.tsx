@@ -157,7 +157,7 @@ const CASE_STUDY = {
   headline: 'レガシーERPからNetSuiteへ基幹システムを移行し、柔軟でスピーディな成長基盤を構築',
   summary:
     '幅広い製品ラインを展開する電子機器メーカー。SAP ECC 6.0のEOSを機にNetSuiteへ刷新し、基幹業務・顧客管理・ワークフローを一体化。ガバナンス強化と迅速な経営判断を支える成長基盤を整備。',
-  location: '〒150-0013 東京都渋谷区恵比寿1-19-15 ウノサワ東急ビル5階',
+  location: '東京都',
   employees: '100～249名',
   partner: '導入パートナー: 株式会社EvangSol',
   link: 'https://www.netsuite.co.jp/customer-testimonials/greenhouse-manufacturing.shtml',
@@ -399,6 +399,18 @@ const NetSuiteUnified: React.FC = () => {
                       <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
                         <Users className="w-4 h-4 text-blue-600" />
                         <span>{CASE_STUDY.employees}</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
+                        <GitBranch className="w-4 h-4 text-blue-600" />
+                        <span>SAP・OBIC等からのリプレイス実績</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
+                        <Award className="w-4 h-4 text-blue-600" />
+                        <span>日本企業特有の要件に精通</span>
+                      </div>
+                      <div className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-slate-300 rounded-full shadow-md">
+                        <Code className="w-4 h-4 text-blue-600" />
+                        <span>高い開発力</span>
                       </div>
                     </div>
                   </div>
