@@ -466,58 +466,6 @@ const NetSuiteUnified: React.FC = () => {
                 </div>
               </div>
 
-              {/* Customization Tools - EvangSolの技術力アピール */}
-              <div>
-                <h3 className="text-3xl font-bold text-center mb-6">EvangSolが活用するNetSuiteのカスタマイズ機能</h3>
-                <p className="text-center text-slate-700 mb-12 max-w-3xl mx-auto">
-                  EvangSolの高い技術力により、NetSuiteの強力なカスタマイズ機能を最大限活用します
-                </p>
-                <div className="grid lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    icon: <Code className="w-10 h-10" />,
-                    title: 'SuiteScript',
-                    subtitle: 'JavaScriptベース開発',
-                    features: ['完全なカスタムロジック', 'イベントドリブン処理', 'API統合'],
-                    gradient: 'from-indigo-500 to-blue-500',
-                  },
-                  {
-                    icon: <Workflow className="w-10 h-10" />,
-                    title: 'SuiteFlow',
-                    subtitle: 'ビジュアルワークフロー',
-                    features: ['ドラッグ&ドロップ設計', '複雑な承認フロー', '自動化処理'],
-                    gradient: 'from-blue-500 to-cyan-500',
-                  },
-                  {
-                    icon: <Globe className="w-10 h-10" />,
-                    title: 'SuiteTalk & OneWorld',
-                    subtitle: 'API連携・グローバル対応',
-                    features: ['SOAP/REST対応', 'リアルタイム連携', '多国籍企業対応'],
-                    gradient: 'from-emerald-500 to-teal-500',
-                  },
-                ].map((tool, index) => (
-                  <div key={index} className="relative">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} rounded-2xl blur-xl opacity-10`}></div>
-                    <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg h-full">
-                      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${tool.gradient} mb-4`}>
-                        {tool.icon}
-                      </div>
-                      <h3 className="text-xl font-bold mb-2">{tool.title}</h3>
-                      <p className="text-gray-700 text-sm mb-4">{tool.subtitle}</p>
-
-                      <ul className="space-y-2">
-                        {tool.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" />
-                            <span className="text-slate-700 text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-                </div>
-              </div>
           </div>
 
           {/* 3. Challenges & Solutions */}
@@ -848,6 +796,59 @@ const NetSuiteUnified: React.FC = () => {
                     )}
                   </div>
                 ))}
+              </div>
+
+              {/* Customization Tools - EvangSolの技術力アピール */}
+              <div>
+                <h3 className="text-3xl font-bold text-center mb-6">EvangSolが活用するNetSuiteのカスタマイズ機能</h3>
+                <p className="text-center text-slate-700 mb-12 max-w-3xl mx-auto">
+                  EvangSolの高い技術力により、NetSuiteの強力なカスタマイズ機能を最大限活用します
+                </p>
+                <div className="grid lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    icon: <Code className="w-10 h-10" />,
+                    title: 'SuiteScript',
+                    subtitle: 'JavaScriptベース開発',
+                    features: ['完全なカスタムロジック', 'イベントドリブン処理', 'API統合'],
+                    gradient: 'from-indigo-500 to-blue-500',
+                  },
+                  {
+                    icon: <Workflow className="w-10 h-10" />,
+                    title: 'SuiteFlow',
+                    subtitle: 'ビジュアルワークフロー',
+                    features: ['ドラッグ&ドロップ設計', '複雑な承認フロー', '自動化処理'],
+                    gradient: 'from-blue-500 to-cyan-500',
+                  },
+                  {
+                    icon: <Globe className="w-10 h-10" />,
+                    title: 'SuiteTalk & OneWorld',
+                    subtitle: 'API連携・グローバル対応',
+                    features: ['SOAP/REST対応', 'リアルタイム連携', '多国籍企業対応'],
+                    gradient: 'from-emerald-500 to-teal-500',
+                  },
+                ].map((tool, index) => (
+                  <div key={index} className="relative">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} rounded-2xl blur-xl opacity-10`}></div>
+                    <div className="relative bg-white backdrop-blur-xl rounded-2xl p-6 border-2 border-slate-300 shadow-lg h-full">
+                      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${tool.gradient} text-white mb-4`}>
+                        {tool.icon}
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{tool.title}</h3>
+                      <p className="text-gray-700 text-sm mb-4">{tool.subtitle}</p>
+
+                      <ul className="space-y-2">
+                        {tool.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 mr-2 flex-shrink-0" />
+                            <span className="text-slate-700 text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+                </div>
               </div>
 
           </div>
