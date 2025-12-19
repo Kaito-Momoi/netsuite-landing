@@ -231,7 +231,7 @@ const NetSuiteUnified: React.FC = () => {
   // Memoize contact click handler to prevent unnecessary re-renders
   const handleContactClick = useCallback(() => {
     try {
-      const newWindow = window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer');
+      const newWindow = window.open('https://www.evangsol.co.jp/contact', '_blank', 'noopener,noreferrer');
       if (!newWindow) {
         console.error('Failed to open contact page. Please check popup blocker settings.');
       }

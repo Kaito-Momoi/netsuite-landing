@@ -109,7 +109,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
         gradient: 'from-indigo-500 to-purple-500',
         section: 'about',
         isExternal: true,
-        url: 'https://www.evangsol.co.jp/about'
+        url: 'https://www.evangsol.co.jp'
       },
     ];
 
