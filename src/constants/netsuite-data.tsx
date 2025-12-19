@@ -157,7 +157,7 @@ export const CASE_STUDY = {
   link: 'https://www.netsuite.co.jp/customer-testimonials/greenhouse-manufacturing.shtml',
   quote: {
     text: '「返品管理プロセスをNetSuiteに統合することで、申請から承認までのリードタイムが従来の1/10以下に短縮され、業務の効率化が実現しました。さらに、営業部門の利益管理や予実管理も追加で統合することで、属人化された業務から脱却し、よりスムーズな作業環境を実現するなど、継続的な改善に取り組んでいきます」',
-    author: '株式会社グリーンハウス\n取締役 兼マーケティング担当執行役員 様より',
+    author: '株式会社グリーンハウス\n取締役 兼マーケティング担当執行役員\n奥寺 貴哉 様より',
   },
   highlights: [
     {

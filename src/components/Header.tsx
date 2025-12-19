@@ -59,18 +59,22 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
                 >
                   Case Studies
                 </button>
-                <button
-                  onClick={() => navigate('/about')}
+                <a
+                  href="https://www.evangsol.co.jp"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-700 hover:text-sky-500 transition-colors font-medium cursor-pointer"
                 >
                   Company Overview
-                </button>
-                <button
-                  onClick={() => navigate('/contact')}
+                </a>
+                <a
+                  href="https://www.evangsol.co.jp/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-2.5 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-sky-500/25"
                 >
                   Free Consultation
-                </button>
+                </a>
               </div>
             ) : (
               <div className="hidden md:flex items-center space-x-8">
@@ -124,18 +128,22 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
             >
               Case Studies
             </button>
-            <button
-              onClick={() => navigate('/about')}
+            <a
+              href="https://www.evangsol.co.jp"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-2xl text-slate-700 hover:text-sky-500"
             >
               Company Overview
-            </button>
-            <button
-              onClick={() => navigate('/contact')}
+            </a>
+            <a
+              href="https://www.evangsol.co.jp/contact"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3 bg-gradient-to-r from-sky-400 to-sky-500 text-white rounded-full font-semibold"
             >
               Free Consultation
-            </button>
+            </a>
           </div>
         </div>
       )}
