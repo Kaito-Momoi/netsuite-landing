@@ -1,7 +1,7 @@
 {
   "name": "netsuite-landing",
   "version": "0.1.0",
-  "homepage": "https://Kaito-Momoi.github.io/netsuite-landing",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
