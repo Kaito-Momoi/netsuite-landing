@@ -110,7 +110,7 @@ const PaymentMatching: React.FC = () => {
   }, []);
 
   const handleContact = () => {
-    window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer');
+    window.open('https://www.evangsol.co.jp/contact', '_blank', 'noopener,noreferrer');
   };
 
   return (

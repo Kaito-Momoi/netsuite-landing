@@ -1048,7 +1048,7 @@ const NetSuiteUnified: React.FC = () => {
 
           <div className="flex justify-center">
             <a
-              href="https://www.evangsol.co.jp/support"
+              href="https://www.evangsol.co.jp/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-blue-600/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group"

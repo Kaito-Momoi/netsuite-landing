@@ -121,7 +121,7 @@ const ECIntegration: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleContact = () => { window.open('https://www.evangsol.co.jp/support', '_blank', 'noopener,noreferrer'); };
+  const handleContact = () => { window.open('https://www.evangsol.co.jp/contact', '_blank', 'noopener,noreferrer'); };
 
   return (
     <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">

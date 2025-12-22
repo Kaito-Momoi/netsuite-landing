@@ -248,7 +248,7 @@ const TermsOfUse: React.FC = () => {
         {/* お問い合わせボタン */}
         <div className="mt-8 text-center">
           <a
-            href="https://www.evangsol.co.jp/support"
+            href="https://www.evangsol.co.jp/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
