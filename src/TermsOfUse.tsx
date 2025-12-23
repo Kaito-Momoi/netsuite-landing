@@ -10,7 +10,7 @@ const TermsOfUse: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <img
-                src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
                 alt="EvangSol"
                 className="h-10"
               />

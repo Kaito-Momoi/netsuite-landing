@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ hideContactButton = false }) => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <img
-              src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+              src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
               alt="EvangSol"
               className="h-12 mb-4"
             />

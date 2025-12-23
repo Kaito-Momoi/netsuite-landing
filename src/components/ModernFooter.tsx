@@ -47,7 +47,7 @@ const ModernFooter: React.FC = React.memo(() => {
               <div className="mb-8">
                 <div className="mb-6 space-y-4">
                   <img
-                    src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                    src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
                     alt="EvangSol"
                     className="h-12 w-auto"
                   />

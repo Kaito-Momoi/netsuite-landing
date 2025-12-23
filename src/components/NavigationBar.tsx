@@ -22,7 +22,7 @@ const NavigationBar: React.FC<NavigationProps> = React.memo(
                 aria-label="Return to home page"
               >
                 <img
-                  src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                  src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
                   alt="EvangSol"
                   className="h-12"
                 />

@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ showBackButton = false }) => {
             <div className="flex items-center space-x-3">
               <button onClick={() => navigate('/')} className="flex items-center cursor-pointer">
                 <img
-                  src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                  src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
                   alt="EvangSol"
                   className="h-12"
                 />

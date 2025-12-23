@@ -179,7 +179,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
                   aria-label="Visit EvangSol corporate website"
                 >
                   <img
-                    src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                    src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
                     alt="EvangSol"
                     className="h-10"
                   />
@@ -295,7 +295,7 @@ const ModernNavigationBar: React.FC<NavigationProps> = React.memo(
               {/* EvangSol Logo - left side */}
               <div className="flex-1">
                 <img
-                  src={`${process.env.PUBLIC_URL}/EvangSol_logo.png`}
+                  src={`${process.env.PUBLIC_URL}/EvangSol_logo_black.png`}
                   alt="EvangSol"
                   className="h-10"
                 />
